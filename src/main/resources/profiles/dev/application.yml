@@ -10,5 +10,3 @@ server:
     session:
       cookie:
         http-only: true
-profiles:
-  active: db

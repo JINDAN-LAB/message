@@ -11,13 +11,13 @@
 
     <!-- 时间滚动输出 level为 INFO 日志 -->
     <appender name="INFO_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>/data/home/www/yooli/logs/fms-web/fms.log</file>
+        <file>/usr/local/jdy/logs/message/message.log</file>
         <encoder>
             <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</pattern>
             <charset>UTF-8</charset>
         </encoder>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>/data/home/www/yooli/logs/fms-web/fms.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <fileNamePattern>/usr/local/jdy/logs/message/message.%d{yyyy-MM-dd}.log</fileNamePattern>
             <maxHistory>15</maxHistory>
         </rollingPolicy>
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
@@ -27,13 +27,13 @@
 
     <!-- 时间滚动输出 level为 ERROR 日志 -->
     <appender name="ERROR_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>/data/home/www/yooli/logs/fms-web/fms_error.log</file>
+        <file>/usr/local/jdy/logs/message/fms_error.log</file>
         <encoder>
             <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</pattern>
             <charset>UTF-8</charset> <!-- 此处设置字符集 -->
         </encoder>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>/data/home/www/yooli/logs/fms-web/fms_error.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <fileNamePattern>/usr/local/jdy/logs/message/message_error.%d{yyyy-MM-dd}.log</fileNamePattern>
             <maxHistory>15</maxHistory>
         </rollingPolicy>
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">

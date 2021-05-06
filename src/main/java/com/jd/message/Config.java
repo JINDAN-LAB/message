@@ -7,6 +7,6 @@ import org.springframework.context.annotation.ImportResource;
 @Configuration
 //@ImportResource({"classpath*:applicationContext-dubbo-producer.xml","core-datasource.xml"
 //,"applicationContext-message.xml"})
-@ImportResource({"core-datasource.xml"})
+@ImportResource({"classpath*:core-datasource.xml"})
 public class Config {
 }

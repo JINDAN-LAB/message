@@ -21,7 +21,7 @@
         <property name="numHelperThreads" value="6"/>
         <property name="acquireIncrement" value="6"/>			<!-- 定义在从数据库获取新连接失败后重复尝试的次数 -->
         <property name="idleConnectionTestPeriod" value="60"/>	<!-- 每60秒检查连接池中的空闲连接 -->
-        <property name="checkoutTimeout" value="30000"/>
+        <property name="checkoutTimeout" value="60000"/>
         <property name="testConnectionOnCheckout"  value="false" />	<!-- 关闭每个connection提交的 时候都将校验其有效性 -->
     </bean>
 
