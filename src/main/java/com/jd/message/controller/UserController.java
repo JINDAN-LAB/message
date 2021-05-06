@@ -22,7 +22,6 @@ import java.util.UUID;
  * Created by 13348 on 2021/4/13.
  */
 @Controller
-@RequestMapping("/message")
 @Slf4j
 public class UserController {
 

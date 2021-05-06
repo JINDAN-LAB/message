@@ -1,0 +1,14 @@
+server:
+  port: 8081
+  connection-timeout: 5000ms
+  tomcat:
+    uri-encoding: UTF-8
+    max-threads: 1000
+    min-spare-threads: 30
+  servlet:
+    context-path: /message
+    session:
+      cookie:
+        http-only: true
+profiles:
+  active: db

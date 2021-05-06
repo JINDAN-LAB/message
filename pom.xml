@@ -194,5 +194,25 @@
 
   </build>
 
+  <profiles>
+    <profile>
+      <id>dev</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <properties>
+        <package.environment>src/main/resources/profiles/dev</package.environment>
+        <output.package.environment>target/classes</output.package.environment>
+      </properties>
+    </profile>
+    <profile>
+      <id>prod</id>
+      <properties>
+        <package.environment>src/main/resources/profiles/prod</package.environment>
+        <output.package.environment>target/classes</output.package.environment>
+      </properties>
+    </profile>
+  </profiles>
+
 
 </project>
