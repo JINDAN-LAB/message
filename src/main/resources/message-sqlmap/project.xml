@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="ProjectMapper">
+
+    <resultMap id="projectMapping" type="com.jd.message.entity.Project">
+        <result column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="createtime" property="createtime" />
+    </resultMap>
+
+    <insert id="addProject" parameterType="com.jd.message.entity.Project">
+        INSERT INTO t_project
+        (
+        id,
+        name
+        )
+        VALUES
+        (
+        #{id},
+        #{name}
+        )
+    </insert>
+
+    <select id="selectProject" resultMap="projectMapping" parameterType="java.lang.Integer" >
+        select
+        *
+        from t_project
+        where id = #{id}
+    </select>
+
+    <update id="updateProject" parameterType="com.jd.message.entity.Project" >
+        update t_project
+        set name = #{name}
+        where id = #{id}
+    </update>
+
+    <delete id="deleteProject" parameterType="java.lang.Integer" >
+        delete from t_project
+        where id = #{id}
+    </delete>
+
+</mapper>

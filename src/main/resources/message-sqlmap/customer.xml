@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="CustomerMapper">
+
+    <resultMap id="customerMapping" type="com.jd.message.entity.Customer">
+        <result column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="project_id" property="projectId" />
+        <result column="createtime" property="createtime" />
+    </resultMap>
+
+    <insert id="addCustomer" parameterType="com.jd.message.entity.Customer">
+        INSERT INTO t_customer
+        (
+        id,
+        name,
+        project_id
+        )
+        VALUES
+        (
+        #{id},
+        #{name},
+        #{projectId}
+        )
+    </insert>
+
+    <select id="selectCustomer" resultMap="customerMapping" parameterType="java.lang.Integer" >
+        select
+        *
+        from t_customer
+        where id = #{id}
+    </select>
+
+    <update id="updateCustomer" parameterType="com.jd.message.entity.Customer" >
+        update t_customer
+        set name = #{name},
+        project_id = #{projectId}
+        where id = #{id}
+    </update>
+
+    <delete id="deleteCustomer" parameterType="java.lang.Integer" >
+        delete from t_customer
+        where id = #{id}
+    </delete>
+
+</mapper>
