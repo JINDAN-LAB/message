@@ -1,26 +1,19 @@
 package com.jindan.jdy.controller.keypoint;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.jindan.jdy.common.dto.DepartmentFacilityDto;
 import com.jindan.jdy.common.dto.KeyPointPracticableDto;
-import com.jindan.jdy.common.pojo.DepartmentFacility;
-import com.jindan.jdy.common.pojo.KeyPointEvaluate;
 import com.jindan.jdy.common.pojo.KeyPointPracticable;
 import com.jindan.jdy.common.pojo.KeyPointProject;
+import com.jindan.jdy.common.utils.api.ResultVo;
 import com.jindan.jdy.controller.utils.RedisUtil;
 import com.jindan.jdy.enumerate.KeyStatus;
-import com.jindan.jdy.service.department.DepartmentFacilityService;
 import com.jindan.jdy.service.keypoint.KeyPointPracticableService;
-import com.jindan.jdy.common.utils.api.ResultVo;
 import com.jindan.jdy.service.keypoint.KeyPointProjectService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
-import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import io.swagger.annotations.Api;
-
-import java.util.List;
 
 /**
 *

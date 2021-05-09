@@ -1,24 +1,19 @@
 package com.jindan.jdy.controller.department;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.jindan.jdy.common.dto.MaintainFacilityDto;
-import com.jindan.jdy.common.pojo.DepartmentSuggest;
-import com.jindan.jdy.common.pojo.JdyRole;
 import com.jindan.jdy.common.pojo.JdyUserFile;
 import com.jindan.jdy.common.pojo.MaintainFacility;
+import com.jindan.jdy.common.utils.api.ResultVo;
 import com.jindan.jdy.controller.utils.RedisUtil;
 import com.jindan.jdy.service.department.MaintainFacilityService;
-import com.jindan.jdy.common.utils.api.ResultVo;
 import com.jindan.jdy.service.department.MaintainReportService;
-import com.jindan.jdy.service.user.JdyRoleService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
-import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import io.swagger.annotations.Api;
 
 import java.util.List;
 

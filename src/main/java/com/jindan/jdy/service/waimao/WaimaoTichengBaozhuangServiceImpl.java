@@ -1,11 +1,9 @@
 package com.jindan.jdy.service.waimao;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.jindan.jdy.common.pojo.WaimaoTichengBaozhuang;
-import com.jindan.jdy.common.mapper.WaimaoTichengBaozhuangDao;
-import com.jindan.jdy.service.waimao.WaimaoTichengBaozhuangService;
-
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.jindan.jdy.common.mapper.WaimaoTichengBaozhuangDao;
+import com.jindan.jdy.common.pojo.WaimaoTichengBaozhuang;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

@@ -1,12 +1,9 @@
 package com.jindan.jdy.service.zxing;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.jindan.jdy.common.pojo.ZxingErweimakg;
-import com.jindan.jdy.common.pojo.ZxingMethod;
-import com.jindan.jdy.common.mapper.ZxingMethodDao;
-import com.jindan.jdy.service.zxing.ZxingMethodService;
-
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.jindan.jdy.common.mapper.ZxingMethodDao;
+import com.jindan.jdy.common.pojo.ZxingMethod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

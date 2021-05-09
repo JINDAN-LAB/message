@@ -1,9 +1,8 @@
 package com.jindan.jdy.service.purchase;
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.jindan.jdy.common.dto.JdyCommodityDto;
 import com.jindan.jdy.common.pojo.JdyCommodity;
-import com.baomidou.mybatisplus.extension.service.IService;
-import com.jindan.jdy.common.pojo.JdyPurchase;
 
 import java.util.List;
 

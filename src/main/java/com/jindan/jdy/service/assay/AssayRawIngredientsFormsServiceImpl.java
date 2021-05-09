@@ -1,13 +1,9 @@
 package com.jindan.jdy.service.assay;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.jindan.jdy.common.mapper.AssaySampleInformDao;
-import com.jindan.jdy.common.pojo.AssayRawIngredientsForms;
-import com.jindan.jdy.common.mapper.AssayRawIngredientsFormsDao;
-import com.jindan.jdy.common.pojo.AssaySampleInform;
-import com.jindan.jdy.service.assay.AssayRawIngredientsFormsService;
-
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.jindan.jdy.common.mapper.AssayRawIngredientsFormsDao;
+import com.jindan.jdy.common.pojo.AssayRawIngredientsForms;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

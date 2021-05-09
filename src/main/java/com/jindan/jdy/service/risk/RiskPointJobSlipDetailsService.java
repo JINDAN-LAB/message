@@ -1,7 +1,7 @@
 package com.jindan.jdy.service.risk;
 
-import com.jindan.jdy.common.pojo.RiskPointJobSlipDetails;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.jindan.jdy.common.pojo.RiskPointJobSlipDetails;
 
 import java.util.List;
 

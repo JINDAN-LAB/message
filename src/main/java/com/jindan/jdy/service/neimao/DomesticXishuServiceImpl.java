@@ -1,10 +1,8 @@
 package com.jindan.jdy.service.neimao;
 
-import com.jindan.jdy.common.pojo.DomesticXishu;
-import com.jindan.jdy.common.mapper.DomesticXishuDao;
-import com.jindan.jdy.service.neimao.DomesticXishuService;
-
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.jindan.jdy.common.mapper.DomesticXishuDao;
+import com.jindan.jdy.common.pojo.DomesticXishu;
 import org.springframework.stereotype.Component;
 
 /**   

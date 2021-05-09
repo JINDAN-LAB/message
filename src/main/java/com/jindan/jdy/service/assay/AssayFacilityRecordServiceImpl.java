@@ -2,15 +2,10 @@ package com.jindan.jdy.service.assay;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.jindan.jdy.common.dto.AssayEntrustBillsDto;
-import com.jindan.jdy.common.dto.AssayFacilityRecordDto;
-import com.jindan.jdy.common.mapper.AssayEntrustBillsDao;
-import com.jindan.jdy.common.pojo.AssayEntrustBills;
-import com.jindan.jdy.common.pojo.AssayFacilityRecord;
-import com.jindan.jdy.common.mapper.AssayFacilityRecordDao;
-import com.jindan.jdy.service.assay.AssayFacilityRecordService;
-
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.jindan.jdy.common.dto.AssayFacilityRecordDto;
+import com.jindan.jdy.common.mapper.AssayFacilityRecordDao;
+import com.jindan.jdy.common.pojo.AssayFacilityRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

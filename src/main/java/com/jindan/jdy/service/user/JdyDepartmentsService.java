@@ -1,8 +1,8 @@
 package com.jindan.jdy.service.user;
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.jindan.jdy.common.dto.JdyCompanyDto;
 import com.jindan.jdy.common.pojo.JdyDepartments;
-import com.baomidou.mybatisplus.extension.service.IService;
 
 import java.util.List;
 

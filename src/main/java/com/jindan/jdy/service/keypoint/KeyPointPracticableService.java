@@ -1,12 +1,9 @@
 package com.jindan.jdy.service.keypoint;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.jindan.jdy.common.dto.KeyPointPracticableDto;
 import com.jindan.jdy.common.pojo.KeyPointPracticable;
-import com.baomidou.mybatisplus.extension.service.IService;
-
-
-import java.util.List;
 
 /**   
  * @Description:TODO(重点项目服务层)

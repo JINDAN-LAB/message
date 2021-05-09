@@ -2,17 +2,17 @@ package com.jindan.jdy.service.stock;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.jindan.jdy.common.dto.StarchPropertyScrapDto;
 import com.jindan.jdy.common.mapper.StarchOrganizationPutMapper;
-import com.jindan.jdy.common.mapper.StarchScrapPutDao;
-import com.jindan.jdy.common.pojo.*;
 import com.jindan.jdy.common.mapper.StarchPropertyScrapMapper;
+import com.jindan.jdy.common.mapper.StarchScrapPutDao;
+import com.jindan.jdy.common.pojo.StarchPropertyScrap;
+import com.jindan.jdy.common.pojo.StarchScrapPut;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
-
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

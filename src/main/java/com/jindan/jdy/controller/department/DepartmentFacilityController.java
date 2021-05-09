@@ -1,34 +1,31 @@
 package com.jindan.jdy.controller.department;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.jindan.jdy.common.dto.DepartmentFacilityDto;
-import com.jindan.jdy.common.dto.DepartmentSuggestDto;
 import com.jindan.jdy.common.dto.JdyPurchaseDto;
 import com.jindan.jdy.common.dto.JdyUserDto;
 import com.jindan.jdy.common.enumerate.Status;
-import com.jindan.jdy.common.pojo.*;
+import com.jindan.jdy.common.pojo.DepartmentFacility;
+import com.jindan.jdy.common.pojo.JdyFlow;
+import com.jindan.jdy.common.pojo.JdyPurchase;
 import com.jindan.jdy.common.shiro.TokenUtil;
+import com.jindan.jdy.common.utils.api.ResultVo;
 import com.jindan.jdy.controller.utils.QRCodeUtil;
 import com.jindan.jdy.controller.utils.RedisUtil;
 import com.jindan.jdy.controller.utils.WorkbookUtils;
 import com.jindan.jdy.enumerate.RankUtils;
 import com.jindan.jdy.service.department.DepartmentFacilityService;
-import com.jindan.jdy.common.utils.api.ResultVo;
-import com.jindan.jdy.service.department.DepartmentSuggestService;
 import com.jindan.jdy.service.flow.JdyFlowService;
 import com.jindan.jdy.service.purchase.JdyPurchaseService;
 import com.jindan.jdy.service.user.JdyUserService;
-import io.swagger.annotations.*;
-import org.apache.dubbo.config.annotation.Reference;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.apache.poi.hssf.usermodel.*;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -39,7 +36,6 @@ import java.io.IOException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 /**
 *

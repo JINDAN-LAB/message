@@ -1,20 +1,16 @@
 package com.jindan.jdy.controller.assay;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.jindan.jdy.common.dto.AssayFacilityRecordDto;
 import com.jindan.jdy.common.dto.AssayIngredientsTypesDto;
-import com.jindan.jdy.common.pojo.AssayFacilityRecord;
 import com.jindan.jdy.common.pojo.AssayIngredientsTypes;
-import com.jindan.jdy.controller.utils.RedisUtil;
-import com.jindan.jdy.service.assay.AssayFacilityRecordService;
-import com.jindan.jdy.service.assay.AssayIngredientsTypesService;
 import com.jindan.jdy.common.utils.api.ResultVo;
+import com.jindan.jdy.controller.utils.RedisUtil;
+import com.jindan.jdy.service.assay.AssayIngredientsTypesService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
-import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import io.swagger.annotations.Api;
 /**
 *
 * <p>说明： 检测-分类表API接口层</P>

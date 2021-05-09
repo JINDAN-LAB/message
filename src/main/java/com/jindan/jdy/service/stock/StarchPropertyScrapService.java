@@ -1,10 +1,10 @@
 package com.jindan.jdy.service.stock;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.github.pagehelper.PageInfo;
 import com.jindan.jdy.common.dto.StarchPropertyScrapDto;
 import com.jindan.jdy.common.pojo.StarchPropertyScrap;
-import com.baomidou.mybatisplus.extension.service.IService;
 /**   
  * @Description:TODO(清理报废服务层)
  * @version: V1.0

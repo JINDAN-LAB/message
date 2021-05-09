@@ -9,6 +9,15 @@ spring:
       max-pool-size: 20
       connection-test-query: SELECT 1
       validation-timeout: 250
+  redis:
+      host: 60.205.218.186
+      port: 6379
+      timeout: 5000ms
+      lettuce:
+        pool:
+          max-active: 100
+          max-wait: 15000ms
+          min-idle: 5
 
 server:
   port: 20201

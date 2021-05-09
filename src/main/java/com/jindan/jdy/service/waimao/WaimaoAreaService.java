@@ -1,8 +1,7 @@
 package com.jindan.jdy.service.waimao;
 
-import com.jindan.jdy.common.pojo.WaimaoArea;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.jindan.jdy.common.pojo.WaimaoFahuo;
+import com.jindan.jdy.common.pojo.WaimaoArea;
 
 import java.util.List;
 

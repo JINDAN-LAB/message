@@ -1,10 +1,9 @@
 package com.jindan.jdy.service.foodsafety;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.jindan.jdy.common.pojo.JdyAppletFootSafetyPerson;
-import com.jindan.jdy.common.mapper.JdyAppletFootSafetyPersonMapper;
-
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.jindan.jdy.common.mapper.JdyAppletFootSafetyPersonMapper;
+import com.jindan.jdy.common.pojo.JdyAppletFootSafetyPerson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

@@ -1,7 +1,7 @@
 package com.jindan.jdy.service.department;
 
-import com.jindan.jdy.common.pojo.JdyPacking;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.jindan.jdy.common.pojo.JdyPacking;
 
 import java.util.List;
 

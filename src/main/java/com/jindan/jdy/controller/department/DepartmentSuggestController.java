@@ -1,34 +1,20 @@
 package com.jindan.jdy.controller.department;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
-import com.jindan.jdy.common.dto.DepartmentFacilityDto;
 import com.jindan.jdy.common.dto.DepartmentSuggestDto;
-import com.jindan.jdy.common.pojo.DepartmentSubfacility;
 import com.jindan.jdy.common.pojo.DepartmentSuggest;
-import com.jindan.jdy.common.pojo.JdyUserFile;
-import com.jindan.jdy.common.pojo.UserPermission;
+import com.jindan.jdy.common.utils.api.ResultVo;
 import com.jindan.jdy.controller.utils.RedisUtil;
 import com.jindan.jdy.service.department.DepartmentSuggestService;
-import com.jindan.jdy.common.utils.api.ResultVo;
-import com.jindan.jdy.service.user.UserPermissionService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
-import org.apache.dubbo.config.annotation.Reference;
 import org.apache.poi.hssf.usermodel.*;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.xssf.streaming.SXSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import io.swagger.annotations.Api;
 
-import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
-import java.io.*;
+import java.io.IOException;
 import java.net.URLEncoder;
 import java.util.List;
 

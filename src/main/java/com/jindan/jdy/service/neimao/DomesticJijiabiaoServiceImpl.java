@@ -1,11 +1,9 @@
 package com.jindan.jdy.service.neimao;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.jindan.jdy.common.pojo.DomesticJijiabiao;
-import com.jindan.jdy.common.mapper.DomesticJijiabiaoDao;
-import com.jindan.jdy.service.neimao.DomesticJijiabiaoService;
-
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.jindan.jdy.common.mapper.DomesticJijiabiaoDao;
+import com.jindan.jdy.common.pojo.DomesticJijiabiao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

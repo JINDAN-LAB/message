@@ -1,17 +1,14 @@
 package com.jindan.jdy.controller.foodsafety;
 
 import com.jindan.jdy.common.pojo.JdyAppletFoodClassify;
-import com.jindan.jdy.common.pojo.JdyAppletFoodSafetyProblemsReult;
+import com.jindan.jdy.common.utils.api.ResultVo;
 import com.jindan.jdy.controller.utils.RedisUtil;
 import com.jindan.jdy.service.foodsafety.JdyAppletFoodClassifyService;
-import com.jindan.jdy.common.utils.api.ResultVo;
-import com.jindan.jdy.service.foodsafety.JdyAppletFoodSafetyProblemsReultService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
-import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import io.swagger.annotations.Api;
 
 import java.util.List;
 

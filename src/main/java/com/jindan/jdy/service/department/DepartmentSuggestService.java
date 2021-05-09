@@ -1,9 +1,10 @@
 package com.jindan.jdy.service.department;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.jindan.jdy.common.dto.DepartmentSuggestDto;
 import com.jindan.jdy.common.pojo.DepartmentSuggest;
-import com.baomidou.mybatisplus.extension.service.IService;
+
 import java.util.List;
 
 /**

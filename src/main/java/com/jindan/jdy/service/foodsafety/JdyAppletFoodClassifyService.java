@@ -1,7 +1,7 @@
 package com.jindan.jdy.service.foodsafety;
 
-import com.jindan.jdy.common.pojo.JdyAppletFoodClassify;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.jindan.jdy.common.pojo.JdyAppletFoodClassify;
 
 import java.util.List;
 

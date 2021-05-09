@@ -1,13 +1,9 @@
 package com.jindan.jdy.service.sys;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.jindan.jdy.common.mapper.JdySupplierMapper;
-import com.jindan.jdy.common.pojo.JdySupplier;
-import com.jindan.jdy.common.pojo.StarchSystemSet;
-import com.jindan.jdy.common.mapper.StarchSystemSetDao;
-import com.jindan.jdy.service.sys.StarchSystemSetService;
-
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.jindan.jdy.common.mapper.StarchSystemSetDao;
+import com.jindan.jdy.common.pojo.StarchSystemSet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

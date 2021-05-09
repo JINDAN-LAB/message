@@ -1,10 +1,10 @@
 package com.jindan.jdy.service.risk;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.jindan.jdy.common.dto.RiskPointContentResultDto;
 import com.jindan.jdy.common.dto.RiskPointDetails;
 import com.jindan.jdy.common.pojo.RiskPointContentResult;
-import com.baomidou.mybatisplus.extension.service.IService;
 
 import java.util.List;
 

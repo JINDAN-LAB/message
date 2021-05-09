@@ -1,8 +1,8 @@
 package com.jindan.jdy.service.risk;
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.jindan.jdy.common.dto.RiskPointContentDto;
 import com.jindan.jdy.common.pojo.RiskPointContent;
-import com.baomidou.mybatisplus.extension.service.IService;
 import com.jindan.jdy.common.pojo.RiskPointPersons;
 
 import java.util.List;

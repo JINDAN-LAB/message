@@ -1,7 +1,7 @@
 package com.jindan.jdy.service.stock;
 
-import com.jindan.jdy.common.pojo.WarehouseGoods;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.jindan.jdy.common.pojo.WarehouseGoods;
 
 import java.util.List;
 

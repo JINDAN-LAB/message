@@ -1,12 +1,9 @@
 package com.jindan.jdy.service.sys;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.jindan.jdy.common.pojo.JdyClassroom;
-import com.jindan.jdy.common.pojo.JdyCommodityApplet;
-import com.jindan.jdy.common.mapper.JdyCommodityAppletDao;
-import com.jindan.jdy.service.sys.JdyCommodityAppletService;
-
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.jindan.jdy.common.mapper.JdyCommodityAppletDao;
+import com.jindan.jdy.common.pojo.JdyCommodityApplet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

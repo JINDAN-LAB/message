@@ -2,13 +2,10 @@ package com.jindan.jdy.service.department;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.jindan.jdy.common.dto.JdySspDto;
-import com.jindan.jdy.common.pojo.DepartmentSuggest;
-import com.jindan.jdy.common.pojo.JdySsp;
-import com.jindan.jdy.common.mapper.JdySspMapper;
-import com.jindan.jdy.common.pojo.MaintainFacility;
-
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.jindan.jdy.common.dto.JdySspDto;
+import com.jindan.jdy.common.mapper.JdySspMapper;
+import com.jindan.jdy.common.pojo.JdySsp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

@@ -1,10 +1,9 @@
 package com.jindan.jdy.service.stock;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.jindan.jdy.common.pojo.WarehouseGoods;
-import com.jindan.jdy.common.mapper.WarehouseGoodsDao;
-
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.jindan.jdy.common.mapper.WarehouseGoodsDao;
+import com.jindan.jdy.common.pojo.WarehouseGoods;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

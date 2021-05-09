@@ -1,10 +1,9 @@
 package com.jindan.jdy.service.sys;
 
-import com.jindan.jdy.common.dto.JdyFlowCatalogDto;
-import com.jindan.jdy.common.pojo.JdyFlowCatalog;
-import com.jindan.jdy.common.mapper.JdyFlowCatalogMapper;
-
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.jindan.jdy.common.dto.JdyFlowCatalogDto;
+import com.jindan.jdy.common.mapper.JdyFlowCatalogMapper;
+import com.jindan.jdy.common.pojo.JdyFlowCatalog;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

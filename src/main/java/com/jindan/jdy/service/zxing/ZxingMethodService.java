@@ -1,7 +1,7 @@
 package com.jindan.jdy.service.zxing;
 
-import com.jindan.jdy.common.pojo.ZxingMethod;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.jindan.jdy.common.pojo.ZxingMethod;
 
 import java.util.List;
 

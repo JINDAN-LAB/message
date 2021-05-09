@@ -2,14 +2,11 @@ package com.jindan.jdy.service.risk;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.jindan.jdy.common.dto.RiskPointContentResultDto;
 import com.jindan.jdy.common.dto.RiskPointDetails;
-import com.jindan.jdy.common.pojo.JdySsp;
-import com.jindan.jdy.common.pojo.RiskPointContentResult;
 import com.jindan.jdy.common.mapper.RiskPointContentResultMapper;
-import com.jindan.jdy.service.config.CommonUtils;
-
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.jindan.jdy.common.pojo.RiskPointContentResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

@@ -1,15 +1,10 @@
 package com.jindan.jdy.service.user;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.jindan.jdy.common.dto.JdyUserLeaveDto;
-import com.jindan.jdy.common.mapper.JdyUserMapper;
-import com.jindan.jdy.common.pojo.JdyUser;
-import com.jindan.jdy.common.pojo.JdyUserFile;
-import com.jindan.jdy.common.pojo.JdyUserLeave;
-import com.jindan.jdy.common.mapper.JdyUserLeaveDao;
-import com.jindan.jdy.service.user.JdyUserLeaveService;
-
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.jindan.jdy.common.dto.JdyUserLeaveDto;
+import com.jindan.jdy.common.mapper.JdyUserLeaveDao;
+import com.jindan.jdy.common.pojo.JdyUserLeave;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
