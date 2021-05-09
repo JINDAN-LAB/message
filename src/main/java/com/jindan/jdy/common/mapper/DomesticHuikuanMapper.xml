@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.common.mapper.DomesticHuikuanMapper">
+
+	<resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.DomesticHuikuan">
+		<id column="id" property="id" />
+		<id column="huikuanriqi" property="huikuanriqi" />
+		<id column="xingming" property="xingming" />
+		<id column="kehumingcheng" property="kehumingcheng" />
+		<id column="jine" property="jine" />
+		<id column="jine2" property="jine2" />
+		<id column="shijishiyongjine" property="shijishiyongjine" />
+		<id column="chengduiriqi" property="chengduiriqi" />
+		<id column="xiankuanjiang" property="xiankuanjiang" />
+		<id column="lixijiang" property="lixijiang" />
+		<id column="xiankuanjiangbili" property="xiankuanjiangbili" />
+		<id column="lixijiangbili" property="lixijiangbili" />
+		<id column="biaoshi" property="biaoshi" />
+		<id column="yufutianshu" property="yufutianshu" />
+		<id column="daorutime" property="daorutime" />
+		<id column="insert_time" property="insertTime" />
+		<id column="update_time" property="updateTime" />
+		<id column="delete_id" property="deleteId" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, huikuanriqi, xingming, kehumingcheng, jine, jine2, shijishiyongjine, chengduiriqi, xiankuanjiang, lixijiang, xiankuanjiangbili, lixijiangbili, biaoshi, yufutianshu, daorutime, insert_time, update_time, delete_id
+	</sql>
+
+	<sql id="Base_Column_List1">
+		 huikuanriqi, xingming, kehumingcheng, chengduiriqi,jine, jine2,  daorutime, insert_time
+	</sql>
+
+<!--	seleteInHui-->
+	<select id="seleteInHui" resultMap="BaseResultMap" >
+		select
+		domestic_huikuan.id,
+		domestic_huikuan.huikuanriqi,
+		domestic_huikuan.xingming,
+		domestic_huikuan.kehumingcheng,
+		domestic_huikuan.chengduiriqi,
+		sum(jine) as jine,
+		domestic_huikuan.jine2
+		from domestic_huikuan
+		where kehumingcheng in
+		<foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+        and domestic_huikuan.jine > 0
+        and domestic_huikuan.delete_id="0"
+		group by kehumingcheng
+	</select>
+
+	<select id="seleteInBiaoshi" resultMap="BaseResultMap" >
+		select
+		 id, huikuanriqi, xingming, kehumingcheng, jine, jine2, shijishiyongjine, chengduiriqi, xiankuanjiang, lixijiang, xiankuanjiangbili, lixijiangbili, biaoshi, yufutianshu, daorutime, insert_time, update_time, delete_id
+		 from domestic_huikuan where id in
+		<foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+		and domestic_huikuan.delete_id = "0"
+	</select>
+
+	<select id="seleteYijisuanexcle" resultMap="BaseResultMap" >
+		select
+		id, huikuanriqi, xingming, kehumingcheng, jine, jine2, shijishiyongjine, chengduiriqi, xiankuanjiang, lixijiang, xiankuanjiangbili, lixijiangbili, biaoshi, yufutianshu, daorutime, insert_time, update_time, delete_id
+		from domestic_huikuan where jine != jine2 and biaoshi != "" and domestic_huikuan.delete_id = "0"
+	</select>
+
+<!--	seleteDetailsInHui-->
+	<select id="seleteDetailsInHui" resultMap="BaseResultMap">
+	   select
+		domestic_huikuan.id,
+		domestic_huikuan.huikuanriqi,
+		domestic_huikuan.xingming,
+		domestic_huikuan.kehumingcheng,
+		domestic_huikuan.jine,
+		domestic_huikuan.jine2,
+		domestic_huikuan.chengduiriqi
+		from domestic_huikuan
+		where kehumingcheng in
+		<foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+		and domestic_huikuan.jine != 0
+		and domestic_huikuan.delete_id = "0"
+		order by huikuanriqi
+	</select>
+
+<!--	saveAllHuiBatch-->
+	<insert id="saveAllHuiBatch" parameterType="java.util.List" >
+		insert into domestic_huikuan ( <include refid="Base_Column_List1" /> )
+		values
+		<foreach collection="list" item="item" index="index" separator=",">
+			(#{item.huikuanriqi},#{item.xingming},#{item.kehumingcheng}
+			,#{item.chengduiriqi},#{item.jine},#{item.jine2},#{item.daorutime},#{item.insertTime})
+		</foreach>
+	</insert>
+
+<!--	seleteYuebiaoHuikuan-->
+	<select id="seleteYuebiaoHuikuan" resultMap="BaseResultMap">
+		select SUM(jine2) as jine2,kehumingcheng from domestic_huikuan
+		where delete_id = "0"
+		GROUP BY kehumingcheng
+	</select>
+
+</mapper>

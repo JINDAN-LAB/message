@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.common.mapper.StarchOrganizationProvokeMapper">
+
+	<resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.StarchOrganizationProvoke">
+		<id column="tid" property="tid" />
+		<id column="status" property="status" />
+		<id column="allot_number" property="allotNumber" />
+		<id column="allot_time" property="allotTime" />
+		<id column="allot_manager" property="allotManager" />
+		<id column="allot_company" property="allotCompany" />
+		<id column="fold_date" property="foldDate" />
+		<id column="fold_managers" property="foldManagers" />
+		<id column="fold_company" property="foldCompany" />
+		<id column="fold_explain" property="foldExplain" />
+		<id column="fold_property_id" property="foldPropertyId" />
+		<id column="insert_time" property="insertTime" />
+		<id column="update_time" property="updateTime" />
+		<id column="delete_id" property="deleteId" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		tid, status, allot_number, allot_time, allot_manager, allot_company, fold_date, fold_managers, fold_company, fold_explain, fold_property_id, insert_time, update_time, delete_id
+	</sql>
+
+
+	<resultMap id="BaseResultMapDto" type="com.jindan.jdy.common.dto.StarchOrganizationBorrowReturnDto">
+		<id column="brid" property="brid" />
+		<id column="status" property="status" />
+		<id column="borrow_number" property="borrowNumber" />
+		<id column="borrow_time" property="borrowTime" />
+		<id column="borrow_person" property="borrowPerson" />
+		<id column="predict_return_time" property="predictReturnTime" />
+		<id column="return_time" property="returnTime" />
+		<id column="property_parent_id" property="propertyParentId" />
+		<id column="delete_id" property="deleteId" />
+		<id column="parent_id" property="parentId" />
+		<collection property="putList" column="oid" ofType="com.jindan.jdy.common.pojo.StarchOrganizationPut">
+			<id column="oid" property="oid" />
+			<id column="status" property="status" />
+			<id column="imgurl" property="imgurl" />
+			<id column="erweima" property="erweima" />
+			<id column="property_name" property="propertyName" />
+			<id column="property_type" property="propertyType" />
+			<id column="property_guige" property="propertyGuige" />
+			<id column="property_sn" property="propertySn" />
+			<id column="property_nums" property="propertyNums" />
+			<id column="property_jine" property="propertyJine" />
+			<id column="companys" property="companys" />
+			<id column="departments" property="departments" />
+			<id column="use_person" property="usePerson" />
+			<id column="areas" property="areas" />
+			<id column="store_areas" property="storeAreas" />
+			<id column="manager_person" property="managerPerson" />
+			<id column="belong_company" property="belongCompany" />
+			<id column="purchase_time" property="purchaseTime" />
+			<id column="suppliers" property="suppliers" />
+			<id column="service_life" property="serviceLife" />
+			<id column="creator_person" property="creatorPerson" />
+			<id column="source_of" property="sourceOf" />
+			<id column="insert_time" property="insertTime" />
+			<id column="update_time" property="updateTime" />
+			<id column="delete_id" property="deleteId" />
+			<id column="maintain_cycle" property="maintainCycle" />
+			<id column="spare_is" property="spareIs" />
+			<id column="parent_id" property="parentId" />
+		</collection>
+
+	</resultMap>
+
+
+
+	<resultMap id="BaseResultMapDtoDetails" type="com.jindan.jdy.common.dto.StarchOrganizationProvokeDto">
+		<id column="tid" property="tid" />
+		<id column="status" property="status" />
+		<id column="allot_number" property="allotNumber" />
+		<id column="allot_time" property="allotTime" />
+		<id column="allot_manager" property="allotManager" />
+		<id column="allot_company" property="allotCompany" />
+		<id column="fold_date" property="foldDate" />
+		<id column="fold_managers" property="foldManagers" />
+		<id column="fold_company" property="foldCompany" />
+		<id column="fold_explain" property="foldExplain" />
+		<id column="fold_property_id" property="foldPropertyId" />
+		<id column="delete_id" property="deleteId" />
+		<collection property="putList" column="oid" ofType="com.jindan.jdy.common.pojo.StarchOrganizationPut">
+			<id column="oid" property="oid" />
+			<id column="status" property="status" />
+			<id column="imgurl" property="imgurl" />
+			<id column="erweima" property="erweima" />
+			<id column="property_name" property="propertyName" />
+			<id column="property_type" property="propertyType" />
+			<id column="property_guige" property="propertyGuige" />
+			<id column="property_sn" property="propertySn" />
+			<id column="property_nums" property="propertyNums" />
+			<id column="property_jine" property="propertyJine" />
+			<id column="companys" property="companys" />
+			<id column="departments" property="departments" />
+			<id column="use_person" property="usePerson" />
+			<id column="areas" property="areas" />
+			<id column="store_areas" property="storeAreas" />
+			<id column="manager_person" property="managerPerson" />
+			<id column="belong_company" property="belongCompany" />
+			<id column="purchase_time" property="purchaseTime" />
+			<id column="suppliers" property="suppliers" />
+			<id column="service_life" property="serviceLife" />
+			<id column="creator_person" property="creatorPerson" />
+			<id column="source_of" property="sourceOf" />
+			<id column="delete_id" property="deleteId" />
+			<id column="maintain_cycle" property="maintainCycle" />
+			<id column="spare_is" property="spareIs" />
+			<id column="parent_id" property="parentId" />
+			<id column="jianxiuren" property="jianxiuren" />
+			<id column="weixiuren" property="weixiuren" />
+			<id column="remarks" property="remarks" />
+			<id column="baoyang" property="baoyang" />
+			<id column="runhua" property="runhua" />
+			<id column="canshu" property="canshu" />
+			<id column="bianma" property="bianma" />
+			<id column="xuhao" property="xuhao" />
+			<id column="weihao" property="weihao" />
+			<id column="jixiugong" property="jixiugong" />
+		</collection>
+
+	</resultMap>
+
+	<sql id="selectexpend">
+		<where>
+			<if test="tid != null and tid !='' ">
+				and starch_organization_provoke.tid = #{tid}
+			</if>
+			<if test="status != null and status !='' ">
+				and starch_organization_provoke.status = #{status}
+			</if>
+			<if test="allotNumber != null and allotNumber !='' ">
+				and starch_organization_provoke.allot_number = #{allotNumber}
+			</if>
+			<if test="allotTime != null and allotTime !='' ">
+				and starch_organization_provoke.allot_time = #{allotTime}
+			</if>
+			<if test="allotManager != null and allotManager !='' ">
+				and starch_organization_provoke.allot_manager = #{allotManager}
+			</if>
+			<if test="allotCompany != null and allotCompany !='' ">
+				and starch_organization_provoke.allot_company = #{allotCompany}
+			</if>
+			<if test="foldDate != null and foldDate !='' ">
+				and starch_organization_provoke.fold_date = #{foldDate}
+			</if>
+			<if test="foldManagers != null and foldManagers !='' ">
+				and starch_organization_provoke.fold_managers = #{foldManagers}
+			</if>
+
+			<if test="allotCompany != null and allotCompany !='' ">
+				and starch_organization_provoke.allot_company = #{allotCompany}
+			</if>
+			<if test="foldExplain != null and foldExplain !='' ">
+				and starch_organization_provoke.fold_explain = #{foldExplain}
+			</if>
+			<if test="foldPropertyId != null and foldPropertyId !='' ">
+				and starch_organization_provoke.fold_property_id = #{foldPropertyId}
+			</if>
+			<if test="parentId != null and parentId !='' ">
+				and starch_organization_provoke.parent_id = #{parentId}
+			</if>
+			and starch_organization_provoke.delete_id = 0
+		</where>
+	</sql>
+
+
+	<!--	queryRelevanceCatList-->
+	<select id="queryRelevanceCatList"  parameterType="com.jindan.jdy.common.dto.StarchOrganizationAccessDto" resultMap="BaseResultMapDtoDetails">
+		SELECT
+		warehouse_depository.name as property_type,starch_organization_provoke.*,starch_organization_put.*
+		FROM  starch_organization_provoke
+		left JOIN starch_provoke_put ON starch_provoke_put.provoke_id = starch_organization_provoke.tid and starch_provoke_put.delete_id = 0
+		left JOIN starch_organization_put ON starch_provoke_put.put_id = starch_organization_put.oid and starch_organization_put.delete_id = 0
+		left JOIN warehouse_depository ON warehouse_depository.id = starch_organization_put.property_type and warehouse_depository.delete_id = 0
+		<include refid="selectexpend"></include>
+	</select>
+
+
+</mapper>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.common.mapper.JdySupplierMapper">
+
+	<resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.JdySupplier">
+		<id column="supplier_id" property="supplierId" />
+		<id column="supplier_name" property="supplierName" />
+		<id column="supplier_location" property="supplierLocation" />
+		<id column="supplier_person" property="supplierPerson" />
+		<id column="supplier_number" property="supplierNumber" />
+		<id column="insert_time" property="insertTime" />
+		<id column="update_time" property="updateTime" />
+		<id column="delete_id" property="deleteId" />
+		<id column="status" property="status" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		supplier_id, supplier_name, supplier_location, supplier_person, supplier_number, insert_time, update_time, delete_id, status
+	</sql>
+	
+</mapper>

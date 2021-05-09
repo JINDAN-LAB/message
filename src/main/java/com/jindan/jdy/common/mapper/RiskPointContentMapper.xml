@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.common.mapper.RiskPointContentMapper">
+
+	<resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.RiskPointContent">
+		<id column="risk_ids" property="riskIds" />
+		<id column="risk_contents" property="riskContents" />
+		<id column="accidet_cause" property="accidetCause" />
+		<id column="may_accidet" property="mayAccidet" />
+		<id column="meet_measure" property="meetMeasure" />
+		<id column="influence_sphere" property="influenceSphere" />
+		<id column="latent_result" property="latentResult" />
+		<id column="pazhao" property="pazhao" />
+		<id column="shuju" property="shuju" />
+		<id column="parent_id" property="parentId" />
+		<id column="insert_time" property="insertTime" />
+		<id column="update_time" property="updateTime" />
+		<id column="delete_id" property="deleteId" />
+		<id column="jibie" property="jibie" />
+		<id column="weixian_jibie" property="weixianJibie" />
+		<id column="rcstatus" property="rcstatus" />
+		<id column="shebei_id" property="shebeiId" />
+	</resultMap>
+
+
+	<sql id="Base_Column_List">
+		risk_ids, risk_contents, accidet_cause, may_accidet, meet_measure, influence_sphere, latent_result, pazhao, shuju, parent_id, insert_time, update_time, delete_id, jibie, weixian_jibie, rcstatus, shebei_id
+	</sql>
+
+
+<!--	selectBaohan-->
+	<resultMap id="selectesult" type="com.jindan.jdy.common.dto.RiskPointContentDto">
+		<id column="risk_ids" property="riskIds" />
+		<id column="risk_contents" property="riskContents" />
+		<id column="accidet_cause" property="accidetCause" />
+		<id column="may_accidet" property="mayAccidet" />
+		<id column="meet_measure" property="meetMeasure" />
+		<id column="influence_sphere" property="influenceSphere" />
+		<id column="latent_result" property="latentResult" />
+		<id column="pazhao" property="pazhao" />
+		<id column="shuju" property="shuju" />
+		<id column="parent_id" property="parentId" />
+		<id column="insert_time" property="insertTime" />
+		<id column="update_time" property="updateTime" />
+		<id column="delete_id" property="deleteId" />
+		<id column="jibie" property="jibie" />
+		<id column="weixian_jibie" property="weixianJibie" />
+		<id column="rcstatus" property="rcstatus" />
+		<id column="shebei_id" property="shebeiId" />
+		<id column="shebei_name" property="shebeiName" />
+		<collection property="resultList" column="resultList" ofType="com.jindan.jdy.common.pojo.RiskPointContentResult">
+			<id column="ris_pcr" property="risPcr" />
+			<id column="patrol_result" property="patrolResult" />
+			<id column="rparent_id" property="parentId" />
+			<id column="files1" property="files1" />
+			<id column="files2" property="files2" />
+			<id column="files3" property="files3" />
+			<id column="patrol_result_details" property="patrolResultDetails" />
+			<id column="patrol_result_jibie" property="patrolResultJibie" />
+			<id column="hidden_heading" property="hiddenHeading" />
+			<id column="hidden_subclass" property="hiddenSubclass" />
+			<id column="abarbeitung_deadline" property="abarbeitungDeadline" />
+			<id column="abarbeitung_person" property="abarbeitungPerson" />
+			<id column="duplicate_person" property="duplicatePerson" />
+			<id column="people_name" property="peopleName" />
+			<id column="rinsert_time" property="insertTime" />
+			<id column="rupdate_time" property="updateTime" />
+			<id column="rdelete_id" property="deleteId" />
+			<id column="rstatus" property="status" />
+			<id column="hidden_location" property="hiddenLocation" />
+			<id column="hidden_jibie" property="hiddenJibie" />
+			<id column="zhuanrang_time" property="zhuanrangTime" />
+			<id column="rshebei" property="rshebei" />
+		</collection>
+	</resultMap>
+
+	<resultMap id="selectesultSaoma" type="com.jindan.jdy.common.dto.RiskPointContentDto">
+		<id column="risk_ids" property="riskIds" />
+		<id column="risk_contents" property="riskContents" />
+		<id column="accidet_cause" property="accidetCause" />
+		<id column="may_accidet" property="mayAccidet" />
+		<id column="meet_measure" property="meetMeasure" />
+		<id column="influence_sphere" property="influenceSphere" />
+		<id column="latent_result" property="latentResult" />
+		<id column="pazhao" property="pazhao" />
+		<id column="shuju" property="shuju" />
+		<id column="parent_id" property="parentId" />
+		<id column="insert_time" property="insertTime" />
+		<id column="update_time" property="updateTime" />
+		<id column="delete_id" property="deleteId" />
+		<id column="jibie" property="jibie" />
+		<id column="weixian_jibie" property="weixianJibie" />
+		<id column="rcstatus" property="rcstatus" />
+		<id column="shebei_id" property="shebeiId" />
+		<id column="shebei_name" property="shebeiName" />
+		<collection property="resultList" column="resultList" ofType="com.jindan.jdy.common.pojo.RiskPointContentResult">
+			<id column="ris_pcr" property="risPcr" />
+			<id column="patrol_result" property="patrolResult" />
+			<id column="rparent_id" property="parentId" />
+			<id column="files1" property="files1" />
+			<id column="files2" property="files2" />
+			<id column="files3" property="files3" />
+			<id column="patrol_result_details" property="patrolResultDetails" />
+			<id column="patrol_result_jibie" property="patrolResultJibie" />
+			<id column="hidden_heading" property="hiddenHeading" />
+			<id column="hidden_subclass" property="hiddenSubclass" />
+			<id column="abarbeitung_deadline" property="abarbeitungDeadline" />
+			<id column="abarbeitung_person" property="abarbeitungPerson" />
+			<id column="duplicate_person" property="duplicatePerson" />
+			<id column="people_name" property="peopleName" />
+			<id column="rinsert_time" property="insertTime" />
+			<id column="rupdate_time" property="updateTime" />
+			<id column="rdelete_id" property="deleteId" />
+			<id column="rstatus" property="status" />
+			<id column="hidden_location" property="hiddenLocation" />
+			<id column="hidden_jibie" property="hiddenJibie" />
+			<id column="zhuanrang_time" property="zhuanrangTime" />
+			<id column="rshebei" property="rshebei" />
+		</collection>
+		<collection property="riskPointPersons" column="resultList" ofType="com.jindan.jdy.common.pojo.RiskPointPersons">
+			<id column="ris_id" property="risId" />
+			<id column="risk_task_type" property="riskTaskType" />
+			<id column="parent_id" property="parentId" />
+			<id column="task_person" property="taskPerson" />
+			<id column="control_rank" property="controlRank" />
+			<id column="frequency" property="frequency" />
+			<id column="last_times" property="lastTimes" />
+		</collection>
+	</resultMap>
+
+
+<!--	seleListJieGuoWapper-->
+	<select id="seleListJieGuoWapper"  resultMap="selectesult">
+		SELECT
+		 risk_point_content.*,
+         risk_point_content_result.insert_time as  rinsert_time,
+		 risk_point_content_result.parent_id as  rparent_id,
+		 risk_point_content_result.delete_id as  rdelete_id,
+		 risk_point_content_result.*
+		FROM
+		  risk_point_content
+		left  join risk_point_content_result  on risk_point_content.risk_ids = risk_point_content_result.parent_id and risk_point_content_result.delete_id  = 0
+		<include refid="selectBaohan"></include>
+	</select>
+
+
+	<sql id="selectBaohan">
+		<where>
+			<if test="riskIds != null and riskIds !='' ">
+				and risk_point_content.risk_ids = #{riskIds}
+			</if>
+			<if test="riskContents != null and riskContents !='' ">
+				and risk_point_content.risk_contents = #{riskContents}
+			</if>
+			<if test="accidetCause != null and accidetCause !='' ">
+				and risk_point_content.accidet_cause = #{accidetCause}
+			</if>
+			<if test="mayAccidet != null and mayAccidet !='' ">
+				and risk_point_content.may_accidet = #{mayAccidet}
+			</if>
+			<if test="meetMeasure != null and meetMeasure !='' ">
+				and risk_point_content.meet_measure = #{meetMeasure}
+			</if>
+			<if test="influenceSphere != null and influenceSphere !='' ">
+				and risk_point_content.influence_sphere = #{influenceSphere}
+			</if>
+			<if test="latentResult != null and latentResult !='' ">
+				and risk_point_content.latent_result = #{latentResult}
+			</if>
+			<if test="pazhao != null and pazhao !='' ">
+				and risk_point_content.pazhao = #{pazhao}
+			</if>
+			<if test="shuju != null and shuju !='' ">
+				and risk_point_content.shuju = #{shuju}
+			</if>
+			<if test="parentId != null and parentId !='' ">
+				and risk_point_content.parent_id = #{parentId}
+			</if>
+			<if test="jibie != null and jibie !='' ">
+				and risk_point_content.jibie = #{jibie}
+			</if>
+			<if test="weixianJibie != null and weixianJibie !='' ">
+				and risk_point_content.weixian_jibie = #{weixianJibie}
+			</if>
+			<if test="rcstatus != null and rcstatus !='' ">
+				and risk_point_content.rcstatus = #{rcstatus}
+			</if>
+			<if test="shebeiId != null and shebeiId !='' ">
+				and risk_point_content.shebei_id = #{shebeiId}
+			</if>
+			<if test="shebeiName != null and shebeiName !='' ">
+				and risk_point_content.shebei_name = #{shebeiName}
+			</if>
+			and risk_point_content.delete_id=0
+		</where>
+	</sql>
+
+
+
+	<sql id="selectBaohanSaoma">
+		<where>
+			<if test="rpcont.riskIds != null and rpcont.rpcontriskIds !='' ">
+				and risk_point_content.risk_ids = #{rpcont.riskIds}
+			</if>
+			<if test="rpcont.riskContents != null and rpcont.riskContents !='' ">
+				and risk_point_content.risk_contents = #{rpcont.riskContents}
+			</if>
+			<if test="rpcont.accidetCause != null and rpcont.accidetCause !='' ">
+				and risk_point_content.accidet_cause = #{rpcont.accidetCause}
+			</if>
+			<if test="rpcont.mayAccidet != null and rpcont.mayAccidet !='' ">
+				and risk_point_content.may_accidet = #{rpcont.mayAccidet}
+			</if>
+			<if test="rpcont.meetMeasure != null and rpcont.meetMeasure !='' ">
+				and risk_point_content.meet_measure = #{rpcont.meetMeasure}
+			</if>
+			<if test="rpcont.influenceSphere != null and rpcont.influenceSphere !='' ">
+				and risk_point_content.influence_sphere = #{rpcont.influenceSphere}
+			</if>
+			<if test="rpcont.latentResult != null and rpcont.latentResult !='' ">
+				and risk_point_content.latent_result = #{rpcont.latentResult}
+			</if>
+			<if test="rpcont.pazhao != null and rpcont.pazhao !='' ">
+				and risk_point_content.pazhao = #{rpcont.pazhao}
+			</if>
+			<if test="rpcont.shuju != null and rpcont.shuju !='' ">
+				and risk_point_content.shuju = #{rpcont.shuju}
+			</if>
+			<if test="rpcont.parentId != null and rpcont.parentId !='' ">
+				and risk_point_content.parent_id = #{rpcont.parentId}
+			</if>
+			<if test="rpcont.jibie != null and rpcont.jibie !='' ">
+				and risk_point_content.jibie = #{rpcont.jibie}
+			</if>
+			<if test="rpcont.weixianJibie != null and rpcont.weixianJibie !='' ">
+				and risk_point_content.weixian_jibie = #{rpcont.weixianJibie}
+			</if>
+			<if test="rpcont.rcstatus != null and rpcont.rcstatus !='' ">
+				and risk_point_content.rcstatus = #{rpcont.rcstatus}
+			</if>
+			<if test="rpcont.shebeiId != null and rpcont.shebeiId !='' ">
+				and risk_point_content.shebei_id = #{rpcont.shebeiId}
+			</if>
+			<if test="rpcont.shebeiName != null and rpcont.shebeiName !='' ">
+				and risk_point_content.shebei_name = #{rpcont.shebeiName}
+			</if>
+			and risk_point_content.delete_id=0
+		</where>
+	</sql>
+
+<!--	seleteSaoMaBaohan-->
+	<select id="seleteSaoMaBaohan"  resultMap="selectesultSaoma">
+	   SELECT
+		risk_point_content.*,
+		risk_point_content_result.insert_time as  rinsert_time,
+		risk_point_content_result.parent_id as  rparent_id,
+		risk_point_content_result.delete_id as  rdelete_id,
+		risk_point_content_result.*,risk_point_persons.*
+		FROM
+		risk_point_content
+		left  join risk_point_content_result  on risk_point_content.risk_ids = risk_point_content_result.parent_id and risk_point_content_result.delete_id  = 0
+		left  join risk_point  on risk_point.rid = risk_point_content.parent_id and risk_point.delete_id  = 0
+		right  join risk_point_persons  on  risk_point_persons.task_person = #{uname} and risk_point_persons.control_rank = risk_point_content.jibie
+		and risk_point_content.shebei_id = #{shebeiID} and  risk_point_persons.delete_id  = 0
+        where    risk_point_content.delete_id=0
+        order by risk_point_content_result.insert_time  desc
+	</select>
+
+<!--	risk_point_content.parent_id = risk_point_persons.parent_id and-->
+<!--	SELECT-->
+<!--	risk_point_content.*,-->
+<!--	risk_point_content_result.insert_time as  rinsert_time,-->
+<!--	risk_point_content_result.parent_id as  rparent_id,-->
+<!--	risk_point_content_result.delete_id as  rdelete_id,-->
+<!--	risk_point_content_result.*,risk_point_persons.*-->
+<!--	FROM-->
+<!--	risk_point_content-->
+<!--	left  join risk_point_content_result  on risk_point_content.risk_ids = risk_point_content_result.parent_id and risk_point_content_result.delete_id  = 0-->
+<!--	left  join risk_point  on risk_point.rid = risk_point_content.parent_id and risk_point.delete_id  = 0-->
+<!--	right  join risk_point_persons  on risk_point.rid = risk_point_persons.parent_id and risk_point_persons.task_person = #{uname} and  risk_point_persons.delete_id  = 0-->
+<!--	where  risk_point_content.shebei_id  = #{shebeiID} and risk_point_content.delete_id=0-->
+<!--	order by risk_point_content_result.insert_time  desc-->
+
+</mapper>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.common.mapper.JdyFlowCatalogMapper">
+
+	<resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.JdyFlowCatalog">
+		<id column="id" property="id" />
+		<id column="name" property="name" />
+		<id column="parent_id" property="parentId" />
+		<id column="file_url" property="fileUrl" />
+		<id column="persons" property="persons" />
+		<id column="insert_time" property="insertTime" />
+		<id column="update_time" property="updateTime" />
+		<id column="delete_id" property="deleteId" />
+	</resultMap>
+
+	<resultMap id="BaseResult" type="com.jindan.jdy.common.dto.JdyFlowCatalogDto">
+		<id column="id" property="id" />
+		<id column="name" property="name" />
+		<id column="parent_id" property="parentId" />
+		<id column="file_url" property="fileUrl" />
+		<id column="persons" property="persons" />
+		<id column="insert_time" property="insertTime" />
+		<id column="update_time" property="updateTime" />
+		<id column="delete_id" property="deleteId" />
+		<id column="file_contents" property="fileContents" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, name, parent_id, file_url, persons, insert_time, update_time, delete_id
+	</sql>
+
+	<sql id="selectexpend">
+		<where>
+			<if test="id != null and id !='' ">
+				and id = #{id}
+			</if>
+			<if test="name != null and name !='' ">
+				and name = #{name}
+			</if>
+			<if test="fileUrl != null and fileUrl !='' ">
+				and file_url = #{fileUrl}
+			</if>
+			<if test="persons != null and persons !='' ">
+				and  persons = #{persons}
+			</if>
+			<if test="insertTime != null and insertTime !='' ">
+				and insert_time = #{insertTime}
+			</if>
+			<if test="updateTime != null and updateTime !='' ">
+				and update_time = #{updateTime}
+			</if>
+			<if test="departments != null and departments !='' ">
+				and departments = #{departments}
+			</if>
+			 and  delete_id='0'
+		</where>
+	</sql>
+
+	<!--	selectAll-->
+	<select id="selectAll"  parameterType="com.jindan.jdy.common.pojo.JdyFlowCatalog" resultMap="BaseResult">
+		SELECT  file_contents,id,name,parent_id,file_url,persons,insert_time,update_time,delete_id,departments
+		FROM jdy_flow_catalog
+		<include refid="selectexpend"></include>
+	</select>
+	
+
+</mapper>

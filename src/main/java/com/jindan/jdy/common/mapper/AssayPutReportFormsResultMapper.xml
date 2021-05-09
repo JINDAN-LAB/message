@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.common.mapper.AssayPutReportFormsResultDao">
+
+	<resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.AssayPutReportFormsResult">
+		<id column="fhrid" property="fhrid" />
+		<id column="value1" property="value1" />
+		<id column="value2" property="value2" />
+		<id column="value3" property="value3" />
+		<id column="value4" property="value4" />
+		<id column="value5" property="value5" />
+		<id column="value6" property="value6" />
+		<id column="value7" property="value7" />
+		<id column="parent_id" property="parentId" />
+		<id column="remarks" property="remarks" />
+		<id column="insert_time" property="insertTime" />
+		<id column="update_time" property="updateTime" />
+		<id column="delete_id" property="deleteId" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		fhrid, value1, value2, value3, value4, value5, value6, value7, parent_id, remarks, insert_time, update_time, delete_id
+	</sql>
+	
+</mapper>

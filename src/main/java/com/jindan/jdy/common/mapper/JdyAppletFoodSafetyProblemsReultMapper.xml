@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.common.mapper.JdyAppletFoodSafetyProblemsReultMapper">
+
+	<resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.JdyAppletFoodSafetyProblemsReult">
+		<id column="rid" property="rid" />
+		<id column="imgurls" property="imgurls" />
+		<id column="normal_time" property="normalTime" />
+		<id column="contents" property="contents" />
+		<id column="rpersons" property="rpersons" />
+		<id column="status" property="status" />
+		<id column="result_times" property="resultTimes" />
+		<id column="result_url" property="resultUrl" />
+		<id column="result_person" property="resultPerson" />
+		<id column="result_content" property="resultContent" />
+		<id column="insert_time" property="insertTime" />
+		<id column="update_time" property="updateTime" />
+		<id column="delete_id" property="deleteId" />
+		<id column="tijiao_mulv" property="tijiaoMulv" />
+		<id column="imgurl1" property="imgurl1" />
+		<id column="imgurl2" property="imgurl2" />
+		<id column="imgurl3" property="imgurl3" />
+		<id column="imgurl4" property="imgurl4" />
+		<id column="imgurlresult1" property="imgurlresult1" />
+		<id column="imgurlresult2" property="imgurlresult2" />
+		<id column="imgurlresult3" property="imgurlresult3" />
+		<id column="imgurlresult4" property="imgurlresult4" />
+	</resultMap>
+
+	<resultMap id="BaseReMap" type="com.jindan.jdy.common.dto.JdyAppletFoodSafetyProblemsReultDto">
+		<id column="rid" property="rid" />
+		<id column="imgurls" property="imgurls" />
+		<id column="normal_time" property="normalTime" />
+		<id column="contents" property="contents" />
+		<id column="rpersons" property="rpersons" />
+		<id column="status" property="status" />
+		<id column="result_times" property="resultTimes" />
+		<id column="result_url" property="resultUrl" />
+		<id column="result_person" property="resultPerson" />
+		<id column="result_content" property="resultContent" />
+		<id column="insert_time" property="insertTime" />
+		<id column="update_time" property="updateTime" />
+		<id column="delete_id" property="deleteId" />
+		<id column="tijiao_time" property="tijiaoTime" />
+		<id column="leibie" property="leibie" />
+		<id column="tijiao_time" property="tijiaoTime" />
+		<id column="tijiao_mulv" property="tijiaoMulv" />
+		<id column="imgurl1" property="imgurl1" />
+		<id column="imgurl2" property="imgurl2" />
+		<id column="imgurl3" property="imgurl3" />
+		<id column="imgurl4" property="imgurl4" />
+		<id column="imgurlresult1" property="imgurlresult1" />
+		<id column="imgurlresult2" property="imgurlresult2" />
+		<id column="imgurlresult3" property="imgurlresult3" />
+		<id column="imgurlresult4" property="imgurlresult4" />
+		<association property="jdyAppletFoodSafety"  column="id" javaType="com.jindan.jdy.common.pojo.JdyAppletFoodSafety">
+			<id column="id" property="id" />
+			<id column="name" property="name" />
+			<id column="parent_id" property="parentId" />
+			<id column="url" property="url" />
+			<id column="icon" property="icon" />
+			<id column="orders" property="orders" />
+			<id column="levels" property="levels" />
+		</association>
+	</resultMap>
+
+<!--	BaseReMapexcle-->
+	<resultMap id="BaseReMapexcle" type="com.jindan.jdy.common.dto.JdyAppletFoodSafetyProblemsExcle">
+		<id column="pid" property="pid" />
+		<id column="username" property="username" />
+		<id column="password" property="password" />
+		<id column="departments" property="departments" />
+		<id column="chejian" property="chejian" />
+		<id column="gongduan" property="gongduan" />
+		<id column="banzu" property="banzu" />
+		<id column="quanxian" property="quanxian" />
+		<association property="jdyAppletFoodSafety"  column="pid" javaType="com.jindan.jdy.common.pojo.JdyAppletFoodSafety">
+			<id column="id" property="id" />
+			<id column="name" property="name" />
+			<id column="parent_id" property="parentId" />
+			<id column="url" property="url" />
+			<id column="icon" property="icon" />
+			<id column="orders" property="orders" />
+			<id column="levels" property="levels" />
+		</association>
+		<collection property="jdyAppletFoodSafetyProblemsReultList"  column="rid" ofType="com.jindan.jdy.common.pojo.JdyAppletFoodSafetyProblemsReult">
+			<id column="rid" property="rid" />
+			<id column="imgurls" property="imgurls" />
+			<id column="normal_time" property="normalTime" />
+			<id column="contents" property="contents" />
+			<id column="rpersons" property="rpersons" />
+			<id column="status" property="status" />
+			<id column="result_times" property="resultTimes" />
+			<id column="result_url" property="resultUrl" />
+			<id column="result_person" property="resultPerson" />
+			<id column="result_content" property="resultContent" />
+			<id column="delete_id" property="deleteId" />
+			<id column="tijiao_mulv" property="tijiaoMulv" />
+		</collection>
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		rid, imgurls, normal_time, contents, rpersons, status, result_times, result_url, result_person, result_content, insert_time, update_time, delete_id,tijiao_mulv
+	</sql>
+
+
+	<sql id="selectexpend">
+		<where>
+			<if test="tijiaoMulv != null and tijiaoMulv !='' ">
+				and jdy_applet_food_safety_problems_reult.tijiao_mulv = #{tijiaoMulv}
+			</if>
+			<if test="parentId != null and parentId !='' ">
+				and jdy_applet_food_safety_problems_reult.parent_id = #{parentId}
+			</if>
+			<if test="chejianName != null and chejianName !='' ">
+				and jdy_applet_food_safety_problems_reult.chejian_name = #{chejianName}
+			</if>
+			<if test="resultPerson != null and resultPerson !='' ">
+				and jdy_applet_food_safety_problems_reult.result_person = #{resultPerson}
+			</if>
+			<if test="rpersons != null and rpersons !='' ">
+				and jdy_applet_food_safety_problems_reult.rpersons = #{rpersons}
+			</if>
+			<if test="tijiaoTime != null and tijiaoTime !='' ">
+				and jdy_applet_food_safety_problems_reult.tijiao_time >= #{tijiaoTime}
+			</if>
+			and jdy_applet_food_safety_problems_reult.delete_id = "0"
+		</where>
+	</sql>
+
+<!-- seletePreProList-->
+	<select id="seletePreProList" resultMap="BaseReMap" >
+	   select jdy_applet_food_safety_problems_reult.*,jdy_applet_foot_safety_person.*
+		 from jdy_applet_food_safety_problems_reult
+		 left join  jdy_applet_food_safety  on jdy_applet_food_safety.id =jdy_applet_food_safety_problems_reult.parent_id
+		 left join  jdy_applet_foot_safety_person on jdy_applet_foot_safety_person.chejian = jdy_applet_food_safety.id
+	   WHERE jdy_applet_food_safety.parent_id = 0  and   ISNULL(jdy_applet_food_safety_problems_reult.result_content)
+	   and jdy_applet_food_safety_problems_reult.contents  is not null
+	</select>
+
+<!-- seletePreLvzhiProList -->
+	<select id="seletePreLvzhiProList" resultMap="BaseReMap" >
+	  select jdy_applet_food_safety_problems_reult.* ,jdy_applet_foot_safety_person.*
+	  from jdy_applet_foot_safety_person
+	  left join   jdy_applet_food_safety_problems_reult  on jdy_applet_foot_safety_person.chejian =  jdy_applet_food_safety_problems_reult.parent_id
+	  left join  jdy_applet_food_safety  on jdy_applet_food_safety.id = jdy_applet_food_safety_problems_reult.parent_id
+	  WHERE jdy_applet_food_safety.parent_id = 0  and   ISNULL(jdy_applet_food_safety_problems_reult.result_content)
+	  and jdy_applet_food_safety_problems_reult.contents  is not null
+	  ORDER BY jdy_applet_food_safety_problems_reult.result_times DESC
+	</select>
+
+<!--	List<JdyAppletFoodSafetyProblemsExcle> seleteAlllist(String param);-->
+	<select id="seleteAlllist" resultMap="BaseReMapexcle" >
+	  select jdy_applet_food_safety_problems_reult.* ,jdy_applet_foot_safety_person.*
+	  from jdy_applet_foot_safety_person
+	  left join   jdy_applet_food_safety_problems_reult  on jdy_applet_foot_safety_person.chejian =  jdy_applet_food_safety_problems_reult.parent_id
+	  left join  jdy_applet_food_safety  on jdy_applet_food_safety.id = jdy_applet_food_safety_problems_reult.parent_id
+	  WHERE jdy_applet_food_safety.parent_id = 0  and   ISNULL(jdy_applet_food_safety_problems_reult.result_content)
+	  and jdy_applet_food_safety_problems_reult.contents  is not null
+	  ORDER BY jdy_applet_food_safety_problems_reult.result_times DESC
+	</select>
+
+<!--	List<JdyAppletFoodSafetyProblemsExcle> seleteAlllBanzuist(String param);-->
+	<select id="seleteAlllBanzuist" resultMap="BaseReMapexcle" >
+		 select  jdy_applet_food_safety_problems_reult.*,jdy_applet_foot_safety_person.*
+		 from jdy_applet_foot_safety_person
+		 left join  jdy_applet_food_safety_problems_reult  on jdy_applet_food_safety_problems_reult.parent_id = jdy_applet_foot_safety_person.banzu
+		 WHERE jdy_applet_foot_safety_person.`password` = #{id}
+	</select>
+
+	<!--	//获取车间提交的问题-->
+	<!--	List<JdyAppletFoodSafetyProblemsExcle> seleteAlllChejianist(String param);-->
+	<select id="seleteAlllChejianist" resultMap="BaseReMapexcle" >
+      select  jdy_applet_food_safety_problems_reult.*,jdy_applet_foot_safety_person.*
+	  from jdy_applet_foot_safety_person
+	   left join  jdy_applet_food_safety_problems_reult  on jdy_applet_food_safety_problems_reult.parent_id = jdy_applet_foot_safety_person.chejian
+	  WHERE jdy_applet_foot_safety_person.`password` = #{id}
+	</select>
+
+	<!--	//获取总监提交的问题-->
+	<!--	List<JdyAppletFoodSafetyProblemsExcle> seleteAlllZongjianist(String param);-->
+	<select id="seleteAlllZongjianist" resultMap="BaseReMapexcle" >
+      select  jdy_applet_food_safety_problems_reult.*,jdy_applet_foot_safety_person.*
+	  from jdy_applet_foot_safety_person
+	   left join  jdy_applet_food_safety_problems_reult  on jdy_applet_food_safety_problems_reult.parent_id = jdy_applet_foot_safety_person.zongjianid
+	  WHERE jdy_applet_foot_safety_person.`password` = #{id}
+	</select>
+
+	<!--	//获取公司提交的问题-->
+	<!--	List<JdyAppletFoodSafetyProblemsExcle> seleteAllGongsilist(String param);-->
+	<select id="seleteAllGongsilist" resultMap="BaseReMapexcle" >
+      select  jdy_applet_food_safety_problems_reult.*,jdy_applet_foot_safety_person.*
+	  from jdy_applet_foot_safety_person
+	   left join  jdy_applet_food_safety_problems_reult  on jdy_applet_food_safety_problems_reult.parent_id = jdy_applet_foot_safety_person.gongsi
+	  WHERE jdy_applet_foot_safety_person.`password` = #{id}
+	</select>
+
+
+<!--	seleteAllSinglelist-->
+<!--  查询个人提交的所有问题-->
+	<select id="seleteAllSinglelist" resultMap="BaseReMapexcle" >
+     select  jdy_applet_food_safety_problems_reult.*,jdy_applet_foot_safety_person.*
+	  from jdy_applet_foot_safety_person
+	   left join  jdy_applet_food_safety_problems_reult  on jdy_applet_food_safety_problems_reult.rpersons = jdy_applet_foot_safety_person.`password`
+	  WHERE jdy_applet_foot_safety_person.`password` = #{id}
+	</select>
+
+
+<!--	List<JdyAppletFoodSafetyProblemsExcle> seleteAllBanzuSinglelist(JdyAppletFootSafetyPerson param);-->
+	<select id="seleteAllBanzuSinglelist" resultMap="BaseReMapexcle" >
+		select  jdy_applet_food_safety_problems_reult.*,jdy_applet_foot_safety_person.*,jdy_applet_food_safety.*
+		from jdy_applet_foot_safety_person
+		left join  jdy_applet_food_safety  on jdy_applet_food_safety.id = jdy_applet_foot_safety_person.banzu
+		left join  jdy_applet_food_safety_problems_reult  on jdy_applet_food_safety_problems_reult.rpersons = jdy_applet_foot_safety_person.`password`
+		WHERE jdy_applet_foot_safety_person.`password` in
+		<foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+	</select>
+
+
+<!--	List<JdyAppletFoodSafetyProblemsExcle> seleteAllBanzuchuliSinglelist(JdyAppletFootSafetyPerson param);-->
+	<select id="seleteAllBanzuchuliSinglelist" resultMap="BaseReMapexcle" >
+	   select  jdy_applet_food_safety_problems_reult.*,jdy_applet_foot_safety_person.*,jdy_applet_food_safety.*
+		from jdy_applet_foot_safety_person
+		left join  jdy_applet_food_safety  on jdy_applet_food_safety.id = jdy_applet_foot_safety_person.banzu
+		left join  jdy_applet_food_safety_problems_reult  on jdy_applet_food_safety_problems_reult.parent_id = jdy_applet_food_safety.id
+
+
+		WHERE jdy_applet_foot_safety_person.`password` in
+		<foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+	</select>
+
+
+<!-- 车间提交的问题	List<JdyAppletFoodSafetyProblemsExcle> seleteAllChejianSinglelist(JdyAppletFootSafetyPerson param);-->
+	<select id="seleteAllChejianSinglelist" resultMap="BaseReMapexcle" >
+	   	select  jdy_applet_food_safety_problems_reult.*,jdy_applet_foot_safety_person.*,jdy_applet_food_safety.*
+		from jdy_applet_foot_safety_person
+		left join  jdy_applet_food_safety  on jdy_applet_food_safety.id = jdy_applet_foot_safety_person.chejian
+		left join  jdy_applet_food_safety_problems_reult  on jdy_applet_food_safety_problems_reult.rpersons = jdy_applet_foot_safety_person.`password`
+		WHERE jdy_applet_foot_safety_person.`password` in
+		<foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+	</select>
+
+<!--  外部提交的车间信息	List<JdyAppletFoodSafetyProblemsExcle> seleteAllWaibuChejianSinglelist(JdyAppletFootSafetyPerson param);-->
+	<select id="seleteAllWaibuChejianSinglelist" resultMap="BaseReMapexcle" >
+	   	select  jdy_applet_food_safety_problems_reult.*,jdy_applet_foot_safety_person.*,jdy_applet_food_safety.*
+		from jdy_applet_foot_safety_person
+		left join  jdy_applet_food_safety  on jdy_applet_food_safety.id = jdy_applet_foot_safety_person.chejian
+		left join  jdy_applet_food_safety_problems_reult  on jdy_applet_food_safety_problems_reult.parent_id = jdy_applet_food_safety.id
+		WHERE jdy_applet_foot_safety_person.`password` in
+		<foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+	</select>
+
+<!--	总监提交的问题  List<JdyAppletFoodSafetyProblemsExcle> seleteAllZognjianSinglelist(JdyAppletFootSafetyPerson param);-->
+	<select id="seleteAllZognjianSinglelist" parameterType="com.jindan.jdy.common.pojo.JdyAppletFoodSafetyProblemsReult" resultMap="BaseReMap" >>
+		select  jdy_applet_food_safety_problems_reult.*,jdy_applet_food_safety.* from  jdy_applet_food_safety_problems_reult
+		left join  jdy_applet_food_safety_majordomo  on jdy_applet_food_safety_problems_reult.tijiao_mulv = jdy_applet_food_safety_majordomo.zid and jdy_applet_food_safety_majordomo.delete_id = 0
+		left join  jdy_applet_food_safety  on jdy_applet_food_safety.id = jdy_applet_food_safety_problems_reult.parent_id and jdy_applet_food_safety.delete_id = 0
+		<include refid="selectexpend"/>
+	</select>
+
+<!--	seleteAllGongsiSinglelist  公司提交的问题-->
+	<select id="seleteAllGongsiSinglelist" parameterType="com.jindan.jdy.common.pojo.JdyAppletFoodSafetyProblemsReult" resultMap="BaseReMap" >
+		select  jdy_applet_food_safety_problems_reult.*,jdy_applet_food_safety.*
+		from  jdy_applet_food_safety_problems_reult
+		left join  jdy_applet_food_safety_majordomo  on jdy_applet_food_safety_problems_reult.tijiao_mulv = jdy_applet_food_safety_majordomo.zid and jdy_applet_food_safety_majordomo.delete_id = 0
+		left join  jdy_applet_food_safety  on jdy_applet_food_safety.id = jdy_applet_food_safety_problems_reult.parent_id and jdy_applet_food_safety.delete_id = 0
+	    <include refid="selectexpend"/>
+	</select>
+
+</mapper>

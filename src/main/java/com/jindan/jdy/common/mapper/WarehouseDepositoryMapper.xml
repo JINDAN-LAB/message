@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.common.mapper.WarehouseDepositoryMapper">
+
+	<resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.WarehouseDepository">
+		<id column="id" property="id" />
+		<id column="parent_id" property="parentId" />
+		<id column="name" property="name" />
+		<id column="state" property="state" />
+		<id column="create_name" property="createName" />
+		<id column="create_id" property="createId" />
+		<id column="insert_time" property="insertTime" />
+		<id column="update_time" property="updateTime" />
+		<id column="levels" property="levels" />
+		<id column="orders" property="orders" />
+		<id column="icon" property="icon" />
+		<id column="url" property="url" />
+	</resultMap>
+<!--	BaseltMap-->
+	<resultMap id="BaseltMap" type="com.jindan.jdy.common.dto.WarehouseDepositoryDto">
+		<id column="pid" property="id" />
+		<id column="parent_id" property="parentId" />
+		<id column="dsname" property="name" />
+		<id column="state" property="state" />
+		<id column="create_name" property="createName" />
+		<id column="create_id" property="createId" />
+		<id column="insert_time" property="insertTime" />
+		<id column="update_time" property="updateTime" />
+		<id column="levels" property="levels" />
+		<id column="orders" property="orders" />
+		<id column="icon" property="icon" />
+		<id column="url" property="url" />
+
+<!--		<association property="warehouseGoods" column="id" javaType="com.jindan.jdy.common.pojo.WarehouseGoods">-->
+<!--			<id column="id" property="id" />-->
+<!--			<id column="depository_id" property="depositoryId" />-->
+<!--			<id column="depository_name" property="depositoryName" />-->
+<!--			<id column="name" property="name" />-->
+<!--			<id column="state" property="state" />-->
+<!--			<id column="remarks" property="remarks" />-->
+<!--			<id column="create_name" property="createName" />-->
+<!--			<id column="create_id" property="createId" />-->
+<!--			<id column="insert_time" property="insertTime" />-->
+<!--			<id column="update_time" property="updateTime" />-->
+<!--		</association>-->
+<!--		<association property="warehouseSpecs" column="id" javaType="com.jindan.jdy.common.pojo.WarehouseSpecs">-->
+<!--			<id column="id" property="id" />-->
+<!--			<id column="goods_id" property="goodsId" />-->
+<!--			<id column="brand" property="brand" />-->
+<!--			<id column="model" property="model" />-->
+<!--			<id column="unit" property="unit" />-->
+<!--			<id column="number" property="number" />-->
+<!--			<id column="price" property="price" />-->
+<!--			<id column="state" property="state" />-->
+<!--			<id column="create_name" property="createName" />-->
+<!--			<id column="create_id" property="createId" />-->
+<!--			<id column="insert_time" property="insertTime" />-->
+<!--			<id column="update_time" property="updateTime" />-->
+<!--		</association>-->
+
+<!--		<collection property="listwarehouseGoods" column="id" ofType="com.jindan.jdy.common.pojo.WarehouseGoods">-->
+<!--			<id column="gid" property="id" />-->
+<!--			<id column="depository_id" property="depositoryId" />-->
+<!--			<id column="depository_name" property="depositoryName" />-->
+<!--			<id column="name" property="name" />-->
+<!--			<id column="state" property="state" />-->
+<!--			<id column="remarks" property="remarks" />-->
+<!--			<id column="create_name" property="createName" />-->
+<!--			<id column="create_id" property="createId" />-->
+<!--			<id column="insert_time" property="insertTime" />-->
+<!--			<id column="update_time" property="updateTime" />-->
+<!--		</collection>-->
+
+<!--		<collection property="listwarehouseSpecs" column="id" ofType="com.jindan.jdy.common.pojo.WarehouseSpecs">-->
+<!--			<id column="id" property="id" />-->
+<!--			<id column="goods_id" property="goodsId" />-->
+<!--			<id column="brand" property="brand" />-->
+<!--			<id column="model" property="model" />-->
+<!--			<id column="facility_name" property="facilityName" />-->
+<!--			<id column="commodity_name" property="commodityName" />-->
+<!--			<id column="num" property="num" />-->
+<!--			<id column="unit_price" property="unitPrice" />-->
+<!--			<id column="person" property="person" />-->
+<!--			<id column="insert_time" property="insertTime" />-->
+<!--			<id column="update_time" property="updateTime" />-->
+<!--			<id column="status" property="status" />-->
+<!--			<id column="delete_id" property="deleteId" />-->
+<!--			<id column="remarks" property="remarks" />-->
+<!--			<id column="frequencys" property="frequencys" />-->
+<!--			<id column="revolutions_per_minute" property="revolutionsPerMinute" />-->
+<!--			<id column="piece_weight" property="pieceWeight" />-->
+<!--			<id column="all_weight" property="allWeight" />-->
+<!--			<id column="texture" property="texture" />-->
+<!--			<id column="lubrication" property="lubrication" />-->
+<!--			<id column="parameters" property="parameters" />-->
+<!--			<id column="powers" property="powers" />-->
+<!--			<id column="parent_id" property="parentId" />-->
+
+<!--		</collection>-->
+
+	</resultMap>
+
+
+
+
+	<resultMap id="BaseltMassssp" type="com.jindan.jdy.common.dto.WarehouseDepositoryDto">
+		<id column="id" property="id" />
+		<id column="parent_id" property="parentId" />
+		<id column="name" property="name" />
+		<id column="state" property="state" />
+		<id column="create_name" property="createName" />
+		<id column="create_id" property="createId" />
+		<id column="insert_time" property="insertTime" />
+		<id column="update_time" property="updateTime" />
+		<id column="levels" property="levels" />
+		<id column="orders" property="orders" />
+		<id column="icon" property="icon" />
+		<id column="url" property="url" />
+<!--		<collection property="listwarehouseGoods" column="gid" ofType="com.jindan.jdy.common.pojo.WarehouseGoods">-->
+<!--			<id column="gid" property="id" />-->
+<!--			<id column="depository_id" property="depositoryId" />-->
+<!--			<id column="depository_name" property="depositoryName" />-->
+<!--			<id column="gsname" property="name" />-->
+<!--			<id column="state" property="state" />-->
+<!--			<id column="remarks" property="remarks" />-->
+<!--			<id column="create_name" property="createName" />-->
+<!--			<id column="create_id" property="createId" />-->
+<!--			<id column="insert_time" property="insertTime" />-->
+<!--			<id column="update_time" property="updateTime" />-->
+<!--		</collection>-->
+
+	</resultMap>
+<!--	selectcaggess-->
+	<sql id="selectcaggess">
+		<where>
+			<if test="id != null and id !='' ">
+				and warehouse_depository.id = #{id}
+			</if>
+			<if test="name != null and name !='' ">
+				and warehouse_depository.name = #{name}
+			</if>
+			<if test="state != null and state !='' ">
+				and warehouse_depository.state = #{state}
+			</if>
+			<if test="createName != null and createName !='' ">
+				and warehouse_depository.create_name = #{createName}
+			</if>
+			<if test="createId != null and createId !='' ">
+				and warehouse_depository.create_id = #{createId}
+			</if>
+			and warehouse_depository.delete_id='0'
+		</where>
+	</sql>
+
+	<sql id="selectexpend">
+		<where>
+			<if test="invoices != null and invoices !='' ">
+				and invoices = #{invoices}
+			</if>
+			<if test="supplierId != null and supplierId !='' ">
+				and warehouse_depository.supplier_id = #{supplierId}
+			</if>
+			<if test="operator != null and operator !='' ">
+				and warehouse_depository.operator = #{operator}
+			</if>
+			<if test="purchaseType != null and purchaseType !='' ">
+				and warehouse_depository.purchase_type = #{purchaseType}
+			</if>
+			<if test="statics != null and statics !='' ">
+				and warehouse_depository.statics = #{statics}
+			</if>
+			and warehouse_depository.delete_id=0
+		</where>
+	</sql>
+
+<!--	selectListWarehouseDepositoryDao-->
+	<select id="selectListWarehouseDepositoryDao" parameterType="com.jindan.jdy.common.dto.WarehouseDepositoryDto" resultMap="BaseltMassssp">
+	   SELECT
+	     warehouse_depository.id as pid,
+	     warehouse_depository.name as dsname,
+	     warehouse_goods.id as  gid,
+		 warehouse_goods.name as gsname
+		FROM warehouse_depository
+		left JOIN warehouse_goods  ON warehouse_depository.id = warehouse_goods.depository_id
+		and warehouse_goods.delete_id =0
+		<include refid="selectcaggess"></include>
+	</select>
+
+
+
+  <select id="selectAllList"  resultMap="BaseltMassssp">
+		SELECT
+		warehouse_depository.*
+		FROM warehouse_depository
+		<include refid="selectcaggess"></include>
+	</select>
+
+	<select id="selectAllTiaojianList"  resultMap="BaseltMassssp">
+		SELECT
+		warehouse_depository.*
+		FROM warehouse_depository
+		<include refid="selectcaggess"></include>
+	</select>
+</mapper>

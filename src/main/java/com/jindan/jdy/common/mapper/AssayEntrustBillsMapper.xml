@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.common.mapper.AssayEntrustBillsDao">
+
+	<resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.AssayEntrustBills">
+		<id column="eid" property="eid" />
+		<id column="insert_time" property="insertTime" />
+		<id column="update_time" property="updateTime" />
+		<id column="delete_id" property="deleteId" />
+		<id column="ename" property="ename" />
+		<id column="epihao" property="epihao" />
+		<id column="eguige" property="eguige" />
+		<id column="enums" property="enums" />
+		<id column="eunit" property="eunit" />
+		<id column="eperson" property="eperson" />
+		<id column="date_time" property="dateTime" />
+		<id column="remarks" property="remarks" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		eid, insert_time, update_time, delete_id, ename, epihao, eguige, enums, eunit, eperson, date_time, remarks
+	</sql>
+	
+</mapper>

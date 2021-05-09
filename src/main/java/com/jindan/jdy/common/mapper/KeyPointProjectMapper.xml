@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.common.mapper.KeyPointProjectMapper">
+
+	<resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.KeyPointProject">
+		<id column="id" property="id" />
+		<id column="titles" property="titles" />
+		<id column="contents" property="contents" />
+		<id column="insert_time" property="insertTime" />
+		<id column="update_time" property="updateTime" />
+		<id column="delete_id" property="deleteId" />
+		<id column="status" property="status" />
+		<id column="parent_file" property="parentFile" />
+		<id column="deparement" property="deparement" />
+		<id column="persons" property="persons" />
+		<id column="remartks" property="remartks" />
+	</resultMap>
+
+
+	<resultMap id="BaseltMassssp" type="com.jindan.jdy.common.dto.KeyPointProjectDto">
+		<id column="id" property="id" />
+		<id column="titles" property="titles" />
+		<id column="contents" property="contents" />
+		<id column="insert_time" property="insertTime" />
+		<id column="update_time" property="updateTime" />
+		<id column="delete_id" property="deleteId" />
+		<id column="status" property="status" />
+		<id column="parent_file" property="parentFile" />
+		<id column="deparement" property="deparement" />
+		<id column="persons" property="persons" />
+		<id column="remartks" property="remartks" />
+		<id column="submit_time" property="submitTime" />
+		<collection property="pointPracticables" column="pid" ofType="com.jindan.jdy.common.pojo.KeyPointPracticable">
+			<id column="pid" property="pid" />
+			<id column="ptitles" property="ptitles" />
+			<id column="pcontents" property="pcontents" />
+			<id column="pinsert_time" property="insertTime" />
+			<id column="pupdate_time" property="updateTime" />
+			<id column="pdelete_id" property="deleteId" />
+			<id column="premarks" property="premarks" />
+			<id column="pstatus" property="pstatus" />
+			<id column="ppersons" property="ppersons" />
+			<id column="pfileId" property="pfileId" />
+			<id column="pparentId" property="parentId" />
+		</collection>
+		<collection property="keyPointSchedules" column="sid" ofType="com.jindan.jdy.common.pojo.KeyPointSchedule">
+			<id column="sid" property="sid" />
+			<id column="stitles" property="stitles" />
+			<id column="scontents" property="scontents" />
+			<id column="sinsert_time" property="insertTime" />
+			<id column="supdate_time" property="updateTime" />
+			<id column="sdelete_id" property="deleteId" />
+			<id column="spersons" property="spersons" />
+			<id column="sstatus" property="sstatus" />
+			<id column="sremarks" property="sremarks" />
+			<id column="sfile_id" property="sfileId" />
+			<id column="sparent_id" property="parentId" />
+		</collection>
+		<collection property="keyPointEvaluates" column="evid" ofType="com.jindan.jdy.common.pojo.KeyPointEvaluate">
+			<id column="evid" property="evid" />
+			<id column="proint_id" property="prointId" />
+			<id column="evalcontent" property="content" />
+			<id column="evalresult" property="result" />
+			<id column="evalresult" property="evalresult" />
+			<id column="evinsert_time" property="insertTime" />
+			<id column="evupdate_time" property="updateTime" />
+			<id column="evdelete_id" property="deleteId" />
+			<id column="evfile_url" property="fileUrl" />
+		</collection>
+	</resultMap>
+
+
+
+	<sql id="Base_Column_List">
+		id, titles, contents, insert_time, update_time, delete_id, status, parent_file, deparement, persons, remartks
+	</sql>
+<!--	where sd1.state = 1 -->
+
+
+	<sql id="selectexpend">
+		<where>
+			<if test="id != null and id !='' ">
+				and key_point_project.id = #{id}
+			</if>
+			<if test="titles != null and titles !='' ">
+				and key_point_project.titles = #{titles}
+			</if>
+			<if test="contents != null and contents !='' ">
+				and key_point_project.contents = #{contents}
+			</if>
+			<if test="status != null and status !='' ">
+				and key_point_project.status = #{status}
+			</if>
+			<if test="parentFile != null and parentFile !='' ">
+				and key_point_project.parent_file = #{parentFile}
+			</if>
+			<if test="deparement != null and deparement !='' ">
+				and key_point_project.deparement = #{deparement}
+			</if>
+			<if test="persons != null and persons !='' ">
+				and key_point_project.persons = #{persons}
+			</if>
+			<if test="remartks != null and remartks !='' ">
+				and key_point_project.remartks = #{remartks}
+			</if>
+		 	and key_point_project.delete_id = 0;
+		</where>
+	</sql>
+
+
+<!-- seleteKeyPointProjectexcle-->
+	<select id="seleteKeyPointProjectexcle"  parameterType="com.jindan.jdy.common.dto.KeyPointProjectDto" resultMap="BaseltMassssp">
+		SELECT
+			 key_point_project.*,
+			 key_point_practicable.pid,
+				 key_point_practicable.ptitles,
+				 key_point_practicable.pcontents,
+				 key_point_practicable.insert_time,
+				 key_point_practicable.update_time,
+				 key_point_practicable.delete_id,
+				 key_point_practicable.premarks,
+				 key_point_practicable.pstatus,
+				 key_point_practicable.parent_id as pparent_id,
+				 key_point_practicable.pfile_id,
+				 key_point_practicable.ppersons,
+			key_point_schedule.sid,
+			key_point_schedule.stitles,
+			key_point_schedule.scontents,
+			key_point_schedule.insert_time as sinsert_time,
+			key_point_schedule.update_time as supdate_time,
+			key_point_schedule.delete_id as sdelete_id,
+			key_point_schedule.spersons,
+			key_point_schedule.sstatus,
+			key_point_schedule.sremarks,
+			key_point_schedule.parent_id as sparent_id,
+			key_point_schedule.sfile_id,
+		key_point_evaluate.evid,
+		key_point_evaluate.proint_id,
+		key_point_evaluate.content as evalcontent,
+		key_point_evaluate.result as evalresult,
+		key_point_evaluate.insert_time as evinsert_time,
+		key_point_evaluate.update_time as evupdate_time,
+		key_point_evaluate.evalresult ,
+		key_point_evaluate.delete_id as evdelete_id,
+		key_point_evaluate.file_url as evfile_url
+		FROM  key_point_project
+		left JOIN key_point_schedule   ON key_point_project.id = key_point_schedule.parent_id and key_point_schedule.delete_id = 0
+		left JOIN key_point_practicable   ON key_point_project.id = key_point_practicable.parent_id and key_point_practicable.delete_id = 0
+		left JOIN key_point_evaluate   ON key_point_project.id = key_point_evaluate.proint_id and key_point_evaluate.delete_id = 0
+		<include refid="selectexpend"></include>
+	</select>
+
+
+</mapper>

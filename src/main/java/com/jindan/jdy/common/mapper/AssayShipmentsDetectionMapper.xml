@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.common.mapper.AssayShipmentsDetectionDao">
+
+	<resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.AssayShipmentsDetection">
+		<id column="fid" property="fid" />
+		<id column="supplies_name" property="suppliesName" />
+		<id column="invoice_number" property="invoiceNumber" />
+		<id column="batch_number" property="batchNumber" />
+		<id column="pack_goods" property="packGoods" />
+		<id column="product_standard" property="productStandard" />
+		<id column="numbers" property="numbers" />
+		<id column="quality_require" property="qualityRequire" />
+		<id column="country_of_destination" property="countryOfDestination" />
+		<id column="salesman" property="salesman" />
+		<id column="put_time" property="putTime" />
+		<id column="shipments_time" property="shipmentsTime" />
+		<id column="measurement" property="measurement" />
+		<id column="insert_time" property="insertTime" />
+		<id column="update_time" property="updateTime" />
+		<id column="delete_id" property="deleteId" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		fid, supplies_name, invoice_number, batch_number, pack_goods, product_standard, numbers, quality_require, country_of_destination, salesman, put_time, shipments_time, measurement, insert_time, update_time, delete_id
+	</sql>
+	
+</mapper>

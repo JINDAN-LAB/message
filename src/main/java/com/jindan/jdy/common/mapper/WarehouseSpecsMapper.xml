@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.common.mapper.WarehouseSpecsMapper">
+
+	<resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.WarehouseSpecs">
+		<id column="id" property="id" />
+		<id column="goods_id" property="goodsId" />
+		<id column="brand" property="brand" />
+		<id column="model" property="model" />
+		<id column="facility_name" property="facilityName" />
+		<id column="commodity_name" property="commodityName" />
+		<id column="num" property="num" />
+		<id column="unit_price" property="unitPrice" />
+		<id column="person" property="person" />
+		<id column="insert_time" property="insertTime" />
+		<id column="update_time" property="updateTime" />
+		<id column="status" property="status" />
+		<id column="delete_id" property="deleteId" />
+		<id column="remarks" property="remarks" />
+		<id column="frequencys" property="frequencys" />
+		<id column="revolutions_per_minute" property="revolutionsPerMinute" />
+		<id column="piece_weight" property="pieceWeight" />
+		<id column="all_weight" property="allWeight" />
+		<id column="texture" property="texture" />
+		<id column="lubrication" property="lubrication" />
+		<id column="parameters" property="parameters" />
+		<id column="powers" property="powers" />
+		<id column="parent_id" property="parentId" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		id, goods_id, brand, model, unit, number, price, state, create_name, create_id, create_time, update_time
+	</sql>
+
+	<sql id="selectexpend">
+		<where>
+			<if test="brand != null and brand !='' ">
+				and warehouse_specs.brand = #{brand}
+			</if>
+			<if test="model != null and model !='' ">
+				and warehouse_specs.model = #{model}
+			</if>
+			<if test="num != null and num !='' ">
+				and warehouse_specs.num = #{num}
+			</if>
+			<if test="person != null and person !='' ">
+				and warehouse_specs.`person` = #{person}
+			</if>
+			<if test="powers != null and powers !='' ">
+				and warehouse_specs.powers = #{powers}
+			</if>
+			<if test="pid != null and pid !='' ">
+				and warehouse_depository.id = #{pid}
+			</if>
+			<if test="gid != null and gid !='' ">
+				and warehouse_goods.id = #{gid}
+			</if>
+			and warehouse_specs.delete_id='0'
+		</where>
+	</sql>
+
+<!--	selectListreload-->
+	<select id="selectListreload" parameterType="com.jindan.jdy.common.dto.WarehouseSpecsDto" resultMap="BaseResultMap">
+	   SELECT
+		  warehouse_specs.*
+		FROM warehouse_specs
+		left JOIN warehouse_goods  ON warehouse_specs.goods_id = warehouse_goods.id
+        left JOIN warehouse_depository  ON warehouse_depository.id = warehouse_goods.depository_id
+         <include refid="selectexpend"></include>
+	</select>
+
+<!--	updateNumSpecs 入库操作-->
+	<update id="updateNumSpecs" parameterType="com.jindan.jdy.common.pojo.JdyCommodity">
+ 	   UPDATE `warehouse_specs` SET  num= num + #{num} WHERE id = #{warehouseId}
+    </update>
+
+<!--	updateOutNumSpecs   出库操作-->
+	<update id="updateOutNumSpecs" parameterType="com.jindan.jdy.common.pojo.JdyCommodity">
+ 	   UPDATE `warehouse_specs` SET num= num-#{num}  WHERE id = #{warehouseId}
+   </update>
+
+
+</mapper>

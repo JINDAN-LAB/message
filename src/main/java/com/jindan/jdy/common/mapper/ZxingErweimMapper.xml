@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.common.mapper.ZxingErweimMapper">
+
+	<resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.ZxingErweim">
+		<id column="id" property="id" />
+		<id column="nametitle" property="nametitle" />
+		<id column="suttle" property="suttle" />
+		<id column="standard" property="standard" />
+		<id column="tab" property="tab" />
+		<id column="kg" property="kg" />
+		<id column="type" property="type" />
+		<id column="use" property="use" />
+		<id column="method" property="method" />
+		<id column="scope" property="scope" />
+		<id column="condition" property="condition" />
+		<id column="notice" property="notice" />
+		<id column="imgurl" property="imgurl" />
+		<id column="username" property="username" />
+		<id column="md" property="md" />
+		<id column="tijiaotime" property="tijiaotime" />
+		<id column="pihao" property="pihao" />
+		<id column="hanliang" property="hanliang" />
+		<id column="tradename" property="tradename" />
+		<id column="ensurevalue" property="ensurevalue" />
+		<id column="chengfenvalues" property="chengfenvalues" />
+		<id column="typeid" property="typeid" />
+		<id column="dateproduced" property="dateproduced" />
+		<id column="materielcode" property="materielcode" />
+		<id column="supplierid" property="supplierid" />
+		<id column="guige" property="guige" />
+		<id column="suppliertype" property="suppliertype" />
+		<id column="mulutype" property="mulutype" />
+		<id column="usertype" property="usertype" />
+		<id column="piwen" property="piwen" />
+	</resultMap>
+
+	<resultMap id="CatalogueDto" type="com.jindan.jdy.common.dto.ZxingErweimDto">
+		<id column="id" property="id" />
+		<id column="nametitle" property="nametitle" />
+		<id column="suttle" property="suttle" />
+		<id column="standard" property="standard" />
+		<id column="tab" property="tab" />
+		<id column="kg" property="kg" />
+		<id column="type" property="type" />
+		<id column="use" property="use" />
+		<id column="method" property="method" />
+		<id column="scope" property="scope" />
+		<id column="condition" property="condition" />
+		<id column="notice" property="notice" />
+		<id column="imgurl" property="imgurl" />
+		<id column="username" property="username" />
+		<id column="md" property="md" />
+		<id column="tijiaotime" property="tijiaotime" />
+		<id column="pihao" property="pihao" />
+		<id column="hanliang" property="hanliang" />
+		<id column="tradename" property="tradename" />
+		<id column="ensurevalue" property="ensurevalue" />
+		<id column="chengfenvalues" property="chengfenvalues" />
+		<id column="typeid" property="typeid" />
+		<id column="dateproduced" property="dateproduced" />
+		<id column="materielcode" property="materielcode" />
+		<id column="supplierid" property="supplierid" />
+		<id column="guige" property="guige" />
+		<id column="suppliertype" property="suppliertype" />
+		<id column="mulutype" property="mulutype" />
+		<id column="usertype" property="usertype" />
+		<id column="piwen" property="piwen" />
+		<id column="insert_time" property="insertTime" />
+		<id column="update_time" property="updateTime" />
+		<id column="status" property="status" />
+		<id column="expirations" property="expirations" />
+		<id column="grades" property="grades" />
+		<id column="specifications" property="specifications" />
+		<id column="categorys" property="categorys" />
+		<id column="erpcode" property="erpcode" />
+		<id column="suppliers" property="suppliers" />
+		<id column="materialcode" property="materialcode" />
+		<id column="baozhuang_grades" property="baozhuangGrades" />
+		<id column="sapcode" property="sapcode" />
+		<association property="zxingMethod" column="mid" javaType="com.jindan.jdy.common.pojo.ZxingMethod">
+			<id column="mmethodurl" property="methodurl" />
+		</association>
+		<association property="zxingStand" column="sid" javaType="com.jindan.jdy.common.pojo.ZxingStand">
+			<id column="sstandurl" property="standurl" />
+		</association>
+	</resultMap>
+<!--	selectJdyRole-->
+	<sql id="Base_Column_List">
+		id, nametitle, suttle, standard, tab, kg, type, use, method, scope, condition, notice, imgurl, username, md, tijiaotime, pihao, hanliang, tradename, ensurevalue, chengfenvalues, typeid, dateproduced, materielcode, supplierid, guige, suppliertype, mulutype, usertype, piwen
+	</sql>
+<!--	seletelistseleteOne-->
+	<select id="seletelistseleteOne"  parameterType="java.lang.String" resultMap="CatalogueDto">
+		select
+		 zxing_erweim.*,
+		 zxing_method.id as mid,
+		 zxing_method.methodurl as mmethodurl,
+		 zxing_stand.standurl as sstandurl,
+		 zxing_stand.id as sid
+		from zxing_erweim
+		left join zxing_method  on zxing_method.method = zxing_erweim.method
+		left join zxing_stand on zxing_stand.standard = zxing_erweim.standard
+		where zxing_erweim.md=#{id}
+	</select>
+
+</mapper>

@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.common.mapper.StarchMaintainRegisterMapper">
+
+	<resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.StarchMaintainRegister">
+		<id column="wxid" property="wxid" />
+		<id column="status" property="status" />
+		<id column="wxstatus" property="wxstatus" />
+		<id column="service_number" property="serviceNumber" />
+		<id column="imgurl" property="imgurl" />
+		<id column="service_date" property="serviceDate" />
+		<id column="service_person" property="servicePerson" />
+		<id column="warranty_person" property="warrantyPerson" />
+		<id column="service_jine" property="serviceJine" />
+		<id column="service_content" property="serviceContent" />
+		<id column="remarks" property="remarks" />
+		<id column="parent_id" property="parentId" />
+		<id column="insert_time" property="insertTime" />
+		<id column="update_time" property="updateTime" />
+		<id column="delete_id" property="deleteId" />
+		<id column="ptypes" property="ptypes" />
+		<id column="departments" property="departments" />
+		<id column="evaluate_weixiu" property="evaluateWeixiu" />
+		<id column="evaluate_baoxiu" property="evaluateBaoxiu" />
+		<id column="evaluate_weixiu_remarks" property="evaluateWeixiuRemarks" />
+		<id column="evaluate_baoxiu_remarks" property="evaluateBaoxiuRemarks" />
+	</resultMap>
+
+	<resultMap id="BaseResultMaps" type="com.jindan.jdy.common.pojo.StarchMaintainRegister">
+		<id column="wxid" property="wxid" />
+		<id column="status" property="status" />
+		<id column="wxstatus" property="wxstatus" />
+		<id column="service_number" property="serviceNumber" />
+		<id column="imgurl" property="imgurl" />
+		<id column="service_date" property="serviceDate" />
+		<id column="service_person" property="servicePerson" />
+		<id column="warranty_person" property="warrantyPerson" />
+		<id column="service_jine" property="serviceJine" />
+		<id column="service_content" property="serviceContent" />
+		<id column="remarks" property="remarks" />
+		<id column="parent_ids" property="parentId" />
+		<id column="insert_time" property="insertTime" />
+		<id column="update_time" property="updateTime" />
+		<id column="delete_id" property="deleteId" />
+		<id column="ptypes" property="ptypes" />
+		<id column="departments" property="departments" />
+		<id column="evaluate_weixiu" property="evaluateWeixiu" />
+		<id column="evaluate_baoxiu" property="evaluateBaoxiu" />
+		<id column="evaluate_weixiu_remarks" property="evaluateWeixiuRemarks" />
+		<id column="evaluate_baoxiu_remarks" property="evaluateBaoxiuRemarks" />
+		<id column="ptypes" property="ptypes" />
+		<id column="ptype" property="ptype" />
+		<id column="wx_persons" property="wxPersons" />
+	</resultMap>
+
+
+	<sql id="Base_Column_List">
+		wxid, status, wxstatus, service_number, imgurl, service_date, service_person, warranty_person, service_jine, service_content, remarks, parent_id, insert_time, update_time, delete_id,ptypes,departments,wx_persons,ptypes,ptype
+	</sql>
+
+	<resultMap id="BaseResultMapDto" type="com.jindan.jdy.common.dto.StarchMaintainRegisterDto">
+		<id column="wxid" property="wxid" />
+		<id column="status" property="status" />
+		<id column="wxstatus" property="wxstatus" />
+		<id column="service_number" property="serviceNumber" />
+		<id column="imgurl" property="imgurl" />
+		<id column="service_date" property="serviceDate" />
+		<id column="service_person" property="servicePerson" />
+		<id column="warranty_person" property="warrantyPerson" />
+		<id column="service_jine" property="serviceJine" />
+		<id column="service_content" property="serviceContent" />
+		<id column="remarks" property="remarks" />
+		<id column="parent_id" property="parentId" />
+		<id column="delete_id" property="deleteId" />
+		<id column="departments" property="departments" />
+		<id column="wx_persons" property="wxPersons" />
+		<id column="evaluate_weixiu" property="evaluateWeixiu" />
+		<id column="evaluate_baoxiu" property="evaluateBaoxiu" />
+		<id column="evaluate_weixiu_remarks" property="evaluateWeixiuRemarks" />
+		<id column="evaluate_baoxiu_remarks" property="evaluateBaoxiuRemarks" />
+		<id column="departments" property="departments" />
+		<id column="ptypes" property="ptypes" />
+		<id column="ptype" property="ptype" />
+		<collection property="putList" column="oid" ofType="com.jindan.jdy.common.pojo.StarchOrganizationPut">
+			<id column="oid" property="oid" />
+			<id column="status" property="status" />
+			<id column="imgurl" property="imgurl" />
+			<id column="erweima" property="erweima" />
+			<id column="property_name" property="propertyName" />
+			<id column="property_type" property="propertyType" />
+			<id column="property_guige" property="propertyGuige" />
+			<id column="property_sn" property="propertySn" />
+			<id column="property_nums" property="propertyNums" />
+			<id column="property_jine" property="propertyJine" />
+			<id column="companys" property="companys" />
+			<id column="departments" property="departments" />
+			<id column="use_person" property="usePerson" />
+			<id column="areas" property="areas" />
+			<id column="store_areas" property="storeAreas" />
+			<id column="manager_person" property="managerPerson" />
+			<id column="belong_company" property="belongCompany" />
+			<id column="purchase_time" property="purchaseTime" />
+			<id column="suppliers" property="suppliers" />
+			<id column="service_life" property="serviceLife" />
+			<id column="creator_person" property="creatorPerson" />
+			<id column="source_of" property="sourceOf" />
+			<id column="delete_id" property="deleteId" />
+			<id column="maintain_cycle" property="maintainCycle" />
+			<id column="spare_is" property="spareIs" />
+			<id column="parent_id" property="parentId" />
+			<id column="jianxiuren" property="jianxiuren" />
+			<id column="weixiuren" property="weixiuren" />
+			<id column="remarks" property="remarks" />
+			<id column="baoyang" property="baoyang" />
+			<id column="runhua" property="runhua" />
+			<id column="canshu" property="canshu" />
+			<id column="bianma" property="bianma" />
+			<id column="xuhao" property="xuhao" />
+			<id column="weihao" property="weihao" />
+			<id column="jixiugong" property="jixiugong" />
+		</collection>
+	</resultMap>
+
+	<sql id="selectexpend">
+		<where>
+			<if test="wxid != null and wxid !='' ">
+				and starch_maintain_register.wxid = #{wxid}
+			</if>
+			<if test="status != null and status !='' ">
+				and starch_maintain_register.status = #{status}
+			</if>
+			<if test="wxstatus != null and wxstatus !='' ">
+				and starch_maintain_register.wxstatus = #{wxstatus}
+			</if>
+			<if test="serviceNumber != null and serviceNumber !='' ">
+				and starch_maintain_register.service_number = #{serviceNumber}
+			</if>
+			<if test="imgurl != null and imgurl !='' ">
+				and starch_maintain_register.imgurl = #{imgurl}
+			</if>
+			<if test="serviceDate != null and serviceDate !='' ">
+				and starch_maintain_register.service_date = #{serviceDate}
+			</if>
+			<if test="servicePerson != null and servicePerson !='' ">
+				and starch_maintain_register.service_person = #{servicePerson}
+			</if>
+			<if test="warrantyPerson != null and warrantyPerson !='' ">
+				and starch_maintain_register.warranty_person = #{warrantyPerson}
+			</if>
+			<if test="serviceJine != null and serviceJine !='' ">
+				and starch_maintain_register.service_jine = #{serviceJine}
+			</if>
+			<if test="serviceContent != null and serviceContent !='' ">
+				and starch_maintain_register.service_content = #{serviceContent}
+			</if>
+			<if test="remarks != null and remarks !='' ">
+				and starch_maintain_register.remarks = #{remarks}
+			</if>
+			<if test="parentId != null and parentId !='' ">
+				and starch_maintain_register.parent_id = #{parentId}
+			</if>
+			<if test="departments != null and departments !='' ">
+				and starch_maintain_register.departments = #{departments}
+			</if>
+			<if test="wxPersons != null and wxPersons !='' ">
+				and starch_maintain_register.wx_persons = #{wxPersons}
+			</if>
+			<if test="ptype != null and ptype !='' ">
+				and starch_maintain_register.ptype = #{ptype}
+			</if>
+			and starch_maintain_register.delete_id = 0
+		</where>
+	</sql>
+
+
+	<!--	queryRelevanceCatList-->
+	<select id="queryRelevanceCatList"  parameterType="com.jindan.jdy.common.dto.StarchMaintainRegisterDto" resultMap="BaseResultMapDto">
+		SELECT
+		 warehouse_depository.name as property_type,starch_maintain_register.*,starch_organization_put.*
+		FROM  starch_maintain_register
+		left JOIN starch_register_put ON starch_register_put.register_id = starch_maintain_register.wxid and starch_register_put.delete_id = 0
+		left JOIN starch_organization_put ON starch_organization_put.oid = starch_register_put.put_id and starch_organization_put.delete_id = 0
+		left JOIN warehouse_depository ON warehouse_depository.id = starch_organization_put.property_type and warehouse_depository.delete_id = 0
+		<include refid="selectexpend"></include>
+		order by starch_maintain_register.wxstatus DESC ,starch_maintain_register.service_date DESC
+	</select>
+
+<!--	seletByZichan-->
+	<select id="seletByZichan" parameterType="java.lang.String" resultMap="BaseResultMap">
+		 SELECT
+			starch_maintain_register.*
+		 FROM  starch_register_put
+		 right JOIN starch_maintain_register ON starch_register_put.register_id = starch_maintain_register.wxid and starch_maintain_register.delete_id = 0
+		 where   starch_register_put.put_id = #{id}
+	</select>
+
+<!--	seleteJidanxiu-->
+	<select id="seleteJidanxiu" resultMap="BaseResultMaps">
+-- 	 SELECT * FROM ( SELECT starch_maintain_register.*, starch_register_put.put_id as parent_ids
+-- 	 FROM starch_maintain_register left JOIN starch_register_put
+-- 	 ON starch_register_put.register_id = starch_maintain_register.wxid
+-- 	 and starch_register_put.delete_id = 0 WHERE starch_maintain_register.wxstatus ="正常"
+-- 	 ORDER BY starch_maintain_register.service_date DESC ) as tu GROUP BY tu.parent_ids
+--  SELECT  starch_maintain_register.*, starch_register_put.put_id as parent_ids   FROM starch_maintain_register -- left JOIN starch_register_put ON starch_register_put.register_id = starch_maintain_register.wxid and starch_register_put.delete_id = 0 -- GROUP BY starch_register_put.put_id ORDER BY starch_maintain_register.service_date desc
+	   SELECT * FROM (
+		SELECT
+			starch_maintain_register.*, starch_register_put.put_id as parent_ids
+			FROM  starch_maintain_register
+			left JOIN starch_register_put ON starch_register_put.register_id = starch_maintain_register.wxid and starch_register_put.delete_id = 0
+		 ORDER BY  starch_maintain_register.service_date DESC
+		 ) as tu	GROUP BY tu.parent_ids
+-- 		  SELECT
+-- 			starch_maintain_register.*, starch_register_put.put_id as parent_ids
+-- 			FROM  starch_maintain_register
+-- 			left JOIN starch_register_put ON starch_register_put.register_id = starch_maintain_register.wxid and starch_register_put.delete_id = 0
+-- 		  GROUP BY starch_register_put.put_id  ORDER BY  starch_maintain_register.service_date desc
+	</select>
+
+
+</mapper>

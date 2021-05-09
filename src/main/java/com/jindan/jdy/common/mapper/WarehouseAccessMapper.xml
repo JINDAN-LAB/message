@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.common.mapper.WarehouseAccessMapper">
+
+	<resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.WarehouseAccess">
+		<id column="id" property="id" />
+		<id column="type" property="type" />
+		<id column="goods_id" property="goodsId" />
+		<id column="goods_name" property="goodsName" />
+		<id column="specs_id" property="specsId" />
+		<id column="number" property="number" />
+		<id column="depa_id" property="depaId" />
+		<id column="depa_name" property="depaName" />
+		<id column="create_name" property="createName" />
+		<id column="create_id" property="createId" />
+		<id column="insert_time" property="insertTime" />
+		<id column="update_time" property="updateTime" />
+		<id column="delete_id" property="deleteId" />
+	</resultMap>
+
+	<resultMap id="BaseltMap" type="com.jindan.jdy.common.dto.WarehouseAccessDto">
+		<id column="id" property="id" />
+		<id column="type" property="type" />
+		<id column="goods_id" property="goodsId" />
+		<id column="goods_name" property="goodsName" />
+		<id column="specs_id" property="specsId" />
+		<id column="number" property="number" />
+		<id column="depa_id" property="depaId" />
+		<id column="depa_name" property="depaName" />
+		<id column="create_name" property="createName" />
+		<id column="create_id" property="createId" />
+		<id column="insert_time" property="insertTime" />
+		<id column="update_time" property="updateTime" />
+		<id column="delete_id" property="deleteId" />
+		<association property="warehouseGoods" column="id" javaType="com.jindan.jdy.common.pojo.WarehouseGoods">
+			<id column="id" property="id" />
+			<id column="depository_id" property="depositoryId" />
+			<id column="depository_name" property="depositoryName" />
+			<id column="name" property="name" />
+			<id column="state" property="state" />
+			<id column="remarks" property="remarks" />
+			<id column="create_name" property="createName" />
+			<id column="create_id" property="createId" />
+			<id column="insert_time" property="insertTime" />
+			<id column="update_time" property="updateTime" />
+		</association>
+		<association property="warehouseSpecs" column="id" javaType="com.jindan.jdy.common.pojo.WarehouseSpecs">
+			<id column="id" property="id" />
+			<id column="goods_id" property="goodsId" />
+			<id column="brand" property="brand" />
+			<id column="model" property="model" />
+			<id column="facility_name" property="facilityName" />
+			<id column="commodity_name" property="commodityName" />
+			<id column="num" property="num" />
+			<id column="unit_price" property="unitPrice" />
+			<id column="person" property="person" />
+			<id column="insert_time" property="insertTime" />
+			<id column="update_time" property="updateTime" />
+			<id column="status" property="status" />
+			<id column="delete_id" property="deleteId" />
+			<id column="remarks" property="remarks" />
+			<id column="frequencys" property="frequencys" />
+			<id column="revolutions_per_minute" property="revolutionsPerMinute" />
+			<id column="piece_weight" property="pieceWeight" />
+			<id column="all_weight" property="allWeight" />
+			<id column="texture" property="texture" />
+			<id column="lubrication" property="lubrication" />
+			<id column="parameters" property="parameters" />
+			<id column="powers" property="powers" />
+			<id column="parent_id" property="parentId" />
+		</association>
+		<association property="warehouseDepository" column="id" javaType="com.jindan.jdy.common.pojo.WarehouseDepository">
+			<id column="id" property="id" />
+			<id column="parent_id" property="parentId" />
+			<id column="name" property="name" />
+			<id column="state" property="state" />
+			<id column="create_name" property="createName" />
+			<id column="create_id" property="createId" />
+			<id column="insert_time" property="insertTime" />
+			<id column="update_time" property="updateTime" />
+		</association>
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, type, goods_id, goods_name, specs_id, number, depa_id, depa_name, create_name, create_id, create_time, update_time
+	</sql>
+
+	<sql id="selectexpend">
+		<where>
+			<if test="depaName != null and depaName !='' ">
+				and  warehouse_access.depa_name = #{depaName}
+			</if>
+			<if test="createName != null and createName !='' ">
+				and   warehouse_access.create_name = #{createName}
+			</if>
+			<if test="createId != null and createId !='' ">
+				and  warehouse_access.create_id = #{createId}
+			</if>
+			<if test="depaId != null and depaId !='' ">
+				and  warehouse_access.depa_id = #{depaId}
+			</if>
+			<if test="number != null and number !='' ">
+				and warehouse_access.number = #{number}
+			</if>
+			<if test="specsId != null and specsId !='' ">
+				and warehouse_access.specs_id = #{specsId}
+			</if>
+			<if test="goodsName != null and goodsName !='' ">
+				and warehouse_access.goods_name = #{goodsName}
+			</if>
+			<if test="goodsId != null and goodsId !='' ">
+				and warehouse_access.goods_id = #{goodsId}
+			</if>
+			and warehouse_access.delete_id='0'
+		</where>
+	</sql>
+
+<!-- seleteKeyPointProject-->
+	<select id="seleteKeyPointProject" parameterType="com.jindan.jdy.common.dto.WarehouseAccessDto" resultMap="BaseltMap">
+		SELECT warehouse_access.*,warehouse_goods.*,warehouse_specs.*
+		FROM warehouse_access
+		left JOIN warehouse_depository  ON warehouse_depository.id = warehouse_access.create_id  and warehouse_depository.delete_id =0
+		left JOIN warehouse_goods  ON warehouse_access.goods_id = warehouse_goods.id and warehouse_goods.delete_id =0
+		left JOIN warehouse_specs  ON warehouse_access.specs_id = warehouse_specs.id and warehouse_specs.delete_id =0
+        <include refid="selectexpend"></include>
+	</select>
+
+</mapper>

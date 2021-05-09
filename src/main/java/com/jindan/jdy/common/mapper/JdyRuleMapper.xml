@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.common.mapper.JdyRuleDao">
+
+	<resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.JdyRule">
+		<id column="rule_id" property="ruleId" />
+		<id column="rule_one" property="ruleOne" />
+		<id column="rule_two" property="ruleTwo" />
+		<id column="rule_three" property="ruleThree" />
+		<id column="rule_three_condition" property="ruleThreeCondition" />
+		<id column="rule_four" property="ruleFour" />
+		<id column="rule_four_condition" property="ruleFourCondition" />
+		<id column="departments" property="departments" />
+		<id column="rule_type" property="ruleType" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		rule_id, rule_one, rule_two, rule_three, rule_three_condition, rule_four, rule_four_condition, departments, rule_type
+	</sql>
+	
+</mapper>

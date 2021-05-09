@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.common.mapper.StarchOrganizationPutConsumableMapper">
+
+	<resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.StarchOrganizationPutConsumable">
+		<id column="cid" property="cid" />
+		<id column="imgurl" property="imgurl" />
+		<id column="guige" property="guige" />
+		<id column="danwei" property="danwei" />
+		<id column="num" property="num" />
+		<id column="unit_price" property="unitPrice" />
+		<id column="num_jine" property="numJine" />
+		<id column="remarks" property="remarks" />
+		<id column="anquan_dowm" property="anquanDowm" />
+		<id column="anquan_up" property="anquanUp" />
+		<id column="parent_id" property="parentId" />
+		<id column="insert_time" property="insertTime" />
+		<id column="bianma" property="bianma" />
+		<id column="names" property="names" />
+		<id column="pici" property="pici" />
+		<id column="erweima" property="erweima" />
+		<id column="update_time" property="updateTime" />
+		<id column="delete_id" property="deleteId" />
+		<id column="cangk" property="cangk" />
+	</resultMap>
+
+
+	<resultMap id="BaseResultMapDto" type="com.jindan.jdy.common.dto.StarchOrganizationPutConsumableDto">
+		<id column="cid" property="cid" />
+		<id column="imgurl" property="imgurl" />
+		<id column="guige" property="guige" />
+		<id column="danwei" property="danwei" />
+		<id column="num" property="num" />
+		<id column="unit_price" property="unitPrice" />
+		<id column="num_jine" property="numJine" />
+		<id column="remarks" property="remarks" />
+		<id column="anquan_dowm" property="anquanDowm" />
+		<id column="anquan_up" property="anquanUp" />
+		<id column="parent_id" property="parentId" />
+		<id column="insert_time" property="insertTime" />
+		<id column="bianma" property="bianma" />
+		<id column="names" property="names" />
+		<id column="pici" property="pici" />
+		<id column="erweima" property="erweima" />
+		<id column="update_time" property="updateTime" />
+		<id column="delete_id" property="deleteId" />
+		<id column="cangk" property="cangk" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		cid, imgurl, guige, danwei, num, unit_price, num_jine, remarks, anquan_dowm, anquan_up, parent_id, insert_time, bianma, names, pici, erweima, update_time, delete_id
+	</sql>
+
+	<sql id="selectexpend">
+		<where>
+			<if test="cid != null and cid !='' ">
+				and starch_organization_put_consumable.cid = #{cid}
+			</if>
+			<if test="guige != null and guige !='' ">
+				and starch_organization_put_consumable.guige = #{guige}
+			</if>
+			<if test="danwei != null and danwei !='' ">
+				and starch_organization_put_consumable.danwei = #{danwei}
+			</if>
+			<if test="num != null and num !='' ">
+				and starch_organization_put_consumable.num = #{num}
+			</if>
+			<if test="unitPrice != null and unitPrice !='' ">
+				and starch_organization_put_consumable.unit_price = #{unitPrice}
+			</if>
+			<if test="numJine != null and numJine !='' ">
+				and starch_organization_put_consumable.num_jine = #{numJine}
+			</if>
+			<if test="anquanDowm != null and anquanDowm !='' ">
+				and starch_organization_put_consumable.anquan_dowm = #{anquanDowm}
+			</if>
+			<if test="anquanUp != null and anquanUp !='' ">
+				and starch_organization_put_consumable.anquan_up = #{anquanUp}
+			</if>
+			<if test="bianma != null and bianma !='' ">
+				and starch_organization_put_consumable.bianma = #{bianma}
+			</if>
+			<if test="pici != null and pici !='' ">
+			and starch_organization_put_consumable.pici = #{pici}
+		    </if>
+			<if test="names != null and names !='' ">
+				and starch_organization_put_consumable.names = #{names}
+			</if>
+			<if test="parentId != null and parentId !='' ">
+				and starch_organization_put_consumable.parent_id = #{parentId}
+			</if>
+			<if test="cangk != null and cangk !='' ">
+				and starch_organization_put_consumable.cangk = #{cangk}
+			</if>
+			and starch_organization_put_consumable.delete_id = 0
+		</where>
+	</sql>
+
+	<!--	queryRelevanceCatList-->
+	<select id="queryRelevanceCatList"  parameterType="com.jindan.jdy.common.dto.StarchOrganizationAccessDto" resultMap="BaseResultMapDto">
+	      SELECT * FROM starch_organization_put_consumable
+		  <include refid="selectexpend"></include>
+	</select>
+
+</mapper>

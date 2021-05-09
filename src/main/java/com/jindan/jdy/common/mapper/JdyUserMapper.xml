@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.common.mapper.JdyUserMapper">
+
+	<resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.JdyUser">
+		<id column="user_id" property="userId" />
+		<id column="username" property="username" />
+		<id column="password" property="password" />
+		<id column="wechar_id" property="wecharId" />
+		<id column="role_id" property="roleId" />
+		<id column="phone" property="phone" />
+		<id column="email" property="email" />
+		<id column="power" property="power" />
+		<id column="status" property="status" />
+		<id column="icon" property="icon" />
+		<id column="delete_id" property="deleteId" />
+		<id column="update_time" property="updateTime" />
+		<id column="insert_time" property="insertTime" />
+		<result column="gongsi" property="gongsi" />
+	</resultMap>
+
+	<resultMap id="BaseJdyRole" type="com.jindan.jdy.common.pojo.JdyRole">
+		<id column="role_id" property="roleId" />
+		<id column="role_name" property="roleName" />
+		<id column="role_describe" property="roleDescribe" />
+	</resultMap>
+
+	<resultMap id="BaseUserPermission" type="com.jindan.jdy.common.pojo.UserPermission">
+		<id column="permission_id" property="permissionId" />
+		<id column="permission" property="permission" />
+		<id column="permission_name" property="permissionName" />
+	</resultMap>
+
+
+	<resultMap id="seleteUserPermission" type="com.jindan.jdy.common.dto.JdyUserDto">
+		<id column="uuserid" property="userId" />
+		<result column="username" property="username" />
+		<result column="password" property="password" />
+		<result column="wechar_id" property="wecharId" />
+		<result column="role_id" property="roleId" />
+		<result column="phone" property="phone" />
+		<result column="email" property="email" />
+		<result column="power" property="power" />
+		<result column="status" property="status" />
+		<result column="icon" property="icon" />
+		<result column="departments" property="departments" />
+		<result column="delete_id" property="deleteId" />
+		<result column="update_time" property="updateTime" />
+		<result column="insert_time" property="insertTime" />
+		<result column="gongsi" property="gongsi" />
+		<collection property="roleList" column="rolesid" ofType="com.jindan.jdy.common.dto.JdyRoleDto">
+			<id column="rolesid" property="roleId" />
+			<result column="role_name" property="roleName" />
+			<result column="role_describe" property="roleDescribe" />
+		    <collection property="userPermissions" ofType="com.jindan.jdy.common.pojo.UserPermission">
+			<id column="permission_id" property="permissionId" />
+			<result column="permission" property="permission" />
+			<result column="permission_name" property="permissionName" />
+		</collection>
+		</collection>
+		<collection property="jdyUserFileList" column="file_id" ofType="com.jindan.jdy.common.pojo.JdyUserFile">
+			<id column="file_id" property="fileId" />
+			<result column="user_file_name" property="userFileName" />
+			<result column="file_name" property="fileName" />
+			<result column="file_describe" property="fileDescribe" />
+			<result column="user_id" property="userId" />
+			<result column="parent_id" property="parentId" />
+			<result column="insert_time" property="insertTime" />
+			<result column="update_time" property="updateTime" />
+			<result column="delete_id" property="deleteId" />
+		</collection>
+	</resultMap>
+
+	<resultMap id="BaseUserPermissionceshi" type="com.jindan.jdy.common.pojo.UserPermission">
+		<id column="permission_id" property="permissionId" />
+		<id column="permission" property="permission" />
+		<id column="permission_name" property="permissionName" />
+	</resultMap>
+
+
+	<resultMap id="ResultJdyUserDto" type="com.jindan.jdy.common.dto.JdyUserDto">
+		<id column="user_id" property="userId" />
+		<id column="username" property="username" />
+		<id column="password" property="password" />
+		<id column="wechar_id" property="wecharId" />
+		<id column="role_id" property="roleId" />
+		<id column="phone" property="phone" />
+		<id column="email" property="email" />
+		<id column="power" property="power" />
+		<id column="status" property="status" />
+		<id column="icon" property="icon" />
+		<id column="delete_id" property="deleteId" />
+		<id column="update_time" property="updateTime" />
+		<id column="insert_time" property="insertTime" />
+		<result column="gongsi" property="gongsi" />
+		<collection property="userJdyRoleDto" column="role_id" ofType="com.jindan.jdy.common.dto.JdyRoleDto">
+			<id column="role_id" property="roleId" />
+			<result column="role_name" property="roleName" />
+			<result column="role_describe" property="roleDescribe" />
+			<collection property="userPermissions" ofType="com.jindan.jdy.common.pojo.UserPermission">
+				<id column="permission_id" property="permissionId" />
+				<result column="permission" property="permission" />
+				<result column="permission_name" property="permissionName" />
+			</collection>
+		</collection>
+	</resultMap>
+
+
+	<sql id="selectexpend">
+		<where>
+			<if test="userId != null and userId !='' ">
+				and jdy_user.user_id = #{userId}
+			</if>
+			<if test="username != null and username !='' ">
+				and jdy_user.username = #{username}
+			</if>
+			<if test="phone != null and phone !='' ">
+				and jdy_user.phone = #{phone}
+			</if>
+			<if test="email != null and email !='' ">
+				and jdy_user.email = #{email}
+			</if>
+			<if test="power != null and power !='' ">
+				and jdy_user.power = #{power}
+			</if>
+			<if test="gongsi != null and gongsi !='' ">
+				and jdy_user.gongsi = #{gongsi}
+			</if>
+			<if test="departments != null and departments !='' ">
+				and jdy_user.departments = #{departments}
+			</if>
+			  and jdy_user.delete_id = 0;
+		</where>
+	</sql>
+
+	<sql id="Base_Column_List">
+		user_id, username, password, wechar_id, role_id, phone, email, power, status, icon, delete_id, update_time, insert_time
+	</sql>
+
+<!--	List<UserPermission> seleAllUserPriment(Integer userId);-->
+	<select id="seleAllUserPriment"  parameterType="java.lang.Integer" resultType="com.jindan.jdy.common.pojo.UserPermission">
+		SELECT user_permission.*  FROM jdy_user
+		LEFT JOIN user_role_permission ON jdy_user.role_id =user_role_permission.role_id and user_role_permission.delete_id = 0
+	    LEFT JOIN user_permission ON user_permission.permission_id =user_role_permission.permission_id  and user_permission.delete_id = 0
+        WHERE jdy_user.user_id = #{id} and jdy_user.delete_id = 0;
+	</select>
+
+<!--	seleAllUserUserRole-->
+<!--	<select id="seleAllUserUserRole"  parameterType="java.lang.Integer" resultMap="BaseJdyRole">-->
+<!--		SELECT jdy_user.* FROM jdy_user-->
+<!--		LEFT JOIN user_role ON jdy_user.user_id =user_role.user_id-->
+<!--        WHERE jdy_user.user_id = #{id};-->
+<!--	</select>-->
+	  <select id="seleAllUserUserRole"  parameterType="java.lang.String" resultMap="seleteUserPermission">
+	     SELECT  jdy_user.user_id as uuserid,jdy_role.role_id as rolesid, jdy_company.company_name as gongsi, jdy_user.*,jdy_role.*,user_permission.*,jdy_user_file.* FROM jdy_user
+	     LEFT JOIN jdy_user_file ON jdy_user.user_id =jdy_user_file.user_id and jdy_user_file.delete_id = 0
+		 LEFT JOIN user_role ON jdy_user.user_id =user_role.user_id and user_role.delete_id = 0
+		 LEFT JOIN jdy_role ON user_role.role_id =jdy_role.role_id and jdy_role.delete_id = 0
+		 LEFT JOIN user_role_permission ON jdy_role.role_id =user_role_permission.role_id and user_role_permission.delete_id = 0
+		 LEFT JOIN user_permission ON user_permission.permission_id =user_role_permission.permission_id and user_permission.delete_id = 0
+	     LEFT JOIN jdy_company ON jdy_company.ids = jdy_user.gongsi and jdy_company.delete_id = 0
+		 WHERE jdy_user.user_id = #{id} and jdy_user.delete_id = 0;
+	  </select>
+
+	  <select id="selegetInfo"  parameterType="java.lang.String" resultMap="seleteUserPermission">
+	     SELECT jdy_user.user_id as uuserid,jdy_user.*,jdy_role.role_id as rolesid,jdy_role.* FROM jdy_user
+		 LEFT JOIN user_role ON jdy_user.user_id =user_role.user_id and user_role.delete_id = 0
+		 LEFT JOIN jdy_role ON user_role.role_id =jdy_role.role_id and jdy_role.delete_id = 0
+		 WHERE jdy_user.user_id = #{id} and jdy_user.delete_id = 0;
+	  </select>
+
+<!--	seleteUserDetailsOne-->
+	 <select id="seleteUserDetailsOne"  parameterType="java.lang.String" resultMap="ResultJdyUserDto">
+		 SELECT jdy_user.*,jdy_role.*,user_permission.* FROM jdy_user
+		LEFT JOIN user_role ON jdy_user.user_id =user_role.user_id and user_role.delete_id = 0
+		LEFT JOIN jdy_role ON user_role.role_id =jdy_role.role_id and jdy_role.delete_id = 0
+		LEFT JOIN user_role_permission ON jdy_role.role_id =user_role_permission.role_id  and user_role_permission.delete_id = 0
+		LEFT JOIN user_permission ON user_permission.permission_id =user_role_permission.permission_id and user_permission.delete_id = 0
+		WHERE jdy_user.user_id = #{userId} and jdy_user.delete_id = 0 ;
+	  </select>
+
+<!--	selectJdyUserDtoList-->
+	<select id="selectJdyUserDtoList"  parameterType="java.lang.String" resultMap="seleteUserPermission">
+	     SELECT  jdy_user.user_id as uuserid,jdy_role.role_id as rolesid, jdy_company.company_name as gongsi, jdy_user.*,jdy_role.*,user_permission.*,jdy_user_file.* FROM jdy_user
+	     LEFT JOIN jdy_user_file ON jdy_user.user_id =jdy_user_file.user_id and jdy_user_file.delete_id = 0
+		 LEFT JOIN user_role ON jdy_user.user_id =user_role.user_id and user_role.delete_id = 0
+		 LEFT JOIN jdy_role ON user_role.role_id =jdy_role.role_id and jdy_role.delete_id = 0
+		 LEFT JOIN user_role_permission ON jdy_role.role_id =user_role_permission.role_id and user_role_permission.delete_id = 0
+		 LEFT JOIN user_permission ON user_permission.permission_id =user_role_permission.permission_id and user_permission.delete_id = 0
+	     LEFT JOIN jdy_company ON jdy_company.ids = jdy_user.gongsi and jdy_company.delete_id = 0
+		  <include refid="selectexpend"></include>
+	  </select>
+
+</mapper>

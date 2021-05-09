@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.common.mapper.JdyCommodityAppletDao">
+
+	<resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.JdyCommodityApplet">
+		<id column="xid" property="xid" />
+		<id column="xtitle" property="xtitle" />
+		<id column="xcontent" property="xcontent" />
+		<id column="xtime" property="xtime" />
+		<id column="xperson" property="xperson" />
+		<id column="ximgurl1" property="ximgurl1" />
+		<id column="ximgurl2" property="ximgurl2" />
+		<id column="ximgurl3" property="ximgurl3" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		xid, xtitle, xcontent, xtime, xperson, ximgurl1, ximgurl2, ximgurl3
+	</sql>
+	
+</mapper>

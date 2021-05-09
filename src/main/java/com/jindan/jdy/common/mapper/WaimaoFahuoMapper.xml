@@ -1,0 +1,496 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.common.mapper.WaimaoFahuoMapper">
+
+	<resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.WaimaoFahuo">
+		<id column="id" property="id" />
+		<id column="danjuhao" property="danjuhao" />
+		<id column="fahuotime" property="fahuotime" />
+		<id column="fapiaohao" property="fapiaohao" />
+		<id column="hetonghao" property="hetonghao" />
+		<id column="pici" property="pici" />
+		<id column="yewuyuan" property="yewuyuan" />
+		<id column="shouhuokehu" property="shouhuokehu" />
+		<id column="diqufenlei" property="diqufenlei" />
+		<id column="yujizhuangtime" property="yujizhuangtime" />
+		<id column="wuliaoming" property="wuliaoming" />
+		<id column="shuliang" property="shuliang" />
+		<id column="hanshuidanjia" property="hanshuidanjia" />
+		<id column="bizhong" property="bizhong" />
+		<id column="jiagetiaokuan" property="jiagetiaokuan" />
+		<id column="jiashuiheji" property="jiashuiheji" />
+		<id column="benbijiashuiheji" property="benbijiashuiheji" />
+		<id column="baozhuangwu" property="baozhuangwu" />
+		<id column="huikuanxieyi" property="huikuanxieyi" />
+		<id column="yunshudanjia" property="yunshudanjia" />
+		<id column="yunshujine" property="yunshujine" />
+		<id column="huilv" property="huilv" />
+		<id column="fobzongjia" property="fobzongjia" />
+		<id column="haiyunfei" property="haiyunfei" />
+		<id column="yongjin" property="yongjin" />
+		<id column="yufukuan" property="yufukuan" />
+		<id column="lixijiang" property="lixijiang" />
+		<id column="fobticheng" property="fobticheng" />
+		<id column="xinkehuticheng" property="xinkehuticheng" />
+		<id column="biaoji" property="biaoji" />
+		<id column="shifouxinkehu" property="shifouxinkehu" />
+		<id column="diushikehu" property="diushikehu" />
+		<id column="huikuanlv" property="huikuanlv" />
+		<id column="yijisuan" property="yijisuan" />
+		<id column="ceshi1" property="ceshi1" />
+		<id column="ceshi2" property="ceshi2" />
+		<id column="insert_time" property="insertTime" />
+		<id column="update_time" property="updateTime" />
+		<id column="delete_id" property="deleteId" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, danjuhao, fahuotime, fapiaohao, hetonghao, pici, yewuyuan, shouhuokehu, diqufenlei, yujizhuangtime, wuliaoming, shuliang, hanshuidanjia, bizhong, jiagetiaokuan, jiashuiheji, benbijiashuiheji, baozhuangwu, huikuanxieyi, yunshudanjia, yunshujine, huilv, fobzongjia, haiyunfei, yongjin, yufukuan, lixijiang, fobticheng, xinkehuticheng, biaoji, shifouxinkehu, diushikehu, huikuanlv, yijisuan, ceshi1, ceshi2, insert_time, update_time, delete_id
+	</sql>
+
+<!--	BaseltMap-->
+<resultMap id="BaseltMap" type="com.jindan.jdy.common.dto.WaimaoFahuoHuikuan">
+	 <association property="waimaoFahuo" javaType="com.jindan.jdy.common.pojo.WaimaoFahuo">
+		 <id column="id" property="id" />
+		 <id column="danjuhao" property="danjuhao" />
+		 <id column="fahuotime" property="fahuotime" />
+		 <id column="fapiaohao" property="fapiaohao" />
+		 <id column="hetonghao" property="hetonghao" />
+		 <id column="pici" property="pici" />
+		 <id column="yewuyuan" property="yewuyuan" />
+		 <id column="shouhuokehu" property="shouhuokehu" />
+		 <id column="diqufenlei" property="diqufenlei" />
+		 <id column="yujizhuangtime" property="yujizhuangtime" />
+		 <id column="wuliaoming" property="wuliaoming" />
+		 <id column="shuliang" property="shuliang" />
+		 <id column="hanshuidanjia" property="hanshuidanjia" />
+		 <id column="bizhong" property="bizhong" />
+		 <id column="jiagetiaokuan" property="jiagetiaokuan" />
+		 <id column="jiashuiheji" property="jiashuiheji" />
+		 <id column="benbijiashuiheji" property="benbijiashuiheji" />
+		 <id column="baozhuangwu" property="baozhuangwu" />
+		 <id column="huikuanxieyi" property="huikuanxieyi" />
+		 <id column="yunshudanjia" property="yunshudanjia" />
+		 <id column="yunshujine" property="yunshujine" />
+		 <id column="huilv" property="huilv" />
+		 <id column="fobzongjia" property="fobzongjia" />
+		 <id column="haiyunfei" property="haiyunfei" />
+		 <id column="yongjin" property="yongjin" />
+		 <id column="yufukuan" property="yufukuan" />
+		 <id column="lixijiang" property="lixijiang" />
+		 <id column="fobticheng" property="fobticheng" />
+		 <id column="xinkehuticheng" property="xinkehuticheng" />
+		 <id column="biaoji" property="biaoji" />
+		 <id column="shifouxinkehu" property="shifouxinkehu" />
+		 <id column="diushikehu" property="diushikehu" />
+		 <id column="huikuanlv" property="huikuanlv" />
+		 <id column="yijisuan" property="yijisuan" />
+		 <id column="ceshi1" property="ceshi1" />
+		 <id column="ceshi2" property="ceshi2" />
+		 <id column="insert_time" property="insertTime" />
+		 <id column="update_time" property="updateTime" />
+		 <id column="delete_id" property="deleteId" />
+	 </association>
+	 <association property="waimaoHuikuan" javaType="com.jindan.jdy.common.pojo.WaimaoHuikuan">
+		 <id column="id1" property="id" />
+		 <id column="fapiaohao1" property="fapiaohao" />
+		 <id column="huikuanriqi1" property="huikuanriqi" />
+		 <id column="huikuanjine1" property="huikuanjine" />
+		 <id column="jiehuiyinhang1" property="jiehuiyinhang" />
+		 <id column="zhoubie1" property="zhoubie" />
+		 <id column="jine1" property="jine" />
+		 <id column="shijishiyong1" property="shijishiyong" />
+		 <id column="yuliu11" property="yuliu1" />
+		 <id column="yuliu21" property="yuliu2" />
+		 <id column="yuliu31" property="yuliu3" />
+		 <id column="insert_time1" property="insertTime" />
+		 <id column="update_time1" property="updateTime" />
+		 <id column="delete_id1" property="deleteId" />
+	 </association>
+</resultMap>
+
+	<resultMap id="AreaGroupBy" type="com.jindan.jdy.common.dto.WaimaoFahuoDto">
+		<id column="id" property="id" />
+		<id column="danjuhao" property="danjuhao" />
+		<id column="fahuotime" property="fahuotime" />
+		<id column="fapiaohao" property="fapiaohao" />
+		<id column="hetonghao" property="hetonghao" />
+		<id column="pici" property="pici" />
+		<id column="yewuyuan" property="yewuyuan" />
+		<id column="shouhuokehu" property="shouhuokehu" />
+		<id column="diqufenlei" property="diqufenlei" />
+		<id column="yujizhuangtime" property="yujizhuangtime" />
+		<id column="wuliaoming" property="wuliaoming" />
+		<id column="shuliang" property="shuliang" />
+		<id column="hanshuidanjia" property="hanshuidanjia" />
+		<id column="bizhong" property="bizhong" />
+		<id column="jiagetiaokuan" property="jiagetiaokuan" />
+		<id column="jiashuiheji" property="jiashuiheji" />
+		<id column="benbijiashuiheji" property="benbijiashuiheji" />
+		<id column="baozhuangwu" property="baozhuangwu" />
+		<id column="huikuanxieyi" property="huikuanxieyi" />
+		<id column="yunshudanjia" property="yunshudanjia" />
+		<id column="yunshujine" property="yunshujine" />
+		<id column="huilv" property="huilv" />
+		<id column="fobzongjia" property="fobzongjia" />
+		<id column="haiyunfei" property="haiyunfei" />
+		<id column="yongjin" property="yongjin" />
+		<id column="yufukuan" property="yufukuan" />
+		<id column="lixijiang" property="lixijiang" />
+		<id column="fobticheng" property="fobticheng" />
+		<id column="xinkehuticheng" property="xinkehuticheng" />
+		<id column="biaoji" property="biaoji" />
+		<id column="shifouxinkehu" property="shifouxinkehu" />
+		<id column="diushikehu" property="diushikehu" />
+		<id column="huikuanlv" property="huikuanlv" />
+		<id column="yijisuan" property="yijisuan" />
+		<id column="ceshi1" property="ceshi1" />
+		<id column="ceshi2" property="ceshi2" />
+		<id column="insert_time" property="insertTime" />
+		<id column="update_time" property="updateTime" />
+		<id column="delete_id" property="deleteId" />
+		<association property="waimaoArea" javaType="com.jindan.jdy.common.pojo.WaimaoArea">
+			<id column="seid" property="seid" />
+			<id column="regions" property="regions" />
+			<id column="destinations" property="destinations" />
+			<id column="insert_time" property="insertTime" />
+			<id column="update_time" property="updateTime" />
+			<id column="delete_id" property="deleteId" />
+			<id column="products" property="products" />
+		</association>
+
+	</resultMap>
+
+	<sql id="selectexpend">
+		<where>
+			<if test="depaName != null and depaName !='' ">
+				and  warehouse_access.depa_name = #{depaName}
+			</if>
+			<if test="createName != null and createName !='' ">
+				and   warehouse_access.create_name = #{createName}
+			</if>
+			<if test="createId != null and createId !='' ">
+				and  warehouse_access.create_id = #{createId}
+			</if>
+			<if test="depaId != null and depaId !='' ">
+				and  warehouse_access.depa_id = #{depaId}
+			</if>
+			<if test="number != null and number !='' ">
+				and warehouse_access.number = #{number}
+			</if>
+			<if test="specsId != null and specsId !='' ">
+				and warehouse_access.specs_id = #{specsId}
+			</if>
+			<if test="goodsName != null and goodsName !='' ">
+				and warehouse_access.goods_name = #{goodsName}
+			</if>
+			<if test="goodsId != null and goodsId !='' ">
+				and warehouse_access.goods_id = #{goodsId}
+			</if>
+			and warehouse_access.delete_id='0'
+		</where>
+	</sql>
+
+	<sql id="selesql">
+		<where>
+			<if test="fahuotime != null and fahuotime !='' ">
+				and DATE_FORMAT(fahuotime,'%m') = #{fahuotime}
+			</if>
+			and waimao_fahuo.delete_id= 0
+		</where>
+	</sql>
+
+
+	<sql id="selesqllist">
+		<where>
+			<if test="fahuotime != null and fahuotime !='' ">
+				and DATE_FORMAT(fahuotime,'%m') = #{fahuotime}
+			</if>
+			and waimao_fahuo.delete_id= 0
+		</where>
+	</sql>
+
+	<sql id="seleyuefensqllist">
+		<where>
+			<if test="fahuotime != null and fahuotime !='' ">
+				and DATE_FORMAT(fahuotime,'%m') &lt;= #{fahuotime}
+			</if>
+			and waimao_fahuo.delete_id= 0
+		</where>
+	</sql>
+
+<!--	seleyuefenDangyuefen-->
+	<sql id="seleyuefenDangyuefen">
+		<where>
+			<if test="fahuotime != null and fahuotime !='' ">
+				and DATE_FORMAT(fahuotime,'%m') = #{fahuotime}
+			</if>
+			and waimao_fahuo.delete_id= 0
+		</where>
+	</sql>
+
+	<!-- seleteAlllist  发货回款关联表-->
+	<select id="seleteAlllist" parameterType="com.jindan.jdy.common.dto.WaimaoFahuoDto" resultMap="BaseltMap">
+		SELECT
+		 waimao_huikuan.id as id1,
+		 waimao_huikuan.fapiaohao as fapiaohao1,
+		 waimao_huikuan.huikuanriqi as huikuanriqi1,
+		 waimao_huikuan.huikuanjine as huikuanjine1,
+		 waimao_huikuan.jiehuiyinhang as jiehuiyinhang1,
+		 waimao_huikuan.zhoubie as zhoubie1,
+		 waimao_huikuan.shouhuokehu as shouhuokehu1,
+		 waimao_huikuan.bizhong as bizhong1,
+		 waimao_huikuan.shijishiyong as shijishiyong1,
+		 waimao_huikuan.insert_time as  insert_time1,
+		 waimao_huikuan.update_time as update_time1,
+		 waimao_huikuan.delete_id as delete_id1,
+		 waimao_huikuan.jine as jine1,
+		 waimao_fahuo.*
+		 FROM waimao_huikuan
+		LEFT JOIN waimao_fahuo ON waimao_fahuo.fapiaohao = waimao_huikuan.fapiaohao  group by  waimao_fahuo.fapiaohao
+     UNION
+		SELECT
+		 waimao_huikuan.id as id1,
+		 waimao_huikuan.fapiaohao as fapiaohao1,
+		 waimao_huikuan.huikuanriqi as huikuanriqi1,
+		 waimao_huikuan.huikuanjine as huikuanjine1,
+		 waimao_huikuan.jiehuiyinhang as jiehuiyinhang1,
+		 waimao_huikuan.zhoubie as zhoubie1,
+		 waimao_huikuan.shouhuokehu as shouhuokehu1,
+		 waimao_huikuan.bizhong as bizhong1,
+		 waimao_huikuan.shijishiyong as shijishiyong1,
+		 waimao_huikuan.insert_time as  insert_time1,
+		 waimao_huikuan.update_time as update_time1,
+		 waimao_huikuan.delete_id as delete_id1,
+		 waimao_huikuan.jine as jine1,
+		 waimao_fahuo.*
+		 FROM waimao_huikuan
+		RIGHT JOIN waimao_fahuo ON waimao_fahuo.fapiaohao = waimao_huikuan.fapiaohao group by  waimao_fahuo.fapiaohao
+	</select>
+
+
+<!--产品销售统计表-->
+	<select id="seleteAlllistgroupby" parameterType="com.jindan.jdy.common.dto.WaimaoFahuoDto" resultMap="BaseResultMap">
+		SELECT
+           wuliaoming,
+		   SUM(shuliang)  as shuliang,
+		   SUM(jiashuiheji)  as jiashuiheji,
+           SUM(fobzongjia)  as fobzongjia
+		 FROM waimao_fahuo
+		 <include refid="selesql"></include>
+		 GROUP BY waimao_fahuo.wuliaoming
+	</select>
+
+
+<!--	seleteMarketgroupby  区域销售统计表-->
+	<select id="seleteMarketgroupby" parameterType="com.jindan.jdy.common.dto.WaimaoFahuoDto" resultMap="AreaGroupBy">
+		SELECT
+			waimao_area.destinations,
+			waimao_area.regions,
+		    shouhuokehu,
+		    wuliaoming,
+		    SUM(shuliang) as shuliang ,
+			SUM(jiashuiheji) as  jiashuiheji,
+		    SUM(fobzongjia) as fobzongjia
+		FROM waimao_fahuo
+		LEFT JOIN waimao_area on waimao_fahuo.shouhuokehu = waimao_area.destinations
+		GROUP BY diqufenlei, shouhuokehu,wuliaoming
+    </select>
+
+<!--   客户排名表	-->
+	<select id="seleteTranking" parameterType="com.jindan.jdy.common.dto.WaimaoFahuoDto" resultMap="AreaGroupBy">
+			  SELECT
+				waimao_area.regions,
+				shouhuokehu,
+				wuliaoming,
+				SUM(shuliang) as shuliang,
+				SUM(jiashuiheji) as jiashuiheji,
+				SUM(fobzongjia) as fobzongjia
+				FROM waimao_fahuo
+				LEFT JOIN waimao_area on waimao_fahuo.shouhuokehu = waimao_area.destinations
+				GROUP BY  shouhuokehu,wuliaoming   order by  SUM(shuliang)  desc
+
+-- 				SELECT
+-- 				shouhuokehu,
+-- 				wuliaoming,
+-- 				SUM(shuliang) as shuliang,
+-- 				SUM(jiashuiheji) as jiashuiheji,
+-- 				SUM(fobzongjia) as fobzongjia
+-- 				FROM waimao_fahuo
+-- 				GROUP BY shouhuokehu,wuliaoming order by shouhuokehu
+      </select>
+
+
+<!--  销售人员完成情况表	seleteCompletion-->
+	<select id="seleteCompletion" parameterType="com.jindan.jdy.common.dto.WaimaoFahuoDto" resultMap="AreaGroupBy">
+	     select
+			waimao_target.*,
+		     ceshi1 as huikuan,
+		    yewuyuan,
+			waimao_target.eryue,
+			SUM(jiashuiheji) ,
+			SUM(shuliang ) as shu1
+		from waimao_fahuo
+		LEFT JOIN waimao_target ON waimao_target.waimao_person = waimao_fahuo.yewuyuan
+		where DATE_FORMAT(fahuotime,'%m') = '02' GROUP BY yewuyuan
+   </select>
+
+<!-- 根据年份进行查询数据信息	seleteYearCompletion-->
+	<select id="seleteYearCompletion" parameterType="com.jindan.jdy.common.dto.WaimaoFahuoDto" resultMap="AreaGroupBy">
+	     select
+			waimao_target.*,
+		     ceshi1 as huikuan,
+		    yewuyuan,
+			waimao_target.eryue,
+			SUM(jiashuiheji),
+			SUM(shuliang ) as shu1
+		from waimao_fahuo
+		LEFT JOIN waimao_target ON waimao_target.waimao_person = waimao_fahuo.yewuyuan
+		where DATE_FORMAT(fahuotime,'%m') = '02' GROUP BY yewuyuan
+   </select>
+
+<!--	seleteYuefenTongji-->
+	<select id="seleteYuefenTongji" parameterType="com.jindan.jdy.common.pojo.WaimaoFahuo" resultMap="BaseResultMap">
+		SELECT  *  FROM waimao_fahuo 
+		<include refid="selesqllist"></include>
+   </select>
+
+	<select id="seleteAnzhaoQuyuYuefenTongji" parameterType="com.jindan.jdy.common.dto.WaimaoFahuoDto" resultMap="AreaGroupBy">
+		SELECT  *  FROM waimao_fahuo
+		<include refid="selesqllist"></include>
+	</select>
+
+<!--	seleteYuefenDayuAlllist-->
+	<select id="seleteYuefenDayuAlllist" parameterType="com.jindan.jdy.common.pojo.WaimaoFahuo" resultMap="BaseResultMap">
+		SELECT  *  FROM waimao_fahuo
+		<include refid="seleyuefensqllist"></include>
+	</select>
+
+<!--	seleteDangyuefenDayuAlllist-->
+	<select id="seleteDangyuefenDayuAlllist" parameterType="com.jindan.jdy.common.pojo.WaimaoFahuo" resultMap="BaseResultMap">
+		SELECT  *  FROM waimao_fahuo
+		<include refid="seleyuefenDangyuefen"></include>
+		order waimao_fahuo.fahuotime
+	</select>
+
+
+<!--	List<WaimaoFahuoDto> seleteDangyueCompletion(WaimaoFahuoDto jdyRole);-->
+	<select id="seleteDangyueCompletion" parameterType="com.jindan.jdy.common.pojo.WaimaoFahuo" resultMap="AreaGroupBy">
+	     select
+			waimao_target.*,
+		    ceshi1 as huikuan,
+		    yewuyuan,
+			waimao_target.eryue,
+			SUM(jiashuiheji) as jiashuiheji,
+			SUM(shuliang ) as shu1
+		from waimao_fahuo
+		LEFT JOIN waimao_target ON waimao_target.waimao_person = waimao_fahuo.yewuyuan
+		<include refid="seleyuefenDangyuefen"></include>
+		GROUP BY yewuyuan
+   </select>
+
+<!--	seleteShangyueCompletion  相同接口重复了-->
+	<select id="seleteShangyueCompletion" parameterType="com.jindan.jdy.common.pojo.WaimaoFahuo" resultMap="AreaGroupBy">
+		select
+		waimao_target.*,
+		ceshi1 as huikuan,
+		yewuyuan,
+		waimao_target.eryue,
+		SUM(jiashuiheji),
+		SUM(shuliang ) as shu1
+		from waimao_fahuo
+		LEFT JOIN waimao_target ON waimao_target.waimao_person = waimao_fahuo.yewuyuan
+		<include refid="seleyuefenDangyuefen"></include>
+		GROUP BY yewuyuan
+	</select>
+
+
+<!--	seleteLeijiCompletion-->
+	<select id="seleteLeijiCompletion" parameterType="com.jindan.jdy.common.pojo.WaimaoFahuo" resultMap="AreaGroupBy">
+		select
+		waimao_target.*,
+		ceshi1 as huikuan,
+		yewuyuan,
+		waimao_target.eryue,
+		SUM(jiashuiheji),
+		SUM(shuliang ) as shu1
+		from waimao_fahuo
+		LEFT JOIN waimao_target ON waimao_target.waimao_person = waimao_fahuo.yewuyuan
+		<include refid="seleyuefensqllist"></include>
+		GROUP BY yewuyuan
+	</select>
+
+
+<!--	seletePaimingTranking-->
+	<select id="seletePaimingTranking" parameterType="com.jindan.jdy.common.pojo.WaimaoFahuo" resultMap="BaseResultMap">
+			SELECT
+				shouhuokehu,
+				SUM(shuliang) as shuliang,
+				SUM(jiashuiheji) as jiashuiheji,
+				SUM(fobzongjia) as fobzongjia
+				FROM waimao_fahuo
+				<include refid="seleyuefensqllist"></include>
+			GROUP BY  shouhuokehu   order by  SUM(shuliang)  desc
+    </select>
+
+<!--	List<WaimaoFahuo> seleteFahuoDanjuhao(WaimaoFahuo param);-->
+	<select id="seleteFahuoDanjuhao" parameterType="com.jindan.jdy.common.pojo.WaimaoFahuo" resultMap="BaseResultMap">
+		SELECT
+		fapiaohao,
+		shouhuokehu,
+		SUM(shuliang) as shuliang,
+		SUM(jiashuiheji) as jiashuiheji,
+		SUM(fobzongjia) as fobzongjia
+		FROM waimao_fahuo
+		<include refid="seleyuefensqllist"></include>
+		GROUP BY  fapiaohao
+	</select>
+
+<!--本月的逾期欠款-->
+<!--	List<WaimaoFahuo> seleteWaimaoAlllist(WaimaoFahuo jdyRole);-->
+	<select id="seleteWaimaoAlllist" parameterType="com.jindan.jdy.common.pojo.WaimaoFahuo" resultMap="BaseResultMap">
+		SELECT
+		fapiaohao,
+		shouhuokehu,
+		SUM(shuliang) as shuliang,
+		SUM(jiashuiheji) as jiashuiheji,
+		SUM(fobzongjia) as fobzongjia
+		FROM waimao_fahuo
+		<include refid="seleyuefenDangyuefen"></include>
+		GROUP BY  yewuyuan
+	</select>
+
+<!--	List<WaimaoFahuo> seleteQuannianWaimaoAlllist(WaimaoFahuo jdyRole);-->
+	<select id="seleteQuannianWaimaoAlllist" parameterType="com.jindan.jdy.common.pojo.WaimaoFahuo" resultMap="BaseResultMap">
+		SELECT
+		fapiaohao,
+		shouhuokehu,
+		SUM(shuliang) as shuliang,
+		SUM(jiashuiheji) as jiashuiheji,
+		SUM(fobzongjia) as fobzongjia
+		FROM waimao_fahuo
+		<include refid="seleyuefensqllist"></include>
+		GROUP BY  yewuyuan
+	</select>
+
+<!--	List<WaimaoFahuoDto> selelteLeijixiaoshou(WaimaoFahuo jdyRole);-->
+	<select id="selelteLeijixiaoshou" parameterType="com.jindan.jdy.common.pojo.WaimaoFahuo" resultMap="BaseResultMap">
+		SELECT
+		fapiaohao,
+		shouhuokehu,
+		SUM(shuliang) as shuliang,
+		SUM(jiashuiheji) as jiashuiheji,
+		SUM(fobzongjia) as fobzongjia
+		FROM waimao_fahuo
+		<include refid="seleyuefensqllist"></include>
+		GROUP BY  yewuyuan
+	</select>
+
+<!--	List<WaimaoFahuoDto> seleteMubiao(WaimaoFahuo jdyRole);-->
+	<select id="seleteMubiao" parameterType="com.jindan.jdy.common.pojo.WaimaoFahuo" resultMap="AreaGroupBy">
+		select
+		waimao_target.*,waimao_fahuo.*
+		from waimao_fahuo
+		LEFT JOIN waimao_target ON waimao_target.waimao_person = waimao_fahuo.yewuyuan
+		<include refid="seleyuefensqllist"></include>
+	</select>
+</mapper>

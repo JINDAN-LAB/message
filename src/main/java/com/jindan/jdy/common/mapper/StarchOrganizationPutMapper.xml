@@ -1,0 +1,840 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.common.mapper.StarchOrganizationPutMapper">
+
+	<resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.StarchOrganizationPut">
+		<id column="oid" property="oid" />
+		<id column="status" property="status" />
+		<id column="imgurl" property="imgurl" />
+		<id column="erweima" property="erweima" />
+		<id column="property_name" property="propertyName" />
+		<id column="property_type" property="propertyType" />
+		<id column="property_guige" property="propertyGuige" />
+		<id column="property_sn" property="propertySn" />
+		<id column="property_nums" property="propertyNums" />
+		<id column="property_jine" property="propertyJine" />
+		<id column="companys" property="companys" />
+		<id column="departments" property="departments" />
+		<id column="use_person" property="usePerson" />
+		<id column="areas" property="areas" />
+		<id column="store_areas" property="storeAreas" />
+		<id column="manager_person" property="managerPerson" />
+		<id column="belong_company" property="belongCompany" />
+		<id column="purchase_time" property="purchaseTime" />
+		<id column="suppliers" property="suppliers" />
+		<id column="service_life" property="serviceLife" />
+		<id column="creator_person" property="creatorPerson" />
+		<id column="source_of" property="sourceOf" />
+		<id column="insert_time" property="insertTime" />
+		<id column="update_time" property="updateTime" />
+		<id column="delete_id" property="deleteId" />
+		<id column="maintain_cycle" property="maintainCycle" />
+		<id column="spare_is" property="spareIs" />
+		<id column="parent_id" property="parentId" />
+		<id column="jianxiuren" property="jianxiuren" />
+		<id column="weixiuren" property="weixiuren" />
+		<id column="remarks" property="remarks" />
+		<id column="baoyang" property="baoyang" />
+		<id column="runhua" property="runhua" />
+		<id column="canshu" property="canshu" />
+		<id column="bianma" property="bianma" />
+		<id column="xuhao" property="xuhao" />
+		<id column="weihao" property="weihao" />
+		<id column="jixiugong" property="jixiugong" />
+		<id column="pinpai" property="pinpai" />
+		<id column="counting_unit" property="countingUnit" />
+		<id column="powers" property="powers" />
+		<id column="caizhi" property="caizhi" />
+	</resultMap>
+
+
+	<resultMap id="BaseResultMapDtoxiangqing" type="com.jindan.jdy.common.dto.StarchOrganizationPutDto">
+		<id column="oid" property="oid" />
+		<id column="status" property="status" />
+		<id column="imgurl" property="imgurl" />
+		<id column="erweima" property="erweima" />
+		<id column="property_name" property="propertyName" />
+		<id column="property_types" property="propertyType" />
+		<id column="property_guige" property="propertyGuige" />
+		<id column="property_sn" property="propertySn" />
+		<id column="property_nums" property="propertyNums" />
+		<id column="property_jine" property="propertyJine" />
+		<id column="companys" property="companys" />
+		<id column="departments" property="departments" />
+		<id column="use_person" property="usePerson" />
+		<id column="areas" property="areas" />
+		<id column="store_areas" property="storeAreas" />
+		<id column="manager_person" property="managerPerson" />
+		<id column="belong_company" property="belongCompany" />
+		<id column="purchase_time" property="purchaseTime" />
+		<id column="suppliers" property="suppliers" />
+		<id column="service_life" property="serviceLife" />
+		<id column="creator_person" property="creatorPerson" />
+		<id column="source_of" property="sourceOf" />
+		<id column="delete_id" property="deleteId" />
+		<id column="maintain_cycle" property="maintainCycle" />
+		<id column="spare_is" property="spareIs" />
+		<id column="parent_id" property="parentId" />
+		<id column="jianxiuren" property="jianxiuren" />
+		<id column="weixiuren" property="weixiuren" />
+		<id column="remarks" property="remarks" />
+		<id column="baoyang" property="baoyang" />
+		<id column="runhua" property="runhua" />
+		<id column="canshu" property="canshu" />
+		<id column="bianma" property="bianma" />
+		<id column="xuhao" property="xuhao" />
+		<id column="weihao" property="weihao" />
+		<id column="jixiugong" property="jixiugong" />
+		<id column="ptype" property="ptype" />
+		<id column="pinpai" property="pinpai" />
+		<id column="counting_unit" property="countingUnit" />
+		<id column="powers" property="powers" />
+		<id column="caizhi" property="caizhi" />
+		<id column="shangcibaoyang" property="shangcibaoyang" />
+		<association  property="starchOrganizationAlteration"  column="wid" javaType="com.jindan.jdy.common.pojo.StarchMaintenanceAlteration">
+			<result column="wid" property="wid" />
+			<result column="wstatus" property="wstatus" />
+			<result column="change_number" property="changeNumber" />
+			<result column="change_person" property="changePerson" />
+			<result column="supplierss" property="suppliers" />
+			<result column="persons" property="persons" />
+			<result column="change_date" property="changeDate" />
+			<result column="phone_type" property="phoneType" />
+			<result column="charge_person" property="chargePerson" />
+			<result column="maintenance_date" property="maintenanceDate" />
+			<result column="maintenance_type" property="maintenanceType" />
+			<result column="insert_time" property="insertTime" />
+			<result column="update_time" property="updateTime" />
+			<result column="delete_id" property="deleteId" />
+			<result column="parent_id" property="parentId" />
+		</association>
+		<collection property="registerList" column="ids" ofType="com.jindan.jdy.common.pojo.StarchMaintainRegister">
+			<id column="wxid" property="wxid" />
+			<id column="status" property="status" />
+			<id column="wxstatus" property="wxstatus" />
+			<id column="service_number" property="serviceNumber" />
+			<id column="imgurl" property="imgurl" />
+			<id column="service_date" property="serviceDate" />
+			<id column="service_person" property="servicePerson" />
+			<id column="warranty_person" property="warrantyPerson" />
+			<id column="service_jine" property="serviceJine" />
+			<id column="service_content" property="serviceContent" />
+			<id column="remarks" property="remarks" />
+			<id column="parent_ids" property="parentId" />
+			<id column="insert_time" property="insertTime" />
+			<id column="update_time" property="updateTime" />
+			<id column="delete_id" property="deleteId" />
+			<id column="ptypes" property="ptypes" />
+			<id column="departments" property="departments" />
+		</collection>
+		<collection property="fileList" column="file_id" ofType="com.jindan.jdy.common.pojo.JdyUserFile">
+			<id column="file_id" property="fileId" />
+			<id column="user_file_name" property="userFileName" />
+			<id column="file_name" property="fileName" />
+			<id column="file_describe" property="fileDescribe" />
+			<id column="user_id" property="userId" />
+			<id column="parent_id" property="parentId" />
+		</collection>
+		<collection property="subtypeDtoList"
+					javaType="ArrayList" ofType="com.jindan.jdy.common.dto.StarchOrganizationPutSubtypeDto"
+					resultMap="registerListxiangqing"  />
+	</resultMap>
+	<resultMap id="registerListxiangqing" type="com.jindan.jdy.common.dto.StarchOrganizationPutSubtypeDto">
+		<id column="tid" property="tid" />
+		<id column="names1" property="names" />
+		<id column="parent_id" property="parentId" />
+		<collection property="lists" column="tid" ofType="com.jindan.jdy.common.pojo.StarchOrganizationPutSubtypeAsset">
+			<id column="tsid" property="tsid" />
+			<id column="parent_ids" property="parentIds" />
+			<id column="sn_code" property="snCode" />
+			<id column="canshu12" property="canshu" />
+			<id column="names12" property="names" />
+			<id column="remarks12" property="remarks" />
+		</collection>
+	</resultMap>
+
+
+	<resultMap id="BaseResultMapDto" type="com.jindan.jdy.common.dto.StarchOrganizationPutDto">
+		<id column="oid" property="oid" />
+		<id column="status" property="status" />
+		<id column="imgurl" property="imgurl" />
+		<id column="erweima" property="erweima" />
+		<id column="property_name" property="propertyName" />
+		<id column="property_types" property="propertyType" />
+		<id column="property_guige" property="propertyGuige" />
+		<id column="property_sn" property="propertySn" />
+		<id column="property_nums" property="propertyNums" />
+		<id column="property_jine" property="propertyJine" />
+		<id column="companys" property="companys" />
+		<id column="departments" property="departments" />
+		<id column="use_person" property="usePerson" />
+		<id column="areas" property="areas" />
+		<id column="store_areas" property="storeAreas" />
+		<id column="manager_person" property="managerPerson" />
+		<id column="belong_company" property="belongCompany" />
+		<id column="purchase_time" property="purchaseTime" />
+		<id column="suppliers" property="suppliers" />
+		<id column="service_life" property="serviceLife" />
+		<id column="creator_person" property="creatorPerson" />
+		<id column="source_of" property="sourceOf" />
+		<id column="delete_id" property="deleteId" />
+		<id column="maintain_cycle" property="maintainCycle" />
+		<id column="spare_is" property="spareIs" />
+		<id column="parent_id" property="parentId" />
+		<id column="jianxiuren" property="jianxiuren" />
+		<id column="weixiuren" property="weixiuren" />
+		<id column="remarks" property="remarks" />
+		<id column="baoyang" property="baoyang" />
+		<id column="runhua" property="runhua" />
+		<id column="canshu" property="canshu" />
+		<id column="bianma" property="bianma" />
+		<id column="xuhao" property="xuhao" />
+		<id column="weihao" property="weihao" />
+		<id column="jixiugong" property="jixiugong" />
+		<id column="ptype" property="ptype" />
+		<id column="pinpai" property="pinpai" />
+		<id column="counting_unit" property="countingUnit" />
+		<id column="powers" property="powers" />
+		<id column="caizhi" property="caizhi" />
+		<association  property="starchOrganizationAlteration"  column="wid" javaType="com.jindan.jdy.common.pojo.StarchMaintenanceAlteration">
+			<result column="wid" property="wid" />
+			<result column="wstatus" property="wstatus" />
+			<result column="change_number" property="changeNumber" />
+			<result column="change_person" property="changePerson" />
+			<result column="supplierss" property="suppliers" />
+			<result column="persons" property="persons" />
+			<result column="change_date" property="changeDate" />
+			<result column="phone_type" property="phoneType" />
+			<result column="charge_person" property="chargePerson" />
+			<result column="maintenance_date" property="maintenanceDate" />
+			<result column="maintenance_type" property="maintenanceType" />
+			<result column="insert_time" property="insertTime" />
+			<result column="update_time" property="updateTime" />
+			<result column="delete_id" property="deleteId" />
+			<result column="parent_id" property="parentId" />
+		</association>
+		<collection property="registerList" column="ids" ofType="com.jindan.jdy.common.pojo.StarchMaintainRegister">
+			<id column="wxid" property="wxid" />
+			<id column="status" property="status" />
+			<id column="wxstatus" property="wxstatus" />
+			<id column="service_number" property="serviceNumber" />
+			<id column="imgurl" property="imgurl" />
+			<id column="service_date" property="serviceDate" />
+			<id column="service_person" property="servicePerson" />
+			<id column="warranty_person" property="warrantyPerson" />
+			<id column="service_jine" property="serviceJine" />
+			<id column="service_content" property="serviceContent" />
+			<id column="remarks" property="remarks" />
+			<id column="parent_ids" property="parentId" />
+			<id column="insert_time" property="insertTime" />
+			<id column="update_time" property="updateTime" />
+			<id column="delete_id" property="deleteId" />
+			<id column="ptypes" property="ptypes" />
+			<id column="departments" property="departments" />
+		</collection>
+		<collection property="fileList" column="file_id" ofType="com.jindan.jdy.common.pojo.JdyUserFile">
+			<id column="file_id" property="fileId" />
+			<id column="user_file_name" property="userFileName" />
+			<id column="file_name" property="fileName" />
+			<id column="file_describe" property="fileDescribe" />
+			<id column="user_id" property="userId" />
+			<id column="parent_id" property="parentId" />
+		</collection>
+		<collection property="subtypeDtoList"
+					javaType="ArrayList" ofType="com.jindan.jdy.common.dto.StarchOrganizationPutSubtypeDto"
+					resultMap="registerList"  />
+	</resultMap>
+	<resultMap id="registerList" type="com.jindan.jdy.common.dto.StarchOrganizationPutSubtypeDto">
+			<id column="tid" property="tid" />
+			<id column="names" property="names" />
+			<id column="parent_id" property="parentId" />
+			<collection property="lists" column="tid" ofType="com.jindan.jdy.common.pojo.StarchOrganizationPutSubtypeAsset">
+				<id column="tsid" property="tsid" />
+				<id column="parent_ids" property="parentIds" />
+				<id column="sn_code" property="snCode" />
+				<id column="canshu" property="canshu" />
+				<id column="names" property="names" />
+				<id column="remarks" property="remarks" />
+			</collection>
+	</resultMap>
+
+
+	<resultMap id="BaseResultMapDtodetails" type="com.jindan.jdy.common.dto.StarchOrganizationPutDto">
+		<id column="oid" property="oid" />
+		<id column="status" property="status" />
+		<id column="imgurl" property="imgurl" />
+		<id column="erweima" property="erweima" />
+		<id column="property_name" property="propertyName" />
+		<id column="property_types" property="propertyType" />
+		<id column="property_guige" property="propertyGuige" />
+		<id column="property_sn" property="propertySn" />
+		<id column="property_nums" property="propertyNums" />
+		<id column="property_jine" property="propertyJine" />
+		<id column="companys" property="companys" />
+		<id column="departments" property="departments" />
+		<id column="use_person" property="usePerson" />
+		<id column="areas" property="areas" />
+		<id column="store_areas" property="storeAreas" />
+		<id column="manager_person" property="managerPerson" />
+		<id column="belong_company" property="belongCompany" />
+		<id column="purchase_time" property="purchaseTime" />
+		<id column="suppliers" property="suppliers" />
+		<id column="service_life" property="serviceLife" />
+		<id column="creator_person" property="creatorPerson" />
+		<id column="source_of" property="sourceOf" />
+		<id column="delete_id" property="deleteId" />
+		<id column="maintain_cycle" property="maintainCycle" />
+		<id column="spare_is" property="spareIs" />
+		<id column="parent_id" property="parentId" />
+		<id column="jianxiuren" property="jianxiuren" />
+		<id column="weixiuren" property="weixiuren" />
+		<id column="remarks" property="remarks" />
+		<id column="baoyang" property="baoyang" />
+		<id column="runhua" property="runhua" />
+		<id column="canshu" property="canshu" />
+		<id column="bianma" property="bianma" />
+		<id column="xuhao" property="xuhao" />
+		<id column="weihao" property="weihao" />
+		<id column="jixiugong" property="jixiugong" />
+		<id column="pinpai" property="pinpai" />
+		<id column="counting_unit" property="countingUnit" />
+		<id column="powers" property="powers" />
+		<id column="caizhi" property="caizhi" />
+		<association  property="starchOrganizationAlteration"  column="wid" javaType="com.jindan.jdy.common.pojo.StarchMaintenanceAlteration">
+			<result column="wid" property="wid" />
+			<result column="wstatus" property="wstatus" />
+			<result column="change_number" property="changeNumber" />
+			<result column="change_person" property="changePerson" />
+			<result column="supplierss" property="suppliers" />
+			<result column="persons" property="persons" />
+			<result column="change_date" property="changeDate" />
+			<result column="phone_type" property="phoneType" />
+			<result column="charge_person" property="chargePerson" />
+			<result column="maintenance_date" property="maintenanceDate" />
+			<result column="maintenance_type" property="maintenanceType" />
+			<result column="insert_time" property="insertTime" />
+			<result column="update_time" property="updateTime" />
+			<result column="delete_id" property="deleteId" />
+			<result column="parent_id" property="parentId" />
+		</association>
+		<!--		putList-->
+		<!--		<collection property="putList" column="ids" ofType="com.jindan.jdy.common.pojo.StarchClassifyPutConsumable">-->
+		<!--			<id column="ids" property="ids" />-->
+		<!--			<result column="names" property="names" />-->
+		<!--			<result column="parent_id" property="parentId" />-->
+		<!--			<result column="url" property="url" />-->
+		<!--			<result column="icon" property="icon" />-->
+		<!--			<result column="orders" property="orders" />-->
+		<!--			<result column="insert_time" property="insertTime" />-->
+		<!--			<result column="update_time" property="updateTime" />-->
+		<!--			<result column="delete_id" property="deleteId" />-->
+		<!--			<result column="levels" property="levels" />-->
+		<!--		</collection>-->
+	</resultMap>
+
+
+	<resultMap id="BaseResultMapDtoweibao" type="com.jindan.jdy.common.dto.StarchOrganizationPutDto">
+		<id column="oid" property="oid" />
+		<id column="status" property="status" />
+		<id column="imgurl" property="imgurl" />
+		<id column="erweima" property="erweima" />
+		<id column="property_name" property="propertyName" />
+		<id column="property_type" property="propertyType" />
+		<id column="property_guige" property="propertyGuige" />
+		<id column="property_sn" property="propertySn" />
+		<id column="property_nums" property="propertyNums" />
+		<id column="property_jine" property="propertyJine" />
+		<id column="companys" property="companys" />
+		<id column="departments" property="departments" />
+		<id column="use_person" property="usePerson" />
+		<id column="areas" property="areas" />
+		<id column="store_areas" property="storeAreas" />
+		<id column="manager_person" property="managerPerson" />
+		<id column="belong_company" property="belongCompany" />
+		<id column="purchase_time" property="purchaseTime" />
+		<id column="suppliers" property="suppliers" />
+		<id column="service_life" property="serviceLife" />
+		<id column="creator_person" property="creatorPerson" />
+		<id column="source_of" property="sourceOf" />
+		<id column="delete_id" property="deleteId" />
+		<id column="maintain_cycle" property="maintainCycle" />
+		<id column="spare_is" property="spareIs" />
+		<id column="parent_id" property="parentId" />
+		<id column="jianxiuren" property="jianxiuren" />
+		<id column="weixiuren" property="weixiuren" />
+		<id column="remarks" property="remarks" />
+		<id column="baoyang" property="baoyang" />
+		<id column="runhua" property="runhua" />
+		<id column="canshu" property="canshu" />
+		<id column="bianma" property="bianma" />
+		<id column="xuhao" property="xuhao" />
+		<id column="weihao" property="weihao" />
+		<id column="jixiugong" property="jixiugong" />
+		<id column="pinpai" property="pinpai" />
+		<id column="counting_unit" property="countingUnit" />
+		<id column="powers" property="powers" />
+		<id column="caizhi" property="caizhi" />
+		<association  property="starchOrganizationAlteration"  column="wid" javaType="com.jindan.jdy.common.pojo.StarchMaintenanceAlteration">
+			<result column="wid" property="wid" />
+			<result column="wstatus" property="wstatus" />
+			<result column="change_number" property="changeNumber" />
+			<result column="change_person" property="changePerson" />
+			<result column="supplierss" property="suppliers" />
+			<result column="persons" property="persons" />
+			<result column="change_date" property="changeDate" />
+			<result column="phone_type" property="phoneType" />
+			<result column="charge_person" property="chargePerson" />
+			<result column="maintenance_date" property="maintenanceDate" />
+			<result column="maintenance_type" property="maintenanceType" />
+			<result column="insert_time" property="insertTime" />
+			<result column="update_time" property="updateTime" />
+			<result column="delete_id" property="deleteId" />
+			<result column="parent_id" property="parentId" />
+			<result column="remarks" property="remarks" />
+		</association>
+		<!--		putList-->
+		<!--		<collection property="putList" column="ids" ofType="com.jindan.jdy.common.pojo.StarchClassifyPutConsumable">-->
+		<!--			<id column="ids" property="ids" />-->
+		<!--			<result column="names" property="names" />-->
+		<!--			<result column="parent_id" property="parentId" />-->
+		<!--			<result column="url" property="url" />-->
+		<!--			<result column="icon" property="icon" />-->
+		<!--			<result column="orders" property="orders" />-->
+		<!--			<result column="insert_time" property="insertTime" />-->
+		<!--			<result column="update_time" property="updateTime" />-->
+		<!--			<result column="delete_id" property="deleteId" />-->
+		<!--			<result column="levels" property="levels" />-->
+		<!--		</collection>-->
+	</resultMap>
+
+
+
+	<resultMap id="BaseltMassssp" type="com.jindan.jdy.common.dto.StarchClassifyPutConsumableDto">
+		<id column="ids" property="ids" />
+		<id column="names" property="names" />
+		<id column="parent_id" property="parentId" />
+		<id column="url" property="url" />
+		<id column="icon" property="icon" />
+		<id column="orders" property="orders" />
+		<id column="insert_time" property="insertTime" />
+		<id column="update_time" property="updateTime" />
+		<id column="delete_id" property="deleteId" />
+		<id column="levels" property="levels" />
+		<id column="nums" property="nums" />
+		<id column="jine" property="jine" />
+		<collection property="starchOrganizationPutList" column="ids" ofType="com.jindan.jdy.common.pojo.StarchClassifyPutConsumable">
+			<id column="ids" property="ids" />
+			<result column="names" property="names" />
+			<result column="parent_id" property="parentId" />
+			<result column="url" property="url" />
+			<result column="icon" property="icon" />
+			<result column="orders" property="orders" />
+			<result column="insert_time" property="insertTime" />
+			<result column="update_time" property="updateTime" />
+			<result column="delete_id" property="deleteId" />
+			<result column="levels" property="levels" />
+		</collection>
+	</resultMap>
+
+
+
+	<resultMap id="BaseltMasssspDetails" type="com.jindan.jdy.common.dto.StarchClassifyPutConsumableDto">
+		<id column="ids" property="ids" />
+		<id column="namess" property="names" />
+		<id column="parent_id" property="parentId" />
+		<id column="url" property="url" />
+		<id column="icon" property="icon" />
+		<id column="orders" property="orders" />
+		<id column="insert_time" property="insertTime" />
+		<id column="update_time" property="updateTime" />
+		<id column="delete_id" property="deleteId" />
+		<id column="levels" property="levels" />
+		<id column="nums" property="nums" />
+		<id column="jine" property="jine" />
+	</resultMap>
+
+	<sql id="selectexpend">
+		<where>
+			<if test="oid != null and oid !='' ">
+				and starch_organization_put.oid = #{oid}
+			</if>
+			<if test="status != null and status !='' ">
+				and starch_organization_put.status = #{status}
+			</if>
+			<if test="propertyName != null and propertyName !='' ">
+				and starch_organization_put.property_name like '%${propertyName}%'
+			</if>
+			<if test="propertyType != null and propertyType !='' ">
+				and starch_organization_put.property_type = #{propertyType}
+			</if>
+			<if test="propertyGuige != null and propertyGuige !='' ">
+				and starch_organization_put.property_guige = #{propertyGuige}
+			</if>
+			<if test="propertySn != null and propertySn !='' ">
+				and starch_organization_put.property_sn = #{propertySn}
+			</if>
+			<if test="propertyNums != null and propertyNums !='' ">
+				and starch_organization_put.property_nums = #{propertyNums}
+			</if>
+			<if test="suppliers != null and suppliers !='' ">
+				and starch_organization_put.suppliers = #{suppliers}
+			</if>
+			<if test="parentId != null and parentId !='' ">
+				and starch_organization_put.parent_id = #{parentId}
+			</if>
+			<if test="companys != null and companys !='' ">
+				and starch_organization_put.companys = #{companys}
+			</if>
+			<if test="departments != null and departments !='' ">
+				and starch_organization_put.departments = #{departments}
+			</if>
+			<if test="ptypes != null and ptypes !='' ">
+				and starch_organization_put.ptypes = #{ptypes}
+			</if>
+			<if test="jixiugong != null and jixiugong !='' ">
+				and starch_organization_put.jixiugong = #{jixiugong}
+			</if>
+			<if test="jianxiuren != null and jianxiuren !='' ">
+				and starch_organization_put.jianxiuren = #{jianxiuren}
+			</if>
+			<if test="weixiuren != null and weixiuren !='' ">
+				and starch_organization_put.weixiuren = #{weixiuren}
+			</if>
+			<if test="baoyang != null and baoyang !='' ">
+				and starch_organization_put.baoyang = #{baoyang}
+			</if>
+			<if test="runhua != null and runhua !='' ">
+				and starch_organization_put.runhua = #{runhua}
+			</if>
+			<if test="canshu != null and canshu !='' ">
+				and starch_organization_put.canshu = #{canshu}
+			</if>
+			<if test="bianma != null and bianma !='' ">
+				and starch_organization_put.bianma = #{bianma}
+			</if>
+			<if test="xuhao != null and xuhao !='' ">
+				and starch_organization_put.xuhao = #{xuhao}
+			</if>
+			<if test="weihao != null and weihao !='' ">
+				and starch_organization_put.weihao = #{weihao}
+			</if>
+			<if test="ptype != null and ptype !='' ">
+				and starch_organization_put.ptype = #{ptype}
+			</if>
+			<if test="powers != null and powers !='' ">
+				and starch_organization_put.powers = #{powers}
+			</if>
+			<if test="pinpai != null and pinpai !='' ">
+				and starch_organization_put.pinpai = #{pinpai}
+			</if>
+			<if test="countingUnit != null and countingUnit !='' ">
+				and starch_organization_put.counting_unit = #{countingUnit}
+			</if>
+			<if test="caizhi != null and caizhi !='' ">
+				and starch_organization_put.caizhi = #{caizhi}
+			</if>
+			and starch_organization_put.delete_id = 0
+		</where>
+	</sql>
+
+<!--	selectexpendZiChan-->
+	<sql id="selectexpendZiChan">
+		<where>
+			<if test="oid != null and oid !='' ">
+				and starch_organization_put.oid = #{oid}
+			</if>
+			<if test="status != null and status !='' ">
+				and starch_organization_put.status = #{status}
+			</if>
+			<if test="propertyName != null and propertyName !='' ">
+				and starch_organization_put.property_name = #{propertyName}
+			</if>
+			<if test="serviceLife  != null and  serviceLife !='' ">
+				and starch_organization_put.service_life &lt; #{serviceLife}
+			</if>
+			<if test="propertyGuige != null and propertyGuige !='' ">
+				and starch_organization_put.property_guige = #{propertyGuige}
+			</if>
+			<if test="propertySn != null and propertySn !='' ">
+				and starch_organization_put.property_sn = #{propertySn}
+			</if>
+			<if test="propertyNums != null and propertyNums !='' ">
+				and starch_organization_put.property_nums = #{propertyNums}
+			</if>
+			<if test="suppliers != null and suppliers !='' ">
+				and starch_organization_put.suppliers = #{suppliers}
+			</if>
+			and starch_organization_put.delete_id = 0
+		</where>
+	</sql>
+
+<!--	selectexpendYi-->
+	<sql id="selectexpendYi">
+		<where>
+			<if test="oid != null and oid !='' ">
+				and starch_organization_put.oid = #{oid}
+			</if>
+			<if test="status != null and status !='' ">
+				and starch_organization_put.status = #{status}
+			</if>
+			<if test="propertyName != null and propertyName !='' ">
+				and starch_organization_put.property_name = #{propertyName}
+			</if>
+			<if test="propertyType != null and propertyType !='' ">
+				and starch_organization_put.property_type = #{propertyType}
+			</if>
+			<if test="propertyGuige != null and propertyGuige !='' ">
+				and starch_organization_put.property_guige = #{propertyGuige}
+			</if>
+			<if test="propertySn != null and propertySn !='' ">
+				and starch_organization_put.property_sn = #{propertySn}
+			</if>
+			<if test="propertyNums != null and propertyNums !='' ">
+				and starch_organization_put.property_nums = #{propertyNums}
+			</if>
+			<if test="suppliers != null and suppliers !='' ">
+				and starch_organization_put.suppliers = #{suppliers}
+			</if>
+			<if test="parentId != null and parentId !='' ">
+				and starch_organization_put.parent_id = #{parentId}
+			</if>
+			<if test="companys != null and companys !='' ">
+				and starch_organization_put.companys = #{companys}
+			</if>
+			<if test="departments != null and departments !='' ">
+				and starch_organization_put.departments = #{departments}
+			</if>
+			<if test="ptypes != null and ptypes !='' ">
+				and starch_organization_put.ptypes = #{ptypes}
+			</if>
+			<if test="jixiugong != null and jixiugong !='' ">
+				and starch_organization_put.jixiugong = #{jixiugong}
+			</if>
+			<if test="jianxiuren != null and jianxiuren !='' ">
+				and starch_organization_put.jianxiuren = #{jianxiuren}
+			</if>
+			<if test="weixiuren != null and weixiuren !='' ">
+				and starch_organization_put.weixiuren = #{weixiuren}
+			</if>
+			<if test="baoyang != null and baoyang !='' ">
+				and starch_organization_put.baoyang = #{baoyang}
+			</if>
+			<if test="runhua != null and runhua !='' ">
+				and starch_organization_put.runhua = #{runhua}
+			</if>
+			<if test="canshu != null and canshu !='' ">
+				and starch_organization_put.canshu = #{canshu}
+			</if>
+			<if test="bianma != null and bianma !='' ">
+				and starch_organization_put.bianma = #{bianma}
+			</if>
+			<if test="xuhao != null and xuhao !='' ">
+				and starch_organization_put.xuhao = #{xuhao}
+			</if>
+			<if test="weihao != null and weihao !='' ">
+				and starch_organization_put.weihao = #{weihao}
+			</if>
+			and starch_organization_put.ptype != "已确认"
+			and starch_organization_put.delete_id = 0
+		</where>
+	</sql>
+
+
+<!--	selectexpendWeibao-->
+	<sql id="selectexpendWeibao"><where>
+		<if test="oid != null and oid !='' ">
+			and starch_organization_put.oid = #{oid}
+		</if>
+		<if test="status != null and status !='' ">
+			and starch_organization_put.status = #{status}
+		</if>
+		<if test="propertyName != null and propertyName !='' ">
+			and starch_organization_put.property_name = #{propertyName}
+		</if>
+		<if test="serviceLife  != null and  serviceLife !='' ">
+			and starch_organization_put.service_life &lt; #{serviceLife}
+		</if>
+		<if test="propertyGuige != null and propertyGuige !='' ">
+			and starch_organization_put.property_guige = #{propertyGuige}
+		</if>
+		<if test="propertySn != null and propertySn !='' ">
+			and starch_organization_put.property_sn = #{propertySn}
+		</if>
+		<if test="propertyNums != null and propertyNums !='' ">
+			and starch_organization_put.property_nums = #{propertyNums}
+		</if>
+		<if test="suppliers != null and suppliers !='' ">
+			and starch_organization_put.suppliers = #{suppliers}
+		</if>
+		<if test="ptype != null and ptype !='' ">
+			and starch_organization_put.ptype = #{ptype}
+		</if>
+		and starch_organization_put.delete_id = 0
+	</where>
+
+<!--		<where>-->
+<!--			<if test="wid != null and wid !='' ">-->
+<!--				and starch_maintenance_alteration.wid = #{wid}-->
+<!--			</if>-->
+<!--			<if test="wstatus != null and wstatus !='' ">-->
+<!--				and starch_maintenance_alteration.wstatus = #{wstatus}-->
+<!--			</if>-->
+<!--			<if test="changeNumber != null and changeNumber !='' ">-->
+<!--				and starch_maintenance_alteration.change_number = #{changeNumber}-->
+<!--			</if>-->
+<!--			<if test="changePerson != null and changePerson !='' ">-->
+<!--				and starch_maintenance_alteration.change_person = #{changePerson}-->
+<!--			</if>-->
+<!--			<if test="suppliers != null and suppliers !='' ">-->
+<!--				and starch_maintenance_alteration.suppliers = #{suppliers}-->
+<!--			</if>-->
+<!--			<if test="persons != null and persons !='' ">-->
+<!--				and starch_maintenance_alteration.persons = #{persons}-->
+<!--			</if>-->
+<!--			<if test="changeDate != null and changeDate !='' ">-->
+<!--				and starch_maintenance_alteration.change_date = #{changeDate}-->
+<!--			</if>-->
+<!--			<if test="phoneType != null and phoneType !='' ">-->
+<!--				and starch_maintenance_alteration.phone_type = #{phoneType}-->
+<!--			</if>-->
+<!--			<if test="chargePerson != null and chargePerson !='' ">-->
+<!--				and starch_maintenance_alteration.charge_person = #{chargePerson}-->
+<!--			</if>-->
+<!--			<if test="maintenanceDate != null and maintenanceDate !='' ">-->
+<!--				and starch_maintenance_alteration.maintenance_date  &lt; #{maintenanceDate}-->
+<!--			</if>-->
+<!--			and starch_maintenance_alteration.delete_id = 0-->
+<!--		</where>-->
+	</sql>
+
+	<sql id="Base_Column_List">
+		oid, status, imgurl, erweima, property_name, property_type, property_guige, property_sn, property_nums, property_jine, companys, departments, use_person, areas, store_areas, manager_person, belong_company, purchase_time, suppliers, service_life, creator_person, source_of, insert_time, update_time, delete_id, maintain_cycle, spare_is, parent_id
+	</sql>
+
+<!-- queryRelevanceCatList -->
+	<select id="queryRelevanceCatList"  parameterType="com.jindan.jdy.common.dto.StarchOrganizationPutDto" resultMap="BaseResultMapDtoxiangqing">
+		SELECT
+		starch_organization_put.*,starch_maintenance_alteration.*,starch_maintain_register.*,starch_organization_put_subtype.*,starch_organization_put_subtype_asset.*,
+		starch_maintenance_alteration.suppliers as supplierss,jdy_user_file.*,
+		warehouse_depository.name as property_types,starch_organization_put_subtype.names as names1,starch_organization_put_subtype_asset.names as  names12,
+		starch_organization_put_subtype_asset.remarks as  remarks12,starch_organization_put_subtype_asset.canshu  as  canshu12
+		FROM  starch_organization_put
+		left JOIN starch_alteration_put ON starch_organization_put.oid = starch_alteration_put.put_id and starch_alteration_put.delete_id = 0
+		left JOIN starch_maintenance_alteration ON starch_maintenance_alteration.wid = starch_alteration_put.alteration_id and starch_maintenance_alteration.delete_id = 0
+		left JOIN warehouse_depository ON warehouse_depository.id = starch_organization_put.property_type and warehouse_depository.delete_id = 0
+		left JOIN starch_register_put ON starch_organization_put.oid = starch_register_put.put_id and starch_register_put.delete_id = 0
+		left JOIN starch_maintain_register ON starch_maintain_register.wxid = starch_register_put.register_id and starch_maintain_register.delete_id = 0
+		left JOIN starch_organization_put_subtype ON starch_organization_put_subtype.parent_id = starch_organization_put.oid and starch_organization_put_subtype.delete_id = 0
+		left JOIN starch_organization_put_subtype_asset ON starch_organization_put_subtype_asset.parent_ids = starch_organization_put_subtype.tid and starch_organization_put_subtype_asset.delete_id = 0
+		left JOIN jdy_user_file ON jdy_user_file.parent_id = starch_organization_put.oid and jdy_user_file.delete_id = 0
+		<include refid="selectexpend"></include>
+	</select>
+
+<!-- queryDetailsWeibaoCatList  BaseResultMapDtoweibao-->
+	<select id="queryDetailsWeibaoCatList"  parameterType="com.jindan.jdy.common.dto.StarchOrganizationPutDto" resultMap="BaseResultMapDtoweibao">
+		SELECT
+		    starch_maintenance_alteration.*,starch_maintenance_alteration.suppliers as supplierss
+		FROM  starch_organization_put
+		RIGHT JOIN starch_alteration_put ON starch_organization_put.oid = starch_alteration_put.put_id and starch_alteration_put.delete_id = 0
+		RIGHT JOIN starch_maintenance_alteration ON starch_maintenance_alteration.wid = starch_alteration_put.alteration_id and starch_maintenance_alteration.delete_id = 0
+		<include refid="selectexpend"></include>
+	</select>
+
+<!--	queryDetailsHuizongCatList-->
+	<select id="queryDetailsHuizongCatList"  parameterType="com.jindan.jdy.common.dto.StarchOrganizationPutDto" resultMap="BaseltMassssp">
+		SELECT starch_organization_put.*, COUNT(*) as nums ,SUM(property_jine) as jine ,starch_organization_put.parent_id,starch_classify_put_consumable.* FROM starch_organization_put
+		LEFT JOIN  starch_classify_put_consumable  ON  starch_classify_put_consumable.ids =  starch_organization_put.parent_id and starch_classify_put_consumable.delete_id = 0
+		where starch_organization_put.delete_id =0  GROUP BY starch_organization_put.parent_id
+	</select>
+
+
+<!--	querShiyongFenlei-->
+	<select id="querShiyongFenlei"  resultMap="BaseltMasssspDetails">
+		SELECT COUNT(*) as nums, SUM(starch_organization_put.property_jine)as jine,starch_organization_put.`status` as levels,warehouse_depository.`name` as `namess` FROM starch_organization_put
+		LEFT JOIN warehouse_depository  ON  warehouse_depository.id = starch_organization_put.parent_id
+		where starch_organization_put.ptype  != "已确认"
+		GROUP BY starch_organization_put.parent_id,`status`
+	</select>
+
+<!-- queryZichandaoqi-->
+	<select id="queryZichandaoqi"   parameterType="com.jindan.jdy.common.dto.StarchOrganizationPutDto" resultMap="BaseResultMapDto">
+		SELECT  *  FROM  starch_organization_put
+		<include refid="selectexpendZiChan"></include>
+	</select>
+
+<!-- 维保到期 queryWeibaodaoqi-->
+	<select id="queryWeibaodaoqi"   parameterType="com.jindan.jdy.common.dto.StarchOrganizationPutDto" resultMap="BaseResultMapDto">
+		SELECT
+		starch_organization_put.*
+		FROM  starch_organization_put
+		LEFT JOIN starch_alteration_put ON starch_organization_put.oid = starch_alteration_put.put_id and starch_alteration_put.delete_id = 0
+		LEFT JOIN starch_maintenance_alteration ON starch_maintenance_alteration.wid = starch_alteration_put.alteration_id and starch_maintenance_alteration.delete_id = 0
+		<include refid="selectexpendWeibao"></include>
+	</select>
+
+<!-- querZIchanShoiuye-->
+	<select id="querZIchanShoiuye"  resultMap="BaseltMassssp">
+    	SELECT COUNT(*)as nums, SUM(starch_organization_put.property_jine) as url , starch_organization_put.status as jine ,warehouse_depository.`name` as `names` FROM starch_organization_put
+	    LEFT JOIN warehouse_depository  ON    warehouse_depository.id = starch_organization_put.parent_id
+	    GROUP BY  starch_organization_put.`status`
+    </select>
+
+<!--	updateAddDetailsPut-->
+	<update id="updateAddDetailsPut" parameterType="com.jindan.jdy.common.pojo.StarchOrganizationPutConsumable">
+           update starch_organization_put_consumable set num = num + #{num}
+           where cid = #{cid};
+    </update>
+
+<!--	updateDeleteDetailsPut-->
+	<update id="updateDeleteDetailsPut" parameterType="com.jindan.jdy.common.pojo.StarchOrganizationPutConsumable">
+           update starch_organization_put_consumable set num = num -  #{num}
+           where cid = #{cid};
+    </update>
+
+
+<!--	seleteOrganizationPut-->
+	<select id="seleteOrganizationPut"  parameterType="com.jindan.jdy.common.dto.StarchOrganizationPutDto" resultMap="BaseResultMap">
+		SELECT
+		 starch_organization_put.*
+		FROM  starch_organization_put
+	 <include refid="selectexpend"></include>
+	</select>
+
+
+
+<!--	queryYiquerenCatList-->
+	<select id="queryYiquerenCatList"  parameterType="com.jindan.jdy.common.dto.StarchOrganizationPutDto" resultMap="BaseResultMapDto">
+		SELECT
+		starch_organization_put.*,starch_maintenance_alteration.*,starch_maintain_register.*,
+		starch_maintenance_alteration.suppliers as supplierss,
+		warehouse_depository.name as property_types
+		FROM  starch_organization_put
+		left JOIN starch_alteration_put ON starch_organization_put.oid = starch_alteration_put.put_id and starch_alteration_put.delete_id = 0
+		left JOIN starch_maintenance_alteration ON starch_maintenance_alteration.wid = starch_alteration_put.alteration_id and starch_maintenance_alteration.delete_id = 0
+		left JOIN warehouse_depository ON warehouse_depository.id = starch_organization_put.property_type and warehouse_depository.delete_id = 0
+		left JOIN starch_register_put ON starch_organization_put.oid = starch_register_put.put_id and starch_register_put.delete_id = 0
+		left JOIN starch_maintain_register ON starch_maintain_register.wxid = starch_register_put.register_id and starch_maintain_register.delete_id = 0
+		<include refid="selectexpendYi"></include>
+	</select>
+
+
+<!--	seletFenleiBumenShiyong-->
+	<select id="seletFenleiBumenShiyong"  resultMap="BaseltMasssspDetails">
+		SELECT COUNT(*) as nums, SUM(starch_organization_put.property_jine)as jine,starch_organization_put.`status` as levels,warehouse_depository.`name` as `namess` FROM starch_organization_put
+		LEFT JOIN warehouse_depository  ON  warehouse_depository.id = starch_organization_put.parent_id
+		where starch_organization_put.ptype  = "已确认"
+		GROUP BY starch_organization_put.parent_id,`status`
+	</select>
+
+
+<!--	seletFenleiGeBumenShiyong-->
+	<select id="seletFenleiGeBumenShiyong"  resultMap="BaseltMasssspDetails">
+		SELECT COUNT(*) as nums, SUM(starch_organization_put.property_jine)as jine,starch_organization_put.`status` as levels,starch_organization_put.`departments` as `namess` FROM starch_organization_put
+		LEFT JOIN warehouse_depository  ON  warehouse_depository.id = starch_organization_put.parent_id
+		where starch_organization_put.ptype  = "已确认"
+		GROUP BY starch_organization_put.departments,`status`
+	</select>
+
+</mapper>
+
+

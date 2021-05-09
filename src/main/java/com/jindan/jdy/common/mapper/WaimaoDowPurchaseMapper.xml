@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.common.mapper.WaimaoDowPurchaseMapper">
+
+	<resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.WaimaoDowPurchase">
+		<id column="cid" property="cid" />
+		<id column="suppliers" property="suppliers" />
+		<id column="material_name" property="materialName" />
+		<id column="units" property="units" />
+		<id column="nums" property="nums" />
+		<id column="jine" property="jine" />
+		<id column="tax" property="tax" />
+		<id column="insert_time" property="insertTime" />
+		<id column="update_time" property="updateTime" />
+		<id column="delete_id" property="deleteId" />
+		<id column="remarks" property="remarks" />
+		<id column="jiahsuiheji" property="jiahsuiheji" />
+		<id column="chetonghao" property="chetonghao" />
+		<id column="cfapiaohao" property="cfapiaohao" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		cid, suppliers, material_name, units, nums, jine, tax, insert_time, update_time, delete_id, remarks, jiahsuiheji, chetonghao,cfapiaohao
+	</sql>
+
+	<resultMap id="waimaoDowdetails" type="com.jindan.jdy.common.dto.WaimaoDowBankExpendDto">
+
+		<collection property="waimaoDowBankExpendList" ofType="com.jindan.jdy.common.pojo.WaimaoDowBankExpend">
+			<id column="yid" property="yid" />
+			<id column="payment_time" property="paymentTime" />
+			<id column="shoukuanren" property="shoukuanren" />
+			<id column="yjine" property="yjine" />
+			<id column="ynature" property="ynature" />
+			<id column="payment_for_goods" property="paymentForGoods" />
+			<id column="contract_number" property="contractNumber" />
+			<id column="yremarks" property="yremarks" />
+			<id column="yjine2" property="yjine2" />
+			<id column="yfapiaohao" property="yfapiaohao" />
+		</collection>
+
+		<collection property="waimaoDowBankIncomelist" ofType="com.jindan.jdy.common.pojo.WaimaoDowBankIncome">
+			<id column="ysid" property="ysid" />
+			<id column="shou_time" property="shouTime" />
+			<id column="shou_ren" property="shouRen" />
+			<id column="shou_jine" property="shouJine" />
+			<id column="shou_nature" property="shouNature" />
+			<id column="huo_tuishui" property="huoTuishui" />
+			<id column="contract_fapiao" property="contractFapiao" />
+			<id column="ysremarks" property="ysremarks" />
+			<id column="shou_jine2" property="shouJine2" />
+			<id column="ysfapiaohao" property="ysfapiaohao" />
+		</collection>
+		<collection property="waimaoDowMarketlist" ofType="com.jindan.jdy.common.pojo.WaimaoDowMarket">
+			<id column="xid" property="xid" />
+			<id column="shouhuokehu" property="shouhuokehu" />
+			<id column="material_names" property="materialNames" />
+			<id column="nums" property="nums" />
+			<id column="unitx" property="unitx" />
+			<id column="xtax" property="xtax" />
+			<id column="drawback" property="drawback" />
+			<id column="refund_rates" property="refundRates" />
+			<id column="remarksx" property="remarksx" />
+			<id column="xhetonghao" property="xhetonghao" />
+			<id column="xfapiaohao" property="xfapiaohao" />
+		</collection>
+		<collection property="waimaoDowPurchaselist" ofType="com.jindan.jdy.common.pojo.WaimaoDowPurchase">
+			 <id column="cid" property="cid" />
+			<id column="suppliers" property="suppliers" />
+			<id column="material_name" property="materialName" />
+			<id column="units" property="units" />
+			<id column="nums" property="nums" />
+			<id column="jine" property="jine" />
+			<id column="tax" property="tax" />
+			<id column="remarks" property="remarks" />
+			<id column="chetonghao" property="chetonghao" />
+			<id column="jiahsuiheji" property="jiahsuiheji" />
+			<id column="cfapiaohao" property="cfapiaohao" />
+		</collection>
+	</resultMap>
+
+<!--	getDetails-->
+	<select id="getDetails" parameterType="java.lang.String" resultMap="waimaoDowdetails">
+	   SELECT
+		  waimao_dow_bank_expend.*,
+		  waimao_dow_bank_income.*,
+		  waimao_dow_market.*,
+		 waimao_dow_purchase.*
+		FROM waimao_dow_purchase
+		  LEFT JOIN waimao_dow_bank_expend  on waimao_dow_purchase.chetonghao = waimao_dow_bank_expend.contract_number
+		  LEFT JOIN waimao_dow_bank_income on waimao_dow_purchase.chetonghao = waimao_dow_bank_income.contract_fapiao
+		 LEFT JOIN waimao_dow_market on waimao_dow_purchase.chetonghao = waimao_dow_market.xhetonghao
+		where waimao_dow_purchase.chetonghao = #{id}
+    </select>
+
+	<select id="getDetailsAll" parameterType="java.lang.String" resultMap="waimaoDowdetails">
+		SELECT
+		  waimao_dow_bank_expend.*,
+		  waimao_dow_bank_income.*
+		FROM waimao_dow_bank_expend
+		LEFT JOIN waimao_dow_bank_income on waimao_dow_bank_expend.contract_number = waimao_dow_bank_income.contract_fapiao
+	  UNION
+		SELECT
+		  waimao_dow_bank_expend.*,
+		  waimao_dow_bank_income.*
+		FROM waimao_dow_bank_expend
+		RIGHT JOIN waimao_dow_bank_income on waimao_dow_bank_expend.contract_number = waimao_dow_bank_income.contract_fapiao
+    </select>
+
+<!--	  	   SELECT-->
+<!--	 		  waimao_dow_bank_expend.*,-->
+<!--	 		  waimao_dow_bank_income.*,-->
+<!--	 		  waimao_dow_market.*,-->
+<!--	 		 waimao_dow_purchase.*-->
+<!--	 		FROM waimao_dow_purchase-->
+<!--	 		  LEFT JOIN waimao_dow_bank_expend  on waimao_dow_purchase.chetonghao = waimao_dow_bank_expend.contract_number-->
+<!--	  		  LEFT JOIN waimao_dow_bank_income on waimao_dow_purchase.chetonghao = waimao_dow_bank_income.contract_fapiao-->
+<!--	 		 LEFT JOIN waimao_dow_market on waimao_dow_purchase.chetonghao = waimao_dow_market.xhetonghao-->
+
+</mapper>

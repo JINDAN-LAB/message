@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.common.mapper.RiskPointZhenggaiResultDao">
+
+	<resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.RiskPointZhenggaiResult">
+		<id column="zid" property="zid" />
+		<id column="zhenggai_time" property="zhenggaiTime" />
+		<id column="zhenggai_riqi" property="zhenggaiRiqi" />
+		<id column="zhenggai_cuoshi" property="zhenggaiCuoshi" />
+		<id column="zijin" property="zijin" />
+		<id column="imgurl1" property="imgurl1" />
+		<id column="imgurl2" property="imgurl2" />
+		<id column="imgurl3" property="imgurl3" />
+		<id column="fuze_person" property="fuzePerson" />
+		<id column="status" property="status" />
+		<id column="yanshou" property="yanshou" />
+		<id column="yanshou_time" property="yanshouTime" />
+		<id column="yanshou_name" property="yanshouName" />
+		<id column="insert_time" property="insertTime" />
+		<id column="update_time" property="updateTime" />
+		<id column="delete_id" property="deleteId" />
+		<id column="parent_id" property="parentId" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		zid, zhenggai_time, zhenggai_riqi, zhenggai_cuoshi, zijin, imgurl1, imgurl2, imgurl3, fuze_person, status, yanshou, yanshou_time, yanshou_name, insert_time, update_time, delete_id,parent_id
+	</sql>
+
+
+
+</mapper>

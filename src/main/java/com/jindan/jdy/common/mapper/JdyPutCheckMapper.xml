@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.common.mapper.JdyPutCheckDao">
+
+	<resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.JdyPutCheck">
+		<id column="kid" property="kid" />
+		<id column="ktime" property="ktime" />
+		<id column="kpersons" property="kpersons" />
+		<id column="parent_id" property="parentId" />
+		<id column="insert_time" property="insertTime" />
+		<id column="update_time" property="updateTime" />
+		<id column="delete_id" property="deleteId" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		kid, ktime, kpersons, parent_id, insert_time, update_time, delete_id
+	</sql>
+	
+</mapper>

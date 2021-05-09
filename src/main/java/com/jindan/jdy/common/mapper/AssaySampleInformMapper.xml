@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.common.mapper.AssaySampleInformDao">
+
+	<resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.AssaySampleInform">
+		<id column="sample_id" property="sampleId" />
+		<id column="product_name" property="productName" />
+		<id column="product_pihao" property="productPihao" />
+		<id column="product_guige" property="productGuige" />
+		<id column="product_nums" property="productNums" />
+		<id column="product_unit" property="productUnit" />
+		<id column="product_person" property="productPerson" />
+		<id column="product_time" property="productTime" />
+		<id column="insert_time" property="insertTime" />
+		<id column="update_time" property="updateTime" />
+		<id column="delete_id" property="deleteId" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		sample_id, product_name, product_pihao, product_guige, product_nums, product_unit, product_person, product_time, insert_time, update_time, delete_id
+	</sql>
+	
+</mapper>

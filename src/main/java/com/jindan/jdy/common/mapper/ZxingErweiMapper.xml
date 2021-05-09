@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.common.mapper.ZxingErweiDao">
+
+	<resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.ZxingErwei">
+		<id column="id" property="id" />
+		<id column="suttle" property="suttle" />
+		<id column="standard" property="standard" />
+		<id column="tab" property="tab" />
+		<id column="kg" property="kg" />
+		<id column="type" property="type" />
+		<id column="use" property="use" />
+		<id column="method" property="method" />
+		<id column="scope" property="scope" />
+		<id column="condition" property="condition" />
+		<id column="notice" property="notice" />
+		<id column="beizhu" property="beizhu" />
+		<id column="username" property="username" />
+		<id column="nametitle" property="nametitle" />
+		<id column="queren" property="queren" />
+		<id column="hanliang" property="hanliang" />
+		<id column="tradename" property="tradename" />
+		<id column="ensurevalue" property="ensurevalue" />
+		<id column="typeid" property="typeid" />
+		<id column="dateproduced" property="dateproduced" />
+		<id column="materielcode" property="materielcode" />
+		<id column="supplierid" property="supplierid" />
+		<id column="guige" property="guige" />
+		<id column="suppliertype" property="suppliertype" />
+		<id column="sorttype" property="sorttype" />
+		<id column="piwen" property="piwen" />
+		<id column="insert_time" property="insertTime" />
+		<id column="update_time" property="updateTime" />
+		<id column="delete_id" property="deleteId" />
+		<id column="status" property="status" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, suttle, standard, tab, kg, type, use, method, scope, condition, notice, beizhu, username, nametitle, queren, hanliang, tradename, ensurevalue, typeid, dateproduced, materielcode, supplierid, guige, suppliertype, sorttype, piwen, insert_time, update_time, delete_id, status
+	</sql>
+	
+</mapper>

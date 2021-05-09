@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.common.mapper.DepartmentSubfacilityMapper">
+
+	<resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.DepartmentSubfacility">
+		<id column="id" property="id" />
+		<id column="goods_id" property="goodsId" />
+		<id column="brand" property="brand" />
+		<id column="model" property="model" />
+		<id column="nuit" property="nuit" />
+		<id column="number" property="number" />
+		<id column="price" property="price" />
+		<id column="states" property="states" />
+		<id column="create_name" property="createName" />
+		<id column="insert_time" property="insertTime" />
+		<id column="update_time" property="updateTime" />
+		<id column="file_id" property="fileId" />
+		<id column="imgurl" property="imgurl" />
+		<id column="depart_facility_id" property="departFacilityId" />
+		<id column="delete_id" property="deleteId" />
+		<id column="installtime" property="installtime" />
+		<id column="usetime" property="usetime" />
+		<id column="allkg" property="allkg" />
+		<id column="assetnumber" property="assetnumber" />
+		<id column="serialnumber" property="serialnumber" />
+		<id column="departments" property="departments" />
+		<id column="specifications" property="specifications" />
+		<id column="remarks" property="remarks" />
+		<id column="pid_numberc" property="pidNumberc" />
+		<id column="repair_period" property="repairPeriod" />
+		<id column="is_repair" property="isRepair" />
+		<id column="maintain_person" property="maintainPerson" />
+		<id column="bit_number" property="bitNumber" />
+		<id column="rate_of_work" property="rateOfWork" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		id, goods_id, brand, model, nuit, number, price, states, create_name, insert_time, update_time, file_id, imgurl, depart_facility_id, delete_id
+	</sql>
+
+
+
+	
+</mapper>

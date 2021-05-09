@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.common.mapper.StarchOrganizationPutSubtypeAssetDao">
+
+	<resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.StarchOrganizationPutSubtypeAsset">
+		<id column="tsid" property="tsid" />
+		<id column="parent_ids" property="parentIds" />
+		<id column="sn_code" property="snCode" />
+		<id column="canshu" property="canshu" />
+		<id column="names" property="names" />
+		<id column="remarks" property="remarks" />
+		<id column="insert_time" property="insertTime" />
+		<id column="update_time" property="updateTime" />
+		<id column="delete_id" property="deleteId" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		tsid, parent_ids, sn_code, canshu, names, remarks, insert_time, update_time, delete_id
+	</sql>
+	
+</mapper>

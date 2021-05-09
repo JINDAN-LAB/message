@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.common.mapper.JdyPurchaseOrderDao">
+
+	<resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.JdyPurchaseOrder">
+		<id column="pids" property="pids" />
+		<id column="order_type" property="orderType" />
+		<id column="order_number" property="orderNumber" />
+		<id column="order_times" property="orderTimes" />
+		<id column="order_supplier" property="orderSupplier" />
+		<id column="account_types" property="accountTypes" />
+		<id column="buyer_persons" property="buyerPersons" />
+		<id column="order_department" property="orderDepartment" />
+		<id column="types" property="types" />
+		<id column="jiashuihejis" property="jiashuihejis" />
+		<id column="order_status" property="orderStatus" />
+		<id column="remarks" property="remarks" />
+		<id column="bank_account" property="bankAccount" />
+		<id column="make_time" property="makeTime" />
+		<id column="shenpi_times" property="shenpiTimes" />
+		<id column="make_personss" property="makePersonss" />
+		<id column="shenpi_persons" property="shenpiPersons" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		pids, order_type, order_number, order_times, order_supplier, account_types, buyer_persons, order_department, types, jiashuihejis, order_status, remarks, bank_account, make_time, shenpi_times, make_personss, shenpi_persons
+	</sql>
+	
+</mapper>

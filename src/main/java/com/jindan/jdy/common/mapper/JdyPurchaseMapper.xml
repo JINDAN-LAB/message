@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.common.mapper.JdyPurchaseMapper">
+
+	<resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.JdyPurchase">
+		<id column="purchase_id" property="purchaseId" />
+		<id column="invoices" property="invoices" />
+		<id column="supplier_id" property="supplierId" />
+		<id column="operator" property="operator" />
+		<id column="purchase_type" property="purchaseType" />
+		<id column="insert_time" property="insertTime" />
+		<id column="update_time" property="updateTime" />
+		<id column="delete_id" property="deleteId" />
+		<id column="statics" property="statics" />
+		<id column="transports" property="transports" />
+		<id column="status" property="status" />
+		<id column="departments" property="departments" />
+		<id column="purchase_time" property="purchaseTime" />
+	</resultMap>
+
+	<resultMap id="BatMap" type="com.jindan.jdy.common.dto.JdyPurchaseDto">
+		<id column="purchase_id" property="purchaseId" />
+		<id column="invoices" property="invoices" />
+		<id column="supplier_id" property="supplierId" />
+		<id column="operator" property="operator" />
+		<id column="purchase_type" property="purchaseType" />
+		<id column="insert_time" property="insertTime" />
+		<id column="update_time" property="updateTime" />
+		<id column="delete_id" property="deleteId" />
+		<id column="statics" property="statics" />
+		<id column="transports" property="transports" />
+		<id column="status" property="status" />
+		<id column="departments" property="departments" />
+		<id column="purchase_time" property="purchaseTime" />
+		<id column="all_money" property="allMoney" />
+		<id column="puuids" property="puuids" />
+		<collection property="listsCommodity" column="commodity_id" ofType="com.jindan.jdy.common.pojo.JdyCommodity">
+			<id column="commodity_id" property="commodityId" />
+			<id column="model" property="model" />
+			<id column="facility_name" property="facilityName" />
+			<id column="commodity_name" property="commodityName" />
+			<id column="num" property="num" />
+			<id column="unit_price" property="unitPrice" />
+			<id column="person" property="person" />
+			<id column="insert_time" property="insertTime" />
+			<id column="update_time" property="updateTime" />
+			<id column="status" property="status" />
+			<id column="delete_id" property="deleteId" />
+			<id column="remarks" property="remarks" />
+			<id column="frequencys" property="frequencys" />
+			<id column="revolutions_per_minute" property="revolutionsPerMinute" />
+			<id column="piece_weight" property="pieceWeight" />
+			<id column="all_weight" property="allWeight" />
+			<id column="texture" property="texture" />
+			<id column="lubrication" property="lubrication" />
+			<id column="parameters" property="parameters" />
+			<id column="powers" property="powers" />
+			<id column="parent_id" property="parentId" />
+			<id column="warehouse_id" property="warehouseId" />
+			<id column="nuit" property="nuit" />
+			<id column="brand" property="brand" />
+			<id column="unit_price" property="unitPrice" />
+		</collection>
+
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		purchase_id, invoices, supplier_id, operator, purchase_type, insert_time, update_time, delete_id, statics
+	</sql>
+
+	<sql id="selectexpend">
+		<where>
+			<if test="invoices != null and invoices !='' ">
+				and jdy_purchase.invoices = #{invoices}
+			</if>
+			<if test="supplierId != null and supplierId !='' ">
+				and jdy_purchase.supplier_id = #{supplierId}
+			</if>
+			<if test="operator != null and operator !='' ">
+				and jdy_purchase.operator = #{operator}
+			</if>
+			<if test="purchaseType != null and purchaseType !='' ">
+				and jdy_purchase.purchase_type = #{purchaseType}
+			</if>
+			<if test="statics != null and statics !='' ">
+				and jdy_purchase.statics = #{statics}
+			</if>
+			<if test="departments != null and departments !='' ">
+				and jdy_purchase.departments = #{departments}
+			</if>
+			<if test="purchaseTime != null and purchaseTime !='' ">
+				and jdy_purchase.purchase_time like "%"#{purchaseTime}"%"
+			</if>
+			and jdy_purchase.delete_id='0'
+		</where>
+	</sql>
+
+	<!-- seleteAllJdyPurchase-->
+	<select id="seleteAllJdyPurchase"  parameterType="java.lang.Integer" resultMap="BatMap">
+		SELECT jdy_purchase.*,jdy_commodity.*  FROM jdy_purchase
+		LEFT JOIN jdy_commodity  ON jdy_purchase.puuids =jdy_commodity.parent_id
+		and jdy_commodity.delete_id='0'
+		<include refid="selectexpend"></include>
+	</select>
+
+</mapper>

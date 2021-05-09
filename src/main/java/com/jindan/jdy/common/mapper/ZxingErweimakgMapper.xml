@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.common.mapper.ZxingErweimakgDao">
+
+	<resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.ZxingErweimakg">
+		<id column="id" property="id" />
+		<id column="jingzhong" property="jingzhong" />
+		<id column="maozhong" property="maozhong" />
+		<id column="pid" property="pid" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, jingzhong, maozhong, pid
+	</sql>
+	
+</mapper>

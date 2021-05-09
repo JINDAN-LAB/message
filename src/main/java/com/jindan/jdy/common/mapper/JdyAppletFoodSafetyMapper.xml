@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.common.mapper.JdyAppletFoodSafetyMapper">
+
+	<resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.JdyAppletFoodSafety">
+		<id column="id" property="id" />
+		<id column="name" property="name" />
+		<id column="parent_id" property="parentId" />
+		<id column="url" property="url" />
+		<id column="icon" property="icon" />
+		<id column="orders" property="orders" />
+		<id column="levels" property="levels" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		id, name, parent_id, url, icon, `orders`, levels
+	</sql>
+
+	<resultMap id="BaseResultMapList" type="com.jindan.jdy.common.dto.JdyAppletFoodSafetyDto">
+		<id column="id" property="id" />
+		<id column="name" property="name" />
+		<id column="parent_id" property="parentId" />
+		<id column="url" property="url" />
+		<id column="icon" property="icon" />
+		<id column="orders" property="orders" />
+		<id column="levels" property="levels" />
+	</resultMap>
+<!--	<collection property="childsList" column="file_id" ofType="com.jindan.jdy.common.pojo.JdyAppletFoodSafety">-->
+<!--		<id column="id" property="id" />-->
+<!--		<id column="name" property="name" />-->
+<!--		<id column="parent_id" property="parentId" />-->
+<!--		<id column="url" property="url" />-->
+<!--		<id column="icon" property="icon" />-->
+<!--		<id column="order" property="order" />-->
+<!--	</collection>-->
+	<sql id="selectexpend">
+		<where>
+			<if test="id != null and id !='' ">
+				and jdy_applet_food_safety.id = #{id}
+			</if>
+			<if test="name != null and name !='' ">
+				and jdy_applet_food_safety.name = #{name}
+			</if>
+			<if test="url != null and url !='' ">
+				and jdy_applet_food_safety.url = #{url}
+			</if>
+			<if test="icon != null and icon !='' ">
+				and jdy_applet_food_safety.icon = #{icon}
+			</if>
+			<if test="orders != null and orders !='' ">
+				and jdy_applet_food_safety.orders = #{orders}
+			</if>
+			<if test="levels != null and levels !='' ">
+				and jdy_applet_food_safety.levels = #{levels}
+			</if>
+			and jdy_applet_food_safety.delete_id = "0"
+		</where>
+	</sql>
+
+	<!--seleteList-->
+	<select id="seleteList" resultMap="BaseResultMapList" >
+		select id, name ,parent_id,url,icon,`orders`,levels
+		from jdy_applet_food_safety
+		<include refid="selectexpend"/>
+	</select>
+
+<!--	<select id="seletePersonList" resultType="com.jindan.jdy.common.pojo.JdyAppletFootSafetyPerson" resultMap="BaseResultMapList" >-->
+<!--		select id, name ,parent_id,url,icon,`order`-->
+<!--		from jdy_applet_food_safety-->
+<!--		left JOIN jdy_applet_foot_safety_person sd2 ON department_facility.id = sd2.depart_facility_id  and sd2.delete_id=0-->
+
+<!--		<include refid="selectexpend"></include>-->
+<!--		order by department_facility.bit_number desc-->
+<!--		<include refid="selectexpend"/>-->
+<!--	</select>-->
+
+<!--	<insert id="saveAllBatch" parameterType="java.util.List" >-->
+<!--		insert into domestic_fahuo ( <include refid="Base_Column_List1" /> )-->
+<!--		values-->
+<!--		<foreach collection="list" item="item" index="index" separator=",">-->
+<!--			(#{item.danjuhao},#{item.danjuriqi},#{item.yewuyuan}-->
+<!--			,#{item.fangshi},#{item.shouhuokehu},#{item.wuliaomingcheng}-->
+<!--			,#{item.bzw},#{item.shuliang},#{item.hanshuidanjia}-->
+<!--			,#{item.jiashuiheji},#{item.yunshudanjia},#{item.bhbz}-->
+<!--			,#{item.yongjinbili},#{item.yongjin},#{item.shifouweixinkehu}-->
+<!--			,#{item.shoukuanxieyi},#{item.queren},#{item.insertTime},#{item.chanmofeiyong})-->
+<!--		</foreach>-->
+<!--	</insert>-->
+
+<!--	 发货信息余额信息-->
+<!--	<select id="seleteYuebiaoFa" resultMap="BaseResultMap">-->
+<!--		select SUM(jiashuiheji) as jiashuiheji,shouhuokehu from domestic_fahuo-->
+<!--		<include refid="selectexpend2" />-->
+<!--		GROUP BY shouhuokehu-->
+<!--	</select>-->
+
+<!--	<select id="getOneById" resultMap="BaseRes">-->
+<!--		select-->
+<!--		domestic_fahuo.*,-->
+<!--		domestic_baozhuang.*,-->
+<!--		domestic_jijiabiao.*-->
+<!--		from domestic_fahuo-->
+<!--		LEFT JOIN domestic_baozhuang  ON domestic_fahuo.bzw =domestic_baozhuang.baozhuangwu-->
+<!--		LEFT JOIN domestic_jijiabiao  ON domestic_fahuo.wuliaomingcheng =domestic_jijiabiao.name-->
+<!--		<include refid="selectexpendOne"></include>-->
+<!--	</select>-->
+
+</mapper>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.common.mapper.JdyPutMapper">
+
+	<resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.JdyPut">
+		<id column="put_id" property="putId" />
+		<id column="insert_time" property="insertTime" />
+		<id column="put_number" property="putNumber" />
+		<id column="put_type" property="putType" />
+		<id column="department" property="department" />
+		<id column="remarks" property="remarks" />
+		<id column="update_time" property="updateTime" />
+		<id column="commodity_name" property="commodityName" />
+		<id column="num" property="num" />
+		<id column="facility_name" property="facilityName" />
+		<id column="commodity_name" property="commodityName" />
+		<id column="num" property="num" />
+		<id column="facility_types" property="facilityTypes" />
+		<id column="specification" property="specification" />
+		<id column="parent_id" property="parentId" />
+		<id column="imgurl" property="imgurl" />
+
+	</resultMap>
+
+
+	<resultMap id="BaseDtosMap" type="com.jindan.jdy.common.dto.JdyPutTypeDetails">
+		<id column="putTypeId" property="putTypeId" />
+		<id column="insert_time" property="putTypeName" />
+		<id column="put_number" property="putTypeType" />
+		<id column="put_type" property="parentId" />
+		<id column="department" property="orders" />
+		<collection property="putList" column="put_id" ofType="com.jindan.jdy.common.pojo.JdyPut">
+			<id column="put_id" property="putId" />
+			<id column="insert_time" property="insertTime" />
+			<id column="put_numbers" property="putNumber" />
+			<id column="put_type" property="putType" />
+			<id column="department" property="department" />
+			<id column="remarks" property="remarks" />
+			<id column="update_time" property="updateTime" />
+			<id column="commodity_name" property="commodityName" />
+			<id column="num" property="num" />
+			<id column="facility_name" property="facilityName" />
+			<id column="commodity_name" property="commodityName" />
+			<id column="nums" property="num" />
+			<id column="facility_types" property="facilityTypes" />
+			<id column="specification" property="specification" />
+			<id column="parent_id" property="parentId" />
+			<id column="imgurl" property="imgurl" />
+		</collection>
+	</resultMap>
+
+
+
+
+	<sql id="Base_Column_List">
+		put_id, insert_time, put_number, put_type, department, remarks, update_time
+	</sql>
+
+<!--	seleteDetailslist-->
+	<select id="seleteDetailslist"  parameterType="com.jindan.jdy.common.pojo.JdyPut"  resultMap="BaseDtosMap">
+	  select * from
+		(select * from jdy_put_type  where jdy_put_type.delete_id =0)  a
+	  left join
+		(SELECT count(*) as nums,sum(put_number) as put_numbers,jdy_put.* FROM jdy_put where delete_id = 0 GROUP BY parent_id ) b
+	  on a.put_type_id=b.parent_id
+	</select>
+
+</mapper>

@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.common.mapper.WarehouseCheckTitleMapper">
+
+	<resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.WarehouseCheckTitle">
+		<id column="check_id" property="checkId" />
+		<id column="parent_id" property="parentId" />
+		<id column="check_num" property="checkNum" />
+		<id column="insert_time" property="insertTime" />
+		<id column="update_time" property="updateTime" />
+		<id column="delete_id" property="deleteId" />
+		<id column="remarks" property="remarks" />
+		<id column="check_time" property="checkTime" />
+		<id column="check_persons" property="checkPersons" />
+		<id column="check_uuid" property="checkUuid" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		check_id, parent_id, check_num, insert_time, update_time, delete_id, remarks, check_time, check_persons, check_uuid
+	</sql>
+
+<!--	<resultMap id="BaseltMap" type="com.jindan.jdy.common.dto.WarehouseCheckTitleDto">-->
+<!--		<id column="check_id" property="checkId" />-->
+<!--		<id column="parent_id" property="parentId" />-->
+<!--		<id column="check_num" property="checkNum" />-->
+<!--		<id column="insert_time" property="insertTime" />-->
+<!--		<id column="update_time" property="updateTime" />-->
+<!--		<id column="delete_id" property="deleteId" />-->
+<!--		<id column="remarks" property="remarks" />-->
+<!--		<id column="check_time" property="checkTime" />-->
+<!--		<id column="check_persons" property="checkPersons" />-->
+<!--		<id column="check_uuid" property="checkUuid" /> -->
+<!--	</resultMap>-->
+
+	<resultMap id="BaseltMap"   type="com.jindan.jdy.common.dto.WarehouseCheckDto">
+		<id column="check_id2" property="checkId" />
+		<result column="parent_id2" property="parentId" />
+		<result column="check_num2" property="checkNum" />
+		<result column="insert_time2" property="insertTime" />
+		<result column="update_time2" property="updateTime" />
+		<result column="delete_id2" property="deleteId" />
+		<result column="remarks2" property="remarks" />
+		<result column="check_time2" property="checkTime" />
+		<association property="warehouseSpecs"   autoMapping="true" javaType="com.jindan.jdy.common.pojo.WarehouseSpecs">
+			<id column="id" property="id" />
+			<id column="goods_id" property="goodsId" />
+			<id column="brand" property="brand" />
+			<id column="model" property="model" />
+			<id column="facility_name" property="facilityName" />
+			<id column="commodity_name" property="commodityName" />
+			<id column="num" property="num" />
+			<id column="unit_price" property="unitPrice" />
+			<id column="person" property="person" />
+			<id column="insert_time" property="insertTime" />
+			<id column="update_time" property="updateTime" />
+			<id column="status" property="status" />
+			<id column="delete_id" property="deleteId" />
+			<id column="remarks" property="remarks" />
+			<id column="frequencys" property="frequencys" />
+			<id column="revolutions_per_minute" property="revolutionsPerMinute" />
+			<id column="piece_weight" property="pieceWeight" />
+			<id column="all_weight" property="allWeight" />
+			<id column="texture" property="texture" />
+			<id column="lubrication" property="lubrication" />
+			<id column="parameters" property="parameters" />
+			<id column="powerss" property="powers" />
+			<id column="parent_id" property="parentId" />
+		</association>
+	</resultMap>
+
+
+<!--	BaseltMapCheckTitleDto-->
+	<resultMap id="BaseltMapCheckTitleDto"   type="com.jindan.jdy.common.dto.WarehouseCheckTitleDto">
+		<id column="check_id1" property="checkId" />
+		<id column="parent_id1" property="parentId" />
+		<id column="check_num1" property="checkNum" />
+		<id column="insert_time1" property="insertTime" />
+		<id column="update_time1" property="updateTime" />
+		<id column="delete_id1" property="deleteId" />
+		<id column="remarks1" property="remarks" />
+		<id column="check_time1" property="checkTime" />
+
+		<collection property="checkList"   autoMapping="true" ofType="com.jindan.jdy.common.dto.WarehouseCheckDto">
+			<id column="check_id2" property="checkId" />
+			<result column="parent_id2" property="parentId" />
+			<result column="check_num2" property="checkNum" />
+			<result column="insert_time2" property="insertTime" />
+			<result column="update_time2" property="updateTime" />
+			<result column="delete_id2" property="deleteId" />
+			<result column="remarks2" property="remarks" />
+			<result column="check_time2" property="checkTime" />
+			<association property="warehouseSpecs"   autoMapping="true" javaType="com.jindan.jdy.common.pojo.WarehouseSpecs">
+				<result column="id" property="id" />
+				<result column="goods_id" property="goodsId" />
+				<result column="brand" property="brand" />
+				<result column="model" property="model" />
+				<result column="facility_name" property="facilityName" />
+				<result column="commodity_name" property="commodityName" />
+				<result column="num" property="num" />
+				<result column="unit_price" property="unitPrice" />
+				<result column="person" property="person" />
+				<result column="insert_time" property="insertTime" />
+				<result column="update_time" property="updateTime" />
+				<result column="status" property="status" />
+				<result column="delete_id" property="deleteId" />
+				<result column="remarks" property="remarks" />
+				<result column="frequencys" property="frequencys" />
+				<result column="revolutions_per_minute" property="revolutionsPerMinute" />
+				<result column="piece_weight" property="pieceWeight" />
+				<result column="all_weight" property="allWeight" />
+				<result column="texture" property="texture" />
+				<result column="lubrication" property="lubrication" />
+				<result column="parameters" property="parameters" />
+				<result column="powerss" property="powers" />
+				<result column="parent_id" property="parentId" />
+			</association>
+		</collection>
+	</resultMap>
+
+	<sql id="selectexpend">
+		<where>
+			<if test="checkId != null and checkId !='' ">
+				and warehouse_check.check_id = #{checkId}
+			</if>
+			<if test="parentId != null and parentId !='' ">
+				and warehouse_check.parent_id = #{parentId}
+			</if>
+			<if test="checkNum != null and checkNum !='' ">
+				and warehouse_check.check_num = #{checkNum}
+			</if>
+			<if test="checkPersons != null and checkPersons !='' ">
+				and warehouse_check.`check_persons` = #{checkPersons}
+			</if>
+			<if test="checkUuid != null and checkUuid !='' ">
+				and warehouse_check.check_uuid = #{checkUuid}
+			</if>
+			<if test="parentId != null and parentId !='' ">
+				and warehouse_check.parent_id = #{parentId}
+			</if>
+			and warehouse_check.delete_id='0'
+		</where>
+	</sql>
+<!--	selectexpendss-->
+	<sql id="selectexpendss">
+		<where>
+			<if test="checkId != null and checkId !='' ">
+				and warehouse_check_title.check_id = #{checkId}
+			</if>
+			<if test="parentId != null and parentId !='' ">
+				and warehouse_check_title.parent_id = #{parentId}
+			</if>
+			<if test="checkNum != null and checkNum !='' ">
+				and warehouse_check_title.check_num = #{checkNum}
+			</if>
+			<if test="checkPersons != null and checkPersons !='' ">
+				and warehouse_check_title.`check_persons` = #{checkPersons}
+			</if>
+			<if test="checkUuid != null and checkUuid !='' ">
+				and warehouse_check_title.check_uuid = #{checkUuid}
+			</if>
+			and warehouse_check_title.delete_id='0'
+		</where>
+	</sql>
+
+
+	<select id="seletelist" parameterType="com.jindan.jdy.common.pojo.WarehouseCheck" resultMap="BaseltMap">
+	   SELECT
+		 warehouse_check.check_id as check_id2,
+		 warehouse_check.parent_id as parent_id2,
+		 warehouse_check.check_num as check_num2,
+		 warehouse_check.insert_time as insert_time2,
+		 warehouse_check.update_time as update_time2,
+		 warehouse_check.delete_id as delete_id2,
+		 warehouse_check.remarks as remarks2,
+		 warehouse_check.check_time as check_time2,
+		 warehouse_specs.*
+		FROM warehouse_check
+		left JOIN warehouse_specs  ON warehouse_specs.id = warehouse_check.parent_id and warehouse_specs.delete_id=0
+		<include refid="selectexpend"></include>
+	</select>
+
+
+<!--	seletelistDepartmentSuggestDto-->
+	<select id="seletelistDepartmentSuggestDto" parameterType="com.jindan.jdy.common.dto.WarehouseCheckTitleDto" resultMap="BaseltMapCheckTitleDto">
+		SELECT
+		warehouse_check_title.check_id as check_id1,
+		warehouse_check_title.parent_id as parent_id1,
+		warehouse_check_title.check_num as check_num1,
+		warehouse_check_title.insert_time as insert_time1,
+		warehouse_check_title.update_time as update_time1,
+		warehouse_check_title.delete_id as delete_id1,
+		warehouse_check_title.remarks as remarks1,
+		warehouse_check_title.check_time as check_time1,
+		warehouse_check.check_id as check_id2,
+		warehouse_check.parent_id as parent_id2,
+		warehouse_check.check_num as check_num2,
+		warehouse_check.insert_time as insert_time2,
+		warehouse_check.update_time as update_time2,
+		warehouse_check.delete_id as delete_id2,
+		warehouse_check.remarks as remarks2,
+		warehouse_check.check_time as check_time2,
+		warehouse_specs.*
+		FROM warehouse_check_title
+		left JOIN warehouse_check  ON warehouse_check.check_uuid = warehouse_check_title.check_uuid and warehouse_check.delete_id=0
+		left JOIN warehouse_specs  ON warehouse_specs.id = warehouse_check.parent_id and warehouse_specs.delete_id=0
+		<include refid="selectexpendss"></include>
+	</select>
+
+
+
+<!--	seletelist-->
+<!--	<select id="seletelist" parameterType="com.jindan.jdy.common.dto.WarehouseCheckTitleDto" resultMap="BaseltMap">-->
+<!--	   SELECT-->
+<!--		 warehouse_check_title.*,-->
+<!--		 warehouse_check.check_id as check_id2,-->
+<!--		 warehouse_check.parent_id as parent_id2,-->
+<!--		 warehouse_check.check_num as check_num2,-->
+<!--		 warehouse_check.insert_time as insert_time2,-->
+<!--		 warehouse_check.update_time as update_time2,-->
+<!--		 warehouse_check.delete_id as delete_id2,-->
+<!--		 warehouse_check.remarks as remarks2,-->
+<!--		 warehouse_check.check_time as check_time2,-->
+<!--		 warehouse_specs.*-->
+<!--		FROM warehouse_check_title-->
+<!--		left JOIN warehouse_check  ON warehouse_check.check_uuid = warehouse_check_title.check_uuid-->
+<!--		left JOIN warehouse_specs  ON warehouse_specs.id = warehouse_check.parent_id-->
+
+<!--	</select>-->
+
+
+</mapper>

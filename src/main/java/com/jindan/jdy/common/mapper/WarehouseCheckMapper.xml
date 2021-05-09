@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.common.mapper.WarehouseCheckDao">
+
+	<resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.WarehouseCheck">
+		<id column="check_id" property="checkId" />
+		<id column="parent_id" property="parentId" />
+		<id column="check_num" property="checkNum" />
+		<id column="insert_time" property="insertTime" />
+		<id column="update_time" property="updateTime" />
+		<id column="delete_id" property="deleteId" />
+		<id column="remarks" property="remarks" />
+		<id column="check_time" property="checkTime" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		check_id, parent_id, check_num, insert_time, update_time, delete_id, remarks, check_time
+	</sql>
+
+
+</mapper>

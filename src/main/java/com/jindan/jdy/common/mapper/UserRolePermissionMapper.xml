@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.common.mapper.UserRolePermissionMapper">
+
+	<resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.UserRolePermission">
+		<id column="id" property="id" />
+		<id column="role_id" property="roleId" />
+		<id column="permission_id" property="permissionId" />
+	</resultMap>
+
+	<resultMap id="reesultMap" type="com.jindan.jdy.common.dto.UserRolePermissionDto">
+		<id column="userRoleId" property="userRoleId" />
+		<result column="userId" property="userId" />
+		<result column="roleId" property="roleId" />
+
+		<collection property="userPermissions" column="role_id" ofType="com.jindan.jdy.common.pojo.UserPermission">
+			<id column="role_id" property="permissionId" />
+			<result column="permission" property="permission" />
+			<result column="permission_name" property="permissionName" />
+			<result column="insert_time" property="insertTime" />
+			<result column="update_time" property="updateTime" />
+			<result column="delete_id" property="deleteId" />
+		</collection>
+
+		<collection property="jdyRoles" ofType="com.jindan.jdy.common.pojo.JdyRole">
+			<id column="role_id" property="roleId" />
+			<result column="role_name" property="roleName" />
+			<result column="role_describe" property="roleDescribe" />
+			<result column="insert_time" property="roleName" />
+			<result column="update_time" property="roleDescribe" />
+			<result column="delete_id" property="roleDescribe" />
+		</collection>
+
+	</resultMap>
+
+
+	<sql id="Base_Column_List">
+		id, role_id, permission_id
+	</sql>
+
+<!-- seleteUserRolelist-->
+	<sql id="selectexpend">
+		<where>
+			<if test="id != null and id !='' ">
+				and user_role_permission.id = #{id}
+			</if>
+			<if test="roleId != null and roleId !='' ">
+				and jdy_role.role_id = #{roleId}
+			</if>
+			<if test="permissionId != null and permissionId !='' ">
+				and user_role_permission.permission_id = #{permissionId}
+			</if>
+			and user_role_permission.delete_id='0'
+		</where>
+	</sql>
+	<sql id="selectuserperssion">
+		<where>
+			<if test="roleId != null and roleId !='' ">
+				and role_id = #{roleId}
+			</if>
+			<if test="permissionId != null and permissionId !='' ">
+				and permission_id = #{permissionId}
+			</if>
+			and user_role_permission.delete_id='0'
+		</where>
+	</sql>
+	<select id="seleteUserRolelist"  resultMap="reesultMap">
+		select user_role_permission.*,user_permission.*,jdy_role.* from user_role_permission
+		left join jdy_role on jdy_role.role_id =user_role_permission.role_id
+		left join user_permission on user_permission.permission_id =user_role_permission.permission_id
+		<include refid="selectexpend"/>
+	</select>
+
+
+	<select id="seleteUserPermission"  resultMap="reesultMap">
+		select user_role_permission.*,user_permission.* from user_role_permission
+		left join user_permission on user_role_permission.permission_id =user_permission.permission_id
+		<include refid="selectuserperssion"/>
+	</select>
+</mapper>

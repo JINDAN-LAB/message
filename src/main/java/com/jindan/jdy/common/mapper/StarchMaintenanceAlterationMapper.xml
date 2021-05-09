@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.common.mapper.StarchMaintenanceAlterationMapper">
+
+	<resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.StarchMaintenanceAlteration">
+		<id column="wid" property="wid" />
+		<id column="wstatus" property="wstatus" />
+		<id column="change_number" property="changeNumber" />
+		<id column="change_person" property="changePerson" />
+		<id column="suppliers" property="suppliers" />
+		<id column="persons" property="persons" />
+		<id column="change_date" property="changeDate" />
+		<id column="phone_type" property="phoneType" />
+		<id column="charge_person" property="chargePerson" />
+		<id column="maintenance_date" property="maintenanceDate" />
+		<id column="maintenance_type" property="maintenanceType" />
+		<id column="insert_time" property="insertTime" />
+		<id column="update_time" property="updateTime" />
+		<id column="delete_id" property="deleteId" />
+		<id column="parent_id" property="parentId" />
+	</resultMap>
+
+	<resultMap id="BaseResultMapDto" type="com.jindan.jdy.common.dto.StarchMaintenanceAlterationDto">
+		<id column="wid" property="wid" />
+		<id column="wstatus" property="wstatus" />
+		<id column="change_number" property="changeNumber" />
+		<id column="change_person" property="changePerson" />
+		<id column="suppliers" property="suppliers" />
+		<id column="persons" property="persons" />
+		<id column="change_date" property="changeDate" />
+		<id column="phone_type" property="phoneType" />
+		<id column="charge_person" property="chargePerson" />
+		<id column="maintenance_date" property="maintenanceDate" />
+		<id column="maintenance_type" property="maintenanceType" />
+		<id column="delete_id" property="deleteId" />
+		<id column="parent_id" property="parentId" />
+		<collection property="putList" column="oid" ofType="com.jindan.jdy.common.pojo.StarchOrganizationPut">
+			<id column="oid" property="oid" />
+			<id column="status" property="status" />
+			<id column="imgurl" property="imgurl" />
+			<id column="erweima" property="erweima" />
+			<id column="property_name" property="propertyName" />
+			<id column="property_type" property="propertyType" />
+			<id column="property_guige" property="propertyGuige" />
+			<id column="property_sn" property="propertySn" />
+			<id column="property_nums" property="propertyNums" />
+			<id column="property_jine" property="propertyJine" />
+			<id column="companys" property="companys" />
+			<id column="departments" property="departments" />
+			<id column="use_person" property="usePerson" />
+			<id column="areas" property="areas" />
+			<id column="store_areas" property="storeAreas" />
+			<id column="manager_person" property="managerPerson" />
+			<id column="belong_company" property="belongCompany" />
+			<id column="purchase_time" property="purchaseTime" />
+			<id column="suppliers" property="suppliers" />
+			<id column="service_life" property="serviceLife" />
+			<id column="creator_person" property="creatorPerson" />
+			<id column="source_of" property="sourceOf" />
+			<id column="delete_id" property="deleteId" />
+			<id column="maintain_cycle" property="maintainCycle" />
+			<id column="spare_is" property="spareIs" />
+			<id column="parent_id" property="parentId" />
+			<id column="jianxiuren" property="jianxiuren" />
+			<id column="weixiuren" property="weixiuren" />
+			<id column="remarks" property="remarks" />
+			<id column="baoyang" property="baoyang" />
+			<id column="runhua" property="runhua" />
+			<id column="canshu" property="canshu" />
+			<id column="bianma" property="bianma" />
+			<id column="xuhao" property="xuhao" />
+			<id column="weihao" property="weihao" />
+			<id column="jixiugong" property="jixiugong" />
+		</collection>
+	</resultMap>
+
+
+
+
+
+	<sql id="Base_Column_List">
+		wid, wstatus, change_number, change_person, suppliers, persons, change_date, phone_type, charge_person, maintenance_date, maintenance_type, insert_time, update_time, delete_id, parent_id
+	</sql>
+
+	<sql id="selectexpend">
+		<where>
+			<if test="wid != null and wid !='' ">
+				and starch_maintenance_alteration.wid = #{wid}
+			</if>
+			<if test="wstatus != null and wstatus !='' ">
+				and starch_maintenance_alteration.wstatus = #{wstatus}
+			</if>
+			<if test="changeNumber != null and changeNumber !='' ">
+				and starch_maintenance_alteration.change_number = #{changeNumber}
+			</if>
+			<if test="changePerson != null and changePerson !='' ">
+				and starch_maintenance_alteration.change_person = #{changePerson}
+			</if>
+			<if test="suppliers != null and suppliers !='' ">
+				and starch_maintenance_alteration.suppliers = #{suppliers}
+			</if>
+			<if test="persons != null and persons !='' ">
+				and starch_maintenance_alteration.persons = #{persons}
+			</if>
+			<if test="changeDate != null and changeDate !='' ">
+				and starch_maintenance_alteration.change_date = #{changeDate}
+			</if>
+			<if test="phoneType != null and phoneType !='' ">
+				and starch_maintenance_alteration.phone_type = #{phoneType}
+			</if>
+			<if test="chargePerson != null and chargePerson !='' ">
+				and starch_maintenance_alteration.charge_person = #{chargePerson}
+			</if>
+			and starch_maintenance_alteration.ptypes = 1
+			and starch_maintenance_alteration.delete_id = 0
+		</where>
+	</sql>
+
+
+<!--	<select id="queryRelevanceCatList"  parameterType="com.jindan.jdy.common.dto.StarchMaintenanceAlterationDto" resultMap="BaseResultMapDto">-->
+<!--		SELECT-->
+<!--		starch_maintenance_alteration.*,starch_organization_put.*-->
+<!--		FROM  starch_maintenance_alteration-->
+<!--		left JOIN starch_alteration_put ON starch_alteration_put.alteration_id = starch_maintenance_alteration.wid and starch_alteration_put.delete_id = 0-->
+<!--		left JOIN starch_organization_put ON starch_organization_put.oid = starch_alteration_put.put_id and starch_organization_put.delete_id = 0<include refid="selectexpend"></include>-->
+<!--	</select>-->
+<!--	queryRelevanceCatList-->
+	<select id="queryRelevanceCatList"  parameterType="com.jindan.jdy.common.dto.StarchMaintenanceAlterationDto" resultMap="BaseResultMapDto">
+		SELECT
+		warehouse_depository.name as property_type,starch_maintenance_alteration.*,starch_organization_put.*
+		FROM  starch_maintenance_alteration
+		left JOIN starch_alteration_put ON starch_alteration_put.alteration_id = starch_maintenance_alteration.wid and starch_alteration_put.delete_id = 0
+		left JOIN starch_organization_put ON starch_organization_put.oid = starch_alteration_put.put_id and starch_organization_put.delete_id = 0
+		left JOIN warehouse_depository ON warehouse_depository.id = starch_organization_put.property_type and warehouse_depository.delete_id = 0
+		<include refid="selectexpend"></include>
+	</select>
+
+</mapper>

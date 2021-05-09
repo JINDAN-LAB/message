@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.common.mapper.JdyAppletFootSafetyPersonMapper">
+
+	<resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.JdyAppletFootSafetyPerson">
+		<id column="pid" property="pid" />
+		<id column="username" property="username" />
+		<id column="password" property="password" />
+		<id column="departments" property="departments" />
+		<id column="chejian" property="chejian" />
+		<id column="gongduan" property="gongduan" />
+		<id column="banzu" property="banzu" />
+		<id column="quanxian" property="quanxian" />
+		<id column="insert_time" property="insertTime" />
+		<id column="update_time" property="updateTime" />
+		<id column="delete_id" property="deleteId" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		pid, username, password, departments, chejian, gongduan, banzu, quanxian, insert_time, update_time, delete_id
+	</sql>
+
+<!--	List<JdyAppletFootSafetyPerson> selectSMSList(JdyAppletFoodSafetyProblemsReult users);-->
+	<select id="selectSMSList"  resultMap="BaseResultMap" >
+	   select   jdy_applet_foot_safety_person.*
+		from jdy_applet_foot_safety_person
+		left join  jdy_applet_food_safety  on jdy_applet_food_safety.id = jdy_applet_foot_safety_person.chejian
+		WHERE jdy_applet_food_safety.id = #{id} AND  jdy_applet_foot_safety_person.quanxian = "车间"
+	</select>
+
+
+
+</mapper>

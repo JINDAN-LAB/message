@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.common.mapper.JdyClassroomMapper">
+
+	<resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.JdyClassroom">
+		<id column="id" property="id" />
+		<id column="jiaoshi" property="jiaoshi" />
+		<id column="person" property="person" />
+		<id column="bumen" property="bumen" />
+		<id column="number" property="number" />
+		<id column="starttime" property="starttime" />
+		<id column="endtime" property="endtime" />
+		<id column="uptime" property="uptime" />
+		<id column="downtime" property="downtime" />
+		<id column="insert_time" property="insertTime" />
+		<id column="update_time" property="updateTime" />
+		<id column="delete_id" property="deleteId" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, jiaoshi, person, bumen, number, starttime, endtime, uptime, downtime, insert_time, update_time, delete_id
+	</sql>
+	
+</mapper>

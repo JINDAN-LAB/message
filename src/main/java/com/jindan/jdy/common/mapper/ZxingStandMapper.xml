@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.common.mapper.ZxingStandDao">
+
+	<resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.ZxingStand">
+		<id column="id" property="id" />
+		<id column="standard" property="standard" />
+		<id column="standurl" property="standurl" />
+		<id column="submitperson" property="submitperson" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, standard, standurl, submitperson
+	</sql>
+	
+</mapper>

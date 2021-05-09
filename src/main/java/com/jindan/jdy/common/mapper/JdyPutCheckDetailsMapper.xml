@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.common.mapper.JdyPutCheckDetailsDao">
+
+	<resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.JdyPutCheckDetails">
+		<id column="cid" property="cid" />
+		<id column="cname" property="cname" />
+		<id column="cnums" property="cnums" />
+		<id column="cn_result_num" property="cnResultNum" />
+		<id column="difference_num" property="differenceNum" />
+		<id column="insert_time" property="insertTime" />
+		<id column="update_time" property="updateTime" />
+		<id column="delete_id" property="deleteId" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		cid, cname, cnums, cn_result_num, difference_num, insert_time, update_time, delete_id
+	</sql>
+	
+</mapper>

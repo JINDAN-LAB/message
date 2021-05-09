@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.common.mapper.SysPermissionDao">
+
+	<resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.SysPermission">
+		<id column="id" property="id" />
+		<id column="pid" property="pid" />
+		<id column="type" property="type" />
+		<id column="parent" property="parent" />
+		<id column="percode" property="percode" />
+		<id column="name" property="name" />
+		<id column="icon" property="icon" />
+		<id column="href" property="href" />
+		<id column="target" property="target" />
+		<id column="open" property="open" />
+		<id column="ordernum" property="ordernum" />
+		<id column="available" property="available" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, pid, type, parent, percode, name, icon, href, target, open, ordernum, available
+	</sql>
+	
+</mapper>

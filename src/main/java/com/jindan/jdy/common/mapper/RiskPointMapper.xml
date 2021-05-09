@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.common.mapper.RiskPointMapper">
+
+	<resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.RiskPoint">
+		<id column="rid" property="rid" />
+		<id column="risk_type" property="riskType" />
+		<id column="risk_name" property="riskName" />
+		<id column="risk_location" property="riskLocation" />
+		<id column="risk_person" property="riskPerson" />
+		<id column="examine_type" property="examineType" />
+		<id column="is_teshu" property="isTeshu" />
+		<id column="accident_may" property="accidentMay" />
+		<id column="risk_often" property="riskOften" />
+		<id column="accident_result" property="accidentResult" />
+		<id column="risk_rank" property="riskRank" />
+		<id column="risk_explain" property="riskExplain" />
+		<id column="risk_explain_result" property="riskExplainResult" />
+		<id column="risk_detail_location" property="riskDetailLocation" />
+		<id column="accident_types" property="accidentTypes" />
+		<id column="loss_forecast" property="lossForecast" />
+		<id column="control_measure" property="controlMeasure" />
+		<id column="potential_risk" property="potentialRisk" />
+		<id column="measure_meet" property="measureMeet" />
+		<id column="technology_safeguard" property="technologySafeguard" />
+		<id column="remarks" property="remarks" />
+		<id column="insert_time" property="insertTime" />
+		<id column="update_time" property="updateTime" />
+		<id column="delete_id" property="deleteId" />
+	</resultMap>
+
+	<resultMap id="selectBaohanResult" type="com.jindan.jdy.common.dto.RiskPointDto">
+		<id column="rid" property="rid" />
+		<id column="risk_type" property="riskType" />
+		<id column="risk_name" property="riskName" />
+		<id column="risk_location" property="riskLocation" />
+		<id column="risk_person" property="riskPerson" />
+		<id column="examine_type" property="examineType" />
+		<id column="is_teshu" property="isTeshu" />
+		<id column="accident_may" property="accidentMay" />
+		<id column="risk_often" property="riskOften" />
+		<id column="accident_result" property="accidentResult" />
+		<id column="risk_rank" property="riskRank" />
+		<id column="risk_explain" property="riskExplain" />
+		<id column="risk_explain_result" property="riskExplainResult" />
+		<id column="risk_detail_location" property="riskDetailLocation" />
+		<id column="accident_types" property="accidentTypes" />
+		<id column="loss_forecast" property="lossForecast" />
+		<id column="control_measure" property="controlMeasure" />
+		<id column="potential_risk" property="potentialRisk" />
+		<id column="measure_meet" property="measureMeet" />
+		<id column="technology_safeguard" property="technologySafeguard" />
+		<id column="remarks" property="remarks" />
+		<collection property="list" column="list" ofType="com.jindan.jdy.common.pojo.RiskPointContent">
+			<id column="risk_ids" property="riskIds" />
+			<id column="risk_contents" property="riskContents" />
+			<id column="accidet_cause" property="accidetCause" />
+			<id column="may_accidet" property="mayAccidet" />
+			<id column="meet_measure" property="meetMeasure" />
+			<id column="influence_sphere" property="influenceSphere" />
+			<id column="latent_result" property="latentResult" />
+			<id column="pazhao" property="pazhao" />
+			<id column="shuju" property="shuju" />
+			<id column="parent_id" property="parentId" />
+			<id column="insert_time" property="insertTime" />
+			<id column="update_time" property="updateTime" />
+			<id column="delete_id" property="deleteId" />
+			<id column="jibie" property="jibie" />
+			<id column="weixian_jibie" property="weixianJibie" />
+			<id column="rcstatus" property="rcstatus" />
+			<id column="shebei_id" property="shebeiId" />
+		</collection>
+		<collection property="personsList" column="personsList" ofType="com.jindan.jdy.common.pojo.RiskPointPersons">
+			<id column="ris_id" property="risId" />
+			<id column="risk_task_type" property="riskTaskType" />
+			<id column="parent_id" property="parentId" />
+			<id column="task_person" property="taskPerson" />
+			<id column="control_rank" property="controlRank" />
+			<id column="frequency" property="frequency" />
+			<id column="last_times" property="lastTimes" />
+		</collection>
+
+	</resultMap>
+
+
+
+	<resultMap id="selectesult" type="com.jindan.jdy.common.dto.RiskPointContentDto">
+		<id column="risk_ids" property="riskIds" />
+		<id column="risk_contents" property="riskContents" />
+		<id column="accidet_cause" property="accidetCause" />
+		<id column="may_accidet" property="mayAccidet" />
+		<id column="meet_measure" property="meetMeasure" />
+		<id column="influence_sphere" property="influenceSphere" />
+		<id column="latent_result" property="latentResult" />
+		<id column="pazhao" property="pazhao" />
+		<id column="shuju" property="shuju" />
+		<id column="parent_id" property="parentId" />
+		<id column="insert_time" property="insertTime" />
+		<id column="update_time" property="updateTime" />
+		<id column="delete_id" property="deleteId" />
+		<id column="jibie" property="jibie" />
+		<id column="weixian_jibie" property="weixianJibie" />
+		<id column="rcstatus" property="rcstatus" />
+		<id column="shebei_id" property="shebeiId" />
+		<collection property="resultList" column="resultList" ofType="com.jindan.jdy.common.pojo.RiskPointContentResult">
+			<id column="ris_pcr" property="risPcr" />
+			<id column="patrol_result" property="patrolResult" />
+			<id column="rparent_id" property="parentId" />
+			<id column="files1" property="files1" />
+			<id column="files2" property="files2" />
+			<id column="files3" property="files3" />
+			<id column="patrol_result_details" property="patrolResultDetails" />
+			<id column="patrol_result_jibie" property="patrolResultJibie" />
+			<id column="hidden_heading" property="hiddenHeading" />
+			<id column="hidden_subclass" property="hiddenSubclass" />
+			<id column="abarbeitung_deadline" property="abarbeitungDeadline" />
+			<id column="abarbeitung_person" property="abarbeitungPerson" />
+			<id column="duplicate_person" property="duplicatePerson" />
+			<id column="people_name" property="peopleName" />
+			<id column="rinsert_time" property="insertTime" />
+			<id column="rupdate_time" property="updateTime" />
+			<id column="rdelete_id" property="deleteId" />
+			<id column="rstatus" property="status" />
+			<id column="hidden_location" property="hiddenLocation" />
+			<id column="hidden_jibie" property="hiddenJibie" />
+			<id column="zhuanrang_time" property="zhuanrangTime" />
+			<id column="rshebei" property="rshebei" />
+		</collection>
+	</resultMap>
+
+<!--	selectBaohanResult-->
+	<sql id="Base_Column_List">
+		rid, risk_type, risk_name, risk_location, risk_person, examine_type, is_teshu, accident_may, risk_often, accident_result, risk_rank, risk_explain, risk_explain_result, risk_detail_location, accident_types, loss_forecast, control_measure, potential_risk, measure_meet, technology_safeguard, remarks
+	</sql>
+
+	<sql id="selectBaohan">
+		<where>
+			<if test="rid != null and rid !='' ">
+				and risk_point.rid = #{rid}
+			</if>
+			<if test="riskType != null and riskType !='' ">
+				and risk_point.risk_type = #{riskType}
+			</if>
+			<if test="riskName != null and riskName !='' ">
+				and risk_point.risk_name = #{riskName}
+			</if>
+			<if test="riskLocation != null and riskLocation !='' ">
+				and risk_point.risk_location = #{riskLocation}
+			</if>
+			<if test="riskPerson != null and riskPerson !='' ">
+				and risk_point.risk_person = #{riskPerson}
+			</if>
+			<if test="examineType != null and examineType !='' ">
+				and risk_point.examine_type = #{examineType}
+			</if>
+			<if test="isTeshu != null and isTeshu !='' ">
+				and risk_point.is_teshu = #{isTeshu}
+			</if>
+			<if test="accidentMay != null and accidentMay !='' ">
+				and risk_point.accident_may = #{accidentMay}
+			</if>
+			<if test="riskOften != null and riskOften !='' ">
+				and risk_point.risk_often = #{riskOften}
+			</if>
+			<if test="accidentResult != null and accidentResult !='' ">
+				and risk_point.accident_result = #{accidentResult}
+			</if>
+			<if test="riskRank != null and riskRank !='' ">
+				and risk_point.risk_rank = #{riskRank}
+			</if>
+			<if test="riskExplain != null and riskExplain !='' ">
+				and risk_point.risk_explain = #{riskExplain}
+			</if>
+			<if test="riskExplainResult != null and riskExplainResult !='' ">
+				and risk_point.risk_explain_result = #{riskExplainResult}
+			</if>
+			<if test="riskDetailLocation != null and riskDetailLocation !='' ">
+				and risk_point.risk_detail_location = #{riskDetailLocation}
+			</if>
+			<if test="accidentTypes != null and accidentTypes !='' ">
+				and risk_point.accident_types = #{accidentTypes}
+			</if>
+			<if test="lossForecast != null and lossForecast !='' ">
+				and risk_point.loss_forecast = #{lossForecast}
+			</if>
+			<if test="controlMeasure != null and controlMeasure !='' ">
+				and risk_point.control_measure = #{controlMeasure}
+			</if>
+			<if test="potentialRisk != null and potentialRisk !='' ">
+				and risk_point.potential_risk = #{potentialRisk}
+			</if>
+			<if test="measureMeet != null and measureMeet !='' ">
+				and risk_point.measure_meet = #{measureMeet}
+			</if>
+			<if test="technologySafeguard != null and technologySafeguard !='' ">
+				and risk_point.technology_safeguard = #{technologySafeguard}
+			</if>
+			and risk_point.delete_id=0
+		</where>
+	</sql>
+
+    <!--seleListBaohanWapper-->
+	<select id="seleListBaohanWapper"  resultMap="selectBaohanResult">
+		SELECT
+		  risk_point.*, risk_point_content.*,risk_point_persons.*
+		FROM
+		  risk_point
+		left  join risk_point_content  on risk_point.rid = risk_point_content.parent_id and risk_point_content.delete_id =0
+		left  join risk_point_persons  on risk_point_content.jibie = risk_point_persons.control_rank and risk_point.rid = risk_point_persons.parent_id and risk_point_persons.delete_id = 0
+		<include refid="selectBaohan"></include>
+	</select>
+
+	<!--		<selectKey resultType="java.lang.String" order="AFTER" keyProperty="rid">-->
+	<!--			SELECT LAST_INSERT_ID()-->
+	<!--		</selectKey>-->
+
+<!-- insertSave-->
+	<insert id="insertSave" parameterType="com.jindan.jdy.common.pojo.RiskPoint"  useGeneratedKeys="true" keyProperty="rid">
+		<selectKey keyProperty="rid" order="AFTER" resultType="java.lang.String">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+      insert into risk_point (rid,
+          risk_type,risk_name,risk_location,risk_person,examine_type,is_teshu,accident_may,risk_often,
+          accident_result,risk_rank,risk_explain,risk_explain_result,risk_detail_location,accident_types,loss_forecast,
+          control_measure,potential_risk,measure_meet,technology_safeguard,remarks
+       )values(
+        #{rid,jdbcType=VARCHAR},
+        #{riskType,jdbcType=VARCHAR},
+        #{riskName,jdbcType=VARCHAR},
+        #{riskLocation,jdbcType=VARCHAR},
+        #{riskPerson,jdbcType=VARCHAR},
+        #{examineType,jdbcType=VARCHAR},
+        #{isTeshu,jdbcType=VARCHAR},
+        #{accidentMay,jdbcType=VARCHAR},
+        #{riskOften,jdbcType=VARCHAR},
+        #{accidentResult,jdbcType=VARCHAR},
+        #{riskRank,jdbcType=VARCHAR},
+        #{riskExplain,jdbcType=VARCHAR},
+        #{riskExplainResult,jdbcType=VARCHAR},
+        #{riskDetailLocation,jdbcType=VARCHAR},
+        #{accidentTypes,jdbcType=VARCHAR},
+        #{lossForecast,jdbcType=VARCHAR},
+        #{controlMeasure,jdbcType=VARCHAR},
+        #{potentialRisk,jdbcType=VARCHAR},
+        #{measureMeet,jdbcType=VARCHAR},
+        #{technologySafeguard,jdbcType=VARCHAR},
+        #{remarks,jdbcType=VARCHAR} )
+     </insert>
+
+</mapper>

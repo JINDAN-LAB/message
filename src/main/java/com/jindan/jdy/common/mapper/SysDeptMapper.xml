@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.common.mapper.SysDeptDao">
+
+	<resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.SysDept">
+		<id column="id" property="id" />
+		<id column="pid" property="pid" />
+		<id column="name" property="name" />
+		<id column="open" property="open" />
+		<id column="parent" property="parent" />
+		<id column="remark" property="remark" />
+		<id column="loc" property="loc" />
+		<id column="available" property="available" />
+		<id column="ordernum" property="ordernum" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, pid, name, open, parent, remark, loc, available, ordernum
+	</sql>
+	
+</mapper>

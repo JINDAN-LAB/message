@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.common.mapper.SysRolePermissionDao">
+
+	<resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.SysRolePermission">
+		<id column="rid" property="rid" />
+		<id column="pid" property="pid" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		rid, pid
+	</sql>
+	
+</mapper>

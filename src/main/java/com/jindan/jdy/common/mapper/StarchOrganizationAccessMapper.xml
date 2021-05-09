@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.common.mapper.StarchOrganizationAccessMapper">
+
+	<resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.StarchOrganizationAccess">
+		<id column="lid" property="lid" />
+		<id column="status" property="status" />
+		<id column="recipients_number" property="recipientsNumber" />
+		<id column="receive_time" property="receiveTime" />
+		<id column="receive_person" property="receivePerson" />
+		<id column="receive_company" property="receiveCompany" />
+		<id column="receive_department" property="receiveDepartment" />
+		<id column="receive_area" property="receiveArea" />
+		<id column="receive_place" property="receivePlace" />
+		<id column="receive_remarks" property="receiveRemarks" />
+		<id column="cancelling_stocks_time" property="cancellingStocksTime" />
+		<id column="manage_person" property="managePerson" />
+		<id column="asset_number" property="assetNumber" />
+		<id column="asset_type" property="assetType" />
+		<id column="asset_name" property="assetName" />
+		<id column="asset_model" property="assetModel" />
+		<id column="asset_sn" property="assetSn" />
+		<id column="model_jine" property="modelJine" />
+		<id column="use_company" property="useCompany" />
+		<id column="use_department" property="useDepartment" />
+		<id column="use_person" property="usePerson" />
+		<id column="manager_person" property="managerPerson" />
+		<id column="belong_company" property="belongCompany" />
+		<id column="belong_ereas" property="belongEreas" />
+		<id column="belong_place" property="belongPlace" />
+		<id column="parent_id" property="parentId" />
+	</resultMap>
+
+
+	<resultMap id="BaseResultMapDto" type="com.jindan.jdy.common.dto.StarchOrganizationAccessDto">
+		<id column="lid" property="lid" />
+		<id column="status" property="status" />
+		<id column="recipients_number" property="recipientsNumber" />
+		<id column="receive_time" property="receiveTime" />
+		<id column="receive_person" property="receivePerson" />
+		<id column="receive_company" property="receiveCompany" />
+		<id column="receive_department" property="receiveDepartment" />
+		<id column="receive_area" property="receiveArea" />
+		<id column="receive_place" property="receivePlace" />
+		<id column="receive_remarks" property="receiveRemarks" />
+		<id column="cancelling_stocks_time" property="cancellingStocksTime" />
+		<id column="manage_person" property="managePerson" />
+		<id column="asset_number" property="assetNumber" />
+		<id column="asset_type" property="assetType" />
+		<id column="asset_name" property="assetName" />
+		<id column="asset_model" property="assetModel" />
+		<id column="asset_sn" property="assetSn" />
+		<id column="model_jine" property="modelJine" />
+		<id column="use_company" property="useCompany" />
+		<id column="use_department" property="useDepartment" />
+		<id column="use_person" property="usePerson" />
+		<id column="manager_person" property="managerPerson" />
+		<id column="belong_company" property="belongCompany" />
+		<id column="belong_ereas" property="belongEreas" />
+		<id column="belong_place" property="belongPlace" />
+		<id column="parent_id" property="parentId" />
+		<id column="ptype" property="ptype" />
+		<id column="ptypes" property="ptypes" />
+		<id column="departments" property="departments" />
+
+		<collection property="putList" column="oid" ofType="com.jindan.jdy.common.pojo.StarchOrganizationPut">
+			<id column="oid" property="oid" />
+			<id column="status" property="status" />
+			<id column="imgurl" property="imgurl" />
+			<id column="erweima" property="erweima" />
+			<id column="property_name" property="propertyName" />
+			<id column="property_type" property="propertyType" />
+			<id column="property_guige" property="propertyGuige" />
+			<id column="property_sn" property="propertySn" />
+			<id column="property_nums" property="propertyNums" />
+			<id column="property_jine" property="propertyJine" />
+			<id column="companys" property="companys" />
+			<id column="departments" property="departments" />
+			<id column="use_person" property="usePerson" />
+			<id column="areas" property="areas" />
+			<id column="store_areas" property="storeAreas" />
+			<id column="manager_person" property="managerPerson" />
+			<id column="belong_company" property="belongCompany" />
+			<id column="purchase_time" property="purchaseTime" />
+			<id column="suppliers" property="suppliers" />
+			<id column="service_life" property="serviceLife" />
+			<id column="creator_person" property="creatorPerson" />
+			<id column="source_of" property="sourceOf" />
+			<id column="delete_id" property="deleteId" />
+			<id column="maintain_cycle" property="maintainCycle" />
+			<id column="spare_is" property="spareIs" />
+			<id column="parent_id" property="parentId" />
+			<id column="jianxiuren" property="jianxiuren" />
+			<id column="weixiuren" property="weixiuren" />
+			<id column="remarks" property="remarks" />
+			<id column="baoyang" property="baoyang" />
+			<id column="runhua" property="runhua" />
+			<id column="canshu" property="canshu" />
+			<id column="bianma" property="bianma" />
+			<id column="xuhao" property="xuhao" />
+			<id column="weihao" property="weihao" />
+			<id column="jixiugong" property="jixiugong" />
+		</collection>
+
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		lid, status, recipients_number, receive_time, receive_person, receive_company, receive_department, receive_area, receive_place, receive_remarks, cancelling_stocks_time, manage_person, asset_number, asset_type, asset_name, asset_model, asset_sn, model_jine, use_company, use_department, use_person, manager_person, belong_company, belong_ereas, belong_place, parent_id
+	</sql>
+
+
+	<sql id="selectexpend">
+		<where>
+			<if test="lid != null and lid !='' ">
+				and starch_organization_access.lid = #{lid}
+			</if>
+			<if test="status != null and status !='' ">
+				and starch_organization_access.status = #{status}
+			</if>
+			<if test="recipientsNumber != null and recipientsNumber !='' ">
+				and starch_organization_access.recipients_number = #{recipientsNumber}
+			</if>
+			<if test="receiveTime != null and receiveTime !='' ">
+				and starch_organization_access.receive_time = #{receiveTime}
+			</if>
+			<if test="receivePerson != null and receivePerson !='' ">
+				and starch_organization_access.receive_person = #{receivePerson}
+			</if>
+			<if test="receiveCompany != null and receiveCompany !='' ">
+				and starch_organization_access.receive_company = #{receiveCompany}
+			</if>
+			<if test="receiveDepartment != null and receiveDepartment !='' ">
+				and starch_organization_access.receive_department = #{receiveDepartment}
+			</if>
+			<if test="receiveArea != null and receiveArea !='' ">
+				and starch_organization_access.receive_area = #{receiveArea}
+			</if>
+			<if test="receivePlace != null and receivePlace !='' ">
+				and starch_organization_access.receive_place = #{receivePlace}
+			</if>
+			<if test="cancellingStocksTime != null and cancellingStocksTime !='' ">
+				and starch_organization_access.cancelling_stocks_time = #{cancellingStocksTime}
+			</if>
+			<if test="managePerson != null and managePerson !='' ">
+				and starch_organization_access.manage_person = #{managePerson}
+			</if>
+			<if test="assetNumber != null and assetNumber !='' ">
+				and starch_organization_access.asset_number = #{assetNumber}
+			</if>
+			<if test="assetType != null and assetType !='' ">
+				and starch_organization_access.asset_type = #{assetType}
+			</if>
+			<if test="assetName != null and assetName !='' ">
+				and starch_organization_access.asset_name = #{assetName}
+			</if>
+			<if test="assetModel != null and assetModel !='' ">
+				and starch_organization_access.asset_model = #{assetModel}
+			</if>
+			<if test="assetSn != null and assetSn !='' ">
+				and starch_organization_access.asset_sn = #{assetSn}
+			</if>
+			<if test="modelJine != null and modelJine !='' ">
+				and starch_organization_access.model_jine = #{modelJine}
+			</if>
+			<if test="useCompany != null and useCompany !='' ">
+				and starch_organization_access.use_company = #{useCompany}
+			</if>
+			<if test="useDepartment != null and useDepartment !='' ">
+				and starch_organization_access.use_department = #{useDepartment}
+			</if>
+			<if test="usePerson != null and usePerson !='' ">
+				and starch_organization_access.use_person = #{usePerson}
+			</if>
+			<if test="managerPerson != null and managerPerson !='' ">
+				and starch_organization_access.manager_person = #{managerPerson}
+			</if>
+			<if test="belongCompany != null and belongCompany !='' ">
+				and starch_organization_access.belong_company = #{belongCompany}
+			</if>
+			<if test="belongEreas != null and belongEreas !='' ">
+				and starch_organization_access.belong_ereas = #{belongEreas}
+			</if>
+			<if test="belongPlace != null and belongPlace !='' ">
+				and starch_organization_access.belong_place = #{belongPlace}
+			</if>
+			<if test="parentId != null and parentId !='' ">
+				and starch_organization_access.parent_id = #{parentId}
+			</if>
+			and starch_organization_access.delete_id = 0
+		</where>
+	</sql>
+
+	<!--	queryRelevanceCatList-->
+	<select id="queryRelevanceCatList"  parameterType="com.jindan.jdy.common.dto.StarchOrganizationAccessDto" resultMap="BaseResultMapDto">
+		SELECT
+		warehouse_depository.name as property_type, starch_organization_access.*,starch_organization_put.*
+		FROM  starch_organization_access
+		left JOIN starch_access_put ON starch_access_put.access_id = starch_organization_access.lid and starch_access_put.delete_id = 0
+		left JOIN starch_organization_put ON starch_organization_put.oid = starch_access_put.put_id and starch_organization_put.delete_id = 0
+		left JOIN warehouse_depository ON warehouse_depository.id = starch_organization_put.property_type and warehouse_depository.delete_id = 0
+		<include refid="selectexpend"></include>
+		ORDER BY starch_organization_access.ptype DESC, starch_organization_access.receive_time DESC
+	</select>
+
+</mapper>

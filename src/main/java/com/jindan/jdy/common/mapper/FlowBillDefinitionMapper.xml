@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.common.mapper.FlowBillDefinitionDao">
+
+	<resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.FlowBillDefinition">
+		<id column="id" property="id" />
+		<id column="title" property="title" />
+		<id column="user1" property="user1" />
+		<id column="user2" property="user2" />
+		<id column="user3" property="user3" />
+		<id column="user4" property="user4" />
+		<id column="user5" property="user5" />
+		<id column="user6" property="user6" />
+		<id column="user7" property="user7" />
+		<id column="user8" property="user8" />
+		<id column="user9" property="user9" />
+		<id column="user10" property="user10" />
+		<id column="condition1" property="condition1" />
+		<id column="condition2" property="condition2" />
+		<id column="condition3" property="condition3" />
+		<id column="condition4" property="condition4" />
+		<id column="insert_time" property="insertTime" />
+		<id column="update_time" property="updateTime" />
+		<id column="delete_id" property="deleteId" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, title, user1, user2, user3, user4, user5, user6, user7, user8, user9, user10, condition1, condition2, condition3, condition4, insert_time, update_time, delete_id
+	</sql>
+	
+</mapper>

@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.common.mapper.RiskPointJobSlipApplyMapper">
+
+	<resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.RiskPointJobSlipApply">
+		<id column="zdid" property="zdid" />
+		<result column="znumber" property="znumber" />
+		<result column="insert_time" property="insertTime" />
+		<result column="update_time" property="updateTime" />
+		<result column="delete_id" property="deleteId" />
+		<result column="parent_id" property="parentId" />
+		<result column="zstart_time" property="zstartTime" />
+		<result column="zend_time" property="zendTime" />
+		<result column="scene_persons" property="scenePersons" />
+		<result column="safety_persons" property="safetyPersons" />
+		<result column="risk_assess" property="riskAssess" />
+		<result column="zuoye_location" property="zuoyeLocation" />
+		<result column="zstatus" property="zstatus" />
+		<result column="apply_department" property="applyDepartment" />
+		<result column="apply_persons" property="applyPersons" />
+		<result column="ptypes" property="ptypes" />
+		<result column="scene_persons_signature" property="scenePersonsSignature" />
+		<result column="their_persons_signature" property="theirPersonsSignature" />
+		<result column="safety_person_singnature" property="safetyPersonSingnature" />
+		<result column="workshop_persons" property="workshopPersons" />
+		<result column="their_persons" property="theirPersons" />
+		<result column="remarks1" property="remarks1" />
+		<result column="remarks2" property="remarks2" />
+		<result column="remarks3" property="remarks3" />
+		<result column="notify_persons" property="notifyPersons" />
+		<result column="notify_persons2" property="notifyPersons2" />
+		<result column="notify_persons3" property="notifyPersons3" />
+	</resultMap>
+		
+	<resultMap id="BaseResultMaps" type="com.jindan.jdy.common.dto.RiskPointJobSlipDto">
+		<id column="zdid" property="zdid" />
+		<result column="znumber" property="znumber" />
+		<result column="insert_time" property="insertTime" />
+		<result column="update_time" property="updateTime" />
+		<result column="delete_id" property="deleteId" />
+		<result column="parent_id" property="parentId" />
+		<result column="zstart_time" property="zstartTime" />
+		<result column="zend_time" property="zendTime" />
+		<result column="scene_persons" property="scenePersons" />
+		<result column="safety_persons" property="safetyPersons" />
+		<result column="risk_assess" property="riskAssess" />
+		<result column="zuoye_location" property="zuoyeLocation" />
+		<result column="zstatus" property="zstatus" />
+		<result column="apply_department" property="applyDepartment" />
+		<result column="apply_persons" property="applyPersons" />
+		<result column="ptypes" property="ptypes" />
+		<result column="scene_persons_signature" property="scenePersonsSignature" />
+		<result column="their_persons_signature" property="theirPersonsSignature" />
+		<result column="safety_person_singnature" property="safetyPersonSingnature" />
+		<result column="workshop_persons" property="workshopPersons" />
+		<result column="their_persons" property="theirPersons" />
+		<result column="remarks1" property="remarks1" />
+		<result column="remarks2" property="remarks2" />
+		<result column="remarks3" property="remarks3" />
+		<association property="riskPointJobSlipPpply" column="zdid" resultMap="BaseResultMap"></association>
+		<collection property="detailsList" column="did" resultMap="BaseResultMapContent"></collection>
+	</resultMap>
+
+	<resultMap id="BaseResultMapContent" type="com.jindan.jdy.common.dto.RiskPointJobSlipDetailsDto">
+		<id column="did" property="did" />
+		<result column="parent_id" property="parentId" />
+		<result column="xtitle" property="xtitle" />
+		<result column="dcontent" property="dcontent" />
+		<result column="status" property="status" />
+		<result column="insert_time" property="insertTime" />
+		<result column="update_time" property="updateTime" />
+		<result column="delete_id" property="deleteId" />
+		<result column="remarks" property="remarks" />
+		<collection  property="resultList" column="resultList" ofType="com.jindan.jdy.common.pojo.RiskPointContentResult">
+			<id column="ris_pcr" property="risPcr" />
+			<result column="patrol_result" property="patrolResult" />
+			<result column="parent_id" property="parentId" />
+			<result column="files1" property="files1" />
+			<result column="files2" property="files2" />
+			<result column="files3" property="files3" />
+			<result column="patrol_result_details" property="patrolResultDetails" />
+			<result column="patrol_result_jibie" property="patrolResultJibie" />
+			<result column="hidden_heading" property="hiddenHeading" />
+			<result column="hidden_subclass" property="hiddenSubclass" />
+			<result column="abarbeitung_deadline" property="abarbeitungDeadline" />
+			<result column="abarbeitung_person" property="abarbeitungPerson" />
+			<result column="duplicate_person" property="duplicatePerson" />
+			<result column="people_name" property="peopleName" />
+			<result column="insert_time" property="insertTime" />
+			<result column="update_time" property="updateTime" />
+			<result column="delete_id" property="deleteId" />
+			<result column="status" property="status" />
+			<result column="hidden_location" property="hiddenLocation" />
+			<result column="hidden_jibie" property="hiddenJibie" />
+			<result column="zhuanrang_time" property="zhuanrangTime" />
+		</collection>
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		zdid, znumber, insert_time, update_time, delete_id, parent_id, zstart_time, zend_time, scene_persons, safety_persons, risk_assess, zuoye_location, zstatus, apply_department, apply_persons, ptypes, scene_persons_signature, their_persons_signature, safety_person_singnature, workshop_persons, their_persons, remarks1, remarks2, remarks3
+	</sql>
+
+	<sql id="selectBaohan">
+		<where>
+			<if test="zdid != null and zdid !='' ">
+				and risk_point_job_slip_apply.zdid = #{zdid}
+			</if>
+			<if test="znumber != null and znumber !='' ">
+				and risk_point_job_slip_apply.znumber = #{znumber}
+			</if>
+			<if test="parentId != null and parentId !='' ">
+				and risk_point_job_slip_apply.parent_id = #{parentId}
+			</if>
+			<if test="zstartTime != null and zstartTime !='' ">
+				and risk_point_job_slip_apply.zstart_time = #{zstartTime}
+			</if>
+			<if test="zendTime != null and zendTime !='' ">
+				and risk_point_job_slip_apply.zend_time = #{zendTime}
+			</if>
+			<if test="scenePersons != null and scenePersons !='' ">
+				and risk_point_job_slip_apply.scene_persons = #{scenePersons}
+			</if>
+			<if test="safetyPersons != null and safetyPersons !='' ">
+				and risk_point_job_slip_apply.safety_persons = #{safetyPersons}
+			</if>
+			<if test="riskAssess != null and riskAssess !='' ">
+				and risk_point_job_slip_apply.risk_assess = #{riskAssess}
+			</if>
+			<if test="zuoyeLocation != null and zuoyeLocation !='' ">
+				and risk_point_job_slip_apply.zuoye_location = #{zuoyeLocation}
+			</if>
+			<if test="zstatus != null and zstatus !='' ">
+				and risk_point_job_slip_apply.zstatus = #{zstatus}
+			</if>
+			<if test="applyDepartment != null and applyDepartment !='' ">
+				and risk_point_job_slip_apply.apply_department = #{applyDepartment}
+			</if>
+			<if test="applyPersons != null and applyPersons !='' ">
+				and risk_point_job_slip_apply.apply_persons = #{applyPersons}
+			</if>
+			<if test="ptypes != null and ptypes !='' ">
+				and risk_point_job_slip_apply.ptypes = #{ptypes}
+			</if>
+			<if test="scenePersonsSignature != null and scenePersonsSignature !='' ">
+				and risk_point_job_slip_apply.scene_persons_signature = #{scenePersonsSignature}
+			</if>
+			<if test="theirPersonsSignature != null and theirPersonsSignature !='' ">
+				and risk_point_job_slip_apply.their_persons_signature = #{theirPersonsSignature}
+			</if>
+			<if test="safetyPersonSingnature != null and safetyPersonSingnature !='' ">
+				and risk_point_job_slip_apply.safety_person_singnature = #{safetyPersonSingnature}
+			</if>
+			<if test="workshopPersons != null and workshopPersons !='' ">
+				and risk_point_job_slip_apply.workshop_persons = #{workshopPersons}
+			</if>
+			<if test="theirPersons != null and theirPersons !='' ">
+				and risk_point_job_slip_apply.their_persons = #{theirPersons}
+			</if>
+			<if test="remarks1 != null and remarks1 !='' ">
+				and risk_point_job_slip_apply.remarks1 = #{remarks1}
+			</if>
+			<if test="remarks2 != null and remarks2 !='' ">
+				and risk_point_job_slip_apply.remarks2 = #{remarks2}
+			</if>
+			<if test="remarks3 != null and remarks3 !='' ">
+				and risk_point_job_slip_apply.remarks3 = #{remarks3}
+			</if>
+			and risk_point_job_slip_apply.delete_id=0
+		</where>
+	</sql>
+
+
+<!--	seleDetails-->
+	<select id="seleDetails"  resultMap="BaseResultMaps">
+		SELECT
+	    	risk_point_job_slip_apply.*,risk_point_job_slip.*,risk_point_job_slip_details.*,risk_point_content_result.*
+		FROM
+	        risk_point_job_slip_apply
+		left join risk_point_job_slip  on risk_point_job_slip_apply.parent_id = risk_point_job_slip.zid and risk_point_job_slip.delete_id =0
+		left join risk_point_job_slip_details  on risk_point_job_slip.zid = risk_point_job_slip_details.parent_id       and risk_point_job_slip_details.delete_id = 0
+		left join risk_point_content_result  on risk_point_job_slip_details.did = risk_point_content_result.parent_id    and risk_point_job_slip_apply.zdid = risk_point_content_result.rshebei and risk_point_content_result.delete_id = 0
+         <include refid="selectBaohan"></include>
+	</select>
+
+
+<!--	seleteZhenggaiRiskPoint-->
+	<select id="seleteZhenggaiRiskPoint"    resultMap="BaseResultMapContent">
+		SELECT
+		  risk_point_job_slip_details.*,risk_point_content_result.*
+		FROM
+		  risk_point_job_slip_apply
+		left join risk_point_job_slip  on risk_point_job_slip_apply.parent_id = risk_point_job_slip.zid and risk_point_job_slip.delete_id =0
+		left join risk_point_job_slip_details  on risk_point_job_slip.zid = risk_point_job_slip_details.parent_id       and risk_point_job_slip_details.delete_id = 0
+		left join risk_point_content_result  on risk_point_job_slip_details.did = risk_point_content_result.parent_id    and risk_point_job_slip_apply.zdid = risk_point_content_result.rshebei and risk_point_content_result.delete_id = 0
+		<include refid="selectBaohan"></include>
+	</select>
+
+</mapper>

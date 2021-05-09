@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.common.mapper.SysUserDao">
+
+	<resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.SysUser">
+		<id column="id" property="id" />
+		<id column="name" property="name" />
+		<id column="loginname" property="loginname" />
+		<id column="address" property="address" />
+		<id column="sex" property="sex" />
+		<id column="remark" property="remark" />
+		<id column="pwd" property="pwd" />
+		<id column="deptid" property="deptid" />
+		<id column="hiredate" property="hiredate" />
+		<id column="mgr" property="mgr" />
+		<id column="available" property="available" />
+		<id column="ordernum" property="ordernum" />
+		<id column="type" property="type" />
+		<id column="imgpath" property="imgpath" />
+		<id column="salt" property="salt" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, name, loginname, address, sex, remark, pwd, deptid, hiredate, mgr, available, ordernum, type, imgpath, salt
+	</sql>
+
+	
+</mapper>

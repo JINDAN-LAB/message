@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.common.mapper.JdySspMapper">
+
+	<resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.JdySsp">
+		<id column="id" property="id" />
+		<id column="content" property="content" />
+		<id column="locations" property="locations" />
+		<id column="imgurl" property="imgurl" />
+		<id column="insert_time" property="insertTime" />
+		<id column="user_id" property="userId" />
+		<id column="status" property="status" />
+		<id column="chuli_time" property="chuliTime" />
+		<id column="result_per" property="resultPer" />
+		<id column="exceed_time" property="exceedTime" />
+		<id column="result_url" property="resultUrl" />
+		<id column="update_time" property="updateTime" />
+		<id column="delete_id" property="deleteId" />
+		<id column="result_content" property="resultContent" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, content, locations, imgurl, insert_time, user_id, status, chuli_time, result_per, exceed_time, result_url, update_time, delete_id, result_content
+	</sql>
+	
+</mapper>

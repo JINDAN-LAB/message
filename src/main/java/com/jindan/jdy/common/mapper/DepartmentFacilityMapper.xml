@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.common.mapper.DepartmentFacilityMapper">
+
+	<resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.DepartmentFacility">
+		<id column="id" property="id" />
+		<id column="goods_id" property="goodsId" />
+		<id column="brand" property="brand" />
+		<id column="model" property="model" />
+		<id column="nuit" property="nuit" />
+		<id column="number" property="number" />
+		<id column="price" property="price" />
+		<id column="states" property="states" />
+		<id column="create_name" property="createName" />
+		<id column="insert_time" property="insertTime" />
+		<id column="update_time" property="updateTime" />
+		<id column="file_id" property="fileId" />
+		<id column="imgurl" property="imgurl" />
+		<id column="parent_id" property="parentId" />
+		<id column="delete_id" property="deleteId" />
+		<id column="installtime" property="installtime" />
+		<id column="usetime" property="usetime" />
+		<id column="allkg" property="allkg" />
+		<id column="assetnumber" property="assetnumber" />
+		<id column="serialnumber" property="serialnumber" />
+		<id column="departments" property="departments" />
+		<id column="specifications" property="specifications" />
+		<id column="remarks" property="remarks" />
+		<id column="pid_number" property="pidNumber" />
+		<id column="repair_period" property="repairPeriod" />
+		<id column="is_repair" property="isRepair" />
+		<id column="maintain_person" property="maintainPerson" />
+		<id column="bit_number" property="bitNumber" />
+		<id column="rate_of_work" property="rateOfWork" />
+		<id column="erweima" property="erweima" />
+		<id column="powers" property="powers" />
+		<id column="parameters" property="parameters" />
+		<id column="lubrication" property="lubrication" />
+		<id column="texture" property="texture" />
+		<id column="all_weight" property="allWeight" />
+		<id column="revolutions_per_minute" property="revolutionsPerMinute" />
+		<id column="commodity_name" property="commodityName" />
+		<id column="frequencys" property="frequencys" />
+		<id column="warehouse_id" property="warehouseId" />
+		<id column="allday" property="allday" />
+		<id column="name1" property="name1" />
+		<id column="name2" property="name2" />
+		<id column="name3" property="name3" />
+		<id column="name4" property="name4" />
+		<id column="name5" property="name5" />
+		<id column="name6" property="name6" />
+		<id column="name7" property="name7" />
+		<id column="name8" property="name8" />
+		<id column="name9" property="name9" />
+		<id column="name10" property="name10" />
+		<id column="name11" property="name11" />
+		<id column="name12" property="name12" />
+		<id column="name13" property="name13" />
+		<id column="name14" property="name14" />
+		<id column="name15" property="name15" />
+		<id column="name16" property="name16" />
+		<id column="name17" property="name17" />
+		<id column="name18" property="name18" />
+		<id column="name19" property="name19" />
+		<id column="name20" property="name20" />
+		<id column="name21" property="name21" />
+		<id column="name22" property="name22" />
+		<id column="name23" property="name23" />
+		<id column="name24" property="name24" />
+		<id column="name25" property="name25" />
+		<id column="name26" property="name26" />
+		<id column="name27" property="name27" />
+		<id column="name28" property="name28" />
+		<id column="name29" property="name29" />
+		<id column="name30" property="name30" />
+		<id column="ptype" property="ptype" />
+		<id column="types" property="types" />
+	</resultMap>
+	<resultMap id="facilityListResultMap" type="com.jindan.jdy.common.dto.DepartmentFacilityDto">
+		<id column="id" property="id" />
+		<id column="goods_id" property="goodsId" />
+		<id column="brand" property="brand" />
+		<id column="model" property="model" />
+		<id column="nuit" property="nuit" />
+		<id column="number" property="number" />
+		<id column="price" property="price" />
+		<id column="states" property="states" />
+		<id column="create_name" property="createName" />
+		<id column="insert_time" property="insertTime" />
+		<id column="update_time" property="updateTime" />
+		<id column="file_id" property="fileId" />
+		<id column="imgurl" property="imgurl" />
+		<id column="parent_id" property="parentId" />
+		<id column="delete_id" property="deleteId" />
+		<id column="installtime" property="installtime" />
+		<id column="usetime" property="usetime" />
+		<id column="allkg" property="allkg" />
+		<id column="assetnumber" property="assetnumber" />
+		<id column="serialnumber" property="serialnumber" />
+		<id column="departments" property="departments" />
+		<id column="specifications" property="specifications" />
+		<id column="remarks" property="remarks" />
+		<id column="pid_number" property="pidNumber" />
+		<id column="repair_period" property="repairPeriod" />
+		<id column="is_repair" property="isRepair" />
+		<id column="maintain_person" property="maintainPerson" />
+		<id column="bit_number" property="bitNumber" />
+		<id column="rate_of_work" property="rateOfWork" />
+		<id column="erweima" property="erweima" />
+		<id column="powers" property="powers" />
+		<id column="parameters" property="parameters" />
+		<id column="lubrication" property="lubrication" />
+		<id column="texture" property="texture" />
+		<id column="all_weight" property="allWeight" />
+		<id column="revolutions_per_minute" property="revolutionsPerMinute" />
+		<id column="commodity_name" property="commodityName" />
+		<id column="frequencys" property="frequencys" />
+		<id column="warehouse_id" property="warehouseId" />
+		<id column="allday" property="allday" />
+		<id column="name1" property="name1" />
+		<id column="name2" property="name2" />
+		<id column="name3" property="name3" />
+		<id column="name4" property="name4" />
+		<id column="name5" property="name5" />
+		<id column="name6" property="name6" />
+		<id column="name7" property="name7" />
+		<id column="name8" property="name8" />
+		<id column="name9" property="name9" />
+		<id column="name10" property="name10" />
+		<id column="name11" property="name11" />
+		<id column="name12" property="name12" />
+		<id column="name13" property="name13" />
+		<id column="name14" property="name14" />
+		<id column="name15" property="name15" />
+		<id column="name16" property="name16" />
+		<id column="name17" property="name17" />
+		<id column="name18" property="name18" />
+		<id column="name19" property="name19" />
+		<id column="name20" property="name20" />
+		<id column="name21" property="name21" />
+		<id column="name22" property="name22" />
+		<id column="name23" property="name23" />
+		<id column="name24" property="name24" />
+		<id column="name25" property="name25" />
+		<id column="name26" property="name26" />
+		<id column="name27" property="name27" />
+		<id column="name28" property="name28" />
+		<id column="name29" property="name29" />
+		<id column="name30" property="name30" />
+		<id column="name31" property="name31" />
+		<id column="name32" property="name32" />
+		<id column="name33" property="name33" />
+		<id column="name34" property="name34" />
+		<id column="name35" property="name35" />
+		<id column="ptype" property="ptype" />
+		<id column="types" property="types" />
+		<collection property="departmentSubfacilities" column="commodity_id" ofType="com.jindan.jdy.common.pojo.DepartmentSubfacility">
+			<id column="id2" property="id" />
+			<id column="goods_id2" property="goodsId" />
+			<id column="brand2" property="brand" />
+			<id column="model2" property="model" />
+			<id column="nuit2" property="nuit" />
+			<id column="number2" property="number" />
+			<id column="price2" property="price" />
+			<id column="states2" property="states" />
+			<id column="create_name2" property="createName" />
+			<id column="insert_time2" property="insertTime" />
+			<id column="update_time2" property="updateTime" />
+			<id column="file_id2" property="fileId" />
+			<id column="imgurl2" property="imgurl" />
+			<id column="depart_facility_id2" property="departFacilityId" />
+			<id column="delete_id2" property="deleteId" />
+			<id column="installtime2" property="installtime" />
+			<id column="usetime2" property="usetime" />
+			<id column="allkg2" property="allkg" />
+			<id column="assetnumber2" property="assetnumber" />
+			<id column="serialnumber2" property="serialnumber" />
+			<id column="departments2" property="departments" />
+			<id column="specifications2" property="specifications" />
+			<id column="remarks2" property="remarks" />
+			<id column="pid_number2" property="pidNumber" />
+			<id column="repair_period2" property="repairPeriod" />
+			<id column="is_repair2" property="isRepair" />
+			<id column="maintain_person2" property="maintainPerson" />
+			<id column="bit_number2" property="bitNumber" />
+			<id column="rate_of_work2" property="rateOfWork" />
+			<id column="powers2" property="powers" />
+			<id column="parameters2" property="parameters" />
+			<id column="lubrication2" property="lubrication" />
+			<id column="texture2" property="texture" />
+			<id column="all_weight2" property="allWeight" />
+			<id column="revolutions_per_minute2" property="revolutionsPerMinute" />
+			<id column="commodity_name2" property="commodityName" />
+			<id column="frequencys2" property="frequencys" />
+			<id column="warehouse_id2" property="warehouseId" />
+		</collection>
+		<collection property="jdyUserFiles" column="file_id" ofType="com.jindan.jdy.common.pojo.JdyUserFile">
+			<id column="file_id1" property="fileId" />
+			<id column="user_file_name1" property="userFileName" />
+			<id column="file_name1" property="fileName" />
+			<id column="file_describe1" property="fileDescribe" />
+			<id column="parent_id1" property="parentId" />
+		</collection>
+	</resultMap>
+
+	<sql id="selectexpend">
+		<where>
+			<if test="goodsId != null and goodsId !='' ">
+				and department_facility.goods_id = #{goodsId}
+			</if>
+			<if test="id != null and id !='' ">
+				and department_facility.id = #{id}
+			</if>
+			<if test="brand != null and brand !='' ">
+				and department_facility.brand = #{brand}
+			</if>
+			<if test="model != null and model !='' ">
+				and department_facility.model = #{model}
+			</if>
+			<if test="number != null and number !='' ">
+				and department_facility.number = #{number}
+			</if>
+			<if test="bitNumber != null and bitNumber !='' ">
+				and department_facility.bit_number = #{bitNumber}
+			</if>
+			<if test="maintainPerson != null and maintainPerson !='' ">
+				and department_facility.maintain_person = #{maintainPerson}
+			</if>
+			<if test="maintainPeriod != null and maintainPeriod !='' ">
+				and department_facility.maintain_period = #{maintainPeriod}
+			</if>
+			<if test="isRepair != null and isRepair !='' ">
+				and department_facility.is_repair = #{isRepair}
+			</if>
+			<if test="repairPeriod != null and repairPeriod !='' ">
+				and department_facility.repair_period = #{repairPeriod}
+			</if>
+			<if test="departments != null and departments !='' ">
+				and department_facility.departments = #{departments}
+			</if>
+			<if test="commodityName != null and commodityName !='' ">
+				and department_facility.commodity_name = #{commodityName}
+			</if>
+			<if test="frequencys != null and frequencys !='' ">
+				and department_facility.frequencys = #{frequencys}
+			</if>
+			<if test="revolutionsPerMinute != null and revolutionsPerMinute !='' ">
+				and department_facility.revolutions_per_minute = #{revolutionsPerMinute}
+			</if>
+			<if test="allWeight != null and allWeight !='' ">
+				and department_facility.all_weight = #{allWeight}
+			</if>
+			<if test="texture != null and texture !='' ">
+				and department_facility.texture = #{texture}
+			</if>
+			<if test="types != null and types !='' ">
+				and department_facility.types = #{types}
+			</if>
+			<if test="ptype != null and ptype !='' ">
+				and department_facility.ptype = #{ptype}
+			</if>
+			<if test="states != null and states !='' ">
+				and department_facility.states = #{states}
+			</if>
+			and  department_facility.delete_id =0
+		</where>
+	</sql>
+
+<!--	facilityList-->
+	<sql id="Base_Column_List">
+		id, goods_id, brand, model, nuit, number, price, states, create_name, insert_time, update_time, file_id, imgurl, parent_id, delete_id
+	</sql>
+
+<!-- seleteDepartmentFacility-->
+	<select id="seleteDepartmentFacility" parameterType="com.jindan.jdy.common.dto.DepartmentFacilityDto" resultMap="facilityListResultMap">
+		SELECT
+		  department_facility.*,
+	      sd2.id as id2,
+	      sd2.goods_id as goods_id2,
+	      sd2.brand as brand2,
+	      sd2.model as model2,
+	      sd2.nuit as nuit2,
+	      sd2.number as number2,
+	      sd2.price as price2,
+	       sd2.states as states2,
+	       sd2.create_name as create_name2,
+	       sd2.file_id as file_id2,
+	     sd2.imgurl as imgurl2,
+	     sd2.depart_facility_id as depart_facility_id2,
+	     sd2.delete_id as delete_id2,
+    	 sd2.insert_time as insert_time2,
+	     sd2.update_time as update_time2,
+		 sd2.rate_of_work as rate_of_work2,
+		 sd2.usetime as usetime2,
+		 sd2.installtime as installtime2,
+		 sd2.allkg as allkg2,
+		 sd2.assetnumber as assetnumber2,
+		 sd2.serialnumber as serialnumber2,
+		 sd2.departments as departments2,
+		 sd2.specifications as specifications2,
+		 sd2.remarks as remarks2,
+		 sd2.pid_number as pid_number2,
+		 sd2.repair_period as repair_period2,
+		 sd2.is_repair as is_repair2,
+		 sd2.maintain_period as maintain_period2,
+		 sd2.maintain_person as maintain_person2,
+		 sd2.bit_number as bit_number2,
+		 sd2.warehouse_id as warehouse_id2,
+		 sd2.powers as powers2,
+		 sd2.parameters as parameters2,
+		 sd2.lubrication as lubrication2,
+		 sd2.texture as texture2,
+		 sd2.all_weight as all_weight2,
+		 sd2.revolutions_per_minute as revolutions_per_minute2,
+		 sd2.frequencys as frequencys2,
+		 sd2.commodity_name as commodity_name2,
+		 jdy_user_file.file_id as file_id1,
+		 jdy_user_file.user_file_name as user_file_name1,
+		 jdy_user_file.file_name as file_name1,
+		 jdy_user_file.file_describe as file_describe1,
+		 jdy_user_file.parent_id as parent_id1
+	    FROM
+		 department_facility
+		left JOIN department_subfacility sd2 ON department_facility.id = sd2.depart_facility_id  and sd2.delete_id=0
+		left JOIN jdy_user_file  ON jdy_user_file.parent_id = department_facility.id  and jdy_user_file.delete_id=0
+      <include refid="selectexpend"></include>
+	   order by department_facility.bit_number desc
+	</select>
+ <!--	seleteDepartmentFacility-->
+<!--	<select id="seleteDepartmentFacility" resultMap="facilityListResultMap com.jindan.jdy.common.dto.DepartmentFacilityDto">-->
+
+<!--			SELECT-->
+<!--			sd1.*,-->
+<!--			sd2.*-->
+<!--FROM-->
+<!--			department_facility sd1-->
+<!--		INNER JOIN department_facility sd2 ON sd1.parent_id = sd2.id-->
+<!--	</select>-->
+
+<!--	SELECT-->
+<!--	sd1.*,-->
+<!--	sd2.`name` AS dname-->
+<!--	FROM-->
+<!--	stock_depository sd1-->
+<!--	INNER JOIN stock_depository sd2 ON sd1.parent_id = sd2.id-->
+<!--	where sd1.state = 1-->
+
+</mapper>

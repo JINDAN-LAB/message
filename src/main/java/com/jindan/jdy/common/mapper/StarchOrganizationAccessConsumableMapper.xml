@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.common.mapper.StarchOrganizationAccessConsumableMapper">
+
+	<resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.StarchOrganizationAccessConsumable">
+		<id column="lid" property="lid" />
+		<id column="danhao" property="danhao" />
+		<id column="cangku" property="cangku" />
+		<id column="yewutime" property="yewutime" />
+		<id column="suppliers" property="suppliers" />
+		<id column="persons" property="persons" />
+		<id column="person_time" property="personTime" />
+		<id column="remarks" property="remarks" />
+		<id column="gongsi" property="gongsi" />
+		<id column="bumen" property="bumen" />
+		<id column="status" property="status" />
+		<id column="insert_time" property="insertTime" />
+		<id column="update_time" property="updateTime" />
+		<id column="delete_id" property="deleteId" />
+		<id column="ptypes" property="ptypes" />
+		<id column="beiyong1" property="beiyong1" />
+		<id column="jine" property="jine" />
+		<id column="num" property="num" />
+		<id column="lingyongren" property="lingyongren" />
+		<id column="departments" property="departments" />
+	</resultMap>
+
+	<sql id="selectexpend">
+		<where>
+			<if test="lid != null and lid !='' ">
+				and starch_organization_access.lid = #{lid}
+			</if>
+			<if test="status != null and status !='' ">
+				and starch_organization_access.status = #{status}
+			</if>
+			<if test="receiveTime != null and receiveTime !='' ">
+				and starch_organization_access.receive_time = #{receiveTime}
+			</if>
+			<if test="receivePerson != null and receivePerson !='' ">
+				and starch_organization_access.receive_person = #{receivePerson}
+			</if>
+			<if test="receiveCompany != null and receiveCompany !='' ">
+				and starch_organization_access.receive_company = #{receiveCompany}
+			</if>
+			<if test="receiveDepartment != null and receiveDepartment !='' ">
+				and starch_organization_access.receive_department = #{receiveDepartment}
+			</if>
+			<if test="receiveArea != null and receiveArea !='' ">
+				and starch_organization_access.receive_area = #{receiveArea}
+			</if>
+			<if test="receivePlace != null and receivePlace !='' ">
+				and starch_organization_access.receive_place = #{receivePlace}
+			</if>
+			<if test="cancellingStocksTime != null and cancellingStocksTime !='' ">
+				and starch_organization_access.cancelling_stocks_time = #{cancellingStocksTime}
+			</if>
+			<if test="managePerson != null and managePerson !='' ">
+				and starch_organization_access.manage_person = #{managePerson}
+			</if>
+			<if test="assetNumber != null and assetNumber !='' ">
+				and starch_organization_access.asset_number = #{assetNumber}
+			</if>
+			<if test="assetType != null and assetType !='' ">
+				and starch_organization_access.asset_type = #{assetType}
+			</if>
+			<if test="assetName != null and assetName !='' ">
+				and starch_organization_access.asset_name = #{assetName}
+			</if>
+			<if test="assetModel != null and assetModel !='' ">
+				and starch_organization_access.asset_model = #{assetModel}
+			</if>
+			<if test="assetSn != null and assetSn !='' ">
+				and starch_organization_access.asset_sn = #{assetSn}
+			</if>
+			<if test="modelJine != null and modelJine !='' ">
+				and starch_organization_access.model_jine = #{modelJine}
+			</if>
+			<if test="useCompany != null and useCompany !='' ">
+				and starch_organization_access.use_company = #{useCompany}
+			</if>
+			<if test="useDepartment != null and useDepartment !='' ">
+				and starch_organization_access.use_department = #{useDepartment}
+			</if>
+			<if test="usePerson != null and usePerson !='' ">
+				and starch_organization_access.use_person = #{usePerson}
+			</if>
+			<if test="managerPerson != null and managerPerson !='' ">
+				and starch_organization_access.manager_person = #{managerPerson}
+			</if>
+			<if test="belongCompany != null and belongCompany !='' ">
+				and starch_organization_access.belong_company = #{belongCompany}
+			</if>
+			<if test="belongEreas != null and belongEreas !='' ">
+				and starch_organization_access.belong_ereas = #{belongEreas}
+			</if>
+			<if test="belongPlace != null and belongPlace !='' ">
+				and starch_organization_access.belong_place = #{belongPlace}
+			</if>
+			<if test="parentId != null and parentId !='' ">
+				and starch_organization_access.parent_id = #{parentId}
+			</if>
+			and starch_organization_access.delete_id = 0
+		</where>
+	</sql>
+
+<!--	selectexpendCatList-->
+	<sql id="selectexpendCatList">
+		<where>
+			<if test="lid != null and lid !='' ">
+				and starch_organization_access_consumable.lid = #{lid}
+			</if>
+			<if test="danhao != null and danhao !='' ">
+				and starch_organization_access_consumable.danhao = #{danhao}
+			</if>
+			<if test="cangku != null and cangku !='' ">
+				and starch_organization_access_consumable.cangku = #{cangku}
+			</if>
+			<if test="yewutime != null and yewutime !='' ">
+				and starch_organization_access_consumable.yewutime = #{yewutime}
+			</if>
+			<if test="suppliers != null and suppliers !='' ">
+				and starch_organization_access_consumable.suppliers = #{suppliers}
+			</if>
+			<if test="persons != null and persons !='' ">
+				and starch_organization_access_consumable.persons = #{persons}
+			</if>
+			<if test="personTime != null and personTime !='' ">
+				and starch_organization_access_consumable.person_time = #{personTime}
+			</if>
+			<if test="gongsi != null and gongsi !='' ">
+				and starch_organization_access_consumable.gongsi = #{gongsi}
+			</if>
+			<if test="bumen != null and bumen !='' ">
+				and starch_organization_access_consumable.bumen = #{bumen}
+			</if>
+			<if test="status != null and status !='' ">
+				and starch_organization_access_consumable.status = #{status}
+			</if>
+			<if test="ptypes != null and ptypes !='' ">
+				and starch_organization_access_consumable.ptypes = #{ptypes}
+			</if>
+			<if test="beiyong1 != null and beiyong1 !='' ">
+				and starch_organization_access_consumable.beiyong1 = #{beiyong1}
+			</if>
+			<if test="lingyongren != null and lingyongren !='' ">
+				and starch_organization_access_consumable.lingyongren = #{lingyongren}
+			</if>
+			<if test="cangku != null and cangku !='' ">
+				and starch_organization_access_consumable.cangku = #{cangku}
+			</if>
+			<if test="ptypes != null and ptypes !='' ">
+				and starch_organization_access_consumable.ptypes = #{ptypes}
+			</if>
+			<if test="departments != null and departments !='' ">
+				and starch_organization_access_consumable.departments = #{departments}
+			</if>
+			<if test="ptype != null and ptype !='' ">
+				and starch_organization_access_consumable.ptype = #{ptype}
+			</if>
+			<if test="departments != null and departments !='' ">
+				and starch_organization_access_consumable.departments = #{departments}
+			</if>
+			 and starch_organization_access_consumable.delete_id = 0
+		</where>
+	</sql>
+
+
+	<resultMap id="BaseResultMapDto" type="com.jindan.jdy.common.dto.StarchOrganizationAccessConsumableDto">
+
+		<id column="lid" property="lid" />
+		<id column="danhao" property="danhao" />
+		<id column="cangku" property="cangku" />
+		<id column="yewutime" property="yewutime" />
+		<id column="suppliers" property="suppliers" />
+		<id column="persons" property="persons" />
+		<id column="person_time" property="personTime" />
+		<id column="remarks" property="remarks" />
+		<id column="gongsi" property="gongsi" />
+		<id column="bumen" property="bumen" />
+		<id column="status" property="status" />
+		<id column="insert_time" property="insertTime" />
+		<id column="update_time" property="updateTime" />
+		<id column="delete_id" property="deleteId" />
+		<id column="ptypes" property="ptypes" />
+		<id column="beiyong1" property="beiyong1" />
+		<id column="jine" property="jine" />
+		<id column="num" property="num" />
+		<id column="lingyongren" property="lingyongren" />
+		<collection property="lists" column="oid" ofType="com.jindan.jdy.common.pojo.StarchOrganizationPut">
+			<id column="oid" property="oid" />
+			<id column="status" property="status" />
+			<id column="imgurl" property="imgurl" />
+			<id column="erweima" property="erweima" />
+			<id column="property_name" property="propertyName" />
+			<id column="property_type" property="propertyType" />
+			<id column="property_guige" property="propertyGuige" />
+			<id column="property_sn" property="propertySn" />
+			<id column="property_nums" property="propertyNums" />
+			<id column="property_jine" property="propertyJine" />
+			<id column="companys" property="companys" />
+			<id column="departments" property="departments" />
+			<id column="use_person" property="usePerson" />
+			<id column="areas" property="areas" />
+			<id column="store_areas" property="storeAreas" />
+			<id column="manager_person" property="managerPerson" />
+			<id column="belong_company" property="belongCompany" />
+			<id column="purchase_time" property="purchaseTime" />
+			<id column="suppliers" property="suppliers" />
+			<id column="service_life" property="serviceLife" />
+			<id column="creator_person" property="creatorPerson" />
+			<id column="source_of" property="sourceOf" />
+			<id column="insert_time" property="insertTime" />
+			<id column="update_time" property="updateTime" />
+			<id column="delete_id" property="deleteId" />
+			<id column="maintain_cycle" property="maintainCycle" />
+			<id column="spare_is" property="spareIs" />
+			<id column="parent_id" property="parentId" />
+		</collection>
+	</resultMap>
+
+
+	<resultMap id="BaseResultMapDtoStilds" type="com.jindan.jdy.common.dto.StarchOrganizationAccessConsumableDto">
+		<id column="lid" property="lid" />
+		<id column="danhao" property="danhao" />
+		<id column="cangku" property="cangku" />
+		<id column="yewutime" property="yewutime" />
+		<id column="suppliers" property="suppliers" />
+		<id column="persons" property="persons" />
+		<id column="person_time" property="personTime" />
+		<id column="remarks" property="remarks" />
+		<id column="gongsi" property="gongsi" />
+		<id column="bumen" property="bumen" />
+		<id column="status" property="status" />
+		<id column="insert_time" property="insertTime" />
+		<id column="update_time" property="updateTime" />
+		<id column="delete_id" property="deleteId" />
+		<id column="ptypes" property="ptypes" />
+		<id column="beiyong1" property="beiyong1" />
+		<id column="jine" property="jine" />
+		<id column="num" property="num" />
+		<id column="lingyongren" property="lingyongren" />
+		<id column="ptype" property="ptype" />
+		<id column="departments" property="departments" />
+		<collection property="lists" column="churu" ofType="com.jindan.jdy.common.pojo.StarchOrganizationPutConsumableChuru">
+			<id column="cids" property="cids" />
+			<id column="churu" property="churu" />
+			<id column="imgurl" property="imgurl" />
+			<id column="guige" property="guige" />
+			<id column="danwei" property="danwei" />
+			<id column="nums" property="num" />
+			<id column="unit_price" property="unitPrice" />
+			<id column="num_jine" property="numJine" />
+			<id column="remarks" property="remarks" />
+			<id column="anquan_dowm" property="anquanDowm" />
+			<id column="anquan_up" property="anquanUp" />
+			<id column="parent_id" property="parentId" />
+			<id column="insert_time" property="insertTime" />
+			<id column="bianma" property="bianma" />
+			<id column="names" property="names" />
+			<id column="pici" property="pici" />
+			<id column="erweima" property="erweima" />
+			<id column="update_time" property="updateTime" />
+			<id column="delete_id" property="deleteId" />
+			<id column="ptype" property="ptype" />
+			<id column="departments" property="departments" />
+			<id column="ptypes" property="ptypes" />
+		</collection>
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		lid, danhao, cangku, lingyongren,yewutime, suppliers, persons, person_time, remarks, gongsi, bumen, status, insert_time, update_time, delete_id, ptypes, beiyong1, jine, num
+	</sql>
+
+<!-- queryRelevanceCatList-->
+	<select id="queryRelevanceCatList"  parameterType="com.jindan.jdy.common.dto.StarchOrganizationAccessConsumableDto" resultMap="BaseResultMapDtoStilds">
+		SELECT
+		starch_organization_access_consumable.*,starch_organization_put_consumable_churu.*,starch_organization_put_consumable_churu.num as nums
+		FROM  starch_organization_access_consumable
+		left JOIN starch_organization_put_consumable_churu ON starch_organization_access_consumable.lid = starch_organization_put_consumable_churu.parent_ids and starch_organization_put_consumable_churu.delete_id = 0
+		<include refid="selectexpendCatList"></include>
+	</select>
+
+</mapper>

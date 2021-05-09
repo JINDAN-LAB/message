@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.common.mapper.StarchOrganizationBorrowReturnMapper">
+
+	<resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.StarchOrganizationBorrowReturn">
+		<id column="brid" property="brid" />
+		<id column="status" property="status" />
+		<id column="borrow_number" property="borrowNumber" />
+		<id column="borrow_time" property="borrowTime" />
+		<id column="borrow_person" property="borrowPerson" />
+		<id column="predict_return_time" property="predictReturnTime" />
+		<id column="return_time" property="returnTime" />
+		<id column="property_parent_id" property="propertyParentId" />
+		<id column="insert_time" property="insertTime" />
+		<id column="update_time" property="updateTime" />
+		<id column="delete_id" property="deleteId" />
+		<id column="parent_id" property="parentId" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		brid, status, borrow_number, borrow_time, borrow_person, predict_return_time, return_time, property_parent_id, insert_time, update_time, delete_id, parent_id
+	</sql>
+
+	<resultMap id="BaseResultMapDto" type="com.jindan.jdy.common.dto.StarchOrganizationBorrowReturnDto">
+		<id column="brid" property="brid" />
+		<id column="status" property="status" />
+		<id column="borrow_number" property="borrowNumber" />
+		<id column="borrow_time" property="borrowTime" />
+		<id column="borrow_person" property="borrowPerson" />
+		<id column="predict_return_time" property="predictReturnTime" />
+		<id column="return_time" property="returnTime" />
+		<id column="property_parent_id" property="propertyParentId" />
+		<id column="delete_id" property="deleteId" />
+		<id column="parent_id" property="parentId" />
+		<id column="departments" property="departments" />
+		<collection property="putList" column="oid" ofType="com.jindan.jdy.common.pojo.StarchOrganizationPut">
+			<id column="oid" property="oid" />
+			<id column="status" property="status" />
+			<id column="imgurl" property="imgurl" />
+			<id column="erweima" property="erweima" />
+			<id column="property_name" property="propertyName" />
+			<id column="property_type" property="propertyType" />
+			<id column="property_guige" property="propertyGuige" />
+			<id column="property_sn" property="propertySn" />
+			<id column="property_nums" property="propertyNums" />
+			<id column="property_jine" property="propertyJine" />
+			<id column="companys" property="companys" />
+			<id column="departments" property="departments" />
+			<id column="use_person" property="usePerson" />
+			<id column="areas" property="areas" />
+			<id column="store_areas" property="storeAreas" />
+			<id column="manager_person" property="managerPerson" />
+			<id column="belong_company" property="belongCompany" />
+			<id column="purchase_time" property="purchaseTime" />
+			<id column="suppliers" property="suppliers" />
+			<id column="service_life" property="serviceLife" />
+			<id column="creator_person" property="creatorPerson" />
+			<id column="source_of" property="sourceOf" />
+			<id column="delete_id" property="deleteId" />
+			<id column="maintain_cycle" property="maintainCycle" />
+			<id column="spare_is" property="spareIs" />
+			<id column="parent_id" property="parentId" />
+			<id column="jianxiuren" property="jianxiuren" />
+			<id column="weixiuren" property="weixiuren" />
+			<id column="remarks" property="remarks" />
+			<id column="baoyang" property="baoyang" />
+			<id column="runhua" property="runhua" />
+			<id column="canshu" property="canshu" />
+			<id column="bianma" property="bianma" />
+			<id column="xuhao" property="xuhao" />
+			<id column="weihao" property="weihao" />
+			<id column="jixiugong" property="jixiugong" />
+		</collection>
+
+	</resultMap>
+
+
+
+	<sql id="selectexpend">
+		<where>
+			<if test="brid != null and brid !='' ">
+				and starch_organization_borrow_return.brid = #{brid}
+			</if>
+			<if test="status != null and status !='' ">
+				and starch_organization_borrow_return.status = #{status}
+			</if>
+			<if test="borrowNumber != null and borrowNumber !='' ">
+				and starch_organization_borrow_return.borrow_number = #{borrowNumber}
+			</if>
+			<if test="borrowTime != null and borrowTime !='' ">
+				and starch_organization_borrow_return.borrow_time = #{borrowTime}
+			</if>
+			<if test="borrowPerson != null and borrowPerson !='' ">
+				and starch_organization_borrow_return.borrow_person = #{borrowPerson}
+			</if>
+			<if test="predictReturnTime != null and predictReturnTime !='' ">
+				and starch_organization_borrow_return.predict_return_time = #{predictReturnTime}
+			</if>
+			<if test="returnTime != null and returnTime !='' ">
+				and starch_organization_borrow_return.return_time = #{returnTime}
+			</if>
+			<if test="propertyParentId != null and propertyParentId !='' ">
+				and starch_organization_borrow_return.property_parent_id = #{propertyParentId}
+			</if>
+			<if test="parentId != null and parentId !='' ">
+				and starch_organization_borrow_return.parent_id = #{parentId}
+			</if>
+			<if test="departments != null and departments !='' ">
+				and starch_organization_borrow_return.departments = #{departments}
+			</if>
+			and starch_organization_borrow_return.delete_id = 0
+		</where>
+	</sql>
+
+	<!--	queryRelevanceCatList-->
+	<select id="queryRelevanceCatList"  parameterType="com.jindan.jdy.common.dto.StarchOrganizationAccessDto" resultMap="BaseResultMapDto">
+		SELECT
+		warehouse_depository.name as property_type,starch_organization_borrow_return.*,starch_organization_put.*
+		FROM  starch_organization_borrow_return
+		left JOIN starch_borrow_put ON starch_borrow_put.borrow_id = starch_organization_borrow_return.brid and starch_borrow_put.delete_id = 0
+		left JOIN starch_organization_put ON starch_organization_put.oid = starch_borrow_put.put_id and starch_organization_put.delete_id = 0
+		left JOIN warehouse_depository ON warehouse_depository.id = starch_organization_put.property_type and warehouse_depository.delete_id = 0
+		<include refid="selectexpend"></include>
+	</select>
+
+
+
+
+
+</mapper>

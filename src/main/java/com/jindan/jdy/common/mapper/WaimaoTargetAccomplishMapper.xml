@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.common.mapper.WaimaoTargetAccomplishDao">
+
+	<resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.WaimaoTargetAccomplish">
+		<id column="wmid" property="wmid" />
+		<id column="wperson" property="wperson" />
+		<id column="yiyue" property="yiyue" />
+		<id column="eryue" property="eryue" />
+		<id column="sanyue" property="sanyue" />
+		<id column="siyue" property="siyue" />
+		<id column="wuyue" property="wuyue" />
+		<id column="liuyue" property="liuyue" />
+		<id column="qiyue" property="qiyue" />
+		<id column="bayue" property="bayue" />
+		<id column="jiuyue" property="jiuyue" />
+		<id column="shiyue" property="shiyue" />
+		<id column="shiyiyue" property="shiyiyue" />
+		<id column="shieryue" property="shieryue" />
+		<id column="zongsum" property="zongsum" />
+		<id column="delete_id" property="deleteId" />
+		<id column="update_time" property="updateTime" />
+		<id column="insert_time" property="insertTime" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		wmid, wperson, yiyue, eryue, sanyue, siyue, wuyue, liuyue, qiyue, bayue, jiuyue, shiyue, shiyiyue, shieryue, zongsum, delete_id, update_time, insert_time
+	</sql>
+	
+</mapper>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.common.mapper.StarchPropertyScrapMapper">
+
+	<resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.StarchPropertyScrap">
+		<id column="bid" property="bid" />
+		<id column="status" property="status" />
+		<id column="clear_number" property="clearNumber" />
+		<id column="clear_date" property="clearDate" />
+		<id column="clear_person" property="clearPerson" />
+		<id column="clear_explain" property="clearExplain" />
+		<id column="parent_id" property="parentId" />
+		<id column="insert_time" property="insertTime" />
+		<id column="update_time" property="updateTime" />
+		<id column="delete_id" property="deleteId" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		bid, status, clear_number, clear_date, clear_person, clear_explain, parent_id, insert_time, update_time, delete_id
+	</sql>
+
+
+	<resultMap id="BaseResultMapDto" type="com.jindan.jdy.common.dto.StarchPropertyScrapDto">
+		<id column="bid" property="bid" />
+		<id column="status" property="status" />
+		<id column="clear_number" property="clearNumber" />
+		<id column="clear_date" property="clearDate" />
+		<id column="clear_person" property="clearPerson" />
+		<id column="clear_explain" property="clearExplain" />
+		<id column="parent_id" property="parentId" />
+		<id column="delete_id" property="deleteId" />
+		<collection property="putList" column="oid" ofType="com.jindan.jdy.common.pojo.StarchOrganizationPut">
+			<id column="oid" property="oid" />
+			<id column="status" property="status" />
+			<id column="imgurl" property="imgurl" />
+			<id column="erweima" property="erweima" />
+			<id column="property_name" property="propertyName" />
+			<id column="property_type" property="propertyType" />
+			<id column="property_guige" property="propertyGuige" />
+			<id column="property_sn" property="propertySn" />
+			<id column="property_nums" property="propertyNums" />
+			<id column="property_jine" property="propertyJine" />
+			<id column="companys" property="companys" />
+			<id column="departments" property="departments" />
+			<id column="use_person" property="usePerson" />
+			<id column="areas" property="areas" />
+			<id column="store_areas" property="storeAreas" />
+			<id column="manager_person" property="managerPerson" />
+			<id column="belong_company" property="belongCompany" />
+			<id column="purchase_time" property="purchaseTime" />
+			<id column="suppliers" property="suppliers" />
+			<id column="service_life" property="serviceLife" />
+			<id column="creator_person" property="creatorPerson" />
+			<id column="source_of" property="sourceOf" />
+			<id column="delete_id" property="deleteId" />
+			<id column="maintain_cycle" property="maintainCycle" />
+			<id column="spare_is" property="spareIs" />
+			<id column="parent_id" property="parentId" />
+			<id column="jianxiuren" property="jianxiuren" />
+			<id column="weixiuren" property="weixiuren" />
+			<id column="remarks" property="remarks" />
+			<id column="baoyang" property="baoyang" />
+			<id column="runhua" property="runhua" />
+			<id column="canshu" property="canshu" />
+			<id column="bianma" property="bianma" />
+			<id column="xuhao" property="xuhao" />
+			<id column="weihao" property="weihao" />
+			<id column="jixiugong" property="jixiugong" />
+		</collection>
+	</resultMap>
+
+
+	<sql id="selectexpend">
+		<where>
+			<if test="bid != null and bid !='' ">
+				and starch_property_scrap.bid = #{brid}
+			</if>
+			<if test="status != null and status !='' ">
+				and starch_property_scrap.status = #{status}
+			</if>
+			<if test="clearNumber != null and clearNumber !='' ">
+				and starch_property_scrap.clear_number = #{clearNumber}
+			</if>
+			<if test="clearDate != null and clearDate !='' ">
+				and starch_property_scrap.clear_date = #{clearDate}
+			</if>
+			<if test="clearPerson != null and clearPerson !='' ">
+				and starch_property_scrap.clear_person = #{clearPerson}
+			</if>
+			<if test="clearExplain != null and clearExplain !='' ">
+				and starch_property_scrap.clear_explain = #{clearExplain}
+			</if>
+			<if test="parentId != null and parentId !='' ">
+				and starch_property_scrap.parent_id = #{parentId}
+			</if>
+			and starch_property_scrap.delete_id = 0
+		</where>
+	</sql>
+
+
+	<!--	queryRelevanceCatList-->
+	<select id="queryRelevanceCatList"  parameterType="com.jindan.jdy.common.dto.StarchPropertyScrapDto" resultMap="BaseResultMapDto">
+		SELECT
+		warehouse_depository.name as property_type,starch_property_scrap.*,starch_organization_put.*
+		FROM starch_property_scrap
+		left JOIN starch_scrap_put ON starch_scrap_put.scrap_id = starch_property_scrap.bid and starch_scrap_put.delete_id = 0
+		left JOIN starch_organization_put ON starch_organization_put.oid = starch_scrap_put.put_id and starch_organization_put.delete_id = 0
+		left JOIN warehouse_depository ON warehouse_depository.id = starch_organization_put.property_type and warehouse_depository.delete_id = 0
+		<include refid="selectexpend"></include>
+	</select>
+
+
+	
+</mapper>

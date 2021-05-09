@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.common.mapper.JdyMarketDao">
+
+	<resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.JdyMarket">
+		<id column="mid" property="mid" />
+		<id column="hetong_number" property="hetongNumber" />
+		<id column="hetong_name" property="hetongName" />
+		<id column="hetong_type" property="hetongType" />
+		<id column="hetong_sign_time" property="hetongSignTime" />
+		<id column="plan_effect_date" property="planEffectDate" />
+		<id column="plan_end_date" property="planEndDate" />
+		<id column="clients" property="clients" />
+		<id column="market_persons" property="marketPersons" />
+		<id column="market_department" property="marketDepartment" />
+		<id column="bizhong" property="bizhong" />
+		<id column="xieyi" property="xieyi" />
+		<id column="hetong_status" property="hetongStatus" />
+		<id column="leiji_sumjine" property="leijiSumjine" />
+		<id column="zong_sum" property="zongSum" />
+		<id column="jiashuiheji" property="jiashuiheji" />
+		<id column="trans_type" property="transType" />
+		<id column="account_deadline" property="accountDeadline" />
+		<id column="submit_persons" property="submitPersons" />
+		<id column="shenpi_persons" property="shenpiPersons" />
+		<id column="submit_times" property="submitTimes" />
+		<id column="shenpi_times" property="shenpiTimes" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		mid, hetong_number, hetong_name, hetong_type, hetong_sign_time, plan_effect_date, plan_end_date, clients, market_persons, market_department, bizhong, xieyi, hetong_status, leiji_sumjine, zong_sum, jiashuiheji, trans_type, account_deadline, submit_persons, shenpi_persons, submit_times, shenpi_times
+	</sql>
+	
+</mapper>

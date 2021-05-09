@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.common.mapper.UserRoleMapper">
+
+	<resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.UserRole">
+		<id column="user_role_id" property="userRoleId" />
+		<id column="user_id" property="userId" />
+		<id column="role_id" property="roleId" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		user_role_id, user_id, role_id
+	</sql>
+
+	<sql id="selectexpend">
+	<where>
+		<if test="userRoleId != null and userRoleId !='' ">
+			and user_role_id = #{userRoleId}
+		</if>
+		<if test="userId != null and userId !='' ">
+			and user_id = #{userId}
+		</if>
+		<if test="roleId != null and roleId !='' ">
+			and role_id = #{roleId}
+		</if>
+		<if test="insertTime != null and insertTime !='' ">
+			and insert_time = #{insertTime}
+		</if>
+		<if test="updateTime != null and updateTime !='' ">
+			and update_time = #{updateTime}
+		</if>
+		and user_role.delete_id='0'
+	</where>
+</sql>
+
+	<sql id="selectJdyRole">
+		<where>
+			<if test="roleId != null and roleId !='' ">
+				and jdy_role.role_id = #{roleId}
+			</if>
+			<if test="roleName != null and roleName !='' ">
+				and jdy_role.role_name = #{roleName}
+			</if>
+			<if test="roleDescribe != null and roleDescribe !='' ">
+				and jdy_role.role_describe = #{roleDescribe}
+			</if>
+			and user_permission.delete_id='0'
+		</where>
+	</sql>
+<!--	seleteAllUserRolelist-->
+	<select id="seleteAllUserRolelist"  resultType="com.jindan.jdy.common.dto.UserRoleDto">
+         select user_role.*,jdy_user.*,jdy_role.* from user_role
+        left join jdy_user on jdy_user.user_id =user_role.user_id and jdy_user.delete_id=0
+        left join jdy_role   on user_role.role_id = jdy_role.role_id  and jdy_role.delete_id=0
+		<include refid="selectexpend"/>
+    </select>
+
+<!--	seleteRolePermission-->
+	<select id="seleteRolePermission"  parameterType="com.jindan.jdy.common.pojo.JdyRole" resultType="com.jindan.jdy.common.pojo.UserPermission">
+		select user_permission.* from user_permission
+		left join user_role_permission   on user_role_permission.permission_id = user_permission.permission_id and user_role_permission.delete_id=0
+		left join jdy_role on user_role_permission.role_id =jdy_role.role_id and jdy_role.delete_id=0
+		<include refid="selectJdyRole"/>
+	</select>
+
+
+
+</mapper>

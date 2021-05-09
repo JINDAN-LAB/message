@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.common.mapper.StarchSystemSetDao">
+
+	<resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.StarchSystemSet">
+		<id column="sid" property="sid" />
+		<id column="insert_time" property="insertTime" />
+		<id column="update_time" property="updateTime" />
+		<id column="delete_id" property="deleteId" />
+		<id column="status" property="status" />
+		<id column="names" property="names" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		sid, insert_time, update_time, delete_id, status, names
+	</sql>
+	
+</mapper>

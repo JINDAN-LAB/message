@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.common.mapper.JdyUserLeaveDao">
+
+	<resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.JdyUserLeave">
+		<id column="leave_id" property="leaveId" />
+		<id column="leave_username" property="leaveUsername" />
+		<id column="leave_department" property="leaveDepartment" />
+		<id column="leave_post" property="leavePost" />
+		<id column="leave_type" property="leaveType" />
+		<id column="leave_content" property="leaveContent" />
+		<id column="start_time" property="startTime" />
+		<id column="end_time" property="endTime" />
+		<id column="leave_status" property="leaveStatus" />
+		<id column="insert_time" property="insertTime" />
+		<id column="update_time" property="updateTime" />
+		<id column="delete_id" property="deleteId" />
+		<id column="leave_day" property="leaveDay" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		leave_id, leave_username, leave_department, leave_post, leave_type, leave_content, start_time, end_time, leave_status, insert_time, update_time, delete_id, leave_day
+	</sql>
+	
+</mapper>

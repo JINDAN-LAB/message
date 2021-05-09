@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.common.mapper.WaimaoTichengFahuoMapper">
+
+	<resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.WaimaoTichengFahuo">
+		<id column="id" property="id" />
+		<id column="danjuhao" property="danjuhao" />
+		<id column="fahuotime" property="fahuotime" />
+		<id column="fapiaohao" property="fapiaohao" />
+		<id column="hetonghao" property="hetonghao" />
+		<id column="pici" property="pici" />
+		<id column="yewuyuan" property="yewuyuan" />
+		<id column="shouhuokehu" property="shouhuokehu" />
+		<id column="diqufenlei" property="diqufenlei" />
+		<id column="yujizhuangtime" property="yujizhuangtime" />
+		<id column="wuliaoming" property="wuliaoming" />
+		<id column="shuliang" property="shuliang" />
+		<id column="hanshuidanjia" property="hanshuidanjia" />
+		<id column="bizhong" property="bizhong" />
+		<id column="jiagetiaokuan" property="jiagetiaokuan" />
+		<id column="jiashuiheji" property="jiashuiheji" />
+		<id column="benbijiashuiheji" property="benbijiashuiheji" />
+		<id column="baozhuangwu" property="baozhuangwu" />
+		<id column="huikuanxieyi" property="huikuanxieyi" />
+		<id column="yunshudanjia" property="yunshudanjia" />
+		<id column="yunshujine" property="yunshujine" />
+		<id column="huilv" property="huilv" />
+		<id column="fobzongjia" property="fobzongjia" />
+		<id column="haiyunfei" property="haiyunfei" />
+		<id column="yongjin" property="yongjin" />
+		<id column="yufukuan" property="yufukuan" />
+		<id column="lixijiang" property="lixijiang" />
+		<id column="fobticheng" property="fobticheng" />
+		<id column="xinkehuticheng" property="xinkehuticheng" />
+		<id column="biaoji" property="biaoji" />
+		<id column="shifouxinkehu" property="shifouxinkehu" />
+		<id column="diushikehu" property="diushikehu" />
+		<id column="huikuanlv" property="huikuanlv" />
+		<id column="yijisuan" property="yijisuan" />
+		<id column="ceshi1" property="ceshi1" />
+		<id column="ceshi2" property="ceshi2" />
+		<id column="insert_time" property="insertTime" />
+		<id column="update_time" property="updateTime" />
+		<id column="delete_id" property="deleteId" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, danjuhao, fahuotime, fapiaohao, hetonghao, pici, yewuyuan, shouhuokehu, diqufenlei, yujizhuangtime, wuliaoming, shuliang, hanshuidanjia, bizhong, jiagetiaokuan, jiashuiheji, benbijiashuiheji, baozhuangwu, huikuanxieyi, yunshudanjia, yunshujine, huilv, fobzongjia, haiyunfei, yongjin, yufukuan, lixijiang, fobticheng, xinkehuticheng, biaoji, shifouxinkehu, diushikehu, huikuanlv, yijisuan, ceshi1, ceshi2, insert_time, update_time, delete_id
+	</sql>
+
+	<sql id="selectexpend2">
+		<where>
+			<if test="id != null and id !='' ">
+				and waimao_ticheng_fahuo.id = #{id}
+			</if>
+			<if test="danjuhao != null and danjuhao !='' ">
+				and waimao_ticheng_fahuo.danjuhao = #{danjuhao}
+			</if>
+			<if test="fahuotime != null and fahuotime !='' ">
+				and waimao_ticheng_fahuo.fahuotime &lt; #{fahuotime}
+			</if>
+			<if test="fapiaohao != null and fapiaohao !='' ">
+				and waimao_ticheng_fahuo.fapiaohao = #{fapiaohao}
+			</if>
+			<if test="hetonghao != null and hetonghao !='' ">
+				and waimao_ticheng_fahuo.hetonghao = #{hetonghao}
+			</if>
+			<if test="yewuyuan != null and yewuyuan !='' ">
+				and waimao_ticheng_fahuo.yewuyuan = #{yewuyuan}
+			</if>
+			<if test="shouhuokehu != null and shouhuokehu !='' ">
+				and waimao_ticheng_fahuo.shouhuokehu = #{shouhuokehu}
+			</if>
+			<if test="diqufenlei != null and diqufenlei !='' ">
+				and waimao_ticheng_fahuo.diqufenlei = #{diqufenlei}
+			</if>
+			<if test="wuliaoming != null and wuliaoming !='' ">
+				and waimao_ticheng_fahuo.wuliaoming = #{wuliaoming}
+			</if>
+			<if test="hanshuidanjia != null and hanshuidanjia !='' ">
+				and waimao_ticheng_fahuo.hanshuidanjia = #{hanshuidanjia}
+			</if>
+			<if test="bizhong != null and bizhong !='' ">
+				and waimao_ticheng_fahuo.bizhong = #{bizhong}
+			</if>
+			<if test="jiashuiheji != null and jiashuiheji !='' ">
+				and waimao_ticheng_fahuo.jiashuiheji = #{jiashuiheji}
+			</if>
+			<if test="benbijiashuiheji != null and benbijiashuiheji !='' ">
+				and waimao_ticheng_fahuo.benbijiashuiheji = #{benbijiashuiheji}
+			</if>
+			<if test="baozhuangwu != null and baozhuangwu !='' ">
+				and waimao_ticheng_fahuo.baozhuangwu = #{baozhuangwu}
+			</if>
+			and waimao_ticheng_fahuo.queren ="未计算"
+			and waimao_ticheng_fahuo.delete_id =0
+		</where>
+	</sql>
+
+<!--	seleteInFaHui-->
+	<select id="seleteInFaHui" resultType="com.jindan.jdy.common.dto.WaimaoFahuoDto" >
+		select
+			waimao_ticheng_fahuo.*,
+			waimao_ticheng_baozhuang.*,
+			waimao_ticheng_huikuan.*,
+			waimao_ticheng_jijiabiao.*,
+			waimao_ticheng_huilv.*
+		from waimao_ticheng_fahuo
+		LEFT JOIN waimao_ticheng_baozhuang  ON waimao_ticheng_fahuo.baozhuangwu =waimao_ticheng_baozhuang.bzw
+		LEFT JOIN waimao_ticheng_huikuan  ON waimao_ticheng_fahuo.fapiaohao =waimao_ticheng_huikuan.fapiaohao
+		LEFT JOIN waimao_ticheng_jijiabiao  ON waimao_ticheng_fahuo.wuliaoming =waimao_ticheng_jijiabiao.titlename
+		LEFT JOIN waimao_ticheng_huilv  ON waimao_ticheng_fahuo.bizhong =waimao_ticheng_huilv.bz
+		where id in
+		<foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+	</select>
+
+<!--	seleteYuebiaoFa-->
+	<select id="seleteYuebiaoFa" resultMap="BaseResultMap">
+		select SUM(jiashuiheji) as jiashuiheji,fapiaohao from waimao_ticheng_fahuo
+		<include refid="selectexpend2" />
+		GROUP BY fapiaohao
+	</select>
+
+
+
+
+</mapper>

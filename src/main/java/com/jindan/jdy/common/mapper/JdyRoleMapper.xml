@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.common.mapper.JdyRoleMapper">
+
+	<resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.JdyRole">
+		<id column="role_id" property="roleId" />
+		<id column="role_name" property="roleName" />
+		<id column="role_describe" property="roleDescribe" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		role_id, role_name, role_describe
+	</sql>
+
+<!--	insertJdyRole JdyRole jdyRoles   	useGeneratedKeys="true" keyProperty="roleId" -->
+	<insert id="insertJdyRole" parameterType="com.jindan.jdy.common.pojo.JdyRole" useGeneratedKeys="true" keyColumn="role_id" keyProperty="roleId"  >
+        insert into jdy_role(role_name,role_describe) values(
+        #{roleName,jdbcType=VARCHAR},
+        #{roleDescribe,jdbcType=VARCHAR})
+     </insert>
+
+
+</mapper>

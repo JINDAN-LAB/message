@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.common.mapper.SysLogLoginDao">
+
+	<resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.SysLogLogin">
+		<id column="id" property="id" />
+		<id column="loginname" property="loginname" />
+		<id column="loginip" property="loginip" />
+		<id column="logintime" property="logintime" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, loginname, loginip, logintime
+	</sql>
+	
+</mapper>

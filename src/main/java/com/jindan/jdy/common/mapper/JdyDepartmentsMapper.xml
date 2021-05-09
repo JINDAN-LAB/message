@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.common.mapper.JdyDepartmentsMapper">
+
+	<resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.JdyDepartments">
+		<id column="id" property="id" />
+		<id column="departments" property="departments" />
+		<id column="describes" property="describes" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, departments, describes
+	</sql>
+
+	<resultMap id="BaseResult" type="com.jindan.jdy.common.dto.JdyCompanyDto">
+		<id column="ids" property="ids" />
+		<id column="company_name" property="companyName" />
+		<id column="company_person" property="companyPerson" />
+		<id column="yingye_zhizhao" property="yingyeZhizhao" />
+		<id column="persons_numbers" property="personsNumbers" />
+		<id column="shuihao" property="shuihao" />
+		<id column="insert_time" property="insertTime" />
+		<id column="update_time" property="updateTime" />
+		<id column="delete_id" property="deleteId" />
+		<collection property="departmentsList" column="commodity_id" ofType="com.jindan.jdy.common.pojo.JdyDepartments">
+			<id column="id" property="id" />
+			<id column="departments" property="departments" />
+			<id column="describes" property="describes" />
+		</collection>
+	</resultMap>
+
+	<!--	seleteJdyCompanylist-->
+	 <select id="seleteJdyCompanylist"    resultMap="BaseResult">
+		 SELECT jdy_company.*,jdy_departments.*  FROM jdy_company
+		 LEFT JOIN jdy_departments ON jdy_departments.parent_id =jdy_company.ids and jdy_departments.delete_id = 0
+		 WHERE  jdy_company.delete_id = 0;
+	 </select>
+
+
+</mapper>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.common.mapper.JdyUserFileDao">
+
+	<resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.JdyUserFile">
+		<id column="file_id" property="fileId" />
+		<id column="user_file_name" property="userFileName" />
+		<id column="file_name" property="fileName" />
+		<id column="file_describe" property="fileDescribe" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		file_id, user_file_name, file_name, file_describe
+	</sql>
+	
+</mapper>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.common.mapper.WaimaoTichengXishuDao">
+
+	<resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.WaimaoTichengXishu">
+		<id column="id" property="id" />
+		<id column="xiankuan" property="xiankuan" />
+		<id column="qiyunxian" property="qiyunxian" />
+		<id column="chaoqiqiyunxian" property="chaoqiqiyunxian" />
+		<id column="huoyunxian" property="huoyunxian" />
+		<id column="chaoqihuoyunxian" property="chaoqihuoyunxian" />
+		<id column="buchaoqi1" property="buchaoqi1" />
+		<id column="buchaoqi2" property="buchaoqi2" />
+		<id column="chaoqi1" property="chaoqi1" />
+		<id column="chaoqi2" property="chaoqi2" />
+		<id column="jingshui1" property="jingshui1" />
+		<id column="jingshui2" property="jingshui2" />
+		<id column="jingshui3" property="jingshui3" />
+		<id column="jingshui3b" property="jingshui3b" />
+		<id column="xinkehu1" property="xinkehu1" />
+		<id column="xinkehu2" property="xinkehu2" />
+		<id column="xinkehu3" property="xinkehu3" />
+		<id column="xinkehu3b" property="xinkehu3b" />
+		<id column="wanwu" property="wanwu" />
+		<id column="waner" property="waner" />
+		<id column="yuefen" property="yuefen" />
+		<id column="chenglixibuchaoqi" property="chenglixibuchaoqi" />
+		<id column="chenglixichaoqi" property="chenglixichaoqi" />
+		<id column="insert_time" property="insertTime" />
+		<id column="update_time" property="updateTime" />
+		<id column="delete_id" property="deleteId" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, xiankuan, qiyunxian, chaoqiqiyunxian, huoyunxian, chaoqihuoyunxian, buchaoqi1, buchaoqi2, chaoqi1, chaoqi2, jingshui1, jingshui2, jingshui3, jingshui3b, xinkehu1, xinkehu2, xinkehu3, xinkehu3b, wanwu, waner, yuefen, chenglixibuchaoqi, chenglixichaoqi, insert_time, update_time, delete_id
+	</sql>
+	
+</mapper>

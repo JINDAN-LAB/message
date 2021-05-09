@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.common.mapper.JdyFileUploadMapper">
+
+	<resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.JdyFileUpload">
+		<id column="file_upload_id" property="fileUploadId" />
+		<id column="filename" property="filename" />
+		<id column="fileurl1" property="fileurl1" />
+		<id column="fileurl2" property="fileurl2" />
+		<id column="fileurl3" property="fileurl3" />
+		<id column="fileurl4" property="fileurl4" />
+		<id column="parent_id" property="parentId" />
+		<id column="delete_id" property="deleteId" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		file_upload_id, filename, fileurl1, fileurl2, fileurl3, fileurl4, parent_id, delete_id
+	</sql>
+	
+</mapper>

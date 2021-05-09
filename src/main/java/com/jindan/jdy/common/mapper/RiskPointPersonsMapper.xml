@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.common.mapper.RiskPointPersonsMapper">
+
+	<resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.RiskPointPersons">
+		<id column="ris_id" property="risId" />
+		<id column="risk_task_type" property="riskTaskType" />
+		<id column="parent_id" property="parentId" />
+		<id column="task_person" property="taskPerson" />
+		<id column="control_rank" property="controlRank" />
+		<id column="frequency" property="frequency" />
+		<id column="last_times" property="lastTimes" />
+		<id column="insert_time" property="insertTime" />
+		<id column="update_time" property="updateTime" />
+		<id column="delete_id" property="deleteId" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		ris_id, risk_task_type, parent_id, task_person, control_rank, frequency, last_times, insert_time, update_time, delete_id
+	</sql>
+
+
+
+	<resultMap id="selectBaohanResult" type="com.jindan.jdy.common.dto.RiskPointDtoDetails">
+		<id column="rid" property="rid" />
+		<id column="risk_type" property="riskType" />
+		<id column="risk_name" property="riskName" />
+		<id column="risk_location" property="riskLocation" />
+		<id column="risk_person" property="riskPerson" />
+		<id column="examine_type" property="examineType" />
+		<id column="is_teshu" property="isTeshu" />
+		<id column="accident_may" property="accidentMay" />
+		<id column="risk_often" property="riskOften" />
+		<id column="accident_result" property="accidentResult" />
+		<id column="risk_rank" property="riskRank" />
+		<id column="risk_explain" property="riskExplain" />
+		<id column="risk_explain_result" property="riskExplainResult" />
+		<id column="risk_detail_location" property="riskDetailLocation" />
+		<id column="accident_types" property="accidentTypes" />
+		<id column="loss_forecast" property="lossForecast" />
+		<id column="control_measure" property="controlMeasure" />
+		<id column="potential_risk" property="potentialRisk" />
+		<id column="measure_meet" property="measureMeet" />
+		<id column="technology_safeguard" property="technologySafeguard" />
+		<id column="sinsert_time" property="insertTime" />
+		<id column="remarks" property="remarks" />
+		<collection property="list" column="list" resultMap="selectesult"></collection>
+		<collection property="personsList" column="personsList" ofType="com.jindan.jdy.common.pojo.RiskPointPersons">
+			<id column="ris_id" property="risId" />
+			<id column="risk_task_type" property="riskTaskType" />
+			<id column="parent_id" property="parentId" />
+			<id column="task_person" property="taskPerson" />
+			<id column="control_rank" property="controlRank" />
+			<id column="frequency" property="frequency" />
+			<id column="last_times" property="lastTimes" />
+		</collection>
+	</resultMap>
+
+	<resultMap id="selectesult" type="com.jindan.jdy.common.dto.RiskPointContentDto">
+		<id column="risk_ids" property="riskIds" />
+		<id column="risk_contents" property="riskContents" />
+		<id column="accidet_cause" property="accidetCause" />
+		<id column="may_accidet" property="mayAccidet" />
+		<id column="meet_measure" property="meetMeasure" />
+		<id column="influence_sphere" property="influenceSphere" />
+		<id column="latent_result" property="latentResult" />
+		<id column="pazhao" property="pazhao" />
+		<id column="shuju" property="shuju" />
+		<id column="parent_id" property="parentId" />
+		<id column="insert_time" property="insertTime" />
+		<id column="update_time" property="updateTime" />
+		<id column="delete_id" property="deleteId" />
+		<id column="jibie" property="jibie" />
+		<id column="weixian_jibie" property="weixianJibie" />
+		<id column="rcstatus" property="rcstatus" />
+		<id column="shebei_id" property="shebeiId" />
+		<collection property="resultList" column="resultList" ofType="com.jindan.jdy.common.pojo.RiskPointContentResult">
+			<id column="ris_pcr" property="risPcr" />
+			<id column="patrol_result" property="patrolResult" />
+			<id column="rparent_id" property="parentId" />
+			<id column="files1" property="files1" />
+			<id column="files2" property="files2" />
+			<id column="files3" property="files3" />
+			<id column="patrol_result_details" property="patrolResultDetails" />
+			<id column="patrol_result_jibie" property="patrolResultJibie" />
+			<id column="hidden_heading" property="hiddenHeading" />
+			<id column="hidden_subclass" property="hiddenSubclass" />
+			<id column="abarbeitung_deadline" property="abarbeitungDeadline" />
+			<id column="abarbeitung_person" property="abarbeitungPerson" />
+			<id column="duplicate_person" property="duplicatePerson" />
+			<id column="people_name" property="peopleName" />
+			<id column="rinsert_time" property="insertTime" />
+			<id column="rupdate_time" property="updateTime" />
+			<id column="rdelete_id" property="deleteId" />
+			<id column="rstatus" property="status" />
+			<id column="hidden_location" property="hiddenLocation" />
+			<id column="hidden_jibie" property="hiddenJibie" />
+			<id column="zhuanrang_time" property="zhuanrangTime" />
+			<id column="rshebei" property="rshebei" />
+		</collection>
+	</resultMap>
+
+
+<!--	seleListBaohanrenwuWapper-->
+	<select id="seleListBaohanrenwuWapper"  resultMap="selectBaohanResult">
+		SELECT
+		    risk_point_persons.*,risk_point.*, risk_point_content.*,risk_point_content_result.insert_time as  rinsert_time,
+			risk_point_content_result.parent_id as  rparent_id,
+			risk_point_content_result.delete_id as  rdelete_id,
+			risk_point_content_result.status as  rstatus,
+		    risk_point.insert_time as sinsert_time,
+		    risk_point_content_result.*
+		FROM
+		  risk_point_persons
+		left  join risk_point  on risk_point_persons.parent_id = risk_point.rid  and  risk_point.delete_id = 0
+		left  join risk_point_content  on risk_point.rid = risk_point_content.parent_id  and risk_point_content.jibie =risk_point_persons.control_rank   and  risk_point_content.delete_id = 0
+		left  join risk_point_content_result  on risk_point_content.risk_ids = risk_point_content_result.parent_id and risk_point_content_result.delete_id = 0
+		<include refid="selectBaohan"></include>
+		order by risk_point_content_result.insert_time  desc
+	</select>
+
+<!--	seleteChaoqiPersons-->
+	<select id="seleteChaoqiPersons"  resultMap="selectBaohanResult">
+		SELECT
+		risk_point_persons.*,risk_point.*,   risk_point_content.*,risk_point_content_result.insert_time as  rinsert_time,
+		risk_point_content_result.parent_id as  rparent_id,
+		risk_point_content_result.delete_id as  rdelete_id,
+		risk_point_content_result.status as  rstatus,
+		risk_point_content_result.*,
+		risk_point.insert_time as sinsert_time
+		FROM
+		risk_point_persons
+		left  join risk_point  on risk_point_persons.parent_id = risk_point.rid  and  risk_point.delete_id = 0
+		left  join risk_point_content  on risk_point.rid = risk_point_content.parent_id  and risk_point_content.jibie =risk_point_persons.control_rank   and  risk_point_content.delete_id = 0
+		left  join risk_point_content_result  on risk_point_content.risk_ids = risk_point_content_result.parent_id
+		and risk_point_content_result.delete_id = 0
+		<include refid="selectBaohan"></include>
+		order by risk_point_content_result.insert_time  desc
+	</select>
+
+
+	<sql id="selectBaohan">
+		<where>
+			<if test="risId != null and risId !='' ">
+				and risk_point_persons.ris_id = #{risId}
+			</if>
+			<if test="riskTaskType != null and riskTaskType !='' ">
+				and risk_point_persons.risk_task_type = #{riskTaskType}
+			</if>
+			<if test="parentId != null and parentId !='' ">
+				and risk_point_persons.parent_id = #{parentId}
+			</if>
+			<if test="taskPerson != null and taskPerson !='' ">
+				and risk_point_persons.task_person = #{taskPerson}
+			</if>
+			<if test="controlRank != null and controlRank !='' ">
+				and risk_point_persons.control_rank = #{controlRank}
+			</if>
+			<if test="frequency != null and frequency !='' ">
+				and risk_point_persons.frequency = #{frequency}
+			</if>
+			<if test="lastTimes != null and lastTimes !='' ">
+				and risk_point_persons.last_times = #{lastTimes}
+			</if>
+			and risk_point_persons.delete_id=0
+		</where>
+	</sql>
+
+
+
+</mapper>

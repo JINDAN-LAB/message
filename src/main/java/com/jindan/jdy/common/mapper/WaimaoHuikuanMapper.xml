@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.common.mapper.WaimaoHuikuanMapper">
+
+	<resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.WaimaoHuikuan">
+		<id column="id" property="id" />
+		<id column="fapiaohao" property="fapiaohao" />
+		<id column="huikuanriqi" property="huikuanriqi" />
+		<id column="huikuanjine" property="huikuanjine" />
+		<id column="jiehuiyinhang" property="jiehuiyinhang" />
+		<id column="zhoubie" property="zhoubie" />
+		<id column="jine" property="jine" />
+		<id column="shijishiyong" property="shijishiyong" />
+		<id column="xiaoshouren" property="xiaoshouren" />
+		<id column="shouhuokehu" property="shouhuokehu" />
+		<id column="bizhong" property="bizhong" />
+		<id column="insert_time" property="insertTime" />
+		<id column="update_time" property="updateTime" />
+		<id column="delete_id" property="deleteId" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, fapiaohao, huikuanriqi, huikuanjine, jiehuiyinhang, zhoubie, jine, shijishiyong,
+		 xiaoshouren, bizhong, shouhuokehu, insert_time, update_time, delete_id
+	</sql>
+
+	<sql id="seleyuefenDangyuefen">
+		<where>
+			<if test="fahuotime != null and fahuotime !='' ">
+				and DATE_FORMAT(huikuanriqi,'%m') = #{fahuotime}
+			</if>
+			and waimao_huikuan.delete_id= 0
+		</where>
+	</sql>
+
+	<sql id="seleyuefensqllist">
+		<where>
+			<if test="fahuotime != null and fahuotime !='' ">
+				and DATE_FORMAT(huikuanriqi,'%m')  &lt;= #{fahuotime}
+			</if>
+			and waimao_huikuan.delete_id= 0
+		</where>
+	</sql>
+
+<!--	seleyuefensql-->
+	<sql id="seleyuefensql">
+		<where>
+			<if test="fahuotime != null and fahuotime !='' ">
+				and DATE_FORMAT(huikuanriqi,'%m')  = #{fahuotime}
+			</if>
+			and waimao_huikuan.delete_id= 0
+		</where>
+	</sql>
+<!--	seleyuefensqlyewuyuan-->
+	<sql id="seleyuefensqlyewuyuan">
+		<where>
+			<if test="fahuotime != null and fahuotime !='' ">
+				and DATE_FORMAT(huikuanriqi,'%m')  &lt;= #{fahuotime}
+			</if>
+			and waimao_huikuan.delete_id= 0
+		</where>
+	</sql>
+
+
+<!--	List<WaimaoHuikuan> seleteHuikuan(WaimaoFahuo jdyRole);-->
+	<select id="seleteHuikuan" parameterType="com.jindan.jdy.common.pojo.WaimaoFahuo" resultMap="BaseResultMap">
+		select
+		waimao_huikuan.fapiaohao,huikuanriqi,huikuanjine,jiehuiyinhang,waimao_fahuo.yewuyuan as xiaoshouren,waimao_fahuo.shouhuokehu,waimao_fahuo.bizhong
+		from  waimao_huikuan
+		LEFT JOIN waimao_fahuo ON waimao_fahuo.fapiaohao = waimao_huikuan.fapiaohao and waimao_fahuo.delete_id =0
+		<include refid="seleyuefenDangyuefen"></include>
+	</select>
+
+<!--	List<WaimaoHuikuan> seleteHuikuanDanjuhao(WaimaoFahuo param);-->
+	<select id="seleteHuikuanDanjuhao" parameterType="com.jindan.jdy.common.pojo.WaimaoFahuo" resultMap="BaseResultMap">
+		SELECT
+		 fapiaohao,
+		 huikuanriqi,
+		 SUM(huikuanjine) as huikuanjine,
+		 jiehuiyinhang,
+		 zhoubie
+		FROM waimao_huikuan
+		<include refid="seleyuefensqllist"></include>
+		GROUP BY  fapiaohao
+	</select>
+
+<!--	List<WaimaoHuikuan> seleteHuikuanDangyueAllhao(WaimaoFahuo param);-->
+	<select id="seleteHuikuanDangyueAllhao" parameterType="com.jindan.jdy.common.pojo.WaimaoFahuo" resultMap="BaseResultMap">
+		 SELECT * FROM waimao_huikuan
+	 	 <include refid="seleyuefensqllist"></include>
+		 order by huikuanriqi
+	</select>
+
+<!--	List<WaimaoHuikuan> seleteHuikuanDangyuehuikuan(WaimaoFahuo jdyRole);-->
+	<select id="seleteHuikuanDangyuehuikuan" parameterType="com.jindan.jdy.common.pojo.WaimaoFahuo" resultMap="BaseResultMap">
+		SELECT
+		fapiaohao,
+		huikuanriqi,
+		SUM(huikuanjine) as huikuanjine,
+		jiehuiyinhang,
+		zhoubie
+		FROM waimao_huikuan
+		<include refid="seleyuefensql"></include>
+		GROUP BY  xiaoshouren
+	</select>
+
+<!--	List<WaimaoHuikuan> seleteHuikuanyewuyuanDanjuhao(WaimaoFahuo jdyRole);-->
+	<select id="seleteHuikuanyewuyuanDanjuhao" parameterType="com.jindan.jdy.common.pojo.WaimaoFahuo" resultMap="BaseResultMap">
+		SELECT
+		fapiaohao,
+		huikuanriqi,
+		SUM(huikuanjine) as huikuanjine,
+		jiehuiyinhang,
+		zhoubie
+		FROM waimao_huikuan
+		<include refid="seleyuefensqlyewuyuan"></include>
+		GROUP BY  xiaoshouren
+	</select>
+
+<!--	List<WaimaoHuikuan> seleteQuannianHuikuanDangyuehuikuan(WaimaoFahuo jdyRole);-->
+	<select id="seleteQuannianHuikuanDangyuehuikuan" parameterType="com.jindan.jdy.common.pojo.WaimaoFahuo" resultMap="BaseResultMap">
+		SELECT
+		xiaoshouren,
+		fapiaohao,
+		huikuanriqi,
+		SUM(huikuanjine) as huikuanjine,
+		jiehuiyinhang,
+		zhoubie
+		FROM waimao_huikuan
+		<include refid="seleyuefensqlyewuyuan"></include>
+		GROUP BY  xiaoshouren
+	</select>
+
+<!--	List<WaimaoHuikuan> seBenyuehuikuanjine(WaimaoFahuo jdyRole);  本月的回款金额-->
+	<select id="seBenyuehuikuanjine" parameterType="com.jindan.jdy.common.pojo.WaimaoFahuo" resultMap="BaseResultMap">
+		SELECT * FROM waimao_huikuan
+		<include refid="seleyuefenDangyuefen"></include>
+		order by huikuanriqi
+	</select>
+
+
+
+</mapper>

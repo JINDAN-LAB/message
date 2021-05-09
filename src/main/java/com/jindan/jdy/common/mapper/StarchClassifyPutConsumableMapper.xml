@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.common.mapper.StarchClassifyPutConsumableMapper">
+
+	<resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.StarchClassifyPutConsumable">
+		<id column="ids" property="ids" />
+		<id column="names" property="names" />
+		<id column="parent_id" property="parentId" />
+		<id column="url" property="url" />
+		<id column="icon" property="icon" />
+		<id column="orders" property="orders" />
+		<id column="insert_time" property="insertTime" />
+		<id column="update_time" property="updateTime" />
+		<id column="delete_id" property="deleteId" />
+		<id column="levels" property="levels" />
+	</resultMap>
+
+	<resultMap id="BaseltMassssp" type="com.jindan.jdy.common.dto.StarchClassifyPutConsumableDto">
+		<id column="ids" property="ids" />
+		<id column="names" property="names" />
+		<id column="parent_id" property="parentId" />
+		<id column="url" property="url" />
+		<id column="icon" property="icon" />
+		<id column="orders" property="orders" />
+		<id column="insert_time" property="insertTime" />
+		<id column="update_time" property="updateTime" />
+		<id column="delete_id" property="deleteId" />
+		<id column="levels" property="levels" />
+	</resultMap>
+
+
+
+	<sql id="Base_Column_List">
+		ids, names, parent_id, url, icon, orders, insert_time, update_time, delete_id, levels
+	</sql>
+
+<!--	selectcaggess-->
+	<sql id="selectcaggess">
+		<where>
+			<if test="ids != null and ids !='' ">
+				and starch_classify_put_consumable.ids = #{ids}
+			</if>
+			<if test="names != null and names !='' ">
+				and starch_classify_put_consumable.names = #{names}
+			</if>
+			<if test="parentId != null and parentId !='' ">
+				and starch_classify_put_consumable.parent_id = #{parentId}
+			</if>
+			and starch_classify_put_consumable.delete_id=0
+		</where>
+	</sql>
+
+<!--selectAllList-->
+	<select id="selectAllList"  resultMap="BaseltMassssp">
+		SELECT
+		starch_classify_put_consumable.*
+		FROM starch_classify_put_consumable
+		<include refid="selectcaggess"></include>
+	</select>
+
+</mapper>

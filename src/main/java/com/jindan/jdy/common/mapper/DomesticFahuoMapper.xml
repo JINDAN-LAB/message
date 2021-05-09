@@ -1,0 +1,519 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.common.mapper.DomesticFahuoMapper">
+
+	<resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.DomesticFahuo">
+		<id column="id" property="id" />
+		<id column="danjuhao" property="danjuhao" />
+		<id column="danjuriqi" property="danjuriqi" />
+		<id column="yewuyuan" property="yewuyuan" />
+		<id column="fangshi" property="fangshi" />
+		<id column="shouhuokehu" property="shouhuokehu" />
+		<id column="wuliaomingcheng" property="wuliaomingcheng" />
+		<id column="bzw" property="bzw" />
+		<id column="shuliang" property="shuliang" />
+		<id column="hanshuidanjia" property="hanshuidanjia" />
+		<id column="jiashuiheji" property="jiashuiheji" />
+		<id column="yunshudanjia" property="yunshudanjia" />
+		<id column="bhbz" property="bhbz" />
+		<id column="shifouweixinkehu" property="shifouweixinkehu" />
+		<id column="yongjinbili" property="yongjinbili" />
+		<id column="yongjin" property="yongjin" />
+		<id column="danhao" property="danhao" />
+		<id column="jijiaticheng" property="jijiaticheng" />
+		<id column="jijiatichengbili" property="jijiatichengbili" />
+		<id column="shoukuanxieyi" property="shoukuanxieyi" />
+		<id column="jisuanriqi" property="jisuanriqi" />
+		<id column="dayin" property="dayin" />
+		<id column="queren" property="queren" />
+		<id column="dayintime" property="dayintime" />
+		<id column="insert_time" property="insertTime" />
+		<id column="update_time" property="updateTime" />
+		<id column="delete_id" property="deleteId" />
+		<id column="chanmofeiyong" property="chanmofeiyong" />
+	</resultMap>
+
+
+	<resultMap id="BaseRes" type="com.jindan.jdy.common.dto.DomesticFahuoDto">
+		<id column="id" property="id" />
+		<id column="danjuhao" property="danjuhao" />
+		<id column="danjuriqi" property="danjuriqi" />
+		<id column="yewuyuan" property="yewuyuan" />
+		<id column="fangshi" property="fangshi" />
+		<id column="shouhuokehu" property="shouhuokehu" />
+		<id column="wuliaomingcheng" property="wuliaomingcheng" />
+		<id column="bzw" property="bzw" />
+		<id column="shuliang" property="shuliang" />
+		<id column="hanshuidanjia" property="hanshuidanjia" />
+		<id column="jiashuiheji" property="jiashuiheji" />
+		<id column="yunshudanjia" property="yunshudanjia" />
+		<id column="bhbz" property="bhbz" />
+		<id column="shifouweixinkehu" property="shifouweixinkehu" />
+		<id column="yongjinbili" property="yongjinbili" />
+		<id column="yongjin" property="yongjin" />
+		<id column="danhao" property="danhao" />
+		<id column="jijiaticheng" property="jijiaticheng" />
+		<id column="jijiatichengbili" property="jijiatichengbili" />
+		<id column="shoukuanxieyi" property="shoukuanxieyi" />
+		<id column="jisuanriqi" property="jisuanriqi" />
+		<id column="dayin" property="dayin" />
+		<id column="queren" property="queren" />
+		<id column="dayintime" property="dayintime" />
+		<id column="insert_time" property="insertTime" />
+		<id column="update_time" property="updateTime" />
+		<id column="delete_id" property="deleteId" />
+		<id column="chanmofeiyong" property="chanmofeiyong" />
+		<association property="domesticBaozhuang"  column="baozhuangwu" javaType="com.jindan.jdy.common.pojo.DomesticBaozhuang">
+			<id column="baozhuangwu" property="baozhuangwu" />
+			<id column="buhanbaozhuang" property="buhanbaozhuang" />
+		</association>
+		<association property="domesticJijiabiao"  column="name" javaType="com.jindan.jdy.common.pojo.DomesticJijiabiao">
+			<id column="name" property="name" />
+			<id column="diwudang" property="diwudang" />
+			<id column="disidang" property="disidang" />
+			<id column="disandang" property="disandang" />
+			<id column="dierdang" property="dierdang" />
+			<id column="diyidang" property="diyidang" />
+		</association>
+		<collection property="huikuanList" column="file_id" ofType="com.jindan.jdy.common.pojo.DomesticHuikuan">
+			<id column="id" property="id" />
+			<id column="huikuanriqi" property="huikuanriqi" />
+			<id column="xingming" property="xingming" />
+			<id column="kehumingcheng" property="kehumingcheng" />
+			<id column="jine" property="jine" />
+			<id column="jine2" property="jine2" />
+			<id column="shijishiyongjine" property="shijishiyongjine" />
+			<id column="chengduiriqi" property="chengduiriqi" />
+			<id column="xiankuanjiang" property="xiankuanjiang" />
+			<id column="lixijiang" property="lixijiang" />
+			<id column="xiankuanjiangbili" property="xiankuanjiangbili" />
+			<id column="lixijiangbili" property="lixijiangbili" />
+			<id column="biaoshi" property="biaoshi" />
+			<id column="yufutianshu" property="yufutianshu" />
+			<id column="daorutime" property="daorutime" />
+		</collection>
+	</resultMap>
+
+	<sql id="selectexpend">
+		<where>
+			<if test="id != null and id !='' ">
+				and domestic_fahuo.id = #{id}
+			</if>
+			<if test="danjuhao != null and danjuhao !='' ">
+				and domestic_fahuo.danjuhao = #{danjuhao}
+			</if>
+			<if test="danjuriqi != null and danjuriqi !='' ">
+				and domestic_fahuo.danjuriqi &lt; #{danjuriqi}
+			</if>
+			<if test="yewuyuan != null and yewuyuan !='' ">
+				and domestic_fahuo.yewuyuan = #{yewuyuan}
+			</if>
+			<if test="fangshi != null and fangshi !='' ">
+				and domestic_fahuo.fangshi = #{fangshi}
+			</if>
+			<if test="shouhuokehu != null and shouhuokehu !='' ">
+				and domestic_fahuo.shouhuokehu = #{shouhuokehu}
+			</if>
+			<if test="wuliaomingcheng != null and wuliaomingcheng !='' ">
+				and domestic_fahuo.wuliaomingcheng = #{wuliaomingcheng}
+			</if>
+			<if test="bzw != null and bzw !='' ">
+				and domestic_fahuo.bzw = #{bzw}
+			</if>
+			<if test="shuliang != null and shuliang !='' ">
+				and domestic_fahuo.shuliang = #{shuliang}
+			</if>
+			<if test="hanshuidanjia != null and hanshuidanjia !='' ">
+				and domestic_fahuo.hanshuidanjia = #{hanshuidanjia}
+			</if>
+			<if test="jiashuiheji != null and jiashuiheji !='' ">
+				and domestic_fahuo.jiashuiheji  &lt;  #{jiashuiheji}
+			</if>
+			<if test="yunshudanjia != null and yunshudanjia !='' ">
+				and domestic_fahuo.yunshudanjia = #{yunshudanjia}
+			</if>
+			<if test="queren != null and queren !='' ">
+				and domestic_fahuo.queren = #{queren}
+			</if>
+			<if test="shifouweixinkehu != null and shifouweixinkehu !='' ">
+				and domestic_fahuo.shifouweixinkehu = #{shifouweixinkehu}
+			</if>
+			<if test="yongjinbili != null and yongjinbili !='' ">
+				and domestic_fahuo.yongjinbili = #{yongjinbili}
+			</if>
+			<if test="yongjin != null and yongjin !='' ">
+				and domestic_fahuo.yongjin = #{yongjin}
+			</if>
+			<if test="danhao != null and danhao !='' ">
+				and domestic_fahuo.danhao = #{danhao}
+			</if>
+			<if test="dayintime != null and dayintime !='' ">
+				and domestic_fahuo.dayintime = #{dayintime}
+			</if>
+			<if test="jisuanriqi != null and jisuanriqi !='' ">
+				and domestic_fahuo.jisuanriqi = #{jisuanriqi}
+			</if>
+			<if test="dayin != null and dayin !='' ">
+				and domestic_fahuo.dayin = #{dayin}
+			</if>
+			   and domestic_fahuo.queren !="已计算"
+			   and domestic_fahuo.delete_id =0
+		</where>
+	</sql>
+
+
+	<sql id="selectexpendOne">
+		<where>
+			<if test="id != null and id !='' ">
+				and domestic_fahuo.id = #{id}
+			</if>
+			<if test="danjuhao != null and danjuhao !='' ">
+				and domestic_fahuo.danjuhao = #{danjuhao}
+			</if>
+			<if test="danjuriqi != null and danjuriqi !='' ">
+				and domestic_fahuo.danjuriqi &lt; #{danjuriqi}
+			</if>
+			<if test="yewuyuan != null and yewuyuan !='' ">
+				and domestic_fahuo.yewuyuan = #{yewuyuan}
+			</if>
+			<if test="fangshi != null and fangshi !='' ">
+				and domestic_fahuo.fangshi = #{fangshi}
+			</if>
+			<if test="shouhuokehu != null and shouhuokehu !='' ">
+				and domestic_fahuo.shouhuokehu = #{shouhuokehu}
+			</if>
+			<if test="wuliaomingcheng != null and wuliaomingcheng !='' ">
+				and domestic_fahuo.wuliaomingcheng = #{wuliaomingcheng}
+			</if>
+			<if test="bzw != null and bzw !='' ">
+				and domestic_fahuo.bzw = #{bzw}
+			</if>
+			<if test="shuliang != null and shuliang !='' ">
+				and domestic_fahuo.shuliang = #{shuliang}
+			</if>
+			<if test="hanshuidanjia != null and hanshuidanjia !='' ">
+				and domestic_fahuo.hanshuidanjia = #{hanshuidanjia}
+			</if>
+			<if test="jiashuiheji != null and jiashuiheji !='' ">
+				and domestic_fahuo.jiashuiheji = #{jiashuiheji}
+			</if>
+			<if test="yunshudanjia != null and yunshudanjia !='' ">
+				and domestic_fahuo.yunshudanjia = #{yunshudanjia}
+			</if>
+			<if test="queren != null and queren !='' ">
+				and domestic_fahuo.queren = #{queren}
+			</if>
+			<if test="shifouweixinkehu != null and shifouweixinkehu !='' ">
+				and domestic_fahuo.shifouweixinkehu = #{shifouweixinkehu}
+			</if>
+			<if test="yongjinbili != null and yongjinbili !='' ">
+				and domestic_fahuo.yongjinbili = #{yongjinbili}
+			</if>
+			<if test="yongjin != null and yongjin !='' ">
+				and domestic_fahuo.yongjin = #{yongjin}
+			</if>
+			<if test="danhao != null and danhao !='' ">
+				and domestic_fahuo.danhao = #{danhao}
+			</if>
+			<if test="dayintime != null and dayintime !='' ">
+				and domestic_fahuo.dayintime = #{dayintime}
+			</if>
+			<if test="jisuanriqi != null and jisuanriqi !='' ">
+				and domestic_fahuo.jisuanriqi = #{jisuanriqi}
+			</if>
+			<if test="dayin != null and dayin !='' ">
+				and domestic_fahuo.dayin = #{dayin}
+			</if>
+			and domestic_fahuo.delete_id =0
+		</where>
+	</sql>
+
+	<sql id="selectexpend2">
+		<where>
+			<if test="id != null and id !='' ">
+				and domestic_fahuo.id = #{id}
+			</if>
+			<if test="danjuhao != null and danjuhao !='' ">
+				and domestic_fahuo.danjuhao = #{danjuhao}
+			</if>
+			<if test="danjuriqi != null and danjuriqi !='' ">
+				and domestic_fahuo.danjuriqi &lt; #{danjuriqi}
+			</if>
+			<if test="yewuyuan != null and yewuyuan !='' ">
+				and domestic_fahuo.yewuyuan = #{yewuyuan}
+			</if>
+			<if test="fangshi != null and fangshi !='' ">
+				and domestic_fahuo.fangshi = #{fangshi}
+			</if>
+			<if test="shouhuokehu != null and shouhuokehu !='' ">
+				and domestic_fahuo.shouhuokehu = #{shouhuokehu}
+			</if>
+			<if test="wuliaomingcheng != null and wuliaomingcheng !='' ">
+				and domestic_fahuo.wuliaomingcheng = #{wuliaomingcheng}
+			</if>
+			<if test="bzw != null and bzw !='' ">
+				and domestic_fahuo.bzw = #{bzw}
+			</if>
+			<if test="shuliang != null and shuliang !='' ">
+				and domestic_fahuo.shuliang = #{shuliang}
+			</if>
+			<if test="hanshuidanjia != null and hanshuidanjia !='' ">
+				and domestic_fahuo.hanshuidanjia = #{hanshuidanjia}
+			</if>
+			<if test="jiashuiheji != null and jiashuiheji !='' ">
+				and domestic_fahuo.jiashuiheji = #{jiashuiheji}
+			</if>
+			<if test="yunshudanjia != null and yunshudanjia !='' ">
+				and domestic_fahuo.yunshudanjia = #{yunshudanjia}
+			</if>
+			<if test="queren != null and queren !='' ">
+				and domestic_fahuo.queren = #{queren}
+			</if>
+			<if test="shifouweixinkehu != null and shifouweixinkehu !='' ">
+				and domestic_fahuo.shifouweixinkehu = #{shifouweixinkehu}
+			</if>
+			<if test="yongjinbili != null and yongjinbili !='' ">
+				and domestic_fahuo.yongjinbili = #{yongjinbili}
+			</if>
+			<if test="yongjin != null and yongjin !='' ">
+				and domestic_fahuo.yongjin = #{yongjin}
+			</if>
+			<if test="danhao != null and danhao !='' ">
+				and domestic_fahuo.danhao = #{danhao}
+			</if>
+			<if test="dayintime != null and dayintime !='' ">
+				and domestic_fahuo.dayintime = #{dayintime}
+			</if>
+			<if test="jisuanriqi != null and jisuanriqi !='' ">
+				and domestic_fahuo.jisuanriqi = #{jisuanriqi}
+			</if>
+			<if test="dayin != null and dayin !='' ">
+				and domestic_fahuo.dayin = #{dayin}
+			</if>
+			and domestic_fahuo.delete_id = 0
+		</where>
+	</sql>
+<!--	and domestic_fahuo.queren ="未计算"-->
+
+	<sql id="selectexpendyijisuan">
+	<where>
+		<if test="id != null and id !='' ">
+			and domestic_fahuo.id = #{id}
+		</if>
+		<if test="danjuhao != null and danjuhao !='' ">
+			and domestic_fahuo.danjuhao = #{danjuhao}
+		</if>
+		<if test="danjuriqi != null and danjuriqi !='' ">
+			and domestic_fahuo.danjuriqi &lt; #{danjuriqi}
+		</if>
+		<if test="yewuyuan != null and yewuyuan !='' ">
+			and domestic_fahuo.yewuyuan = #{yewuyuan}
+		</if>
+		<if test="fangshi != null and fangshi !='' ">
+			and domestic_fahuo.fangshi = #{fangshi}
+		</if>
+		<if test="shouhuokehu != null and shouhuokehu !='' ">
+			and domestic_fahuo.shouhuokehu = #{shouhuokehu}
+		</if>
+		<if test="wuliaomingcheng != null and wuliaomingcheng !='' ">
+			and domestic_fahuo.wuliaomingcheng = #{wuliaomingcheng}
+		</if>
+		<if test="bzw != null and bzw !='' ">
+			and domestic_fahuo.bzw = #{bzw}
+		</if>
+		<if test="shuliang != null and shuliang !='' ">
+			and domestic_fahuo.shuliang = #{shuliang}
+		</if>
+		<if test="hanshuidanjia != null and hanshuidanjia !='' ">
+			and domestic_fahuo.hanshuidanjia = #{hanshuidanjia}
+		</if>
+		<if test="jiashuiheji != null and jiashuiheji !='' ">
+			and domestic_fahuo.jiashuiheji = #{jiashuiheji}
+		</if>
+		<if test="yunshudanjia != null and yunshudanjia !='' ">
+			and domestic_fahuo.yunshudanjia = #{yunshudanjia}
+		</if>
+		<if test="queren != null and queren !='' ">
+			and domestic_fahuo.queren = #{queren}
+		</if>
+		<if test="shifouweixinkehu != null and shifouweixinkehu !='' ">
+			and domestic_fahuo.shifouweixinkehu = #{shifouweixinkehu}
+		</if>
+		<if test="yongjinbili != null and yongjinbili !='' ">
+			and domestic_fahuo.yongjinbili = #{yongjinbili}
+		</if>
+		<if test="yongjin != null and yongjin !='' ">
+			and domestic_fahuo.yongjin = #{yongjin}
+		</if>
+		<if test="danhao != null and danhao !='' ">
+			and domestic_fahuo.danhao = #{danhao}
+		</if>
+		<if test="dayintime != null and dayintime !='' ">
+			and domestic_fahuo.dayintime = #{dayintime}
+		</if>
+		<if test="jisuanriqi != null and jisuanriqi !='' ">
+			and domestic_fahuo.jisuanriqi  &gt;=  #{jisuanriqi}
+		</if>
+		<if test="dayin != null and dayin !='' ">
+			and domestic_fahuo.dayin = #{dayin}
+		</if>
+		and domestic_fahuo.queren !="已计算"
+		and domestic_fahuo.delete_id =0
+	</where>
+</sql>
+
+	<sql id="selectexpindexendyijisuan">
+		<where>
+			<if test="id != null and id !='' ">
+				and domestic_fahuo.id = #{id}
+			</if>
+			<if test="danjuhao != null and danjuhao !='' ">
+				and domestic_fahuo.danjuhao = #{danjuhao}
+			</if>
+			<if test="danjuriqi != null and danjuriqi !='' ">
+				and domestic_fahuo.danjuriqi &lt; #{danjuriqi}
+			</if>
+			<if test="yewuyuan != null and yewuyuan !='' ">
+				and domestic_fahuo.yewuyuan = #{yewuyuan}
+			</if>
+			<if test="fangshi != null and fangshi !='' ">
+				and domestic_fahuo.fangshi = #{fangshi}
+			</if>
+			<if test="shouhuokehu != null and shouhuokehu !='' ">
+				and domestic_fahuo.shouhuokehu = #{shouhuokehu}
+			</if>
+			<if test="wuliaomingcheng != null and wuliaomingcheng !='' ">
+				and domestic_fahuo.wuliaomingcheng = #{wuliaomingcheng}
+			</if>
+			<if test="bzw != null and bzw !='' ">
+				and domestic_fahuo.bzw = #{bzw}
+			</if>
+			<if test="shuliang != null and shuliang !='' ">
+				and domestic_fahuo.shuliang = #{shuliang}
+			</if>
+			<if test="hanshuidanjia != null and hanshuidanjia !='' ">
+				and domestic_fahuo.hanshuidanjia = #{hanshuidanjia}
+			</if>
+			<if test="jiashuiheji != null and jiashuiheji !='' ">
+				and domestic_fahuo.jiashuiheji = #{jiashuiheji}
+			</if>
+			<if test="yunshudanjia != null and yunshudanjia !='' ">
+				and domestic_fahuo.yunshudanjia = #{yunshudanjia}
+			</if>
+			<if test="shifouweixinkehu != null and shifouweixinkehu !='' ">
+				and domestic_fahuo.shifouweixinkehu = #{shifouweixinkehu}
+			</if>
+			<if test="yongjinbili != null and yongjinbili !='' ">
+				and domestic_fahuo.yongjinbili = #{yongjinbili}
+			</if>
+			<if test="yongjin != null and yongjin !='' ">
+				and domestic_fahuo.yongjin = #{yongjin}
+			</if>
+			<if test="danhao != null and danhao !='' ">
+				and domestic_fahuo.danhao = #{danhao}
+			</if>
+			<if test="dayintime != null and dayintime !='' ">
+				and domestic_fahuo.dayintime = #{dayintime}
+			</if>
+			<if test="jisuanriqi != null and jisuanriqi !='' ">
+				and domestic_fahuo.jisuanriqi  &gt;=  #{jisuanriqi}
+			</if>
+			<if test="dayin != null and dayin !='' ">
+				and domestic_fahuo.dayin = #{dayin}
+			</if>
+			and domestic_fahuo.queren !="未计算"
+			and domestic_fahuo.delete_id =0
+		</where>
+	</sql>
+
+
+	<sql id="Base_Column_List">
+		id,danjuhao, danjuriqi, yewuyuan, fangshi, shouhuokehu, wuliaomingcheng, bzw, shuliang, hanshuidanjia, jiashuiheji, yunshudanjia, bhbz, shifouweixinkehu, yongjinbili, yongjin, danhao, jijiaticheng, jijiatichengbili, shoukuanxieyi, jisuanriqi, dayin, queren, dayintime, insert_time, update_time, delete_id
+	</sql>
+
+
+	<sql id="Base_Column_List1">
+		 danjuhao, danjuriqi, yewuyuan, fangshi, shouhuokehu, wuliaomingcheng, bzw, shuliang, hanshuidanjia, jiashuiheji, yunshudanjia, bhbz, yongjinbili, yongjin,shifouweixinkehu, shoukuanxieyi,queren,insert_time,chanmofeiyong
+	</sql>
+<!--	seleteInFaHui-->
+	<select id="seleteInFaHui" resultMap="BaseRes" >
+		select
+		domestic_fahuo.*,
+		domestic_baozhuang.*,
+		domestic_jijiabiao.*,
+		domestic_xishu.*
+		from domestic_fahuo
+		LEFT JOIN domestic_baozhuang  ON domestic_fahuo.bzw =domestic_baozhuang.baozhuangwu
+		LEFT JOIN domestic_jijiabiao  ON domestic_fahuo.wuliaomingcheng =domestic_jijiabiao.name
+		LEFT JOIN domestic_xishu  ON  1 = 1
+		where domestic_fahuo.id in
+		<foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+		and  domestic_fahuo.delete_id="0"
+	</select>
+
+	<select id="seleteYijisuanexcle" resultMap="BaseRes" >
+		select
+		domestic_fahuo.*,
+		domestic_baozhuang.*,
+		domestic_jijiabiao.*
+		from domestic_fahuo
+		LEFT JOIN domestic_baozhuang  ON domestic_fahuo.bzw =domestic_baozhuang.baozhuangwu
+		LEFT JOIN domestic_jijiabiao  ON domestic_fahuo.wuliaomingcheng =domestic_jijiabiao.name
+		<include refid="selectexpindexendyijisuan"></include>
+		order by domestic_fahuo.yewuyuan asc, domestic_fahuo.shouhuokehu asc,domestic_fahuo.danjuriqi asc
+	</select>
+
+	<insert id="saveAllBatch" parameterType="java.util.List" >
+		insert into domestic_fahuo ( <include refid="Base_Column_List1" /> )
+	values
+	<foreach collection="list" item="item" index="index" separator=",">
+		(#{item.danjuhao},#{item.danjuriqi},#{item.yewuyuan}
+		,#{item.fangshi},#{item.shouhuokehu},#{item.wuliaomingcheng}
+		,#{item.bzw},#{item.shuliang},#{item.hanshuidanjia}
+		,#{item.jiashuiheji},#{item.yunshudanjia},#{item.bhbz}
+		,#{item.yongjinbili},#{item.yongjin},#{item.shifouweixinkehu}
+		,#{item.shoukuanxieyi},#{item.queren},#{item.insertTime},#{item.chanmofeiyong})
+	</foreach>
+   </insert>
+
+<!--	 发货信息余额信息-->
+	<select id="seleteYuebiaoFa" resultMap="BaseResultMap">
+		select SUM(jiashuiheji) as jiashuiheji,shouhuokehu from domestic_fahuo
+		<include refid="selectexpend2" />
+		GROUP BY shouhuokehu
+	</select>
+
+
+	<select id="getOneById" resultMap="BaseRes">
+		select
+		domestic_fahuo.*,
+		domestic_baozhuang.*,
+		domestic_jijiabiao.*
+		from domestic_fahuo
+		LEFT JOIN domestic_baozhuang  ON domestic_fahuo.bzw =domestic_baozhuang.baozhuangwu
+		LEFT JOIN domestic_jijiabiao  ON domestic_fahuo.wuliaomingcheng =domestic_jijiabiao.name
+		<include refid="selectexpendOne"></include>
+	  </select>
+
+<!--	List<DomesticFahuoDto> seleteInFaDetails(Set<String> keySet);-->
+	<select id="seleteInFaDetails" resultMap="BaseRes">
+		select
+		domestic_fahuo.*,
+		domestic_baozhuang.*,
+		domestic_jijiabiao.*,
+		domestic_xishu.*
+		from domestic_fahuo
+		LEFT JOIN domestic_baozhuang  ON domestic_fahuo.bzw =domestic_baozhuang.baozhuangwu
+		LEFT JOIN domestic_jijiabiao  ON domestic_fahuo.wuliaomingcheng =domestic_jijiabiao.name
+		LEFT JOIN domestic_xishu  ON  1 = 1  where domestic_fahuo.shouhuokehu in
+	   <foreach collection="collection" item="value"  separator="," open="(" close=")">
+		 #{value}
+	   </foreach>
+	   and domestic_fahuo.queren ="未计算"
+	   order by  domestic_fahuo.danjuriqi
+	</select>
+
+
+</mapper>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.common.mapper.AssayRawIngredientsFormsDao">
+
+	<resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.AssayRawIngredientsForms">
+		<id column="yfid" property="yfid" />
+		<id column="name" property="name" />
+		<id column="titl1" property="titl1" />
+		<id column="titl2" property="titl2" />
+		<id column="titl3" property="titl3" />
+		<id column="titl4" property="titl4" />
+		<id column="titl5" property="titl5" />
+		<id column="titl6" property="titl6" />
+		<id column="titl7" property="titl7" />
+		<id column="titl8" property="titl8" />
+		<id column="titl9" property="titl9" />
+		<id column="titl10" property="titl10" />
+		<id column="titl11" property="titl11" />
+		<id column="titl12" property="titl12" />
+		<id column="titl13" property="titl13" />
+		<id column="titl14" property="titl14" />
+		<id column="titl15" property="titl15" />
+		<id column="titl16" property="titl16" />
+		<id column="titl17" property="titl17" />
+		<id column="remarks" property="remarks" />
+		<id column="insert_time" property="insertTime" />
+		<id column="update_time" property="updateTime" />
+		<id column="delete_id" property="deleteId" />
+		<id column="dates" property="dates" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		yfid, name, titl1, titl2, titl3, titl4, titl5, titl6, titl7, titl8, titl9, titl10, titl11, titl12, titl13, titl14, titl15, titl16, titl17, remarks, insert_time, update_time, delete_id, dates
+	</sql>
+	
+</mapper>

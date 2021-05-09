@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.common.mapper.JdyCompanyDao">
+
+	<resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.JdyCompany">
+		<id column="ids" property="ids" />
+		<id column="company_name" property="companyName" />
+		<id column="company_person" property="companyPerson" />
+		<id column="yingye_zhizhao" property="yingyeZhizhao" />
+		<id column="persons_numbers" property="personsNumbers" />
+		<id column="shuihao" property="shuihao" />
+		<id column="insert_time" property="insertTime" />
+		<id column="update_time" property="updateTime" />
+		<id column="delete_id" property="deleteId" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		ids, company_name, company_person, yingye_zhizhao, persons_numbers, shuihao, insert_time, update_time, delete_id
+	</sql>
+
+
+
+
+	
+</mapper>
