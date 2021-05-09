@@ -1,12 +1,9 @@
 package com.jindan.jdy.service.foodsafety;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.jindan.jdy.common.pojo.DomesticFahuo;
-import com.jindan.jdy.common.pojo.JdyAppletFoodSafetyProblems;
-import com.jindan.jdy.common.mapper.JdyAppletFoodSafetyProblemsDao;
-import com.jindan.jdy.service.foodsafety.JdyAppletFoodSafetyProblemsService;
-
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.jindan.jdy.common.mapper.JdyAppletFoodSafetyProblemsDao;
+import com.jindan.jdy.common.pojo.JdyAppletFoodSafetyProblems;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

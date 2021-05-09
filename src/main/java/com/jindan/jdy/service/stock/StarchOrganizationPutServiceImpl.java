@@ -1,14 +1,16 @@
 package com.jindan.jdy.service.stock;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.jindan.jdy.common.dto.StarchClassifyPutConsumableDto;
 import com.jindan.jdy.common.dto.StarchOrganizationPutDto;
-import com.jindan.jdy.common.mapper.*;
-import com.jindan.jdy.common.pojo.*;
-import com.jindan.jdy.common.vo.DetailsClassifyPutVo;
-
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.jindan.jdy.common.mapper.StarchAlterationPutDao;
+import com.jindan.jdy.common.mapper.StarchMaintenanceAlterationMapper;
+import com.jindan.jdy.common.mapper.StarchOrganizationAlterationMapper;
+import com.jindan.jdy.common.mapper.StarchOrganizationPutMapper;
+import com.jindan.jdy.common.pojo.StarchAlterationPut;
+import com.jindan.jdy.common.pojo.StarchOrganizationPut;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

@@ -1,12 +1,9 @@
 package com.jindan.jdy.service.stock;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.jindan.jdy.common.pojo.StarchAlterationPut;
-import com.jindan.jdy.common.pojo.StarchBorrowPut;
-import com.jindan.jdy.common.mapper.StarchBorrowPutDao;
-import com.jindan.jdy.service.stock.StarchBorrowPutService;
-
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.jindan.jdy.common.mapper.StarchBorrowPutDao;
+import com.jindan.jdy.common.pojo.StarchBorrowPut;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

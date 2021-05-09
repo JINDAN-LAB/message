@@ -1,12 +1,11 @@
 package com.jindan.jdy.service.user;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.jindan.jdy.common.dto.UserRoleDto;
+import com.jindan.jdy.common.mapper.UserRoleMapper;
 import com.jindan.jdy.common.pojo.JdyRole;
 import com.jindan.jdy.common.pojo.UserPermission;
 import com.jindan.jdy.common.pojo.UserRole;
-import com.jindan.jdy.common.mapper.UserRoleMapper;
-
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

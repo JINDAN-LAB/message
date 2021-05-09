@@ -1,21 +1,17 @@
 package com.jindan.jdy.service.stock;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.jindan.jdy.common.dto.StockGoodsDTO;
-import com.jindan.jdy.common.pojo.StockGoods;
 import com.jindan.jdy.common.mapper.StockGoodsDao;
+import com.jindan.jdy.common.pojo.StockGoods;
 import com.jindan.jdy.common.pojo.StockSpecs;
 import com.jindan.jdy.common.utils.ConvertUtils;
 import com.jindan.jdy.common.vo.StockGoodsVO;
-import com.jindan.jdy.service.stock.StockGoodsService;
-
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.jws.Oneway;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 

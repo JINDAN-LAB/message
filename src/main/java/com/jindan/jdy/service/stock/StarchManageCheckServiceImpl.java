@@ -2,13 +2,10 @@ package com.jindan.jdy.service.stock;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.jindan.jdy.common.dto.StarchManageCheckDto;
-import com.jindan.jdy.common.pojo.StarchMaintenanceAlteration;
-import com.jindan.jdy.common.pojo.StarchManageCheck;
-import com.jindan.jdy.common.mapper.StarchManageCheckDao;
-import com.jindan.jdy.service.stock.StarchManageCheckService;
-
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.jindan.jdy.common.dto.StarchManageCheckDto;
+import com.jindan.jdy.common.mapper.StarchManageCheckDao;
+import com.jindan.jdy.common.pojo.StarchManageCheck;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

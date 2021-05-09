@@ -1,12 +1,9 @@
 package com.jindan.jdy.controller.activiti;
 
-import com.jindan.jdy.common.pojo.SysRole;
-import com.jindan.jdy.service.activiti.SysRoleService;
-import com.jindan.jdy.common.utils.api.ResultVo;
+import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-    import io.swagger.annotations.Api;
 /**
 *
 * <p>说明： 流程控制API接口层</P>

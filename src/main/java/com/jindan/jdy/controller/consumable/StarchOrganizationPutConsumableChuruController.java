@@ -1,23 +1,19 @@
 package com.jindan.jdy.controller.consumable;
 
 import com.github.pagehelper.PageInfo;
-import com.jindan.jdy.common.dto.StarchOrganizationAccessConsumableDto;
 import com.jindan.jdy.common.dto.StarchOrganizationAccessDto;
 import com.jindan.jdy.common.dto.StarchOrganizationPutConsumableChuruDto;
-import com.jindan.jdy.common.dto.StarchOrganizationPutConsumableDto;
-import com.jindan.jdy.common.pojo.StarchOrganizationPutConsumable;
 import com.jindan.jdy.common.pojo.StarchOrganizationPutConsumableChuru;
+import com.jindan.jdy.common.utils.api.ResultVo;
 import com.jindan.jdy.controller.utils.RedisUtil;
 import com.jindan.jdy.service.consumable.StarchOrganizationPutConsumableChuruService;
-import com.jindan.jdy.common.utils.api.ResultVo;
 import com.jindan.jdy.service.stock.StarchOrganizationAccessService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import io.swagger.annotations.Api;
 /**
 *
 * <p>说明： 耗材资产出入库内容API接口层</P>

@@ -1,13 +1,10 @@
 package com.jindan.jdy.service.purchase;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.jindan.jdy.common.dto.JdyCommodityDto;
-import com.jindan.jdy.common.pojo.JdyCommodity;
-import com.jindan.jdy.common.mapper.JdyCommodityDao;
-import com.jindan.jdy.common.pojo.JdyPurchase;
-import com.jindan.jdy.service.purchase.JdyCommodityService;
-
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.jindan.jdy.common.dto.JdyCommodityDto;
+import com.jindan.jdy.common.mapper.JdyCommodityDao;
+import com.jindan.jdy.common.pojo.JdyCommodity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

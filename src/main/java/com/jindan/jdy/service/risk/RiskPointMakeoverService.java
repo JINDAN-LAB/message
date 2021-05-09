@@ -1,7 +1,7 @@
 package com.jindan.jdy.service.risk;
 
-import com.jindan.jdy.common.pojo.RiskPointMakeover;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.jindan.jdy.common.pojo.RiskPointMakeover;
 
 import java.util.List;
 

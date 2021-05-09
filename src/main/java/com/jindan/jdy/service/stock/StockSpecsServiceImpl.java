@@ -1,10 +1,8 @@
 package com.jindan.jdy.service.stock;
 
-import com.jindan.jdy.common.pojo.StockSpecs;
-import com.jindan.jdy.common.mapper.StockSpecsDao;
-import com.jindan.jdy.service.stock.StockSpecsService;
-
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.jindan.jdy.common.mapper.StockSpecsDao;
+import com.jindan.jdy.common.pojo.StockSpecs;
 import org.springframework.stereotype.Component;
 
 /**   

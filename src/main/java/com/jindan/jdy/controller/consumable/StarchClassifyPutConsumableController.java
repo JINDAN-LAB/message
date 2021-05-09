@@ -1,19 +1,14 @@
 package com.jindan.jdy.controller.consumable;
 
-import com.github.pagehelper.PageInfo;
 import com.jindan.jdy.common.dto.StarchClassifyPutConsumableDto;
-import com.jindan.jdy.common.dto.StarchOrganizationAccessDto;
 import com.jindan.jdy.common.pojo.StarchClassifyPutConsumable;
-import com.jindan.jdy.controller.utils.RedisUtil;
-import com.jindan.jdy.service.consumable.StarchClassifyPutConsumableService;
 import com.jindan.jdy.common.utils.api.ResultVo;
-import com.jindan.jdy.service.stock.StarchOrganizationAccessService;
+import com.jindan.jdy.service.consumable.StarchClassifyPutConsumableService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
-import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import io.swagger.annotations.Api;
 
 import java.util.List;
 

@@ -1,20 +1,16 @@
 package com.jindan.jdy.controller.assay;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.jindan.jdy.common.dto.AssayEntrustBillsDto;
 import com.jindan.jdy.common.dto.AssayShipmentsDetectionDto;
-import com.jindan.jdy.common.pojo.AssayEntrustBills;
 import com.jindan.jdy.common.pojo.AssayShipmentsDetection;
 import com.jindan.jdy.common.utils.api.ResultVo;
 import com.jindan.jdy.controller.utils.RedisUtil;
-import com.jindan.jdy.service.assay.AssayEntrustBillsService;
 import com.jindan.jdy.service.assay.AssayShipmentsDetectionService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
-import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import io.swagger.annotations.Api;
 /**
 *
 * <p>说明： 产品发货信息API接口层</P>

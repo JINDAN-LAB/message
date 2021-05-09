@@ -1,12 +1,9 @@
 package com.jindan.jdy.service.stock;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.jindan.jdy.common.pojo.StarchOrganizationPutSubtype;
-import com.jindan.jdy.common.pojo.StarchOrganizationPutSubtypeAsset;
-import com.jindan.jdy.common.mapper.StarchOrganizationPutSubtypeAssetDao;
-import com.jindan.jdy.service.stock.StarchOrganizationPutSubtypeAssetService;
-
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.jindan.jdy.common.mapper.StarchOrganizationPutSubtypeAssetDao;
+import com.jindan.jdy.common.pojo.StarchOrganizationPutSubtypeAsset;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

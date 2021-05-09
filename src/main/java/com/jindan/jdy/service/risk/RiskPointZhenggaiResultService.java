@@ -1,7 +1,7 @@
 package com.jindan.jdy.service.risk;
 
-import com.jindan.jdy.common.pojo.RiskPointZhenggaiResult;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.jindan.jdy.common.pojo.RiskPointZhenggaiResult;
 
 import java.util.List;
 

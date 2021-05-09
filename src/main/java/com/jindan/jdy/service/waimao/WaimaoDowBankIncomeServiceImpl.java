@@ -1,13 +1,9 @@
 package com.jindan.jdy.service.waimao;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.jindan.jdy.common.mapper.WaimaoDowBankExpendDao;
-import com.jindan.jdy.common.pojo.WaimaoDowBankExpend;
-import com.jindan.jdy.common.pojo.WaimaoDowBankIncome;
-import com.jindan.jdy.common.mapper.WaimaoDowBankIncomeDao;
-import com.jindan.jdy.service.waimao.WaimaoDowBankIncomeService;
-
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.jindan.jdy.common.mapper.WaimaoDowBankIncomeDao;
+import com.jindan.jdy.common.pojo.WaimaoDowBankIncome;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

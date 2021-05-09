@@ -5,9 +5,9 @@ import com.jindan.jdy.common.pojo.RiskPointContentChaoqi;
 import com.jindan.jdy.controller.utils.CommonUtils;
 import com.jindan.jdy.service.risk.RiskPointContentChaoqiService;
 import com.jindan.jdy.service.risk.RiskPointPersonsService;
-import org.apache.dubbo.config.annotation.Reference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 

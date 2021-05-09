@@ -1,10 +1,8 @@
 package com.jindan.jdy.service.purchase;
 
-import com.jindan.jdy.common.pojo.JdyMarket;
-import com.jindan.jdy.common.mapper.JdyMarketDao;
-import com.jindan.jdy.service.purchase.JdyMarketService;
-
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.jindan.jdy.common.mapper.JdyMarketDao;
+import com.jindan.jdy.common.pojo.JdyMarket;
 import org.springframework.stereotype.Component;
 
 /**   
@@ -14,7 +12,6 @@ import org.springframework.stereotype.Component;
  * @author: kong
  * 
  */
-@Service(version = "service.version")
 @Component
 public class JdyMarketServiceImpl  extends ServiceImpl<JdyMarketDao,JdyMarket> implements JdyMarketService  {
 	

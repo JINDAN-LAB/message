@@ -1,10 +1,8 @@
 package com.jindan.jdy.service.user;
 
-import com.jindan.jdy.common.dto.JdyRoleDto;
-import com.jindan.jdy.common.dto.JdyUserDto;
-import com.jindan.jdy.common.pojo.JdyRole;
-import com.jindan.jdy.common.pojo.JdyUser;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.jindan.jdy.common.dto.JdyUserDto;
+import com.jindan.jdy.common.pojo.JdyUser;
 import com.jindan.jdy.common.pojo.UserPermission;
 
 import java.util.List;

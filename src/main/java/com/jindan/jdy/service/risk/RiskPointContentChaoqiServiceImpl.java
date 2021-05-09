@@ -2,17 +2,12 @@ package com.jindan.jdy.service.risk;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.jindan.jdy.common.dto.RiskPointContentChaoqiDto;
-import com.jindan.jdy.common.pojo.RiskPointContentChaoqi;
-import com.jindan.jdy.common.mapper.RiskPointContentChaoqiDao;
-import com.jindan.jdy.common.pojo.RiskPointContentResult;
-import com.jindan.jdy.service.risk.RiskPointContentChaoqiService;
-
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.jindan.jdy.common.dto.RiskPointContentChaoqiDto;
+import com.jindan.jdy.common.mapper.RiskPointContentChaoqiDao;
+import com.jindan.jdy.common.pojo.RiskPointContentChaoqi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
 
 /**   
  * @Description:TODO(风险控制任务超期服务实现)

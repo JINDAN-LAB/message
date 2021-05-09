@@ -1,7 +1,7 @@
 package com.jindan.jdy.service.purchase;
 
-import com.jindan.jdy.common.pojo.JdyPurchaseArriveTest;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.jindan.jdy.common.pojo.JdyPurchaseArriveTest;
 
 import java.util.List;
 

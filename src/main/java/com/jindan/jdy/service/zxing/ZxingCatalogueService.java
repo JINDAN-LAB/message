@@ -1,8 +1,8 @@
 package com.jindan.jdy.service.zxing;
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.jindan.jdy.common.dto.ZxingCatalogueDto;
 import com.jindan.jdy.common.pojo.ZxingCatalogue;
-import com.baomidou.mybatisplus.extension.service.IService;
 
 import java.util.List;
 
