@@ -1,12 +1,9 @@
 package com.jindan.jdy.controller.stock;
 
-import com.jindan.jdy.common.pojo.StockSpecs;
-import com.jindan.jdy.service.stock.StockSpecsService;
-import com.jindan.jdy.common.utils.api.ResultVo;
+import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-    import io.swagger.annotations.Api;
 /**
 *
 * <p>说明： 货物规格表API接口层</P>

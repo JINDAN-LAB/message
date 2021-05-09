@@ -1,26 +1,17 @@
 package com.jindan.jdy.controller.risk;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
-import com.jindan.jdy.common.dto.DepartmentFacilityDto;
 import com.jindan.jdy.common.dto.RiskPointContentResultDto;
-import com.jindan.jdy.common.dto.RiskPointContentResultGongju;
 import com.jindan.jdy.common.dto.RiskPointDetails;
-import com.jindan.jdy.common.pojo.RiskPointContent;
 import com.jindan.jdy.common.pojo.RiskPointContentResult;
-import com.jindan.jdy.common.vo.PageVO;
-import com.jindan.jdy.controller.utils.CommonUtils;
-import com.jindan.jdy.service.risk.RiskPointContentResultService;
 import com.jindan.jdy.common.utils.api.ResultVo;
+import com.jindan.jdy.service.risk.RiskPointContentResultService;
 import com.jindan.jdy.service.risk.RiskPointContentService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
-import org.apache.dubbo.config.annotation.Reference;
-import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import io.swagger.annotations.Api;
 
 import java.lang.reflect.Field;
 import java.util.List;

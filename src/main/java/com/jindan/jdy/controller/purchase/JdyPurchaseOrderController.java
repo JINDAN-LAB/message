@@ -1,11 +1,8 @@
 package com.jindan.jdy.controller.purchase;
 
-import com.jindan.jdy.common.pojo.JdyPurchaseOrder;
-import com.jindan.jdy.service.purchase.JdyPurchaseOrderService;
-import com.jindan.jdy.common.utils.api.ResultVo;
+import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-    import io.swagger.annotations.Api;
 /**
 *
 * <p>说明： 采购订单信息API接口层</P>

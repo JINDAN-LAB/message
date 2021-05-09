@@ -1,22 +1,14 @@
 package com.jindan.jdy.controller.sys;
 
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
-import com.jindan.jdy.common.dto.JdyClassroomDto;
-import com.jindan.jdy.common.pojo.JdyClassroom;
 import com.jindan.jdy.common.pojo.JdyDomain;
-import com.jindan.jdy.common.pojo.JdyUserFile;
-import com.jindan.jdy.service.sys.JdyClassroomService;
-import com.jindan.jdy.service.sys.JdyDomainService;
 import com.jindan.jdy.common.utils.api.ResultVo;
+import com.jindan.jdy.service.sys.JdyDomainService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
-import org.apache.dubbo.config.annotation.Reference;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import io.swagger.annotations.Api;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 /**

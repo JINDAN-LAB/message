@@ -2,18 +2,16 @@ package com.jindan.jdy.controller.user;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.jindan.jdy.common.dto.JdyUserFileDto;
 import com.jindan.jdy.common.dto.JdyUserLeaveDto;
 import com.jindan.jdy.common.pojo.JdyUserFile;
 import com.jindan.jdy.common.pojo.JdyUserLeave;
-import com.jindan.jdy.service.user.JdyUserFileService;
-import com.jindan.jdy.service.user.JdyUserLeaveService;
 import com.jindan.jdy.common.utils.api.ResultVo;
+import com.jindan.jdy.service.user.JdyUserLeaveService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
-import org.apache.dubbo.config.annotation.Reference;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import io.swagger.annotations.Api;
 
 import java.util.List;
 

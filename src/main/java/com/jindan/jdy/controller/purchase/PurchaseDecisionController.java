@@ -1,12 +1,9 @@
 package com.jindan.jdy.controller.purchase;
 
-import com.jindan.jdy.common.pojo.PurchaseDecision;
-import com.jindan.jdy.service.purchase.PurchaseDecisionService;
-import com.jindan.jdy.common.utils.api.ResultVo;
+import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-    import io.swagger.annotations.Api;
 /**
 *
 */

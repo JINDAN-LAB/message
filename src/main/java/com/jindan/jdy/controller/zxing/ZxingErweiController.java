@@ -1,27 +1,16 @@
 package com.jindan.jdy.controller.zxing;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
 import com.jindan.jdy.common.dto.ZxingErweiDto;
-import com.jindan.jdy.common.pojo.JdyPurchase;
-import com.jindan.jdy.common.pojo.UserPermission;
 import com.jindan.jdy.common.pojo.ZxingErwei;
-import com.jindan.jdy.common.pojo.ZxingErweim;
-import com.jindan.jdy.controller.utils.RedisUtil;
-import com.jindan.jdy.service.user.UserPermissionService;
-import com.jindan.jdy.service.zxing.ZxingErweiService;
 import com.jindan.jdy.common.utils.api.ResultVo;
+import com.jindan.jdy.controller.utils.RedisUtil;
+import com.jindan.jdy.service.zxing.ZxingErweiService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
-import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import io.swagger.annotations.Api;
-
-import java.util.List;
 
 /**
 *

@@ -1,11 +1,8 @@
 package com.jindan.jdy.controller.zxing;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.jindan.jdy.common.config.AesEncryptUtils;
 import com.jindan.jdy.common.pojo.JdyDomain;
 import com.jindan.jdy.common.pojo.ZxingErweim;
 import com.jindan.jdy.common.pojo.ZxingVerify;
-import com.jindan.jdy.common.utils.api.ResultVo;
 import com.jindan.jdy.controller.utils.RedisUtil;
 import com.jindan.jdy.service.sys.JdyDomainService;
 import com.jindan.jdy.service.zxing.ZxingErweimService;
@@ -13,14 +10,15 @@ import com.jindan.jdy.service.zxing.ZxingVerifyService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
-import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
-import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

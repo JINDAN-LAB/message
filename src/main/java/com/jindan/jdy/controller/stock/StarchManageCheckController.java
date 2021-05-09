@@ -1,21 +1,17 @@
 package com.jindan.jdy.controller.stock;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.jindan.jdy.common.dto.StarchMaintenanceAlterationDto;
 import com.jindan.jdy.common.dto.StarchManageCheckDto;
-import com.jindan.jdy.common.pojo.StarchMaintenanceAlteration;
 import com.jindan.jdy.common.pojo.StarchManageCheck;
-import com.jindan.jdy.controller.utils.RedisUtil;
-import com.jindan.jdy.service.stock.StarchMaintenanceAlterationService;
-import com.jindan.jdy.service.stock.StarchManageCheckService;
 import com.jindan.jdy.common.utils.api.ResultVo;
+import com.jindan.jdy.controller.utils.RedisUtil;
+import com.jindan.jdy.service.stock.StarchManageCheckService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import io.swagger.annotations.Api;
 /**
 *
 * <p>说明： 盘点管理API接口层</P>

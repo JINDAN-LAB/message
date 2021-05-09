@@ -1,8 +1,5 @@
 package com.jindan.jdy.controller.purchase;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.jindan.jdy.common.dto.JdyCommodityDto;
@@ -11,24 +8,21 @@ import com.jindan.jdy.common.dto.JdyUserDto;
 import com.jindan.jdy.common.enumerate.Status;
 import com.jindan.jdy.common.pojo.*;
 import com.jindan.jdy.common.shiro.TokenUtil;
+import com.jindan.jdy.common.utils.api.ResultVo;
 import com.jindan.jdy.controller.utils.CommonUtils;
 import com.jindan.jdy.enumerate.RankUtils;
 import com.jindan.jdy.service.flow.JdyFlowService;
 import com.jindan.jdy.service.purchase.JdyCommodityService;
 import com.jindan.jdy.service.purchase.JdyPurchaseService;
-import com.jindan.jdy.common.utils.api.ResultVo;
 import com.jindan.jdy.service.purchase.PurchaseDecisionService;
 import com.jindan.jdy.service.sys.JdyRuleService;
 import com.jindan.jdy.service.user.JdyUserService;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
-import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.beans.BeanUtils;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import io.swagger.annotations.Api;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;

@@ -1,16 +1,15 @@
 package com.jindan.jdy.controller.stock;
 
 import com.jindan.jdy.common.dto.StockGoodsDTO;
-import com.jindan.jdy.common.pojo.StockGoods;
+import com.jindan.jdy.common.utils.api.ResultVo;
 import com.jindan.jdy.common.vo.StockGoodsVO;
 import com.jindan.jdy.service.stock.StockGoodsService;
-import com.jindan.jdy.common.utils.api.ResultVo;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
-import org.apache.dubbo.config.annotation.Reference;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import io.swagger.annotations.Api;
 
 import javax.validation.Valid;
 import java.util.List;

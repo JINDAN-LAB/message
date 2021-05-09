@@ -1,21 +1,15 @@
 package com.jindan.jdy.controller.risk;
 
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.jindan.jdy.common.dto.DepartmentSubfacilityDto;
 import com.jindan.jdy.common.dto.RiskPointContentDto;
-import com.jindan.jdy.common.dto.RiskPointDto;
-import com.jindan.jdy.common.pojo.DepartmentSubfacility;
-import com.jindan.jdy.common.pojo.RiskPoint;
 import com.jindan.jdy.common.pojo.RiskPointContent;
 import com.jindan.jdy.common.pojo.RiskPointPersons;
-import com.jindan.jdy.service.department.DepartmentSubfacilityService;
-import com.jindan.jdy.service.risk.RiskPointContentService;
 import com.jindan.jdy.common.utils.api.ResultVo;
+import com.jindan.jdy.service.risk.RiskPointContentService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
-import org.apache.dubbo.config.annotation.Reference;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import io.swagger.annotations.Api;
 
 import java.util.List;
 

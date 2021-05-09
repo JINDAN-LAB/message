@@ -1,24 +1,16 @@
 package com.jindan.jdy.controller.user;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.jindan.jdy.common.dto.JdyUserFileDto;
-import com.jindan.jdy.common.pojo.*;
-import com.jindan.jdy.service.user.JdyUserFileService;
+import com.jindan.jdy.common.pojo.JdyUserFile;
 import com.jindan.jdy.common.utils.api.ResultVo;
-import com.jindan.jdy.service.user.JdyUserService;
+import com.jindan.jdy.service.user.JdyUserFileService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
-import org.apache.dubbo.config.annotation.Reference;
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authc.AuthenticationException;
-import org.apache.shiro.authc.IncorrectCredentialsException;
-import org.apache.shiro.authc.LockedAccountException;
-import org.apache.shiro.authc.UsernamePasswordToken;
-import org.apache.shiro.subject.Subject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import io.swagger.annotations.Api;
 
 import java.util.List;
 

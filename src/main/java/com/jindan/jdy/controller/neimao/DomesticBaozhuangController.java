@@ -1,12 +1,9 @@
 package com.jindan.jdy.controller.neimao;
 
-import com.jindan.jdy.common.pojo.DomesticBaozhuang;
-import com.jindan.jdy.service.neimao.DomesticBaozhuangService;
-import com.jindan.jdy.common.utils.api.ResultVo;
+import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-    import io.swagger.annotations.Api;
 /**
 *
 * <p>说明： 内贸提成API接口层</P>

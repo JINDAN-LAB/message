@@ -2,22 +2,17 @@ package com.jindan.jdy.controller.stock;
 
 import com.github.pagehelper.PageInfo;
 import com.jindan.jdy.common.pojo.StockAccess;
-import com.jindan.jdy.common.utils.ConvertUtils;
+import com.jindan.jdy.common.utils.api.ResultVo;
 import com.jindan.jdy.common.vo.StockAccessListVO;
 import com.jindan.jdy.common.vo.StockAccessSaveVO;
 import com.jindan.jdy.service.stock.StockAccessService;
-import com.jindan.jdy.common.utils.api.ResultVo;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.catalina.User;
-import org.apache.dubbo.config.annotation.Reference;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import io.swagger.annotations.Api;
 
 import javax.validation.Valid;
-import java.util.Date;
 
 /**
  * <p>说明： 进入库API接口层</P>

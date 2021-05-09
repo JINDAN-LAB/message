@@ -1,29 +1,19 @@
 package com.jindan.jdy.controller.sys;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
-import com.jindan.jdy.common.dto.DepartmentSuggestDto;
 import com.jindan.jdy.common.dto.JdyClassroomDto;
-import com.jindan.jdy.common.dto.JdySspDto;
-import com.jindan.jdy.common.pojo.DepartmentSuggest;
 import com.jindan.jdy.common.pojo.JdyClassroom;
-import com.jindan.jdy.common.pojo.JdySsp;
-import com.jindan.jdy.common.pojo.JdyUserFile;
-import com.jindan.jdy.service.department.JdySspService;
-import com.jindan.jdy.service.sys.JdyClassroomService;
 import com.jindan.jdy.common.utils.api.ResultVo;
+import com.jindan.jdy.service.sys.JdyClassroomService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
-import org.apache.dubbo.config.annotation.Reference;
 import org.apache.poi.hssf.usermodel.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import io.swagger.annotations.Api;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 /**

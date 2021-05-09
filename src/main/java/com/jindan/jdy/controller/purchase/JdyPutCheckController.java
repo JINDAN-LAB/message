@@ -1,16 +1,13 @@
 package com.jindan.jdy.controller.purchase;
 
-import com.jindan.jdy.common.dto.JdyPutTypeDto;
 import com.jindan.jdy.common.pojo.JdyPutCheck;
-import com.jindan.jdy.common.pojo.JdyPutType;
-import com.jindan.jdy.service.purchase.JdyPutCheckService;
 import com.jindan.jdy.common.utils.api.ResultVo;
-import com.jindan.jdy.service.purchase.JdyPutTypeService;
+import com.jindan.jdy.service.purchase.JdyPutCheckService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
-import org.apache.dubbo.config.annotation.Reference;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import io.swagger.annotations.Api;
 
 import java.util.List;
 

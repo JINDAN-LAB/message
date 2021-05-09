@@ -4,25 +4,19 @@ import com.jindan.jdy.common.dto.JdyPurchaseDto;
 import com.jindan.jdy.common.dto.WarehouseSpecsDto;
 import com.jindan.jdy.common.pojo.DepartmentFacility;
 import com.jindan.jdy.common.pojo.JdyPurchase;
-import com.jindan.jdy.common.pojo.WarehouseGoods;
 import com.jindan.jdy.common.pojo.WarehouseSpecs;
+import com.jindan.jdy.common.utils.api.ResultVo;
 import com.jindan.jdy.enumerate.Status;
 import com.jindan.jdy.service.department.DepartmentFacilityService;
 import com.jindan.jdy.service.purchase.JdyPurchaseService;
 import com.jindan.jdy.service.stock.WarehouseDepositoryService;
-import com.jindan.jdy.service.stock.WarehouseGoodsService;
 import com.jindan.jdy.service.stock.WarehouseSpecsService;
-import com.jindan.jdy.common.utils.api.ResultVo;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
-import org.apache.commons.beanutils.BeanUtils;
-import org.apache.dubbo.config.annotation.Reference;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.transaction.interceptor.TransactionAspectSupport;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import io.swagger.annotations.Api;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 

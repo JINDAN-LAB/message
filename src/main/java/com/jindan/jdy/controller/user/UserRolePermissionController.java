@@ -1,20 +1,15 @@
 package com.jindan.jdy.controller.user;
 
-import com.alibaba.fastjson.JSON;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.jindan.jdy.common.dto.JdyRoleDto;
 import com.jindan.jdy.common.dto.UserPermissionDto;
-import com.jindan.jdy.common.pojo.JdyRole;
-import com.jindan.jdy.common.pojo.UserPermission;
 import com.jindan.jdy.common.pojo.UserRolePermission;
-import com.jindan.jdy.service.user.UserPermissionService;
-import com.jindan.jdy.service.user.UserRolePermissionService;
 import com.jindan.jdy.common.utils.api.ResultVo;
+import com.jindan.jdy.service.user.UserRolePermissionService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
-import org.apache.dubbo.config.annotation.Reference;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import io.swagger.annotations.Api;
 
 import java.util.List;
 

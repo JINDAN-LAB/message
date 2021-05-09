@@ -1,19 +1,18 @@
 package com.jindan.jdy.controller.stock;
 
 import com.jindan.jdy.common.pojo.StockDepository;
-import com.jindan.jdy.common.utils.exception.BusinessException;
-import com.jindan.jdy.service.stock.StockDepositoryService;
 import com.jindan.jdy.common.utils.api.ResultVo;
+import com.jindan.jdy.service.stock.StockDepositoryService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
-import org.apache.dubbo.config.annotation.Reference;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import io.swagger.annotations.Api;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import java.util.*;
+import java.util.List;
 
 /**
  * <p>说明： 仓库类别API接口层</P>

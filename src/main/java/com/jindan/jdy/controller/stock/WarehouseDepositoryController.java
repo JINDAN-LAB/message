@@ -1,31 +1,22 @@
 package com.jindan.jdy.controller.stock;
 
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.gexin.rp.sdk.base.uitls.Base64Util;
 import com.jindan.jdy.common.dto.JdyFlowCatalogDto;
-import com.jindan.jdy.common.dto.JdyPurchaseDto;
 import com.jindan.jdy.common.dto.WarehouseDepositoryDto;
-import com.jindan.jdy.common.pojo.*;
-import com.jindan.jdy.controller.utils.RedisUtil;
-import com.jindan.jdy.service.purchase.JdyCommodityService;
-import com.jindan.jdy.service.purchase.JdyPurchaseService;
-import com.jindan.jdy.service.stock.WarehouseAccessService;
-import com.jindan.jdy.service.stock.WarehouseDepositoryService;
+import com.jindan.jdy.common.pojo.JdyFlowCatalog;
+import com.jindan.jdy.common.pojo.WarehouseDepository;
+import com.jindan.jdy.common.pojo.WarehouseSpecs;
 import com.jindan.jdy.common.utils.api.ResultVo;
+import com.jindan.jdy.controller.utils.RedisUtil;
+import com.jindan.jdy.service.purchase.JdyPurchaseService;
+import com.jindan.jdy.service.stock.WarehouseDepositoryService;
 import com.jindan.jdy.service.stock.WarehouseSpecsService;
 import com.jindan.jdy.service.sys.JdyFlowCatalogService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
-import org.apache.commons.beanutils.BeanUtils;
-import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.Base64Utils;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
-import io.swagger.annotations.Api;
 
-import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
 import java.util.List;
 
 /**

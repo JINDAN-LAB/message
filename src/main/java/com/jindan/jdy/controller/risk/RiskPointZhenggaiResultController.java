@@ -1,17 +1,15 @@
 package com.jindan.jdy.controller.risk;
 
 import com.jindan.jdy.common.pojo.RiskPointContentResult;
-import com.jindan.jdy.common.pojo.RiskPointPersons;
 import com.jindan.jdy.common.pojo.RiskPointZhenggaiResult;
-import com.jindan.jdy.service.risk.RiskPointContentResultService;
-import com.jindan.jdy.service.risk.RiskPointPersonsService;
-import com.jindan.jdy.service.risk.RiskPointZhenggaiResultService;
 import com.jindan.jdy.common.utils.api.ResultVo;
+import com.jindan.jdy.service.risk.RiskPointContentResultService;
+import com.jindan.jdy.service.risk.RiskPointZhenggaiResultService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
-import org.apache.dubbo.config.annotation.Reference;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import io.swagger.annotations.Api;
 
 import java.util.List;
 

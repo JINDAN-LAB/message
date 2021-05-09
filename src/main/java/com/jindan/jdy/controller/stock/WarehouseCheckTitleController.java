@@ -1,20 +1,18 @@
 package com.jindan.jdy.controller.stock;
 
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.jindan.jdy.common.dto.WarehouseCheckDto;
 import com.jindan.jdy.common.dto.WarehouseCheckTitleDto;
 import com.jindan.jdy.common.pojo.WarehouseCheck;
 import com.jindan.jdy.common.pojo.WarehouseCheckTitle;
+import com.jindan.jdy.common.utils.api.ResultVo;
 import com.jindan.jdy.controller.utils.CommonUtils;
 import com.jindan.jdy.service.stock.WarehouseCheckService;
 import com.jindan.jdy.service.stock.WarehouseCheckTitleService;
-import com.jindan.jdy.common.utils.api.ResultVo;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
-import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import io.swagger.annotations.Api;
 
 import java.util.ArrayList;
 import java.util.List;
