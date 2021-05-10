@@ -16,7 +16,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 @SpringBootApplication
 @EnableAutoConfiguration
-@MapperScan("com.jindan.jdy.common.mapper")
+@MapperScan("com.jindan.jdy.mapper")
 @ComponentScan("com.jindan")
 public class MessageWebApplication {
 
