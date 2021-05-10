@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.jindan.jdy.common.dto.StarchOrganizationPutConsumableChuruDto;
-import com.jindan.jdy.common.mapper.StarchOrganizationPutConsumableChuruDao;
+import com.jindan.jdy.mapper.StarchOrganizationPutConsumableChuruDao;
 import com.jindan.jdy.common.pojo.StarchOrganizationPutConsumableChuru;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

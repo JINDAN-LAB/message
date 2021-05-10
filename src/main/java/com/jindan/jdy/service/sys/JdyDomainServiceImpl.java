@@ -1,7 +1,7 @@
 package com.jindan.jdy.service.sys;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.jindan.jdy.common.mapper.JdyDomainMapper;
+import com.jindan.jdy.mapper.JdyDomainMapper;
 import com.jindan.jdy.common.pojo.JdyDomain;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

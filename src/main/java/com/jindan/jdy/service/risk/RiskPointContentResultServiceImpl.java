@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.jindan.jdy.common.dto.RiskPointContentResultDto;
 import com.jindan.jdy.common.dto.RiskPointDetails;
-import com.jindan.jdy.common.mapper.RiskPointContentResultMapper;
+import com.jindan.jdy.mapper.RiskPointContentResultMapper;
 import com.jindan.jdy.common.pojo.RiskPointContentResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

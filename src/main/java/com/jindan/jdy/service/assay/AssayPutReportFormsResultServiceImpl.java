@@ -2,7 +2,7 @@ package com.jindan.jdy.service.assay;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.jindan.jdy.common.mapper.AssayPutReportFormsResultDao;
+import com.jindan.jdy.mapper.AssayPutReportFormsResultDao;
 import com.jindan.jdy.common.pojo.AssayPutReportFormsResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

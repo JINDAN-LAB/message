@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.jindan.jdy.common.dto.DepartmentFacilityDto;
-import com.jindan.jdy.common.mapper.DepartmentFacilityMapper;
+import com.jindan.jdy.mapper.DepartmentFacilityMapper;
 import com.jindan.jdy.common.pojo.DepartmentFacility;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

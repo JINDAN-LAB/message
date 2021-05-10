@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.jindan.jdy.common.dto.StarchOrganizationPutConsumableDto;
-import com.jindan.jdy.common.mapper.StarchOrganizationPutConsumableMapper;
+import com.jindan.jdy.mapper.StarchOrganizationPutConsumableMapper;
 import com.jindan.jdy.common.pojo.StarchOrganizationPutConsumable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

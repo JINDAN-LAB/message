@@ -1,7 +1,7 @@
 package com.jindan.jdy.service.purchase;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.jindan.jdy.common.mapper.JdyPurchaseOrderDao;
+import com.jindan.jdy.mapper.JdyPurchaseOrderDao;
 import com.jindan.jdy.common.pojo.JdyPurchaseOrder;
 import org.springframework.stereotype.Component;
 

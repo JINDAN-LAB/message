@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.jindan.jdy.common.dto.DomesticHuikuanDto;
-import com.jindan.jdy.common.mapper.DomesticHuikuanMapper;
+import com.jindan.jdy.mapper.DomesticHuikuanMapper;
 import com.jindan.jdy.common.pojo.DomesticHuikuan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

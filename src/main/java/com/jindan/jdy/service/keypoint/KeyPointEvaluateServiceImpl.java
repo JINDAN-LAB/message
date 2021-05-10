@@ -2,7 +2,7 @@ package com.jindan.jdy.service.keypoint;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.jindan.jdy.common.mapper.KeyPointEvaluateDao;
+import com.jindan.jdy.mapper.KeyPointEvaluateDao;
 import com.jindan.jdy.common.pojo.KeyPointEvaluate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

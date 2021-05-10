@@ -2,7 +2,7 @@ package com.jindan.jdy.service.department;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.jindan.jdy.common.mapper.JdyPackingMapper;
+import com.jindan.jdy.mapper.JdyPackingMapper;
 import com.jindan.jdy.common.pojo.JdyPacking;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

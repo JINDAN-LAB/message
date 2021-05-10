@@ -1,6 +1,6 @@
 package com.jindan.jdy.controller.utils;
 
-import com.jindan.jdy.common.config.Status;
+import com.jindan.jdy.config.Status;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.BoundListOperations;
 import org.springframework.data.redis.core.RedisTemplate;

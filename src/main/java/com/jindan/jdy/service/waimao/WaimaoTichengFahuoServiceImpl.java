@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.jindan.jdy.common.dto.WaimaoTichengFahuoDto;
-import com.jindan.jdy.common.mapper.WaimaoTichengFahuoMapper;
+import com.jindan.jdy.mapper.WaimaoTichengFahuoMapper;
 import com.jindan.jdy.common.pojo.DomesticFahuo;
 import com.jindan.jdy.common.pojo.WaimaoTichengFahuo;
 import org.springframework.beans.factory.annotation.Autowired;

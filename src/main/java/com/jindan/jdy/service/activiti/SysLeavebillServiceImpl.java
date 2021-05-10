@@ -1,7 +1,7 @@
 package com.jindan.jdy.service.activiti;
 
 import com.jindan.jdy.common.pojo.SysLeavebill;
-import com.jindan.jdy.common.mapper.SysLeavebillDao;
+import com.jindan.jdy.mapper.SysLeavebillDao;
 import com.jindan.jdy.service.activiti.SysLeavebillService;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

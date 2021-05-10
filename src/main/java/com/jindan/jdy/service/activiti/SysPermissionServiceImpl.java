@@ -1,7 +1,7 @@
 package com.jindan.jdy.service.activiti;
 
 import com.jindan.jdy.common.pojo.SysPermission;
-import com.jindan.jdy.common.mapper.SysPermissionDao;
+import com.jindan.jdy.mapper.SysPermissionDao;
 import com.jindan.jdy.service.activiti.SysPermissionService;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

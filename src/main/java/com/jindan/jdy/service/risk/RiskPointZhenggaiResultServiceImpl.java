@@ -2,14 +2,14 @@ package com.jindan.jdy.service.risk;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.jindan.jdy.common.mapper.RiskPointZhenggaiResultDao;
+import com.jindan.jdy.mapper.RiskPointZhenggaiResultDao;
 import com.jindan.jdy.common.pojo.RiskPointZhenggaiResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-//import com.jindan.jdy.common.mapper.RiskPointDao;
+//import com.jindan.jdy.mapper.RiskPointDao;
 
 /**   
  * @Description:TODO(整改返回结果服务实现)

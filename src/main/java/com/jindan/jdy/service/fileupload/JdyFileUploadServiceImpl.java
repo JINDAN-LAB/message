@@ -1,7 +1,7 @@
 package com.jindan.jdy.service.fileupload;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.jindan.jdy.common.mapper.JdyFileUploadMapper;
+import com.jindan.jdy.mapper.JdyFileUploadMapper;
 import com.jindan.jdy.common.pojo.JdyFileUpload;
 import org.springframework.stereotype.Component;
 

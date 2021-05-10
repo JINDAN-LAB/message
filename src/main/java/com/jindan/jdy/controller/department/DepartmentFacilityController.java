@@ -8,7 +8,7 @@ import com.jindan.jdy.common.enumerate.Status;
 import com.jindan.jdy.common.pojo.DepartmentFacility;
 import com.jindan.jdy.common.pojo.JdyFlow;
 import com.jindan.jdy.common.pojo.JdyPurchase;
-import com.jindan.jdy.common.shiro.TokenUtil;
+import com.jindan.jdy.shiro.TokenUtil;
 import com.jindan.jdy.common.utils.api.ResultVo;
 import com.jindan.jdy.controller.utils.QRCodeUtil;
 import com.jindan.jdy.controller.utils.RedisUtil;

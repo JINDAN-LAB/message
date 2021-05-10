@@ -7,7 +7,7 @@ import com.jindan.jdy.common.dto.JdyPurchaseDto;
 import com.jindan.jdy.common.dto.JdyUserDto;
 import com.jindan.jdy.common.enumerate.Status;
 import com.jindan.jdy.common.pojo.*;
-import com.jindan.jdy.common.shiro.TokenUtil;
+import com.jindan.jdy.shiro.TokenUtil;
 import com.jindan.jdy.common.utils.api.ResultVo;
 import com.jindan.jdy.controller.utils.CommonUtils;
 import com.jindan.jdy.enumerate.RankUtils;

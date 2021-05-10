@@ -1,7 +1,7 @@
 package com.jindan.jdy.service.activiti;
 
 import com.jindan.jdy.common.pojo.SysRoleUser;
-import com.jindan.jdy.common.mapper.SysRoleUserDao;
+import com.jindan.jdy.mapper.SysRoleUserDao;
 import com.jindan.jdy.service.activiti.SysRoleUserService;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

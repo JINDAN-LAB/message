@@ -6,7 +6,7 @@ import com.jindan.jdy.common.dto.JdyUserDto;
 import com.jindan.jdy.common.pojo.JdyUser;
 import com.jindan.jdy.common.pojo.StarchOrganizationPut;
 import com.jindan.jdy.common.pojo.UserRole;
-import com.jindan.jdy.common.shiro.TokenUtil;
+import com.jindan.jdy.shiro.TokenUtil;
 import com.jindan.jdy.common.utils.api.ResultVo;
 import com.jindan.jdy.controller.utils.WorkbookUtils;
 import com.jindan.jdy.service.user.JdyUserService;

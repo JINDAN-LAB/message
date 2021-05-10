@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.jindan.jdy.common.dto.KeyPointScheduleDto;
-import com.jindan.jdy.common.mapper.KeyPointScheduleDao;
+import com.jindan.jdy.mapper.KeyPointScheduleDao;
 import com.jindan.jdy.common.pojo.KeyPointSchedule;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

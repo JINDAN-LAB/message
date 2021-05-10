@@ -1,7 +1,7 @@
 package com.jindan.jdy.service.activiti;
 
 import com.jindan.jdy.common.pojo.SysNotice;
-import com.jindan.jdy.common.mapper.SysNoticeDao;
+import com.jindan.jdy.mapper.SysNoticeDao;
 import com.jindan.jdy.service.activiti.SysNoticeService;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

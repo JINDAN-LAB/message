@@ -1,7 +1,7 @@
 package com.jindan.jdy.service.activiti;
 
 import com.jindan.jdy.common.pojo.SysDept;
-import com.jindan.jdy.common.mapper.SysDeptDao;
+import com.jindan.jdy.mapper.SysDeptDao;
 import com.jindan.jdy.service.activiti.SysDeptService;
 //import org.activiti.engine.*;
 

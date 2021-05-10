@@ -3,7 +3,7 @@ package com.jindan.jdy.service.user;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.jindan.jdy.common.dto.UserPermissionDto;
-import com.jindan.jdy.common.mapper.UserRolePermissionMapper;
+import com.jindan.jdy.mapper.UserRolePermissionMapper;
 import com.jindan.jdy.common.pojo.UserRolePermission;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

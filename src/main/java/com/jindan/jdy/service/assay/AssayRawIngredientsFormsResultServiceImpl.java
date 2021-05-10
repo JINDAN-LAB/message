@@ -2,7 +2,7 @@ package com.jindan.jdy.service.assay;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.jindan.jdy.common.mapper.AssayRawIngredientsFormsResultDao;
+import com.jindan.jdy.mapper.AssayRawIngredientsFormsResultDao;
 import com.jindan.jdy.common.pojo.AssayRawIngredientsFormsResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

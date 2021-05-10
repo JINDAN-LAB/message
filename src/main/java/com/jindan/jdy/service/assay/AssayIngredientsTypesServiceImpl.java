@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.jindan.jdy.common.dto.AssayIngredientsTypesDto;
-import com.jindan.jdy.common.mapper.AssayIngredientsTypesDao;
+import com.jindan.jdy.mapper.AssayIngredientsTypesDao;
 import com.jindan.jdy.common.pojo.AssayIngredientsTypes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

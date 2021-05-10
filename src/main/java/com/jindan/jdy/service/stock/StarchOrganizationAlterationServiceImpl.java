@@ -6,7 +6,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.jindan.jdy.common.dto.StarchOrganizationAlterationDto;
-import com.jindan.jdy.common.mapper.StarchOrganizationAlterationMapper;
+import com.jindan.jdy.mapper.StarchOrganizationAlterationMapper;
 import com.jindan.jdy.common.pojo.StarchOrganizationAlteration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

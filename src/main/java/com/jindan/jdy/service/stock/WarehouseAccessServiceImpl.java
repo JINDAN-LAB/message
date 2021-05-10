@@ -2,7 +2,7 @@ package com.jindan.jdy.service.stock;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.jindan.jdy.common.dto.WarehouseAccessDto;
-import com.jindan.jdy.common.mapper.WarehouseAccessMapper;
+import com.jindan.jdy.mapper.WarehouseAccessMapper;
 import com.jindan.jdy.common.pojo.KeyPointProject;
 import com.jindan.jdy.common.pojo.WarehouseAccess;
 import org.springframework.beans.factory.annotation.Autowired;

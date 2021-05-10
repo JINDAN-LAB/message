@@ -1,7 +1,7 @@
 package com.jindan.jdy.service.zxing;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.jindan.jdy.common.mapper.ZxingVerifyDao;
+import com.jindan.jdy.mapper.ZxingVerifyDao;
 import com.jindan.jdy.common.pojo.ZxingVerify;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

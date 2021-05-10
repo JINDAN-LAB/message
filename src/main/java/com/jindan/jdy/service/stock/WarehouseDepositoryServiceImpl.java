@@ -3,7 +3,7 @@ package com.jindan.jdy.service.stock;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.jindan.jdy.common.dto.WarehouseDepositoryDto;
-import com.jindan.jdy.common.mapper.WarehouseDepositoryMapper;
+import com.jindan.jdy.mapper.WarehouseDepositoryMapper;
 import com.jindan.jdy.common.pojo.WarehouseDepository;
 import com.jindan.jdy.common.pojo.WarehouseSpecs;
 import org.springframework.beans.factory.annotation.Autowired;

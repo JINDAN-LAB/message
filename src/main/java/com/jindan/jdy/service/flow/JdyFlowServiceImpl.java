@@ -3,7 +3,7 @@ package com.jindan.jdy.service.flow;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.jindan.jdy.common.dto.JdyFlowDto;
-import com.jindan.jdy.common.mapper.JdyFlowMapper;
+import com.jindan.jdy.mapper.JdyFlowMapper;
 import com.jindan.jdy.common.pojo.JdyFlow;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

@@ -3,7 +3,7 @@ package com.jindan.jdy.service.stock;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.jindan.jdy.common.dto.StockGoodsDTO;
-import com.jindan.jdy.common.mapper.StockGoodsDao;
+import com.jindan.jdy.mapper.StockGoodsDao;
 import com.jindan.jdy.common.pojo.StockGoods;
 import com.jindan.jdy.common.pojo.StockSpecs;
 import com.jindan.jdy.common.utils.ConvertUtils;

@@ -3,7 +3,7 @@ package com.jindan.jdy.service.user;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.jindan.jdy.common.dto.JdyUserDto;
-import com.jindan.jdy.common.mapper.JdyUserMapper;
+import com.jindan.jdy.mapper.JdyUserMapper;
 import com.jindan.jdy.common.pojo.JdyUser;
 import com.jindan.jdy.common.pojo.UserPermission;
 import lombok.extern.slf4j.Slf4j;

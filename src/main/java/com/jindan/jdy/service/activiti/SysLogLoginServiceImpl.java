@@ -1,7 +1,7 @@
 package com.jindan.jdy.service.activiti;
 
 import com.jindan.jdy.common.pojo.SysLogLogin;
-import com.jindan.jdy.common.mapper.SysLogLoginDao;
+import com.jindan.jdy.mapper.SysLogLoginDao;
 import com.jindan.jdy.service.activiti.SysLogLoginService;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

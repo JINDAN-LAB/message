@@ -1,7 +1,7 @@
 package com.jindan.jdy.service.activiti;
 
 import com.jindan.jdy.common.pojo.FlowBillDefinition;
-import com.jindan.jdy.common.mapper.FlowBillDefinitionDao;
+import com.jindan.jdy.mapper.FlowBillDefinitionDao;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

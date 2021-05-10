@@ -1,7 +1,7 @@
 package com.jindan.jdy.service.activiti;
 
 import com.jindan.jdy.common.pojo.SysUser;
-import com.jindan.jdy.common.mapper.SysUserDao;
+import com.jindan.jdy.mapper.SysUserDao;
 import com.jindan.jdy.service.activiti.SysUserService;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
