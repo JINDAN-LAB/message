@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.jindan.jdy.common.mapper.JdyDepartmentsMapper">
+<mapper namespace="com.jindan.jdy.mapper.JdyDepartmentsMapper">
 
 	<resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.JdyDepartments">
 		<id column="id" property="id" />
