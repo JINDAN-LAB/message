@@ -9,6 +9,7 @@ import com.jindan.jdy.common.pojo.*;
 import com.jindan.jdy.common.utils.api.ResultVo;
 import com.jindan.jdy.controller.utils.RedisUtil;
 import com.jindan.jdy.service.neimao.*;
+import com.jindan.jdy.utils.DateUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -242,13 +243,20 @@ public class DomesticFahuoController{
                 switch (row.getCell(0).getCellType()){
                     case HSSFCell.CELL_TYPE_NUMERIC:
                         if(row.getCell(0) != null){
-                            jijiabiao.setHuikuanriqi( sdf.format(row.getCell(0).getDateCellValue()));
+                            Cell cell = row.getCell(0);
+                            cell.setCellType(1);
+                            String huankuanDate = cell.getStringCellValue() + "";
+                            huankuanDate = DateUtils.getFormatDate(huankuanDate);
+                            jijiabiao.setHuikuanriqi( huankuanDate);
                         }
                         break;
                     case HSSFCell.CELL_TYPE_STRING:
                         if(row.getCell(0) != null){
                             row.getCell(0).setCellType(Cell.CELL_TYPE_STRING);
-                            jijiabiao.setHuikuanriqi(row.getCell(0).getStringCellValue());
+                            // 转换
+                            String huankuanDate = row.getCell(0).getStringCellValue();
+                            huankuanDate = DateUtils.getFormatDate(huankuanDate);
+                            jijiabiao.setHuikuanriqi(huankuanDate);
                          }
                         break;
                 }
