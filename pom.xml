@@ -275,7 +275,7 @@
         <artifactId>spring-boot-maven-plugin</artifactId>
         <configuration>
           <fork>true</fork>
-          <mainClass>com.jd.message.MessageWebApplication</mainClass>
+          <mainClass>com.jindan.jdy.MessageWebApplication</mainClass>
         </configuration>
         <executions>
           <execution>
