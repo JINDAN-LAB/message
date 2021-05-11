@@ -12,6 +12,7 @@ import com.jindan.jdy.service.neimao.*;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.hssf.usermodel.*;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -42,6 +43,7 @@ import java.util.*;
 @Api(tags = "内贸提成发货信息")
 @RestController
 @RequestMapping("/domesticFahuo")
+@Slf4j
 public class DomesticFahuoController{
 
         @Autowired
@@ -218,7 +220,7 @@ public class DomesticFahuoController{
         public ResultVo addhuikuanfile(@RequestParam("file") MultipartFile file, String ids) throws Exception {
             int num=0;
             Workbook work = this.getWorkbook(file.getInputStream(),file.getOriginalFilename());
-            System.out.println("zhixingle1111111");
+            log.info("回款信息导入开始.........");
             if(null == work){
                 throw new Exception("创建Excel工作薄为空！");
             }

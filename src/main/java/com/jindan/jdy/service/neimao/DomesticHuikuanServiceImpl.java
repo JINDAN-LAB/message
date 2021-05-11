@@ -49,7 +49,7 @@ public class DomesticHuikuanServiceImpl  extends ServiceImpl<DomesticHuikuanMapp
         if(  domesticFahuoDto.getDaorutime() !=null && !domesticFahuoDto.getDaorutime().isEmpty()){
             queryWrapper.eq("daoruriqi",domesticFahuoDto.getDaorutime());
         }
-        queryWrapper.gt("jine","0.0").orderByAsc("xingming","kehumingcheng","huikuanriqi");
+        queryWrapper.notIn("jine","0.0","0").orderByAsc("xingming","kehumingcheng","huikuanriqi");
         return (Page)domesticHuikuandao.selectPage(page,queryWrapper);
     }
 

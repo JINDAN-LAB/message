@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/jdy?characterEncoding=utf8&useSSL=false&serverTimezone=UTC
+    url: jdbc:mysql://60.205.218.186:3306/jdy?characterEncoding=utf8&useSSL=false&serverTimezone=UTC
     username: root
     password: Jindan.root
     hikari:
