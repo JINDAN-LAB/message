@@ -21,4 +21,5 @@ public interface WaimaoDowPurchaseMapper extends BaseMapper<WaimaoDowPurchase> {
 
     List<WaimaoDowBankExpendDto> getDetailsAll();
 
+    List<WaimaoDowBankExpendDto> getExportExcel();
 }

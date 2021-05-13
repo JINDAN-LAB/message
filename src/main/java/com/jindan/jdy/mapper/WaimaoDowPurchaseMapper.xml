@@ -105,6 +105,20 @@
 		RIGHT JOIN waimao_dow_bank_income on waimao_dow_bank_expend.contract_number = waimao_dow_bank_income.contract_fapiao
     </select>
 
+	<select id="getExportExcel" parameterType="java.lang.String" resultMap="waimaoDowdetails">
+		SELECT
+		waimao_dow_bank_expend.*,
+		waimao_dow_bank_income.*,
+		waimao_dow_market.*,
+		waimao_dow_purchase.*
+		FROM waimao_dow_purchase
+		LEFT JOIN waimao_dow_bank_expend  on waimao_dow_purchase.chetonghao = waimao_dow_bank_expend.contract_number
+		LEFT JOIN waimao_dow_bank_income on waimao_dow_purchase.chetonghao = waimao_dow_bank_income.contract_fapiao
+		LEFT JOIN waimao_dow_market on waimao_dow_purchase.chetonghao = waimao_dow_market.xhetonghao
+		where waimao_dow_purchase.delete_id != 1
+	</select>
+
+
 <!--	  	   SELECT-->
 <!--	 		  waimao_dow_bank_expend.*,-->
 <!--	 		  waimao_dow_bank_income.*,-->
