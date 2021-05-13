@@ -21,5 +21,5 @@ public interface WaimaoDowPurchaseService extends IService<WaimaoDowPurchase> {
     List<WaimaoDowBankExpendDto> getDetailsAll();
 
     /*外贸道氏采购信息导出*/
-    List<WaimaoDowBankExpendDto> getExportExcel();
+    List<WaimaoDowBankExpendDto> getWaimaoDowPurchaseDetailExportExcel();
 }

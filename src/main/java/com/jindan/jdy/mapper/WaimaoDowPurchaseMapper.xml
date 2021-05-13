@@ -105,7 +105,8 @@
 		RIGHT JOIN waimao_dow_bank_income on waimao_dow_bank_expend.contract_number = waimao_dow_bank_income.contract_fapiao
     </select>
 
-	<select id="getExportExcel" parameterType="java.lang.String" resultMap="waimaoDowdetails">
+	<!--外贸道氏采购信息导出-->
+	<select id="getWaimaoDowPurchaseDetailExportExcel" parameterType="java.lang.String" resultMap="waimaoDowdetails">
 		SELECT
 		waimao_dow_bank_expend.*,
 		waimao_dow_bank_income.*,

@@ -129,7 +129,7 @@
 			<if test="departments != null and departments !='' ">
 				and jdy_user.departments = #{departments}
 			</if>
-			  and jdy_user.delete_id = 0;
+			  and jdy_user.delete_id = 0
 		</where>
 	</sql>
 

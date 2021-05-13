@@ -21,5 +21,6 @@ public interface WaimaoDowPurchaseMapper extends BaseMapper<WaimaoDowPurchase> {
 
     List<WaimaoDowBankExpendDto> getDetailsAll();
 
-    List<WaimaoDowBankExpendDto> getExportExcel();
+    /*外贸道氏采购信息导出*/
+    List<WaimaoDowBankExpendDto> getWaimaoDowPurchaseDetailExportExcel();
 }

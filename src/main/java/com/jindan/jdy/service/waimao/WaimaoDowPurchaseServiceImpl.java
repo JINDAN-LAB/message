@@ -72,7 +72,7 @@ public class WaimaoDowPurchaseServiceImpl  extends ServiceImpl<WaimaoDowPurchase
 
     /*外贸道氏采购信息导出*/
     @Override
-    public List<WaimaoDowBankExpendDto> getExportExcel() {
-        return waimaoAreaDao.getExportExcel();
+    public List<WaimaoDowBankExpendDto> getWaimaoDowPurchaseDetailExportExcel() {
+        return waimaoAreaDao.getWaimaoDowPurchaseDetailExportExcel();
     }
 }

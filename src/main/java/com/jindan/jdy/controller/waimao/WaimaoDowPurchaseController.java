@@ -11,10 +11,10 @@ import com.jindan.jdy.service.waimao.WaimaoDowPurchaseService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import org.apache.poi.hssf.usermodel.*;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.xssf.usermodel.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
-import java.io.FileOutputStream;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -129,109 +128,106 @@ public class WaimaoDowPurchaseController{
         logger.info("外贸道氏采购信息导出打印开始");
 
         /*文件路径*/
-        String fileName="采购信息导出"+".xlsx";
-
-        /*String fileName="C:\\Users\\HXS\\Desktop\\TestJavaCode\\采购信息.xlsx";*/
+        String fileName="外贸道氏采购信息导出"+".xls";
 
         /*创建Excel文件(Workbook)*/
-        XSSFWorkbook xssfWorkbook = new XSSFWorkbook();
+        HSSFWorkbook hssfWorkbook = new HSSFWorkbook();
 
         /*excel表格的列名称*/
         String[] headers = {
-                "合同号", "发票号", "物料名", "供应商", "价税合计", "金额", "数量","税额","单位", "备注",
+                "合同号", "发票号", "物料名", "供应商", "价税合计", "金额", "数量", "税额", "单位", "备注",
                 "合同号", "物料名", "收货客户", "退税", "退款率", "数量", "税额", "单位", "备注",
                 "合同号", "贷款或费用", "收款人", "付款时间", "银行支出金额", "银行费用金额", "性质", "备注",
                 "合同号或发票号", "退款或退税", "收款人", "收款时间", "银行收入金额", "银行退款金额", "性质", "备注"
         };
 
-        /*将数组存入list中*//*
-        List<String> headersList= new ArrayList<String>();
-        headersList =  Arrays.asList(headers);*/
-
         /*創建工作表(Sheet),设置表单和表单名*/
-        XSSFSheet xssfSheet = xssfWorkbook.createSheet("数据导出");
+        HSSFSheet hssfSheet = hssfWorkbook.createSheet("外贸采购信息导出");
 
-        /*生成表单的第一行*/
-        XSSFRow xssfRow = xssfSheet.createRow(0);
+        /*生成表单的第一行，即表头*/
+        HSSFRow hssfRow = hssfSheet.createRow(0);
         for (int i = 0;i<headers.length;i++){
-            XSSFCell xssfCell = xssfRow.createCell(i);
-            XSSFRichTextString text = new XSSFRichTextString(headers[i]);
-            xssfCell.setCellValue(text);
+            HSSFCell hssfCell = hssfRow.createCell(i);
+            HSSFRichTextString text = new HSSFRichTextString(headers[i]);
+            hssfCell.setCellValue(text);
         }
 
-        List<WaimaoDowBankExpendDto> exportExcel = waimaoAreaService.getExportExcel();
+        /*获取到外贸采购信息总数据对象，并存到list中*/
+        List<WaimaoDowBankExpendDto> waimaoDowPurchaseDetailExportExcel = waimaoAreaService.getWaimaoDowPurchaseDetailExportExcel();
 
-        for (int i =0 ;i < exportExcel.size();i++){
-            XSSFRow xssfRow1 = xssfSheet.createRow(i+1);
+        /*循环*/
+        for (int i =0 ;i < waimaoDowPurchaseDetailExportExcel.size();i++){
 
-            /*XSSFCell xssfCell = xssfRow1.createCell(i);
+            /*创建每一行单元格*/
+            HSSFRow hssfRow1 = hssfSheet.createRow(i+1);
 
-            for (int j = 0;j<exportExcel.get(i).)
+            /*从list中取出第i个外贸采购信息总数据对象*/
+            WaimaoDowBankExpendDto waimaoDowBankExpendDto = waimaoDowPurchaseDetailExportExcel.get(i);
 
-            HSSFRichTextString text = new HSSFRichTextString(headers[i]);
-            xssfCell.setCellValue(text);
-
-            xssfCell.setCellValue(exportExcel.get(i).get);*/
-
-
-            WaimaoDowBankExpendDto waimaoDowBankExpendDto = exportExcel.get(i);
-
+            /*从外贸采购信息总数据对象中取出单个list对象*/
             List<WaimaoDowPurchase> listWaimaoDowPurchase = waimaoDowBankExpendDto.getWaimaoDowPurchaselist();
             List<WaimaoDowMarket> listWaimaoDowMarket = waimaoDowBankExpendDto.getWaimaoDowMarketlist();
             List<WaimaoDowBankExpend> listWaimaoDowBankExpend = waimaoDowBankExpendDto.getWaimaoDowBankExpendList();
             List<WaimaoDowBankIncome> listWaimaoDowBankIncome = waimaoDowBankExpendDto.getWaimaoDowBankIncomelist();
 
+            /*向每个单元格赋值*/
             /*采购信息表*/
             if(listWaimaoDowPurchase!=null && listWaimaoDowPurchase.size()>0){
-                xssfRow1.createCell(0).setCellValue(listWaimaoDowPurchase.get(0).getChetonghao());
-                xssfRow1.createCell(1).setCellValue(listWaimaoDowPurchase.get(0).getCfapiaohao());
-                xssfRow1.createCell(2).setCellValue(listWaimaoDowPurchase.get(0).getMaterialName());
-                xssfRow1.createCell(3).setCellValue(listWaimaoDowPurchase.get(0).getSuppliers());
-                xssfRow1.createCell(4).setCellValue(listWaimaoDowPurchase.get(0).getJiahsuiheji());
-                xssfRow1.createCell(5).setCellValue(listWaimaoDowPurchase.get(0).getJine());
-                xssfRow1.createCell(6).setCellValue(listWaimaoDowPurchase.get(0).getNums());
-                xssfRow1.createCell(7).setCellValue(listWaimaoDowPurchase.get(0).getTax());
-                xssfRow1.createCell(8).setCellValue(listWaimaoDowPurchase.get(0).getUnits());
-                xssfRow1.createCell(9).setCellValue(listWaimaoDowPurchase.get(0).getRemarks());
+                /*从单个list对象中取出唯一的一个对象*/
+                WaimaoDowPurchase waimaoDowPurchase = listWaimaoDowPurchase.get(0);
+                hssfRow1.createCell(0).setCellValue(waimaoDowPurchase.getChetonghao());
+                hssfRow1.createCell(1).setCellValue(waimaoDowPurchase.getCfapiaohao());
+                hssfRow1.createCell(2).setCellValue(waimaoDowPurchase.getMaterialName());
+                hssfRow1.createCell(3).setCellValue(waimaoDowPurchase.getSuppliers());
+                hssfRow1.createCell(4).setCellValue(waimaoDowPurchase.getJiahsuiheji());
+                hssfRow1.createCell(5).setCellValue(waimaoDowPurchase.getJine());
+                hssfRow1.createCell(6).setCellValue(waimaoDowPurchase.getNums());
+                hssfRow1.createCell(7).setCellValue(waimaoDowPurchase.getTax());
+                hssfRow1.createCell(8).setCellValue(waimaoDowPurchase.getUnits());
+                hssfRow1.createCell(9).setCellValue(waimaoDowPurchase.getRemarks());
             }
 
             /*销售信息表*/
             if(listWaimaoDowMarket!=null && listWaimaoDowMarket.size()>0){
-                xssfRow1.createCell(10).setCellValue(listWaimaoDowMarket.get(0).getXhetonghao());
-                xssfRow1.createCell(11).setCellValue(listWaimaoDowMarket.get(0).getMaterialNames());
-                xssfRow1.createCell(12).setCellValue(listWaimaoDowMarket.get(0).getShouhuokehu());
-                xssfRow1.createCell(13).setCellValue(listWaimaoDowMarket.get(0).getDrawback());
-                xssfRow1.createCell(14).setCellValue(listWaimaoDowMarket.get(0).getRefundRates());
-                xssfRow1.createCell(15).setCellValue(listWaimaoDowMarket.get(0).getNums());
-                xssfRow1.createCell(16).setCellValue(listWaimaoDowMarket.get(0).getXtax());
-                xssfRow1.createCell(17).setCellValue(listWaimaoDowMarket.get(0).getUnitx());
-                xssfRow1.createCell(18).setCellValue(listWaimaoDowMarket.get(0).getRemarksx());
+                /*从单个list对象中取出唯一的一个对象*/
+                WaimaoDowMarket waimaoDowMarket = listWaimaoDowMarket.get(0);
+                hssfRow1.createCell(10).setCellValue(waimaoDowMarket.getXhetonghao());
+                hssfRow1.createCell(11).setCellValue(waimaoDowMarket.getMaterialNames());
+                hssfRow1.createCell(12).setCellValue(waimaoDowMarket.getShouhuokehu());
+                hssfRow1.createCell(13).setCellValue(waimaoDowMarket.getDrawback());
+                hssfRow1.createCell(14).setCellValue(waimaoDowMarket.getRefundRates());
+                hssfRow1.createCell(15).setCellValue(waimaoDowMarket.getNums());
+                hssfRow1.createCell(16).setCellValue(waimaoDowMarket.getXtax());
+                hssfRow1.createCell(17).setCellValue(waimaoDowMarket.getUnitx());
+                hssfRow1.createCell(18).setCellValue(waimaoDowMarket.getRemarksx());
             }
-
 
             /*银行支出信息表*/
             if(listWaimaoDowBankExpend!=null && listWaimaoDowBankExpend.size()>0){
-                xssfRow1.createCell(19).setCellValue(listWaimaoDowBankExpend.get(0).getContractNumber());
-                xssfRow1.createCell(20).setCellValue(listWaimaoDowBankExpend.get(0).getPaymentForGoods());
-                xssfRow1.createCell(21).setCellValue(listWaimaoDowBankExpend.get(0).getShoukuanren());
-                xssfRow1.createCell(22).setCellValue(listWaimaoDowBankExpend.get(0).getPaymentTime());
-                xssfRow1.createCell(23).setCellValue(listWaimaoDowBankExpend.get(0).getYjine());
-                xssfRow1.createCell(24).setCellValue(listWaimaoDowBankExpend.get(0).getYjine2());
-                xssfRow1.createCell(25).setCellValue(listWaimaoDowBankExpend.get(0).getYnature());
-                xssfRow1.createCell(26).setCellValue(listWaimaoDowBankExpend.get(0).getYremarks());
+                /*从单个list对象中取出唯一的一个对象*/
+                WaimaoDowBankExpend waimaoDowBankExpend = listWaimaoDowBankExpend.get(0);
+                hssfRow1.createCell(19).setCellValue(waimaoDowBankExpend.getContractNumber());
+                hssfRow1.createCell(20).setCellValue(waimaoDowBankExpend.getPaymentForGoods());
+                hssfRow1.createCell(21).setCellValue(waimaoDowBankExpend.getShoukuanren());
+                hssfRow1.createCell(22).setCellValue(waimaoDowBankExpend.getPaymentTime());
+                hssfRow1.createCell(23).setCellValue(waimaoDowBankExpend.getYjine());
+                hssfRow1.createCell(24).setCellValue(waimaoDowBankExpend.getYjine2());
+                hssfRow1.createCell(25).setCellValue(waimaoDowBankExpend.getYnature());
+                hssfRow1.createCell(26).setCellValue(waimaoDowBankExpend.getYremarks());
             }
-
 
             /*银行收入信息表*/
             if(listWaimaoDowBankIncome!=null && listWaimaoDowBankIncome.size()>0){
-                xssfRow1.createCell(27).setCellValue(listWaimaoDowBankIncome.get(0).getContractFapiao());
-                xssfRow1.createCell(28).setCellValue(listWaimaoDowBankIncome.get(0).getHuoTuishui());
-                xssfRow1.createCell(29).setCellValue(listWaimaoDowBankIncome.get(0).getShouRen());
-                xssfRow1.createCell(30).setCellValue(listWaimaoDowBankIncome.get(0).getShouTime());
-                xssfRow1.createCell(31).setCellValue(listWaimaoDowBankIncome.get(0).getShouJine());
-                xssfRow1.createCell(32).setCellValue(listWaimaoDowBankIncome.get(0).getShouJine2());
-                xssfRow1.createCell(33).setCellValue(listWaimaoDowBankIncome.get(0).getShouNature());
-                xssfRow1.createCell(34).setCellValue(listWaimaoDowBankIncome.get(0).getYsremarks());
+                /*从单个list对象中取出唯一的一个对象*/
+                WaimaoDowBankIncome waimaoDowBankIncome = listWaimaoDowBankIncome.get(0);
+                hssfRow1.createCell(27).setCellValue(waimaoDowBankIncome.getContractFapiao());
+                hssfRow1.createCell(28).setCellValue(waimaoDowBankIncome.getHuoTuishui());
+                hssfRow1.createCell(29).setCellValue(waimaoDowBankIncome.getShouRen());
+                hssfRow1.createCell(30).setCellValue(waimaoDowBankIncome.getShouTime());
+                hssfRow1.createCell(31).setCellValue(waimaoDowBankIncome.getShouJine());
+                hssfRow1.createCell(32).setCellValue(waimaoDowBankIncome.getShouJine2());
+                hssfRow1.createCell(33).setCellValue(waimaoDowBankIncome.getShouNature());
+                hssfRow1.createCell(34).setCellValue(waimaoDowBankIncome.getYsremarks());
             }
 
         }
@@ -239,16 +235,7 @@ public class WaimaoDowPurchaseController{
         response.setContentType("application/octet-stream");
         response.setHeader("Content-Disposition", "attachment;filename="+ URLEncoder.encode(fileName, "utf-8"));
         response.flushBuffer();
-        xssfWorkbook.write(response.getOutputStream());
-
-        /*創建文件輸出流*//*
-        FileOutputStream fileOutputStream = new FileOutputStream(fileName);
-
-        *//*保存Excel文件*//*
-        xssfWorkbook.write(fileOutputStream);
-
-        *//*關閉文件輸出流*//*
-        fileOutputStream.close();*/
+        hssfWorkbook.write(response.getOutputStream());
 
         logger.info("外贸道氏采购信息导出打印结束");
     }
