@@ -266,7 +266,9 @@ public class DomesticFahuoController{
                 }
                 if(row.getCell(2) != null){
                     row.getCell(2).setCellType(Cell.CELL_TYPE_STRING);
-                    jijiabiao.setKehumingcheng(row.getCell(2).getStringCellValue());
+                    String kuhumingcheng = row.getCell(2).getStringCellValue();
+                    kuhumingcheng = kuhumingcheng.replaceAll(" ","");
+                    jijiabiao.setKehumingcheng(kuhumingcheng);
                 }
                 if(row.getCell(3) != null){
                     row.getCell(3).setCellType(Cell.CELL_TYPE_STRING);
@@ -343,7 +345,9 @@ public class DomesticFahuoController{
                 }
                 if(row.getCell(4) != null){
                     row.getCell(4).setCellType(Cell.CELL_TYPE_STRING);
-                    jindanticheng.setShouhuokehu(row.getCell(4).getStringCellValue());
+                    String shouhuokehu = row.getCell(4).getStringCellValue();
+                    shouhuokehu = shouhuokehu.replaceAll(" ","");
+                    jindanticheng.setShouhuokehu(shouhuokehu);
                 }
                 if(row.getCell(5) != null){
                     row.getCell(5).setCellType(Cell.CELL_TYPE_STRING);
