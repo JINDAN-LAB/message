@@ -1,6 +1,7 @@
 package com.jindan.jdy.shiro;
 
 import com.jindan.jdy.service.user.JdyUserService;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.session.mgt.SessionManager;
 import org.apache.shiro.spring.LifecycleBeanPostProcessor;
@@ -15,6 +16,7 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.LinkedHashMap;
 
+@Slf4j
 @Configuration
 public class ShiroConfig {
 
@@ -24,7 +26,7 @@ public class ShiroConfig {
 
     @Bean
     public DefaultAdvisorAutoProxyCreator advisorAutoProxyCreator(){
-        System.out.println("开启了shiro注解功能1111");
+        log.info("开启了shiro注解功能1111");
         DefaultAdvisorAutoProxyCreator advisorAutoProxyCreator = new DefaultAdvisorAutoProxyCreator();
         advisorAutoProxyCreator.setProxyTargetClass(true);
         return advisorAutoProxyCreator;
@@ -33,7 +35,7 @@ public class ShiroConfig {
     //加入注解的使用，不加入这个注解不生效
     @Bean
     public AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor(SecurityManager securityManager) {
-        System.out.println("开启了shiro注解功能");
+        log.info("开启了shiro注解功能");
         AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor = new AuthorizationAttributeSourceAdvisor();
         authorizationAttributeSourceAdvisor.setSecurityManager(securityManager);
         return authorizationAttributeSourceAdvisor;

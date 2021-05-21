@@ -8,6 +8,7 @@ import com.jindan.jdy.service.stock.WarehouseCheckService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,6 +22,7 @@ import java.util.List;
 * @time    2020年4月20日
 *
 */
+@Slf4j
 @CrossOrigin(origins = "http://118.24.255.51:20201")
 @Api(tags = "盘点单内容")
 @RestController
@@ -65,7 +67,8 @@ public class WarehouseCheckController{
     @PostMapping("addlistWarehouseAccess")
     public ResultVo zhengchangaddlistWarehouseAccess( @ApiParam(name = "userPermission", required = true)
                                             @RequestBody List<WarehouseCheck> userPermission){
-        System.out.println(userPermission);
+        log.info("======“新增多次增加信息接口”开始执行======");
+        log.info("userPermission的值为："+userPermission);
         boolean save = warehouseCheckService.saveBatch(userPermission);
         if(save){
             return ResultVo.success();

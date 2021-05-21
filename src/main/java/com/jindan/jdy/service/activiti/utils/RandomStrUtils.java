@@ -1,5 +1,7 @@
 package com.jindan.jdy.service.activiti.utils;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
@@ -10,6 +12,8 @@ import java.util.UUID;
  * @author Administrator
  *
  */
+
+@Slf4j
 public class RandomStrUtils {
 
 	
@@ -33,7 +37,7 @@ public class RandomStrUtils {
 	
 	/**
 	 * 使用UUID
-	 * @param args
+	 * @param oldName
 	 */
 	public static String createFileNameUseUUID(String oldName){
 		//得到后缀名
@@ -44,11 +48,12 @@ public class RandomStrUtils {
 	}
 	
 	public static void main(String[] args) {
+		log.info("“‘RandomStrUtils类’主方法”开始执行");
 		String oldName="eclipse..注释模板.xml";
 		String newName=createFileNameUseUUID(oldName);
-		System.out.println(newName);
-		
-		System.out.println(UUID.randomUUID().toString().replace("-", ""));
+		log.info("newName的值为："+newName);
+
+		log.info("UUID.randomUUID().toString().replace(\"-\", \"\")的值为："+UUID.randomUUID().toString().replace("-", ""));
 	}
 
 	/**

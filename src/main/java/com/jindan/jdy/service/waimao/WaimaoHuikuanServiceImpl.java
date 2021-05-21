@@ -9,6 +9,7 @@ import com.jindan.jdy.mapper.WaimaoHuikuanMapper;
 import com.jindan.jdy.common.pojo.WaimaoFahuo;
 import com.jindan.jdy.common.pojo.WaimaoHuikuan;
 import com.jindan.jdy.common.pojo.WaimaoTargetAccomplish;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -28,6 +29,7 @@ import java.util.regex.Pattern;
  * 
  */
 
+@Slf4j
 @Component
 public class WaimaoHuikuanServiceImpl  extends ServiceImpl<WaimaoHuikuanMapper,WaimaoHuikuan> implements WaimaoHuikuanService  {
     @Autowired
@@ -118,6 +120,7 @@ public class WaimaoHuikuanServiceImpl  extends ServiceImpl<WaimaoHuikuanMapper,W
 
     @Override
     public Map<String,Float> seleteQiankuan(WaimaoFahuo jdyRole) throws ParseException {
+        log.info("======“WaimaoHuikuanServiceImpl.seleteQiankuan方法”开始执行======");
         Float huilv ;
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
     //   本月逾期欠款按照业务员进行分析
@@ -140,7 +143,7 @@ public class WaimaoHuikuanServiceImpl  extends ServiceImpl<WaimaoHuikuanMapper,W
                     Date date =  sdf.parse( fahuoList.get(i).getYujizhuangtime());
                     BigDecimal time = BigDecimal.valueOf(date.getTime()); // 得到指定日期的毫秒数
                     BigDecimal day = BigDecimal.valueOf(Integer.valueOf(in2)).multiply(BigDecimal.valueOf(86400000)) ;
-                    System.out.println(day);
+                    log.info("day的值为："+day);
                     time = time.add( day);
                     Date dates = new Date();
                     dates.setTime(time.longValue());
@@ -161,6 +164,7 @@ public class WaimaoHuikuanServiceImpl  extends ServiceImpl<WaimaoHuikuanMapper,W
 
     @Override
     public Map<String, Float> seleteQuannianQiankuan(WaimaoFahuo jdyRole) throws ParseException {
+        log.info("======“WaimaoHuikuanServiceImpl.seleteQuannianQiankuan方法”开始执行======");
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         //   本月逾期欠款按照业务员进行分析
         Map<String,Float> huikuanMap =new HashMap<>();
@@ -182,7 +186,7 @@ public class WaimaoHuikuanServiceImpl  extends ServiceImpl<WaimaoHuikuanMapper,W
                     Date date =  sdf.parse( fahuoList.get(i).getYujizhuangtime());
                     BigDecimal time = BigDecimal.valueOf(date.getTime()); // 得到指定日期的毫秒数
                     BigDecimal day = BigDecimal.valueOf(Integer.valueOf(in2)).multiply(BigDecimal.valueOf(86400000)) ;
-                    System.out.println(day);
+                    log.info("day的值为："+day);
                     time = time.add( day);
                     Date dates = new Date();
                     dates.setTime(time.longValue());

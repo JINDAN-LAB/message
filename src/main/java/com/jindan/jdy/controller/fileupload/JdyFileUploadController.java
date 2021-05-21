@@ -7,6 +7,7 @@ import com.aliyun.oss.model.PutObjectRequest;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -23,6 +24,7 @@ import java.util.UUID;
 * @author: kong
 * @time    2019年10月16日
 */
+@Slf4j
 @CrossOrigin(origins = "http://118.24.255.51:20201")
 @Api(tags = "文件上传")
 @RestController
@@ -56,11 +58,12 @@ public class JdyFileUploadController{
     @ApiOperation(value = "删除OSS文件", notes = "参数:删除OSS文件")
     @PostMapping("/deleteUpdate")
     public  String uploadfile( String objectName ) throws IOException {
+        log.info("======“删除OSS文件接口”开始执行======");
         if(!objectName.isEmpty()){
             String[] strArr = objectName.split("https://kong15.oss-cn-beijing.aliyuncs.com/");
-            System.out.println(strArr.length); //这里输出3
+            log.info("strArr.length的值为："+strArr.length);//这里输出3
             for (int i = 0; i < strArr.length; ++i){
-                System.out.println(strArr[i]);//这里输出a b c
+                log.info("strArr[i]的值为："+strArr[i]);//这里输出a b c
                 objectName = strArr[i];
             }
             String bucketName = ConstantPropertiesUtil.BUCKET_NAME;

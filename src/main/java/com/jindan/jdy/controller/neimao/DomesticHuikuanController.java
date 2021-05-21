@@ -11,6 +11,7 @@ import com.jindan.jdy.service.neimao.*;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -29,6 +30,8 @@ import java.util.regex.Pattern;
 * @time    2020年4月20日
 *
 */
+
+@Slf4j
 @CrossOrigin(origins = "http://118.24.255.51:20201")
 @Api(tags = "内贸提成回款信息")
 @RestController
@@ -495,7 +498,7 @@ public class DomesticHuikuanController{
                   if (jingshuixiaoshoujia >= Float.valueOf(fahuoDtoList.get(i).getDomesticJijiabiao().getDiwudang())) {
                       jijiang = (Double.valueOf(xishu.getXinkehu3()) * Float.valueOf(fahuoDtoList.get(i).getDomesticJijiabiao().getDiwudang()) + (Double.valueOf(xishu.getXinkehu3b()) * ((jingshuixiaoshoujia - Double.valueOf(fahuoDtoList.get(i).getDomesticJijiabiao().getDiwudang()))))) * Double.valueOf(fahuoDtoList.get(i).getShuliang());
                       BigDecimal b = new BigDecimal(jijiang);
-                      System.out.println("净水销售");
+                      log.info("净水销售");
                       double f1 = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
                       fahuoDtoList.get(i).setJijiaticheng(String.valueOf(f1));
                       fahuoDtoList.get(i).setJijiatichengbili(xishu.getXinkehu3());
@@ -513,7 +516,7 @@ public class DomesticHuikuanController{
                   }
                   if (jingshuixiaoshoujia >= Float.valueOf(fahuoDtoList.get(i).getDomesticJijiabiao().getDisidang()) && jingshuixiaoshoujia < Float.valueOf(fahuoDtoList.get(i).getDomesticJijiabiao().getDiwudang())) {
                       jijiang = (Double.valueOf(xishu.getJingshui2()) * jingshuixiaoshoujia * Double.valueOf(fahuoDtoList.get(i).getShuliang()));
-                      System.out.println("jiang" + jijiang);
+                      log.info("jiang的值为：" + jijiang);
                       BigDecimal b = new BigDecimal(jijiang);
                       double f1 = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
                       fahuoDtoList.get(i).setJijiaticheng(String.valueOf(f1));
@@ -521,7 +524,7 @@ public class DomesticHuikuanController{
                   }
                   if (jingshuixiaoshoujia >= Float.valueOf(fahuoDtoList.get(i).getDomesticJijiabiao().getDiwudang())) {
                       jijiang = ((Double.valueOf(xishu.getJingshui3()) * Float.valueOf(fahuoDtoList.get(i).getDomesticJijiabiao().getDiwudang())) + (Double.valueOf(xishu.getJingshui3b()) * ((jingshuixiaoshoujia - Double.valueOf(fahuoDtoList.get(i).getDomesticJijiabiao().getDiwudang()))))) * Double.valueOf(fahuoDtoList.get(i).getShuliang());
-                      System.out.println("jiang" + jijiang);
+                      log.info("jiang的值为：" + jijiang);
                       BigDecimal b = new BigDecimal(jijiang);
                       double f1 = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
                       fahuoDtoList.get(i).setJijiaticheng(String.valueOf(f1));

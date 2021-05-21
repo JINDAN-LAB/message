@@ -11,6 +11,7 @@ import com.jindan.jdy.service.waimao.WaimaoDowPurchaseService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.hssf.usermodel.*;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -36,6 +37,7 @@ import java.util.Map;
 * @time    2020年7月29日
 *
 */
+@Slf4j
 @CrossOrigin(origins = "http://118.24.255.51:20201")
 @Api(tags = "外贸道氏采购信息")
 @RestController
@@ -284,7 +286,7 @@ public class WaimaoDowPurchaseController{
       for(Map.Entry<String, Float> entry : hbe.entrySet()){
             String mapKey = entry.getKey();
             Float mapValue = entry.getValue();
-            System.out.println(mapKey+":"+mapValue);
+            log.info("mapKey+mapValue的值为："+mapKey+":"+mapValue);
           for(Map.Entry<String, Float> entrys : hbl.entrySet()){
               if(hbl.containsKey(entry.getKey())){
                    resultmap.put(entry.getKey(),entrys.getValue()-entry.getValue());

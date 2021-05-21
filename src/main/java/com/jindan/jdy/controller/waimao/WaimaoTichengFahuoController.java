@@ -13,6 +13,7 @@ import com.jindan.jdy.service.waimao.WaimaoTichengHuikuanService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.hssf.usermodel.*;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -38,6 +39,7 @@ import java.util.regex.Pattern;
 * @time    2020年5月28日
 *
 */
+@Slf4j
 @Api(tags = "外贸提成发货管理")
 @RestController
 @RequestMapping("/waimaoTichengFahuo")
@@ -52,13 +54,14 @@ public class WaimaoTichengFahuoController{
     @ApiOperation(value = "发货信息批量导入", notes = "参数:发货信息批量导入")
     @PostMapping("addBatchTichengFahuo")
     public ResultVo addTichengFahuo(@RequestParam("file") MultipartFile file) throws Exception {
+        log.info("======“发货信息批量导入接口”开始执行======");
         String presenttime = CommonUtils.getPresenttime();
         //创建Excel工作薄
         Workbook work = WorkbookUtils.getWorkbook(file.getInputStream(),file.getOriginalFilename());
         if(null == work){
             throw new Exception("创建Excel工作薄为空！");
         }
-        System.out.println("work.getNumberOfSheets();"+ work.getNumberOfSheets());
+        log.info("work.getNumberOfSheets()的值为："+ work.getNumberOfSheets());
         Sheet sheet  = work.getSheetAt(0);
         if(sheet==null){
             throw new Exception("创建Excel工作薄为空！");
@@ -163,7 +166,7 @@ public class WaimaoTichengFahuoController{
             }
         }
         for (Map.Entry<String, Float> m : map.entrySet()) {
-            System.out.println("key:" + m.getKey() + " value:" + m.getValue());
+            log.info("key的值为:" + m.getKey() + "； value的值为:" + m.getValue());
             if(m.getValue() > maphui.get(m.getKey())){
                 map.remove(m.getKey());
             }

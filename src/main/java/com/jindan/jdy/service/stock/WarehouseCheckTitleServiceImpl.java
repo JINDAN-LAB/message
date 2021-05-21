@@ -8,6 +8,7 @@ import com.jindan.jdy.mapper.WarehouseCheckDao;
 import com.jindan.jdy.mapper.WarehouseCheckTitleMapper;
 import com.jindan.jdy.common.pojo.WarehouseCheck;
 import com.jindan.jdy.common.pojo.WarehouseCheckTitle;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -21,6 +22,7 @@ import java.util.List;
  * 
  */
 
+@Slf4j
 @Component
 public class WarehouseCheckTitleServiceImpl  extends ServiceImpl<WarehouseCheckTitleMapper,WarehouseCheckTitle> implements WarehouseCheckTitleService  {
 
@@ -32,7 +34,8 @@ public class WarehouseCheckTitleServiceImpl  extends ServiceImpl<WarehouseCheckT
 
     @Override
     public List<WarehouseCheckDto> seletelist(WarehouseCheck  departmentSuggestDto) {
-        System.out.println(departmentSuggestDto);
+        log.info("======“WarehouseCheckTitleServiceImpl.seletelist方法”开始执行======");
+        log.info("departmentSuggestDto的值为："+departmentSuggestDto);
         return warehouseCheckTitleDao.seletelist(departmentSuggestDto);
     }
 

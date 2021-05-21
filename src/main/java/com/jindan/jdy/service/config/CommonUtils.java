@@ -1,11 +1,14 @@
 package com.jindan.jdy.service.config;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
 
+@Slf4j
 public class CommonUtils {
 
 
@@ -86,8 +89,8 @@ public class CommonUtils {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        System.out.println(dateFormat.format(date));// 输出格式化后的日期
-        System.out.println(dateFormat.format(newDate));
+        log.info("指定日期dateFormat.format(date)，格式化之后的日期为："+dateFormat.format(date));
+        log.info("指定日期天数dateFormat.format(newDate)，格式化之后的日期为："+dateFormat.format(newDate));
         return dateFormat.format(newDate);
     }
 

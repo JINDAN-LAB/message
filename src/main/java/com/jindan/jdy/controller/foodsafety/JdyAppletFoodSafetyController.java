@@ -8,6 +8,7 @@ import com.jindan.jdy.service.foodsafety.JdyAppletFoodSafetyService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,6 +23,8 @@ import java.util.List;
 * @time    2020年7月27日
 *
 */
+
+@Slf4j
 @CrossOrigin(origins = "http://118.24.255.51:20201")
 @Api(tags = "食品安全")
 @RestController
@@ -36,9 +39,10 @@ public class JdyAppletFoodSafetyController{
 
     @ApiOperation(value = "根据用户权限获取展示信息", notes = "参数:根据用户权限获取展示信息")
     @GetMapping("/seleteDrtment/{jdyAppletFoodSafetyDto}")
-    public ResultVo seleteDrtment(@ApiParam(name = "jdyAppletFoodSafetyDto", value = "权限ID", required = true) @PathVariable String  jdyAppletFoodSafetyDto){
-        System.out.println("=====================");
-        System.out.println(jdyAppletFoodSafetyDto);
+    public ResultVo seleteDrtment(@ApiParam(name = "jdyAppletFoodSafetyDto", value = "权限ID", required = true)
+                                      @PathVariable String  jdyAppletFoodSafetyDto){
+        log.info("======“根据用户权限获取展示信息接口”开始执行======");
+        log.info("jdyAppletFoodSafetyDto的值为："+jdyAppletFoodSafetyDto);
         List<JdyAppletFoodSafetyDto> list = jdyAppletFoodSafetyService.seletePersonList(jdyAppletFoodSafetyDto);
         return   ResultVo.success(list);
     }

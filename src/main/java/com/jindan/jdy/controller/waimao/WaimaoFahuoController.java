@@ -13,6 +13,7 @@ import com.jindan.jdy.service.waimao.*;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.hssf.usermodel.*;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -42,6 +43,7 @@ import java.util.regex.Pattern;
 * @time    2020年4月20日
 *
 */
+@Slf4j
 @CrossOrigin(origins = "http://118.24.255.51:20201")
 @Api(tags = "外贸报表发货源数据")
 @RestController
@@ -69,13 +71,13 @@ public class WaimaoFahuoController{
         @ApiOperation(value = "发货信息导入", notes = "参数:发货信息导入")
         @PostMapping("/addfahuo")
         public ResultVo addfahuo(@RequestParam("file") MultipartFile file) throws Exception {
+            log.info("======“发货信息导入接口”开始执行======");
             //创建Excel工作薄
             Workbook work = WorkbookUtils.getWorkbook(file.getInputStream(),file.getOriginalFilename());
-            System.out.println("zhixingle1111111");
             if(null == work){
                 throw new Exception("创建Excel工作薄为空！");
             }
-            System.out.println("work.getNumberOfSheets();"+ work.getNumberOfSheets());
+            log.info("work.getNumberOfSheets()的值为："+ work.getNumberOfSheets());
             Sheet sheet  = work.getSheetAt(0);
             if(sheet==null){
                 throw new Exception("创建Excel工作薄为空！");
@@ -157,8 +159,8 @@ public class WaimaoFahuoController{
         @PostMapping("/seleteWaimaoFahuo")
         public ResultVo seleteWaimaoFahuo(@ApiParam(value = "jdyRole", required = false)
                                          @RequestBody WaimaoFahuoDto jdyRole){
-            System.out.println("===========");
-            System.out.println(jdyRole);
+            log.info("======“查询外贸发货信息接口”开始执行======");
+            log.info("jdyRole的值为："+jdyRole);
             Page<WaimaoFahuo> list = waimaoFahuoService.seletelist(jdyRole);
             return  ResultVo.success(list);
         }
@@ -235,6 +237,7 @@ public class WaimaoFahuoController{
         @ApiOperation("导出当月的发货信息")
         @PostMapping(value = "/DangYuefenExcle")
         public void DangYuefenExcle(HttpServletResponse response, WaimaoFahuo param) throws IOException {
+            log.info("======“导出当月的发货信息接口”开始执行======");
             Float jiashuiheji =0f;
             Float fobzongjia =0f;
             Float nums =0f;
@@ -244,7 +247,7 @@ public class WaimaoFahuoController{
             List<WaimaoFahuo> classmatefa = waimaoFahuoService.seleteDangyuefenDayuAlllist(param);  // 查询出来的是发货明细表和回款明细表
             for (int i = 0; i < classmatefa.size(); i++) {
                 if(classmatefa.get(i).getBizhong().trim().equals("人民币")){
-                    System.out.println("人民币的信息进行调整"+classmatefa.get(i).getDanjuhao());
+                    log.info("人民币的信息进行调整"+classmatefa.get(i).getDanjuhao());
                     classmatefa.get(i).setJiashuiheji(decimalFormat.format( Float.valueOf(classmatefa.get(i).getJiashuiheji())/inithuilv));
                     classmatefa.get(i).setFobzongjia(  decimalFormat.format( Float.valueOf(classmatefa.get(i).getFobzongjia())/inithuilv));
                     classmatefa.get(i).setBizhong("美元");
@@ -703,6 +706,7 @@ public class WaimaoFahuoController{
     @ApiOperation("欠款表导出excle")
     @PostMapping(value = "/debtExcle")
     public void debtExcle(HttpServletResponse response, WaimaoFahuo param) throws Exception {
+            log.info("======“欠款表导出excle接口”开始执行======");
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         HSSFWorkbook workbook = new HSSFWorkbook();
         HSSFSheet sheet = workbook.createSheet("数据导出");
@@ -725,7 +729,7 @@ public class WaimaoFahuoController{
             Date date =  sdf.parse( classmatefadanju.get(i).getYujizhuangtime());
             BigDecimal time = BigDecimal.valueOf(date.getTime()); // 得到指定日期的毫秒数
             BigDecimal day = BigDecimal.valueOf(Integer.valueOf(in2)).multiply(BigDecimal.valueOf(86400000)) ;
-            System.out.println(day);
+            log.info("day的值为："+day);
             time = time.add( day);
             Date dates = new Date();
             dates.setTime(time.longValue());

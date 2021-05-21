@@ -1,11 +1,14 @@
 package com.jindan.jdy.controller.utils;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
 
+@Slf4j
 public class CommonUtils {
 
 
@@ -64,6 +67,7 @@ public class CommonUtils {
     }
 
 public static String getminus(String dates,String  day) throws Exception {
+        log.info("======“getminus静态方法”开始执行======");
     Date d = new Date();
     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -75,8 +79,8 @@ public static String getminus(String dates,String  day) throws Exception {
     } catch (ParseException e) {
         e.printStackTrace();
     }
-    System.out.println(dateFormat.format(date));// 输出格式化后的日期
-    System.out.println(dateFormat.format(newDate));
+    log.info("输出格式化后的日期dateFormat.format(date)的值为："+dateFormat.format(date));
+    log.info("输出格式化后的日期dateFormat.format(newDate)的值为："+dateFormat.format(newDate));
     return dateFormat.format(newDate);
 
 }

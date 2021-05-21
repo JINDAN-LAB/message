@@ -9,6 +9,7 @@ import com.jindan.jdy.mapper.DomesticFahuoMapper;
 import com.jindan.jdy.mapper.DomesticHuikuanMapper;
 import com.jindan.jdy.common.pojo.DomesticFahuo;
 import com.jindan.jdy.common.pojo.DomesticHuikuan;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -22,6 +23,8 @@ import java.util.Set;
  * @author: kong
  * 
  */
+
+@Slf4j
 @Component
 public class DomesticFahuoServiceImpl  extends ServiceImpl<DomesticFahuoMapper,DomesticFahuo> implements DomesticFahuoService  {
 
@@ -34,11 +37,11 @@ public class DomesticFahuoServiceImpl  extends ServiceImpl<DomesticFahuoMapper,D
 //    发货信息列表
     @Override
     public Page<DomesticFahuo> seletepage(DomesticFahuoDto domesticFahuoDto) {
-        System.out.println("----");
+        log.info("======“DomesticFahuoServiceImpl.seletepage方法”开始执行======");
         if(domesticFahuoDto.getCurrentPage() < 0  ){
             domesticFahuoDto.setCurrentPage(0);
         }
-        System.out.println("--111--");
+        log.info("if(domesticFahuoDto.getCurrentPage() < 0 ) 循环执行完毕");
         IPage<DomesticFahuo> page = new Page<>(domesticFahuoDto.getCurrentPage(),100);
         QueryWrapper<DomesticFahuo> queryWrapper =new QueryWrapper<>();
         if( !(domesticFahuoDto.getId() == null) &&  domesticFahuoDto.getId() > 0   ){
@@ -67,8 +70,8 @@ public class DomesticFahuoServiceImpl  extends ServiceImpl<DomesticFahuoMapper,D
 //    已计算列表
     @Override
     public Page<DomesticFahuo> seleteyijisuanpage(DomesticFahuoDto domesticFahuoDto) {
-        System.out.println("22222222222222222222222222222");
-        System.out.println(domesticFahuoDto.toString());
+        log.info("======“DomesticFahuoServiceImpl.seleteyijisuanpage方法”开始执行======");
+        log.info("domesticFahuoDto.toString()的值为："+domesticFahuoDto.toString());
         if(domesticFahuoDto.getCurrentPage() < 0 || domesticFahuoDto.getCurrentPage() < 1){
             domesticFahuoDto.setCurrentPage(0);
         }
@@ -101,8 +104,8 @@ public class DomesticFahuoServiceImpl  extends ServiceImpl<DomesticFahuoMapper,D
 
     @Override
     public  Page<DomesticFahuo> selebudayinpage(DomesticFahuoDto domesticFahuoDto) {
-        System.out.println("22222222222222222222222222222");
-        System.out.println(domesticFahuoDto.toString());
+        log.info("======“DomesticFahuoServiceImpl.selebudayinpage方法”开始执行======");
+        log.info("domesticFahuoDto.toString()的值为："+domesticFahuoDto.toString());
         if(domesticFahuoDto.getCurrentPage() < 0 || domesticFahuoDto.getCurrentPage() < 1){
             domesticFahuoDto.setCurrentPage(1);
         }
@@ -132,8 +135,8 @@ public class DomesticFahuoServiceImpl  extends ServiceImpl<DomesticFahuoMapper,D
 
     @Override
     public Page<DomesticFahuo> seleteyidayinpage(DomesticFahuoDto domesticFahuoDto) {
-        System.out.println("22222222222222222222222222222");
-        System.out.println(domesticFahuoDto.toString());
+        log.info("======“DomesticFahuoServiceImpl.seleteyidayinpage方法”开始执行======");
+        log.info("domesticFahuoDto.toString()的值为："+domesticFahuoDto.toString());
         if(domesticFahuoDto.getCurrentPage() < 0 || domesticFahuoDto.getCurrentPage() < 1){
             domesticFahuoDto.setCurrentPage(1);
         }
@@ -238,7 +241,7 @@ public class DomesticFahuoServiceImpl  extends ServiceImpl<DomesticFahuoMapper,D
 
     @Override
     public List<DomesticFahuoDto> seleteYijisuanexcle(DomesticFahuoDto param) {
-        System.out.println("=========================");
+        log.info("======“DomesticFahuoServiceImpl.seleteYijisuanexcle方法”开始执行======");
         return domesticFahuoDao.seleteYijisuanexcle(param);
     }
 

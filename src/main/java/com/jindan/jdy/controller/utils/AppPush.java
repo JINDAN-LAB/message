@@ -5,6 +5,7 @@ import com.gexin.rp.sdk.base.impl.AppMessage;
 import com.gexin.rp.sdk.http.IGtPush;
 import com.gexin.rp.sdk.template.NotificationTemplate;
 import com.gexin.rp.sdk.template.style.Style0;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 
 import java.io.IOException;
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-
+@Slf4j
 public class AppPush {
 
     @Value("${apppush.appId}")
@@ -33,8 +34,8 @@ public class AppPush {
 
         String result= UUID.randomUUID().toString().replace("-", "").toUpperCase();
 
-        System.out.println(result);
-
+        log.info("======“mainAppPush静态方法”开始执行======");
+        log.info("result的值为："+result);
 
         IGtPush push = new IGtPush(url, appKey, masterSecret);
 
@@ -62,8 +63,7 @@ public class AppPush {
 
         // STEP6：执行推送
         IPushResult ret = push.pushMessageToApp(message);
-        System.out.println(ret.getResponse().toString());
-
+        log.info("ret.getResponse().toString()的值为："+ret.getResponse().toString());
     }
 
 }

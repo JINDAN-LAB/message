@@ -14,6 +14,7 @@ import com.jindan.jdy.wechat.Datas;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.hssf.usermodel.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -37,6 +38,7 @@ import java.util.Map;
 * @time    2020年4月20日
 *
 */
+@Slf4j
 @CrossOrigin(origins = "http://118.24.255.51:20201")
 @Api(tags ="重点项目情况")
 @RestController
@@ -72,6 +74,7 @@ public class KeyPointProjectController{
     @PostMapping("updatekeyPointProject")
     public ResultVo updatekeyPointPracticableService(@ApiParam(name = "userPermission", required = true)
                                                      @RequestBody KeyPointProject userPermission){
+        log.info("======“更新建议信息接口”开始执行======");
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
         if(userPermission.getStatus().equals("1")){
              RestTemplate restTemplate=new RestTemplate();
@@ -80,7 +83,7 @@ public class KeyPointProjectController{
              params.put("secret","6da768a60cdd737cc30c32134d7071c6");
              ResponseEntity<Object> responseEntity = restTemplate.getForEntity("https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid={appid}&secret={secret}",Object.class,params);
              Map<String,String>  maps = (Map<String, String>) responseEntity.getBody();
-             System.out.println(maps.get("access_token"));
+            log.info("maps.get(\"access_token\")的值为："+maps.get("access_token"));
              RestTemplate restTemplates=new RestTemplate();
              JdyUser  jdyUser =new JdyUser();
              jdyUser.setDepartments(userPermission.getDeparement());

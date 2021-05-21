@@ -9,6 +9,7 @@ import com.jindan.jdy.service.department.DepartmentSuggestService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.hssf.usermodel.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -26,6 +27,7 @@ import java.util.List;
 * @time    2019年10月16日
 *
 */
+@Slf4j
 @CrossOrigin(origins = "http://118.24.255.51:20201")
 @Api(tags = "意见箱")
 @RestController
@@ -162,9 +164,8 @@ public class DepartmentSuggestController{
         HSSFSheet sheet = workbook.createSheet("数据导出");
         List<DepartmentSuggest> classmatefa = departmentSuggestService.list(null);
         String fileName = "部门设备导出"+".xls";//设置要导出的文件的名字
-        System.out.println("--------------------");
-        System.out.println(classmatefa);
-        System.out.println("==========================");
+        log.info("======“导出文本接口”开始执行======");
+        log.info("classmatefa的值为："+classmatefa);
 //        //新增数据行，并且设置单元格数据
         int rowNum = 1;
         String[] headers = { "提交人", "提交内容", "部门",

@@ -10,6 +10,7 @@ import com.jindan.jdy.service.zxing.ZxingVerifyService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -23,6 +24,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Slf4j
 @CrossOrigin(origins = "http://118.24.255.51:20201")
 @Api(tags = "二维码验证模块")
 @Controller
@@ -74,8 +76,8 @@ public class ZxingVerifys {
     public ModelAndView deletefacility123(@ApiParam(name = "id", value = "权限ID", required = true) @PathVariable String id){
         List<ZxingVerify > page1 = zxingVerifyService.seletelist(null);
         List<JdyDomain> list = jdyDomainService.seletelist(null);
-        System.out.println("000000");
-        System.out.println(list);
+        log.info("======“获取验证数据根据接口”开始执行======");
+        log.info("list的值为："+list);
         if(list.size() > 0){
             try{
                 String mds =null;

@@ -7,6 +7,7 @@ import com.jindan.jdy.mapper.JdyAppletFoodSafetyMapper;
 import com.jindan.jdy.mapper.JdyAppletFootSafetyPersonMapper;
 import com.jindan.jdy.common.pojo.JdyAppletFoodSafety;
 import com.jindan.jdy.common.pojo.JdyAppletFootSafetyPerson;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -21,6 +22,7 @@ import java.util.List;
  * 
  */
 
+@Slf4j
 @Component
 public class JdyAppletFoodSafetyServiceImpl  extends ServiceImpl<JdyAppletFoodSafetyMapper,JdyAppletFoodSafety> implements JdyAppletFoodSafetyService  {
 
@@ -32,6 +34,7 @@ public class JdyAppletFoodSafetyServiceImpl  extends ServiceImpl<JdyAppletFoodSa
 
     @Override
     public List<JdyAppletFoodSafetyDto> seleChejianProblems(String pwd) {
+        log.info("“JdyAppletFoodSafetyServiceImpl.seleChejianProblems方法”开始执行======");
         QueryWrapper<JdyAppletFootSafetyPerson> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("password",pwd);
         List<JdyAppletFootSafetyPerson> jdyAppletFootSafetyPeople = jdyAppletFootSafetyPersonDao.selectList(queryWrapper);
@@ -39,7 +42,7 @@ public class JdyAppletFoodSafetyServiceImpl  extends ServiceImpl<JdyAppletFoodSa
         List<JdyAppletFoodSafetyDto> categoriesList = new ArrayList<>();
         switch (jdyAppletFootSafetyPeople.get(0).getQuanxian()){
             case "车间":
-                System.out.println("车间履职情况");
+                log.info("车间履职情况");
                 for(JdyAppletFoodSafetyDto  category : data){
                     if(category.getParentId().equals("0") && jdyAppletFootSafetyPeople.get(0).getChejian().equals(category.getId())){
                         categoriesList.add(category);
@@ -47,7 +50,7 @@ public class JdyAppletFoodSafetyServiceImpl  extends ServiceImpl<JdyAppletFoodSa
                 }
                 break;
             default:
-                System.out.println("其他内容履职情况");
+                log.info("其他内容履职情况");
                 for(JdyAppletFoodSafetyDto  category : data){
                     switch (jdyAppletFootSafetyPeople.get(0).getQuanxian()){
                         case "总监":
@@ -165,6 +168,7 @@ public class JdyAppletFoodSafetyServiceImpl  extends ServiceImpl<JdyAppletFoodSa
 
     private List<JdyAppletFoodSafetyDto> getPersonChilde(String id, List<JdyAppletFoodSafetyDto> rootList, int i, List<JdyAppletFootSafetyPerson> jdyAppletFootSafetyPeople ){
         //工段的获取菜单
+        log.info("“JdyAppletFoodSafetyServiceImpl.getPersonChilde方法”开始执行======");
         i++;
         List<JdyAppletFoodSafetyDto> childList = new ArrayList<>();
         for(JdyAppletFoodSafetyDto category : rootList){
@@ -188,13 +192,13 @@ public class JdyAppletFoodSafetyServiceImpl  extends ServiceImpl<JdyAppletFoodSa
                 default:
                     switch (i){
                         case 1:
-                            System.out.println("获取工段信息");
+                            log.info("获取工段信息");
                             if(category.getParentId().equals(id) && category.getId().equals(jdyAppletFootSafetyPeople.get(0).getBanzu())){
                                 childList.add(category);
                             }
                             break;
                         default :
-                            System.out.println("获取履职11111信息");
+                            log.info("获取履职11111信息");
                             if(category.getParentId().equals(id)){
                                 childList.add(category);
                             }

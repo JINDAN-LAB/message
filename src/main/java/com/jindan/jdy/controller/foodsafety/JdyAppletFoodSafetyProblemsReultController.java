@@ -12,6 +12,7 @@ import com.jindan.jdy.service.foodsafety.JdyAppletFootSafetyPersonService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.hssf.usermodel.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -31,6 +32,8 @@ import java.util.List;
 * @time    2020年7月27日
 *
 */
+
+@Slf4j
 @CrossOrigin(origins = "http://118.24.255.51:20201")
 @Api(tags = "食品安全小程序")
 @RestController
@@ -125,13 +128,13 @@ public class JdyAppletFoodSafetyProblemsReultController{
 //    @PostMapping(value = "/debtBanzuExcle")
 //    public void debtBanzuExcle(HttpServletResponse response,
 //                                JdyAppletFootSafetyPerson param) throws IOException {
+//        log.info("======“领导给下级提交的问题项导出excle接口”开始执行======");
 //        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");//设置日期格式
 //        HSSFWorkbook workbook = new HSSFWorkbook();
 //        HSSFSheet sheet = workbook.createSheet("数据导出");
 //        List<WaimaoFahuoHuikuan>  lists = new ArrayList<>();
 //        List<JdyAppletFoodSafetyProblemsExcle> classmatefa = jdyAppletFoodSafetyProblemsReultService.seleteAlllist(param);  // 查询出来的是发货明细表和回款明细表
-//        System.out.println("index===============================");
-//        System.out.println(classmatefa);
+//        log.info("classmatefa的值为："+classmatefa);
 //    }
 
 
@@ -139,6 +142,7 @@ public class JdyAppletFoodSafetyProblemsReultController{
     @ApiOperation("外部提交给车间提交的问题项导出excle")
     @PostMapping(value = "/debtwaibuchejianExcle")
     public void debtwaibuchejianExcle(HttpServletResponse response, JdyAppletFootSafetyPerson param) throws Exception {
+        log.info("======“外部提交给车间提交的问题项导出excle接口”开始执行======");
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");//设置日期格式
         HSSFWorkbook workbook = new HSSFWorkbook();
         HSSFSheet sheet = workbook.createSheet("数据导出");
@@ -164,8 +168,8 @@ public class JdyAppletFoodSafetyProblemsReultController{
             HSSFRichTextString text = new HSSFRichTextString(headers[i]);
             cell.setCellValue(text);
         }
-        System.out.println("========================---------------=========================");
-        System.out.println(classmatefa);
+        log.info("List<JdyAppletFoodSafetyProblemsExcle> classmatefa 方法已执行");
+        log.info("classmatefa的值为："+classmatefa);
         HSSFRow row1;
         //在表中存放查询到的数据放入对应的列
         for (int i = 0; i <classmatefa.size() ; i++){
@@ -233,6 +237,7 @@ public class JdyAppletFoodSafetyProblemsReultController{
 //    @ApiOperation("班组需要处理的问题项导出excle")
 //    @PostMapping(value = "/debtbanzhuchuliExcle")
 //    public void debtbanzhuchuliExcle(HttpServletResponse response, @RequestBody JdyAppletFoodSafetyProblemsReult param) throws Exception {
+//        log.info("======“班组需要处理的问题项导出excle接口”开始执行======");
 //        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");//设置日期格式
 //        HSSFWorkbook workbook = new HSSFWorkbook();
 //        HSSFSheet sheet = workbook.createSheet("数据导出");
@@ -250,8 +255,8 @@ public class JdyAppletFoodSafetyProblemsReultController{
 //            HSSFRichTextString text = new HSSFRichTextString(headers[i]);
 //            cell.setCellValue(text);
 //        }
-//        System.out.println("========================---------------=========================");
-//        System.out.println(classmatefa);
+//        log.info("List<JdyAppletFoodSafetyProblemsReultDto> classmatefa 方法已执行");
+//        log.info("classmatefa的值为："+classmatefa);
 //        HSSFRow row1;
 //        //在表中存放查询到的数据放入对应的列
 //        for (int i = 0; i <classmatefa.size() ; i++){
@@ -310,6 +315,7 @@ public class JdyAppletFoodSafetyProblemsReultController{
     @ApiOperation("班组提交的问题项导出excle")
     @PostMapping(value = "/debtbanzhuExcle")
     public void debtbanzhuExcle(HttpServletResponse response, @RequestBody JdyAppletFoodSafetyProblemsReult param) throws Exception {
+        log.info("======“班组提交的问题项导出excle接口”开始执行======");
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");//设置日期格式
         HSSFWorkbook workbook = new HSSFWorkbook();
         HSSFSheet sheet = workbook.createSheet("数据导出");
@@ -327,8 +333,8 @@ public class JdyAppletFoodSafetyProblemsReultController{
             HSSFRichTextString text = new HSSFRichTextString(headers[i]);
             cell.setCellValue(text);
         }
-        System.out.println("========================---------------=========================");
-        System.out.println(classmatefa);
+        log.info("List<JdyAppletFoodSafetyProblemsReultDto> classmatefa 方法已执行");
+        log.info("classmatefa的值为："+classmatefa);
         HSSFRow row1;
         //在表中存放查询到的数据放入对应的列
         for (int i = 0; i <classmatefa.size() ; i++){
@@ -373,6 +379,7 @@ public class JdyAppletFoodSafetyProblemsReultController{
     @ApiOperation("车间提交的问题项导出excle")
     @PostMapping(value = "/debtchejianExcle")
     public void debchejianExcle(HttpServletResponse response, @RequestBody JdyAppletFoodSafetyProblemsReult param) throws Exception {
+        log.info("======“车间提交的问题项导出excle接口”开始执行======");
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");//设置日期格式
         HSSFWorkbook workbook = new HSSFWorkbook();
         HSSFSheet sheet = workbook.createSheet("数据导出");
@@ -390,8 +397,8 @@ public class JdyAppletFoodSafetyProblemsReultController{
             HSSFRichTextString text = new HSSFRichTextString(headers[i]);
             cell.setCellValue(text);
         }
-        System.out.println("========================---------------=========================");
-        System.out.println(classmatefa);
+        log.info("List<JdyAppletFoodSafetyProblemsReultDto> classmatefa 方法已执行");
+        log.info("classmatefa的值为："+classmatefa);
         HSSFRow row1;
         //在表中存放查询到的数据放入对应的列
         for (int i = 0; i <classmatefa.size() ; i++){
@@ -437,12 +444,11 @@ public class JdyAppletFoodSafetyProblemsReultController{
     @ApiOperation("总监车间提交的问题项导出excle")
     @PostMapping(value = "/debzongjianExcle")
     public void debzongjianExcle(HttpServletResponse response, @RequestBody JdyAppletFoodSafetyProblemsReult param) throws Exception {
+        log.info("======“总监车间提交的问题项导出excle接口”开始执行======");
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");//设置日期格式
         HSSFWorkbook workbook = new HSSFWorkbook();
         HSSFSheet sheet = workbook.createSheet("数据导出");
         List<JdyAppletFoodSafetyProblemsReultDto> classmatefa = jdyAppletFoodSafetyProblemsReultService.seleteAllGongsiSinglelist(param);  // 查询出来的是发货明细表和回款明细表
-        System.out.println("==================================classmatefa=========================");
-        System.out.println(classmatefa);
         String fileName = df.format(new Date())+"问题项导出"+".xls";//设置要导出的文件的名字
 //        //新增数据行，并且设置单元格数据
         int rowNum = 1;
@@ -456,8 +462,8 @@ public class JdyAppletFoodSafetyProblemsReultController{
             HSSFRichTextString text = new HSSFRichTextString(headers[i]);
             cell.setCellValue(text);
         }
-        System.out.println("========================---------------=========================");
-        System.out.println(classmatefa);
+        log.info("List<JdyAppletFoodSafetyProblemsReultDto> classmatefa 方法已执行");
+        log.info("classmatefa的值为："+classmatefa);
         HSSFRow row1;
         //在表中存放查询到的数据放入对应的列
         for (int i = 0; i <classmatefa.size() ; i++){
@@ -499,12 +505,11 @@ public class JdyAppletFoodSafetyProblemsReultController{
     @ApiOperation("公司车间提交的问题项导出excle")
     @PostMapping(value = "/debgognsiExcle")
     public void debgognsiExcle(HttpServletResponse response, @RequestBody JdyAppletFoodSafetyProblemsReult param) throws Exception {
+        log.info("======“公司车间提交的问题项导出excle接口”开始执行======");
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");//设置日期格式
         HSSFWorkbook workbook = new HSSFWorkbook();
         HSSFSheet sheet = workbook.createSheet("数据导出");
         List<JdyAppletFoodSafetyProblemsReultDto> classmatefa = jdyAppletFoodSafetyProblemsReultService.seleteAllGongsiSinglelist(param);  // 查询出来的是发货明细表和回款明细表
-        System.out.println("==================================classmatefa=========================");
-        System.out.println(classmatefa);
         String fileName = df.format(new Date())+"问题项导出"+".xls";//设置要导出的文件的名字
 //        //新增数据行，并且设置单元格数据
         int rowNum = 1;
@@ -518,8 +523,8 @@ public class JdyAppletFoodSafetyProblemsReultController{
             HSSFRichTextString text = new HSSFRichTextString(headers[i]);
             cell.setCellValue(text);
         }
-        System.out.println("========================---------------=========================");
-        System.out.println(classmatefa);
+        log.info("List<JdyAppletFoodSafetyProblemsReultDto> classmatefa 方法已执行");
+        log.info("classmatefa的值为："+classmatefa);
         HSSFRow row1;
         //在表中存放查询到的数据放入对应的列
         for (int i = 0; i <classmatefa.size() ; i++){

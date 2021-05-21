@@ -8,6 +8,7 @@ import com.jindan.jdy.service.risk.RiskPointService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -22,6 +23,7 @@ import java.util.List;
 * @time    2020年12月8日
 *
 */
+@Slf4j
 @Api(tags ="风险控制")
 @RestController
 @RequestMapping("/riskPoint")
@@ -84,10 +86,11 @@ public class RiskPointController{
     @PostMapping("addBaohanRiskPoint")
     public ResultVo addBaohanRiskPoint(@ApiParam(name = "userPermission", required = true)
                                        @RequestBody RiskPointDto userPermission){
+        log.info("======“包含风控内容新增风险控制接口”开始执行======");
         RiskPoint riskPoint =new RiskPoint();
         BeanUtils.copyProperties(userPermission,riskPoint);
         RiskPoint riskPoint1   =  riskPointService.insertSave(riskPoint);
-        System.out.println(riskPoint1);
+        log.info("riskPoint1的值为："+riskPoint1);
         if(riskPoint1.getRid() != null && riskPoint1.getRid() != ""){
             for (int i = 0; i <userPermission.getList().size() ; i++) {
                 userPermission.getList().get(i).setParentId(riskPoint1.getRid());

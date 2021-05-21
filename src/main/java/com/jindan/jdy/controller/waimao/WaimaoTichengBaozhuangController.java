@@ -7,6 +7,7 @@ import com.jindan.jdy.service.waimao.WaimaoTichengBaozhuangService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -25,6 +26,7 @@ import java.util.List;
 * @time    2020年5月28日
 *
 */
+@Slf4j
 @Api(tags = "外贸提成包装管理")
 @RestController
 @RequestMapping("/waimaoTichengBaozhuang")
@@ -36,12 +38,13 @@ public class WaimaoTichengBaozhuangController{
     @ApiOperation(value = "包装批量导入", notes = "参数:包装批量导入")
     @PostMapping("addBatchTichengBaozhuang")
     public ResultVo addfahuo(@RequestParam("file") MultipartFile file) throws Exception {
+        log.info("======“包装批量导入接口”开始执行======");
         //创建Excel工作薄
         Workbook work = WorkbookUtils.getWorkbook(file.getInputStream(),file.getOriginalFilename());
         if(null == work){
             throw new Exception("创建Excel工作薄为空！");
         }
-        System.out.println("work.getNumberOfSheets();"+ work.getNumberOfSheets());
+        log.info("work.getNumberOfSheets()的值为："+ work.getNumberOfSheets());
         Sheet sheet  = work.getSheetAt(0);
         if(sheet==null){
             throw new Exception("创建Excel工作薄为空！");

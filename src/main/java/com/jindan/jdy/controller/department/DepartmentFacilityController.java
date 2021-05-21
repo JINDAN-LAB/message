@@ -21,6 +21,7 @@ import com.jindan.jdy.service.user.JdyUserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.hssf.usermodel.*;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -45,6 +46,7 @@ import java.util.List;
 * @time    2019年10月16日
 */
 
+@Slf4j
 @CrossOrigin(origins = "http://118.24.255.51:20201")
 @Api(tags = "部门设备信息")
 @RestController
@@ -72,11 +74,11 @@ public class DepartmentFacilityController{
     public ResultVo addfahuo(@RequestParam("file") MultipartFile file) throws Exception {
         //创建Excel工作薄
         Workbook work = WorkbookUtils.getWorkbook(file.getInputStream(),file.getOriginalFilename());
-        System.out.println("zhixingle1111111");
+        log.info("======“设备信息导入（addFacilityexcle）接口”开始执行======");
         if(null == work){
             throw new Exception("创建Excel工作薄为空！");
         }
-        System.out.println("work.getNumberOfSheets();"+ work.getNumberOfSheets());
+        log.info("work.getNumberOfSheets()的值为："+ work.getNumberOfSheets());
         Sheet sheet  = work.getSheetAt(0);
         if(sheet==null){
             throw new Exception("创建Excel工作薄为空！");
@@ -88,8 +90,8 @@ public class DepartmentFacilityController{
             if(row==null||row.getFirstCellNum()==j){continue;}
 //                    for(int y = row.getFirstCellNum(); y < row.getLastCellNum(); y++) {
 //                        Cell cell  = row.getCell(y);
-//                        System.out.println("KKKKKKKKKKKKKKKKKKKKKKKKKKKk");
-//                        System.out.println(cell);
+//                        log.info("for(int y = row.getFirstCellNum(); y < row.getLastCellNum(); y++)循环开始执行");
+//                        log.info("cell的值为："+cell);
 //                    }
             DepartmentFacility jijiabiao = new DepartmentFacility();
             if(row.getCell(0)!=null){
@@ -365,6 +367,7 @@ public class DepartmentFacilityController{
     @PostMapping("updatejdyCommodityFlow")
     public ResultVo updatejdyCommodityFlow(@ApiParam(name = "jdyPurchase", required = true)
                                            @RequestBody JdyPurchaseDto jdyPurchase, HttpServletRequest httpRequest){
+        log.info("======“资料审核接口”开始执行======");
         JdyUserDto jdyUserDto = jdyUserService.seleteUserDetailsOne(TokenUtil.getRequestToken(httpRequest));
 //      MINISTER(1, "部长")
         if(RankUtils.MINISTER.getValue().equals(jdyUserDto.getPower()) && jdyPurchase.reults && (Integer.valueOf(jdyPurchase.getStatus()).equals(Integer.valueOf(RankUtils.MINISTER.getStatus())))){
@@ -379,7 +382,7 @@ public class DepartmentFacilityController{
         jdyPurchase1.setStatics(jdyPurchase.getStatics());
         boolean b = jdyPurchaseService.updateById(jdyPurchase1);
           if(b){
-                System.out.println("pppppp");
+                log.info("if(b)判断开始执行");
                 JdyFlow jdyFlow =new JdyFlow();
                 jdyFlow.setParentId(jdyPurchase.getPurchaseId());
                 jdyFlow.setFlowPersom(jdyUserDto.getUserId());

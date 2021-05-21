@@ -5,6 +5,7 @@ import com.jindan.jdy.common.dto.JdyUserDto;
 import com.jindan.jdy.common.pojo.JdyUser;
 import com.jindan.jdy.common.pojo.UserPermission;
 import com.jindan.jdy.service.user.JdyUserService;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
@@ -18,6 +19,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+@Slf4j
 //@Service
 public class MyShiroRealm extends AuthorizingRealm {
 
@@ -29,7 +31,8 @@ public class MyShiroRealm extends AuthorizingRealm {
 
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
-        System.out.println("添加角色和权限");
+        log.info("“MyShiroRealm.doGetAuthorizationInfo方法”开始执行======");
+        log.info("添加角色和权限");
         SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo();
         JdyUser user= (JdyUser) principalCollection.getPrimaryPrincipal();
         List<JdyUserDto> jdyUserRole =  jdUserService.seleAllUserUserRole(user.getUsername());

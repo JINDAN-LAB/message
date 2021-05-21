@@ -6,6 +6,7 @@ import com.jindan.jdy.common.dto.WarehouseDepositoryDto;
 import com.jindan.jdy.mapper.WarehouseDepositoryMapper;
 import com.jindan.jdy.common.pojo.WarehouseDepository;
 import com.jindan.jdy.common.pojo.WarehouseSpecs;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -22,6 +23,7 @@ import java.util.Map;
  * 
  */
 
+@Slf4j
 @Component
 public class WarehouseDepositoryServiceImpl  extends ServiceImpl<WarehouseDepositoryMapper,WarehouseDepository> implements WarehouseDepositoryService  {
     List<WarehouseDepositoryDto> categoriesList2= null;
@@ -43,6 +45,7 @@ public class WarehouseDepositoryServiceImpl  extends ServiceImpl<WarehouseDeposi
 
     @Override
     public List<WarehouseSpecs> queryFenleiIDCatList(WarehouseDepository warehouseDepository) {
+        log.info("======“WarehouseDepositoryServiceImpl.queryFenleiIDCatList方法”开始执行======");
         List<WarehouseDepositoryDto> warehouseDepositories = warehouseDepositoryDao.selectAllTiaojianList(warehouseDepository);
         List<WarehouseDepositoryDto> data = warehouseDepositoryDao.selectAllList();
         Map<String,String> map = new HashMap<>();
@@ -52,7 +55,7 @@ public class WarehouseDepositoryServiceImpl  extends ServiceImpl<WarehouseDeposi
           categoriesList.add(category);
         }
         for(WarehouseDepositoryDto category : categoriesList){
-            System.out.println("循环一遍");
+            log.info("循环一遍");
              categoriesList2  = getChildeindex(category.getId(), data, map );
         }
         return null;

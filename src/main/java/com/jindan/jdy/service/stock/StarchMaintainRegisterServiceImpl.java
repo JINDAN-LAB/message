@@ -17,6 +17,7 @@ import com.jindan.jdy.common.pojo.StarchRegisterPut;
 import com.jindan.jdy.service.config.CommonUtils;
 import com.jindan.jdy.wechat.AccessSmsXiaoxi;
 import com.jindan.jdy.wechat.Datas;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -34,6 +35,7 @@ import java.util.*;
  * 
  */
 
+@Slf4j
 @Component
 public class StarchMaintainRegisterServiceImpl  extends ServiceImpl<StarchMaintainRegisterMapper,StarchMaintainRegister> implements StarchMaintainRegisterService  {
 
@@ -112,6 +114,7 @@ public class StarchMaintainRegisterServiceImpl  extends ServiceImpl<StarchMainta
     }
     @Override
     public boolean addJdyFlowCatalog(StarchMaintainRegisterDto departmentSuggestDto) {
+        log.info("======“StarchMaintainRegisterServiceImpl.addJdyFlowCatalog方法”开始执行======");
      if(departmentSuggestDto.getPutList().get(0).getWeixiuren() !=null){
         StarchMaintainRegister  starchOrganizationAccess = new StarchMaintainRegister();
         try{
@@ -140,7 +143,7 @@ public class StarchMaintainRegisterServiceImpl  extends ServiceImpl<StarchMainta
                                 params.put("secret","6da768a60cdd737cc30c32134d7071c6");
                                 ResponseEntity<Object> responseEntity = restTemplate.getForEntity("https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid={appid}&secret={secret}",Object.class,params);
                                 Map<String,String>  maps = (Map<String, String>) responseEntity.getBody();
-                                System.out.println(maps.get("access_token"));
+                                log.info("maps.get(\"access_token\")的值为："+maps.get("access_token"));
                                 RestTemplate restTemplates=new RestTemplate();
                                 AccessSmsXiaoxi accessSmsXiaoxi =new AccessSmsXiaoxi();
                                 accessSmsXiaoxi.setTouser(jdyUsers.get(j).getWecharId());
@@ -341,6 +344,7 @@ public class StarchMaintainRegisterServiceImpl  extends ServiceImpl<StarchMainta
 
     @Override
     public boolean updateFenpeiMaintainRegister(StarchMaintainRegister warehouseDepository) {
+        log.info("======“StarchMaintainRegisterServiceImpl.updateFenpeiMaintainRegister方法”开始执行======");
         QueryWrapper<JdyUser> queryWrapper =new QueryWrapper<>();
         queryWrapper.eq("username",warehouseDepository.getWxPersons());
         List<JdyUser> jdyUsers = jdyUserDto.selectList(queryWrapper);
@@ -352,7 +356,7 @@ public class StarchMaintainRegisterServiceImpl  extends ServiceImpl<StarchMainta
             params.put("secret","6da768a60cdd737cc30c32134d7071c6");
             ResponseEntity<Object> responseEntity = restTemplate.getForEntity("https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid={appid}&secret={secret}",Object.class,params);
             Map<String,String>  maps = (Map<String, String>) responseEntity.getBody();
-            System.out.println(maps.get("access_token"));
+            log.info("maps.get(\"access_token\")的值为："+maps.get("access_token"));
             RestTemplate restTemplates=new RestTemplate();
             AccessSmsXiaoxi accessSmsXiaoxi =new AccessSmsXiaoxi();
             accessSmsXiaoxi.setTouser(jdyUsers.get(i).getWecharId());

@@ -24,14 +24,14 @@ public class LoggingAspect {
     public void beforeMethod(JoinPoint joinPoint) {
         String methodName = joinPoint.getSignature().getName();
         Object[] args = joinPoint.getArgs();
-        System.out.println("这是切面开始打印出来的--->The method " + methodName + " begins with " + Arrays.asList(args));
+        log.info("这是切面开始打印出来的--->The method " + methodName + " begins with " + Arrays.asList(args));
     }
 
 
     @After("declareJointPointExpression()")
     public void afterMethod(JoinPoint joinPoint) {
         String methodName = joinPoint.getSignature().getName();
-        System.out.println("这是切面结束打印出来的--->The method " + methodName + " ends");
+        log.info("这是切面结束打印出来的--->The method " + methodName + " ends");
     }
 
 
@@ -39,7 +39,7 @@ public class LoggingAspect {
             returning = "result")
     public void afterReturning(JoinPoint joinPoint, Object result) {
         String methodName = joinPoint.getSignature().getName();
-        System.out.println("The method " + methodName + " ends with " + result);
+        log.info("The method " + methodName + " ends with " + result);
     }
 
 
@@ -47,7 +47,7 @@ public class LoggingAspect {
             throwing = "e")
     public void afterThrowing(JoinPoint joinPoint, Exception e) {
         String methodName = joinPoint.getSignature().getName();
-        System.out.println("The method " + methodName + " occurs excetion:" + e);
+        log.info("The method " + methodName + " occurs excetion:" + e);
     }
 
 }

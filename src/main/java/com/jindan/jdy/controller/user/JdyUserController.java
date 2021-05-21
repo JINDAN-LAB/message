@@ -11,9 +11,11 @@ import com.jindan.jdy.common.utils.api.ResultVo;
 import com.jindan.jdy.controller.utils.WorkbookUtils;
 import com.jindan.jdy.service.user.JdyUserService;
 import com.jindan.jdy.service.user.UserRoleService;
+import com.sun.media.jfxmedia.logging.Logger;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -40,6 +42,7 @@ import java.util.Map;
 * @time    2019年10月16日
 *
 */
+@Slf4j
 @CrossOrigin(origins = "http://118.24.255.51:20201")
 @Api(tags ="用户管理")
 @RestController
@@ -57,11 +60,12 @@ public class JdyUserController{
     @PostMapping("/addFacilityrenyuan")
     public ResultVo addFacilityrenyuan(@RequestParam("file") MultipartFile file) throws Exception {
         //创建Excel工作薄
+        log.info("======“人员的批量导入接口”开始执行======");
         Workbook work = WorkbookUtils.getWorkbook(file.getInputStream(),file.getOriginalFilename());
         if(null == work){
             throw new Exception("创建Excel工作薄为空！");
         }
-        System.out.println("work.getNumberOfSheets();"+ work.getNumberOfSheets());
+        log.info("work.getNumberOfSheets()的值为："+ work.getNumberOfSheets());
         Sheet sheet  = work.getSheetAt(0);
         if(sheet==null){
             throw new Exception("创建Excel工作薄为空！");
@@ -144,9 +148,10 @@ public class JdyUserController{
     @PostMapping("updateJdyUser")
     public ResultVo updatefacility(@ApiParam(name = "jdyUser", required = true)
                                    @RequestBody JdyUserDto jdyUser){
+        log.info("======“更新用户信息接口”开始执行======");
         JdyUser jdyUse = new JdyUser();
         BeanUtils.copyProperties(jdyUser,jdyUse);
-        System.out.println(jdyUse);
+        log.info("jdyUse值为"+jdyUse);
         Map<String,Object> hahs =new HashMap<>();
         hahs.put("user_id",jdyUser.getUserId());
         boolean b1 = userRoleService.removeByMap(hahs);

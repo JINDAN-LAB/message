@@ -7,6 +7,7 @@ import com.jindan.jdy.service.waimao.WaimaoDowBankIncomeService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -25,6 +26,7 @@ import java.util.List;
 * @time    2020年7月29日
 *
 */
+@Slf4j
 @CrossOrigin(origins = "http://118.24.255.51:20201")
 @Api(tags = "外贸道氏银行收入信息")
 @RestController
@@ -38,12 +40,13 @@ public class WaimaoDowBankIncomeController{
     @ApiOperation(value = "道氏银行收入信息导入", notes = "参数:道氏银行收入信息导入")
     @PostMapping("addexcleDowBankExpend")
     public ResultVo addfahuo(@RequestParam("file") MultipartFile file) throws Exception {
+        log.info("======“道氏银行收入信息导入接口”开始执行======");
         //创建Excel工作薄
         Workbook work = WorkbookUtils.getWorkbook(file.getInputStream(),file.getOriginalFilename());
         if(null == work){
             throw new Exception("创建Excel工作薄为空！");
         }
-        System.out.println("work.getNumberOfSheets();"+ work.getNumberOfSheets());
+        log.info("work.getNumberOfSheets()的值为："+ work.getNumberOfSheets());
         Sheet sheet  = work.getSheetAt(0);
         if(sheet==null){
             throw new Exception("创建Excel工作薄为空！");

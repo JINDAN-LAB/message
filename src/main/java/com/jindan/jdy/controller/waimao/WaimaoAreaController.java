@@ -7,6 +7,7 @@ import com.jindan.jdy.service.waimao.WaimaoAreaService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -25,7 +26,7 @@ import java.util.List;
 * @time    2020年5月28日
 *
 */
-
+@Slf4j
 @CrossOrigin(origins = "http://118.24.255.51:20201")
 @Api(tags = "外贸地区分类")
 @RestController
@@ -38,12 +39,13 @@ public class WaimaoAreaController{
     @ApiOperation(value = "地区分类导入", notes = "参数:地区分类导入")
     @PostMapping("addexclewaimaoArea")
     public ResultVo addfahuo(@RequestParam("file") MultipartFile file) throws Exception {
+        log.info("======“地区分类导入接口”开始执行======");
         //创建Excel工作薄
         Workbook work = WorkbookUtils.getWorkbook(file.getInputStream(),file.getOriginalFilename());
         if(null == work){
             throw new Exception("创建Excel工作薄为空！");
         }
-        System.out.println("work.getNumberOfSheets();"+ work.getNumberOfSheets());
+        log.info("work.getNumberOfSheets()的值为："+ work.getNumberOfSheets());
         Sheet sheet  = work.getSheetAt(0);
         if(sheet==null){
             throw new Exception("创建Excel工作薄为空！");
@@ -86,8 +88,8 @@ public class WaimaoAreaController{
     @PostMapping("/addWaimaoArea")
     public ResultVo addWaimaoFahuo( @ApiParam(name = "jdyRole", required = true)
                                     @RequestBody WaimaoArea jdyRole){
-        System.out.println("---------------");
-        System.out.println(jdyRole);
+        log.info("======“新增外贸地区分类信息接口”开始执行======");
+        log.info("jdyRole的值为："+jdyRole);
         boolean save = waimaoAreaService.save(jdyRole);
         if(save){
             return ResultVo.success(jdyRole);
@@ -98,8 +100,8 @@ public class WaimaoAreaController{
     @ApiOperation("删除外贸地区分类信息")
     @DeleteMapping("/deleteWaimaoA/{seid}")
     public ResultVo deleteTichengXishu(@ApiParam(value = "seid", name = "seid", required = true) @PathVariable String  seid){
-        System.out.println("jindanshanchu huikaun xishu");
-        System.out.println(seid);
+        log.info("======“删除外贸地区分类信息接口”开始执行======");
+        log.info("删除汇款系数seid的值为："+seid);
         boolean b = waimaoAreaService.removeById(seid);
         if(b){
             return ResultVo.success();

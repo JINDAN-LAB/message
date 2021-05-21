@@ -11,6 +11,7 @@ import com.jindan.jdy.mapper.StarchOrganizationAlterationMapper;
 import com.jindan.jdy.mapper.StarchOrganizationPutMapper;
 import com.jindan.jdy.common.pojo.StarchAlterationPut;
 import com.jindan.jdy.common.pojo.StarchOrganizationPut;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -28,6 +29,7 @@ import java.util.Map;
  * 
  */
 
+@Slf4j
 @Component
 public class StarchOrganizationPutServiceImpl  extends ServiceImpl<StarchOrganizationPutMapper,StarchOrganizationPut> implements StarchOrganizationPutService  {
 
@@ -47,9 +49,8 @@ public class StarchOrganizationPutServiceImpl  extends ServiceImpl<StarchOrganiz
     public PageInfo<StarchOrganizationPutDto> queryCatList(StarchOrganizationPutDto jdyRole) {
         PageHelper.startPage(jdyRole.getCurrentPage(), jdyRole.getPageSize());
         List<StarchOrganizationPutDto> iPage =  starchManageCheckDao.queryRelevanceCatList(jdyRole);
-        System.out.println("================");
-        System.out.println(iPage);
-        System.out.println("-------------------");
+        log.info("======“StarchOrganizationPutServiceImpl.queryCatList方法”开始执行======");
+        log.info("iPage的值为："+iPage);
         PageInfo<StarchOrganizationPutDto> pageInfo = new PageInfo<StarchOrganizationPutDto>(iPage);
         return pageInfo;
     }

@@ -35,7 +35,7 @@ public class WeChat {
         params.put("secret","6da768a60cdd737cc30c32134d7071c6");
         ResponseEntity<Object> responseEntity = restTemplate.getForEntity("https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid={appid}&secret={secret}",Object.class,params);
         Map<String,String>  maps = (Map<String, String>) responseEntity.getBody();
-        System.out.println(maps.get("access_token"));
+        log.info("maps.get(\"access_token\")的值为："+maps.get("access_token"));
 
         RestTemplate restTemplates=new RestTemplate();
         AccessSmsXiaoxi accessSmsXiaoxi =new AccessSmsXiaoxi();

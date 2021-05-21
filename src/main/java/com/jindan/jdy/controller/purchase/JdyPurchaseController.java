@@ -20,6 +20,7 @@ import com.jindan.jdy.service.user.JdyUserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -35,6 +36,8 @@ import java.util.List;
 * @time    2019年10月16日
 *
 */
+
+@Slf4j
 @CrossOrigin(origins = "http://118.24.255.51:20201")
 @Api(tags ="采购")
 @RestController
@@ -268,9 +271,10 @@ public class JdyPurchaseController{
 
     @ApiOperation("删除采购商品信息")
     @DeleteMapping("deleteJdyCommodity/{commodityId}")
-    public ResultVo deletejdyCommodity(@ApiParam(name = "commodityId", value = "删除ID", required = true) @PathVariable String  commodityId){
-        System.out.println("deletejdyCommodity");
-        System.out.println(commodityId);
+    public ResultVo deletejdyCommodity(@ApiParam(name = "commodityId", value = "删除ID", required = true)
+                                           @PathVariable String  commodityId){
+        log.info("======“删除采购商品信息接口”开始执行======");
+        log.info("commodityId的值为："+commodityId);
             boolean remove = jdyCommodityService.removeById(commodityId);
             if(remove){
                 return ResultVo.success();

@@ -78,11 +78,11 @@ public class DomesticFahuoController{
             int num=0;
             //创建Excel工作薄
             Workbook work = this.getWorkbook(file.getInputStream(),file.getOriginalFilename());
-            System.out.println("zhixingle1111111");
+            log.info("======“基价信息导入接口”开始执行======");
             if(null == work){
                 throw new Exception("创建Excel工作薄为空！");
             }
-            System.out.println(" work.getNumberOfSheets();"+ work.getNumberOfSheets());
+            log.info(" work.getNumberOfSheets()的值为："+ work.getNumberOfSheets());
             Sheet sheet  = work.getSheetAt(0);
             if(sheet==null){
                 throw new Exception("创建Excel工作薄为空！");
@@ -129,14 +129,15 @@ public class DomesticFahuoController{
         @ApiOperation(value = "基价2信息导入", notes = "参数:基价2信息导入")
         @PostMapping("/addjijia2file")
         public ResultVo addjijia2file(@RequestParam("file") MultipartFile file, String ids) throws Exception {
+
             int num=0;
             //创建Excel工作薄
             Workbook work = this.getWorkbook(file.getInputStream(),file.getOriginalFilename());
-            System.out.println("zhixingle1111111");
+            log.info("======“基价2信息导入接口”开始执行======");
             if(null == work){
                 throw new Exception("创建Excel工作薄为空！");
             }
-            System.out.println(" work.getNumberOfSheets();"+ work.getNumberOfSheets());
+            log.info(" work.getNumberOfSheets()的值为："+ work.getNumberOfSheets());
             Sheet sheet  = work.getSheetAt(0);
             if(sheet==null){
                 throw new Exception("创建Excel工作薄为空！");
@@ -185,11 +186,11 @@ public class DomesticFahuoController{
             int num=0;
             //创建Excel工作薄
             Workbook work = this.getWorkbook(file.getInputStream(),file.getOriginalFilename());
-            System.out.println("zhixingle1111111");
+            log.info("======“包装信息导入接口”开始执行======");
             if(null == work){
                 throw new Exception("创建Excel工作薄为空！");
             }
-            System.out.println(" work.getNumberOfSheets();"+ work.getNumberOfSheets());
+            log.info(" work.getNumberOfSheets()的值为："+ work.getNumberOfSheets());
             Sheet sheet  = work.getSheetAt(0);
             if(sheet==null){
                 throw new Exception("创建Excel工作薄为空！");
@@ -410,9 +411,9 @@ public class DomesticFahuoController{
         @PostMapping("/fahuolist")
         public ResultVo conditionpurchase(@ApiParam(name = "domesticFahuoDto", required = false)
                                    @RequestBody DomesticFahuoDto domesticFahuoDto){
-            System.out.println("----");
+            log.info("======“发货信息列表接口”开始执行======");
             IPage<DomesticFahuo> page1 = domesticFahuoService.seletepage(domesticFahuoDto);
-            System.out.println(page1);
+            log.info("page1的值为："+page1);
             return ResultVo.success(page1);
         }
 
@@ -420,9 +421,9 @@ public class DomesticFahuoController{
         @PostMapping("/huikuanlist")
         public ResultVo huikuanlist(@ApiParam(name = "domesticFahuoDto", required = false)
                              @RequestBody DomesticHuikuanDto domesticFahuoDto){
-            System.out.println("---------------");
+            log.info("======“回款信息列表接口”开始执行======");
             Page<DomesticHuikuan> page1 = domesticHuikuanService.seletepage(domesticFahuoDto);
-            System.out.println(page1);
+            log.info("page1的值为："+page1);
             return ResultVo.success(page1);
         }
 
@@ -715,14 +716,15 @@ public class DomesticFahuoController{
     }
 
 
-    @ApiOperation(value = "已计算列表信息", notes = "参数:已计算列表信息")
-    @PostMapping("/calculatelist")
-    public ResultVo calculatelist(@ApiParam(name = "domesticFahuoDto", required = false)
-                           @RequestBody DomesticFahuoDto domesticFahuoDto){
-        Page<DomesticFahuo> page1 = domesticFahuoService.seleteyijisuanpage(domesticFahuoDto);
-        System.out.println(page1);
-        return  ResultVo.success(page1);
-    }
+        @ApiOperation(value = "已计算列表信息", notes = "参数:已计算列表信息")
+        @PostMapping("/calculatelist")
+        public ResultVo calculatelist(@ApiParam(name = "domesticFahuoDto", required = false)
+                               @RequestBody DomesticFahuoDto domesticFahuoDto){
+            log.info("======“已计算列表信息接口”开始执行======");
+            Page<DomesticFahuo> page1 = domesticFahuoService.seleteyijisuanpage(domesticFahuoDto);
+            log.info("page1的值为："+page1);
+            return  ResultVo.success(page1);
+        }
 
 
         @ApiOperation(value = "已计算不打印列表信息", notes = "参数:已计算不打印列表信息")
@@ -742,7 +744,7 @@ public class DomesticFahuoController{
           return ResultVo.success(page1);
         }
         public Workbook getWorkbook(InputStream inStr, String fileName) throws Exception{
-            System.out.println("zhixingle");
+            log.info("======“getWorkbook方法”开始执行======");
             Workbook wb = null;
             String fileType = fileName.substring(fileName.lastIndexOf("."));
             if(excel2003.equals(fileType)){
@@ -991,8 +993,8 @@ public class DomesticFahuoController{
         @ApiOperation(value = "已计算根据ID进行删除为未计算", notes = "参数:已计算根据ID进行删除为未计算")
         @GetMapping("deletestatus/{ids}")
         public ResultVo deletestatus(@PathVariable String ids){
-            System.out.println("删除");
-            System.out.println(ids);
+            log.info("======“已计算根据ID进行删除为未计算接口”开始执行======");
+            log.info("删除id为："+ids);
             DomesticFahuo  list =   domesticFahuoService.getById(ids);
             if(list != null){
                 list.setJijiaticheng("");
@@ -1012,13 +1014,13 @@ public class DomesticFahuoController{
                     String[] lixibiliArr = list1.get(i).getLixijiangbili().split(",");
                     String[] yufuArr = list1.get(i).getYufutianshu().split(",");
                     for (int j = 0; j < strArr.length; j++) {
-                        System.out.println(strArr[j] == null);
-                        System.out.println(list.getId());
-                        System.out.println(strArr[j]);
-                        System.out.println(String.valueOf(list.getId()).equals(strArr[j]));
-                        System.out.println(shijiArr.length);
-                        System.out.println(strArr.length);
-                        System.out.println(shijiArr.length == strArr.length);
+                        log.info("strArr[j]是否为空：" + (strArr[j] == null));
+                        log.info("list.getId()的值为："+list.getId());
+                        log.info("strArr[j]的值为："+strArr[j]);
+                        log.info("比较list.getId()和strArr[j]的值是否相等："+String.valueOf(list.getId()).equals(strArr[j]));
+                        log.info("shijiArr.length的值为："+shijiArr.length);
+                        log.info("strArr.length的值为："+strArr.length);
+                        log.info("比较shijiArr.length和strArr.length是否相等："+(shijiArr.length == strArr.length));
                         if(( !(strArr[j] == null) && String.valueOf(list.getId()).equals(strArr[j])) && (shijiArr.length == strArr.length)){
                             ins=true;
                             BigDecimal   b   =   new BigDecimal(Double.valueOf(shijiArr[j])+Double.valueOf(list1.get(i).getJine()));
@@ -1075,8 +1077,8 @@ public class DomesticFahuoController{
     public ResultVo deletePiLiangstatus(@ApiParam(name = "list", required = false)
                                         @RequestBody  List<String> ids){
      for (int p = 0; p < ids.size(); p++){
-        System.out.println("删除");
-        System.out.println(ids);
+        log.info("======“批量已计算根据ID进行删除为未计算接口”开始执行======");
+        log.info("删除id为："+ids);
         DomesticFahuo  list =   domesticFahuoService.getById(ids.get(p));
         if(list != null){
             list.setJijiaticheng("");
@@ -1195,10 +1197,10 @@ public void downloadAllYijisuanClassmate(HttpServletResponse response,  @Request
         cell.setCellValue(text);
     }
     HSSFRow row1;
-    System.out.println(param);
+    log.info("param的值为："+param);
     List<DomesticFahuoDto> classmatefa = domesticFahuoService.seleteYijisuanexcle(param);
     List<DomesticHuikuan> domesticHuikuans = domesticHuikuanService.seleteYijisuanexcle();
-    System.out.println(domesticHuikuans);
+    log.info("domesticHuikuans的值为："+domesticHuikuans);
     String kehuoushu ="";
     String kehujishu ="";
     for (int i = 0; i <classmatefa.size() ; i++){

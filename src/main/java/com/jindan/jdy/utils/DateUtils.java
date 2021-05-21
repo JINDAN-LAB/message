@@ -1,5 +1,6 @@
 package com.jindan.jdy.utils;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,6 +12,7 @@ import java.util.*;
 /**
  * Created by 13348 on 2021/5/11.
  */
+@Slf4j
 public class DateUtils {
 
     private static final Logger logger = LoggerFactory.getLogger(DateUtils.class);
@@ -35,7 +37,7 @@ public class DateUtils {
 
     public static void main(String[] args) throws ParseException {
         String formatDate = getFormatDate("44301");
-        System.out.println(formatDate);
+        log.info("formatDate的值为："+formatDate);
     }
     /**
      *  转换时间格式，统一转换为  yyyy-MM-dd

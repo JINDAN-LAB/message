@@ -7,6 +7,7 @@ import com.jindan.jdy.service.department.JdyPackingService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,6 +21,7 @@ import java.util.List;
 * @time    2020年4月20日
 *
 */
+@Slf4j
 @CrossOrigin(origins = "http://118.24.255.51:20201")
 @Api(tags = "领料单")
 @RestController
@@ -36,9 +38,8 @@ public class JdyPackingController{
     @PostMapping("/seleteJdyPacking")
     public ResultVo seleteJdyPacking(@ApiParam(value = "jdyPacking", required = false)
                                  @RequestBody JdyPacking jdyPacking){
-        System.out.println("--------------");
-        System.out.println(jdyPacking);
-        System.out.println("===================");
+        log.info("======“领料单查询管理接口”开始执行======");
+        log.info("jdyPacking的值为："+jdyPacking);
         List<JdyPacking> list = jdyPackingService.seletelist(jdyPacking);
 
         return  ResultVo.success(list);
@@ -59,8 +60,8 @@ public class JdyPackingController{
     @PostMapping("/addJdyPacking")
     public ResultVo addJdyPacking( @ApiParam(name = "jdySsp", required = true)
                                 @RequestBody JdyPacking jdySsp){
-        System.out.println("---------------");
-        System.out.println(jdySsp);
+        log.info("======“新增随手拍信息接口”开始执行======");
+        log.info("jdySsp的值为："+jdySsp);
         boolean save = jdyPackingService.save(jdySsp);
         if(save){
             return ResultVo.success();
