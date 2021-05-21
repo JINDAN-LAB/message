@@ -40,6 +40,7 @@
     <lombok.version>1.16.18</lombok.version>
     <pagehelper-spring-boot-starter.version>1.2.12</pagehelper-spring-boot-starter.version>
     <mybatis-spring-boot-starter.version>2.0.1</mybatis-spring-boot-starter.version>
+    <skipTests>true</skipTests>
   </properties>
 
   <dependencies>
