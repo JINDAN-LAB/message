@@ -67,8 +67,10 @@ public class ZxingErweimController{
             return  ResultVo.success(page1);
         }else{
             List<String> page1  = (List<String>) redisUtil.get("seleteErweimpihao");
-            page1.add(pihao);
-            redisUtil.set("seleteErweimpihao",page1);
+            if(!page1.contains(pihao)){
+                page1.add(pihao);
+                redisUtil.set("seleteErweimpihao",page1);
+            }
             return  ResultVo.success();
         }
     }
@@ -84,8 +86,10 @@ public class ZxingErweimController{
             return  ResultVo.success(page1);
         }else{
             List<String> page1  = (List<String>) redisUtil.get("addseleteErweimriqi");
-            page1.add(riqi);
-            redisUtil.set("addseleteErweimriqi",page1);
+            if(!page1.contains(riqi)){
+                page1.add(riqi);
+                redisUtil.set("addseleteErweimriqi",page1);
+            }
             return  ResultVo.success(redisUtil.get("addseleteErweimriqi"));
         }
     }
