@@ -19,8 +19,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  * http://127.0.0.1:20201/jdy-admin/swagger-ui.html
  */
 @Configuration
-@EnableSwagger2
-@Profile({"dev","test"})
+@Profile({"dev","prod"})
 public class SwaggerConfig {
 
     @Bean
