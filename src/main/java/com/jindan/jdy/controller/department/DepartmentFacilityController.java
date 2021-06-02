@@ -74,7 +74,7 @@ public class DepartmentFacilityController{
     public ResultVo addfahuo(@RequestParam("file") MultipartFile file) throws Exception {
         //创建Excel工作薄
         Workbook work = WorkbookUtils.getWorkbook(file.getInputStream(),file.getOriginalFilename());
-        log.info("======“设备信息导入（addFacilityexcle）接口”开始执行======");
+
         if(null == work){
             throw new Exception("创建Excel工作薄为空！");
         }
@@ -367,7 +367,7 @@ public class DepartmentFacilityController{
     @PostMapping("updatejdyCommodityFlow")
     public ResultVo updatejdyCommodityFlow(@ApiParam(name = "jdyPurchase", required = true)
                                            @RequestBody JdyPurchaseDto jdyPurchase, HttpServletRequest httpRequest){
-        log.info("======“资料审核接口”开始执行======");
+
         JdyUserDto jdyUserDto = jdyUserService.seleteUserDetailsOne(TokenUtil.getRequestToken(httpRequest));
 //      MINISTER(1, "部长")
         if(RankUtils.MINISTER.getValue().equals(jdyUserDto.getPower()) && jdyPurchase.reults && (Integer.valueOf(jdyPurchase.getStatus()).equals(Integer.valueOf(RankUtils.MINISTER.getStatus())))){

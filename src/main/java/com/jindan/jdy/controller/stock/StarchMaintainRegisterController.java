@@ -102,7 +102,7 @@ public class StarchMaintainRegisterController{
     @PostMapping("/addJdyFlowCatalog")
     public ResultVo seleteCatalog(@ApiParam(name = "departmentSuggestDto", required = false)
                                   @RequestBody StarchMaintainRegisterDto departmentSuggestDto){
-        log.info("======“增加更新资产维修登记接口”开始执行======");
+
         Date currentTime = new Date();
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         log.info("传递的参数departmentSuggestDto值为："+departmentSuggestDto);
@@ -132,7 +132,7 @@ public class StarchMaintainRegisterController{
     @PostMapping("/updatesSingleJdyFlowCatalog")
     public ResultVo updatesSingleJdyFlowCatalog(@ApiParam(name = "departmentSuggestDto", required = false)
                                   @RequestBody StarchMaintainRegister  departmentSuggestDto){
-        log.info("======“单一更新维修登记接口”开始执行======");
+
         log.info("传递的参数departmentSuggestDto值为："+departmentSuggestDto);
         boolean list  = stockDepositoryService.updateSingleJdyFlowCatalog(departmentSuggestDto);
         return  ResultVo.success(list);
@@ -142,7 +142,7 @@ public class StarchMaintainRegisterController{
     @PostMapping("/addJdyaddFlowCatalog")
     public ResultVo seleteSddCatalog(@ApiParam(name = "departmentSuggestDto", required = false)
                                   @RequestBody StarchMaintainRegisterDto departmentSuggestDto){
-        log.info("======“增加资产维修记录接口”开始执行======");
+
         log.info("传递的参数departmentSuggestDto值为："+departmentSuggestDto);
         boolean list  = stockDepositoryService.addJdyaddFlowCatalog(departmentSuggestDto);
         return  ResultVo.success(list);

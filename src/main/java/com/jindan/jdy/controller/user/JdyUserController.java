@@ -60,7 +60,6 @@ public class JdyUserController{
     @PostMapping("/addFacilityrenyuan")
     public ResultVo addFacilityrenyuan(@RequestParam("file") MultipartFile file) throws Exception {
         //创建Excel工作薄
-        log.info("======“人员的批量导入接口”开始执行======");
         Workbook work = WorkbookUtils.getWorkbook(file.getInputStream(),file.getOriginalFilename());
         if(null == work){
             throw new Exception("创建Excel工作薄为空！");
@@ -148,7 +147,6 @@ public class JdyUserController{
     @PostMapping("updateJdyUser")
     public ResultVo updatefacility(@ApiParam(name = "jdyUser", required = true)
                                    @RequestBody JdyUserDto jdyUser){
-        log.info("======“更新用户信息接口”开始执行======");
         JdyUser jdyUse = new JdyUser();
         BeanUtils.copyProperties(jdyUser,jdyUse);
         log.info("jdyUse值为"+jdyUse);

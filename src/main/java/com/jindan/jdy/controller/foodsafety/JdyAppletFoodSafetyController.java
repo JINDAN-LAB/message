@@ -41,7 +41,7 @@ public class JdyAppletFoodSafetyController{
     @GetMapping("/seleteDrtment/{jdyAppletFoodSafetyDto}")
     public ResultVo seleteDrtment(@ApiParam(name = "jdyAppletFoodSafetyDto", value = "权限ID", required = true)
                                       @PathVariable String  jdyAppletFoodSafetyDto){
-        log.info("======“根据用户权限获取展示信息接口”开始执行======");
+
         log.info("jdyAppletFoodSafetyDto的值为："+jdyAppletFoodSafetyDto);
         List<JdyAppletFoodSafetyDto> list = jdyAppletFoodSafetyService.seletePersonList(jdyAppletFoodSafetyDto);
         return   ResultVo.success(list);

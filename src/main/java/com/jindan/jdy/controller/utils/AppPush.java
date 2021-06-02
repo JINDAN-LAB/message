@@ -34,7 +34,6 @@ public class AppPush {
 
         String result= UUID.randomUUID().toString().replace("-", "").toUpperCase();
 
-        log.info("======“mainAppPush静态方法”开始执行======");
         log.info("result的值为："+result);
 
         IGtPush push = new IGtPush(url, appKey, masterSecret);

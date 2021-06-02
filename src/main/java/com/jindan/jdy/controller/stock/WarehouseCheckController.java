@@ -67,7 +67,7 @@ public class WarehouseCheckController{
     @PostMapping("addlistWarehouseAccess")
     public ResultVo zhengchangaddlistWarehouseAccess( @ApiParam(name = "userPermission", required = true)
                                             @RequestBody List<WarehouseCheck> userPermission){
-        log.info("======“新增多次增加信息接口”开始执行======");
+
         log.info("userPermission的值为："+userPermission);
         boolean save = warehouseCheckService.saveBatch(userPermission);
         if(save){

@@ -60,7 +60,7 @@ public class StarchOrganizationAccessConsumableController{
     @PostMapping("/addStarchQuerenConsumable")
     public ResultVo addStarchQuerenConsumable(@ApiParam(name = "departmggestDto", required = false)
                                               @RequestBody StarchOrganizationAccessConsumableDto departmggestDto){
-        log.info("======“增减确认耗材接口”开始执行======");
+
         log.info("departmggestDto的值为："+departmggestDto);
         boolean list  = starchOrganizationAccessConsumableService.addJdyQuerenFlowCatalog(departmggestDto);
         return  ResultVo.success(list);
@@ -71,7 +71,7 @@ public class StarchOrganizationAccessConsumableController{
     @PostMapping("/addStarchConsumable")
     public ResultVo seleteCatalog(@ApiParam(name = "departmggestDto", required = false)
                                   @RequestBody StarchOrganizationAccessConsumableDto departmggestDto){
-        log.info("======“增加耗材接口”开始执行======");
+
         log.info("departmggestDto的值为："+departmggestDto);
         boolean list  = starchOrganizationAccessConsumableService.addJdyFlowCatalog(departmggestDto);
         return  ResultVo.success(list);

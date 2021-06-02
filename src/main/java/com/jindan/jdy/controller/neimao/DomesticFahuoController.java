@@ -78,7 +78,7 @@ public class DomesticFahuoController{
             int num=0;
             //创建Excel工作薄
             Workbook work = this.getWorkbook(file.getInputStream(),file.getOriginalFilename());
-            log.info("======“基价信息导入接口”开始执行======");
+
             if(null == work){
                 throw new Exception("创建Excel工作薄为空！");
             }
@@ -133,7 +133,7 @@ public class DomesticFahuoController{
             int num=0;
             //创建Excel工作薄
             Workbook work = this.getWorkbook(file.getInputStream(),file.getOriginalFilename());
-            log.info("======“基价2信息导入接口”开始执行======");
+
             if(null == work){
                 throw new Exception("创建Excel工作薄为空！");
             }
@@ -186,7 +186,7 @@ public class DomesticFahuoController{
             int num=0;
             //创建Excel工作薄
             Workbook work = this.getWorkbook(file.getInputStream(),file.getOriginalFilename());
-            log.info("======“包装信息导入接口”开始执行======");
+
             if(null == work){
                 throw new Exception("创建Excel工作薄为空！");
             }
@@ -411,7 +411,7 @@ public class DomesticFahuoController{
         @PostMapping("/fahuolist")
         public ResultVo conditionpurchase(@ApiParam(name = "domesticFahuoDto", required = false)
                                    @RequestBody DomesticFahuoDto domesticFahuoDto){
-            log.info("======“发货信息列表接口”开始执行======");
+
             IPage<DomesticFahuo> page1 = domesticFahuoService.seletepage(domesticFahuoDto);
             log.info("page1的值为："+page1);
             return ResultVo.success(page1);
@@ -421,7 +421,7 @@ public class DomesticFahuoController{
         @PostMapping("/huikuanlist")
         public ResultVo huikuanlist(@ApiParam(name = "domesticFahuoDto", required = false)
                              @RequestBody DomesticHuikuanDto domesticFahuoDto){
-            log.info("======“回款信息列表接口”开始执行======");
+
             Page<DomesticHuikuan> page1 = domesticHuikuanService.seletepage(domesticFahuoDto);
             log.info("page1的值为："+page1);
             return ResultVo.success(page1);
@@ -720,7 +720,7 @@ public class DomesticFahuoController{
         @PostMapping("/calculatelist")
         public ResultVo calculatelist(@ApiParam(name = "domesticFahuoDto", required = false)
                                @RequestBody DomesticFahuoDto domesticFahuoDto){
-            log.info("======“已计算列表信息接口”开始执行======");
+
             Page<DomesticFahuo> page1 = domesticFahuoService.seleteyijisuanpage(domesticFahuoDto);
             log.info("page1的值为："+page1);
             return  ResultVo.success(page1);
@@ -744,7 +744,7 @@ public class DomesticFahuoController{
           return ResultVo.success(page1);
         }
         public Workbook getWorkbook(InputStream inStr, String fileName) throws Exception{
-            log.info("======“getWorkbook方法”开始执行======");
+
             Workbook wb = null;
             String fileType = fileName.substring(fileName.lastIndexOf("."));
             if(excel2003.equals(fileType)){
@@ -993,7 +993,7 @@ public class DomesticFahuoController{
         @ApiOperation(value = "已计算根据ID进行删除为未计算", notes = "参数:已计算根据ID进行删除为未计算")
         @GetMapping("deletestatus/{ids}")
         public ResultVo deletestatus(@PathVariable String ids){
-            log.info("======“已计算根据ID进行删除为未计算接口”开始执行======");
+
             log.info("删除id为："+ids);
             DomesticFahuo  list =   domesticFahuoService.getById(ids);
             if(list != null){
@@ -1077,7 +1077,7 @@ public class DomesticFahuoController{
     public ResultVo deletePiLiangstatus(@ApiParam(name = "list", required = false)
                                         @RequestBody  List<String> ids){
      for (int p = 0; p < ids.size(); p++){
-        log.info("======“批量已计算根据ID进行删除为未计算接口”开始执行======");
+
         log.info("删除id为："+ids);
         DomesticFahuo  list =   domesticFahuoService.getById(ids.get(p));
         if(list != null){

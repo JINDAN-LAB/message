@@ -164,7 +164,7 @@ public class DepartmentSuggestController{
         HSSFSheet sheet = workbook.createSheet("数据导出");
         List<DepartmentSuggest> classmatefa = departmentSuggestService.list(null);
         String fileName = "部门设备导出"+".xls";//设置要导出的文件的名字
-        log.info("======“导出文本接口”开始执行======");
+
         log.info("classmatefa的值为："+classmatefa);
 //        //新增数据行，并且设置单元格数据
         int rowNum = 1;

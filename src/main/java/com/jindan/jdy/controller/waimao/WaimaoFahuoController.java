@@ -71,7 +71,7 @@ public class WaimaoFahuoController{
         @ApiOperation(value = "发货信息导入", notes = "参数:发货信息导入")
         @PostMapping("/addfahuo")
         public ResultVo addfahuo(@RequestParam("file") MultipartFile file) throws Exception {
-            log.info("======“发货信息导入接口”开始执行======");
+
             //创建Excel工作薄
             Workbook work = WorkbookUtils.getWorkbook(file.getInputStream(),file.getOriginalFilename());
             if(null == work){
@@ -159,7 +159,7 @@ public class WaimaoFahuoController{
         @PostMapping("/seleteWaimaoFahuo")
         public ResultVo seleteWaimaoFahuo(@ApiParam(value = "jdyRole", required = false)
                                          @RequestBody WaimaoFahuoDto jdyRole){
-            log.info("======“查询外贸发货信息接口”开始执行======");
+
             log.info("jdyRole的值为："+jdyRole);
             Page<WaimaoFahuo> list = waimaoFahuoService.seletelist(jdyRole);
             return  ResultVo.success(list);
@@ -237,7 +237,7 @@ public class WaimaoFahuoController{
         @ApiOperation("导出当月的发货信息")
         @PostMapping(value = "/DangYuefenExcle")
         public void DangYuefenExcle(HttpServletResponse response, WaimaoFahuo param) throws IOException {
-            log.info("======“导出当月的发货信息接口”开始执行======");
+
             Float jiashuiheji =0f;
             Float fobzongjia =0f;
             Float nums =0f;
@@ -706,7 +706,7 @@ public class WaimaoFahuoController{
     @ApiOperation("欠款表导出excle")
     @PostMapping(value = "/debtExcle")
     public void debtExcle(HttpServletResponse response, WaimaoFahuo param) throws Exception {
-            log.info("======“欠款表导出excle接口”开始执行======");
+
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         HSSFWorkbook workbook = new HSSFWorkbook();
         HSSFSheet sheet = workbook.createSheet("数据导出");

@@ -49,7 +49,7 @@ public class StarchOrganizationPutServiceImpl  extends ServiceImpl<StarchOrganiz
     public PageInfo<StarchOrganizationPutDto> queryCatList(StarchOrganizationPutDto jdyRole) {
         PageHelper.startPage(jdyRole.getCurrentPage(), jdyRole.getPageSize());
         List<StarchOrganizationPutDto> iPage =  starchManageCheckDao.queryRelevanceCatList(jdyRole);
-        log.info("======“StarchOrganizationPutServiceImpl.queryCatList方法”开始执行======");
+
         log.info("iPage的值为："+iPage);
         PageInfo<StarchOrganizationPutDto> pageInfo = new PageInfo<StarchOrganizationPutDto>(iPage);
         return pageInfo;

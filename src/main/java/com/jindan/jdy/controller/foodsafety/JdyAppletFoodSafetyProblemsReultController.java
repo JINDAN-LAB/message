@@ -128,7 +128,7 @@ public class JdyAppletFoodSafetyProblemsReultController{
 //    @PostMapping(value = "/debtBanzuExcle")
 //    public void debtBanzuExcle(HttpServletResponse response,
 //                                JdyAppletFootSafetyPerson param) throws IOException {
-//        log.info("======“领导给下级提交的问题项导出excle接口”开始执行======");
+
 //        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");//设置日期格式
 //        HSSFWorkbook workbook = new HSSFWorkbook();
 //        HSSFSheet sheet = workbook.createSheet("数据导出");
@@ -142,7 +142,7 @@ public class JdyAppletFoodSafetyProblemsReultController{
     @ApiOperation("外部提交给车间提交的问题项导出excle")
     @PostMapping(value = "/debtwaibuchejianExcle")
     public void debtwaibuchejianExcle(HttpServletResponse response, JdyAppletFootSafetyPerson param) throws Exception {
-        log.info("======“外部提交给车间提交的问题项导出excle接口”开始执行======");
+
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");//设置日期格式
         HSSFWorkbook workbook = new HSSFWorkbook();
         HSSFSheet sheet = workbook.createSheet("数据导出");
@@ -237,7 +237,7 @@ public class JdyAppletFoodSafetyProblemsReultController{
 //    @ApiOperation("班组需要处理的问题项导出excle")
 //    @PostMapping(value = "/debtbanzhuchuliExcle")
 //    public void debtbanzhuchuliExcle(HttpServletResponse response, @RequestBody JdyAppletFoodSafetyProblemsReult param) throws Exception {
-//        log.info("======“班组需要处理的问题项导出excle接口”开始执行======");
+
 //        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");//设置日期格式
 //        HSSFWorkbook workbook = new HSSFWorkbook();
 //        HSSFSheet sheet = workbook.createSheet("数据导出");
@@ -315,7 +315,7 @@ public class JdyAppletFoodSafetyProblemsReultController{
     @ApiOperation("班组提交的问题项导出excle")
     @PostMapping(value = "/debtbanzhuExcle")
     public void debtbanzhuExcle(HttpServletResponse response, @RequestBody JdyAppletFoodSafetyProblemsReult param) throws Exception {
-        log.info("======“班组提交的问题项导出excle接口”开始执行======");
+
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");//设置日期格式
         HSSFWorkbook workbook = new HSSFWorkbook();
         HSSFSheet sheet = workbook.createSheet("数据导出");
@@ -379,7 +379,7 @@ public class JdyAppletFoodSafetyProblemsReultController{
     @ApiOperation("车间提交的问题项导出excle")
     @PostMapping(value = "/debtchejianExcle")
     public void debchejianExcle(HttpServletResponse response, @RequestBody JdyAppletFoodSafetyProblemsReult param) throws Exception {
-        log.info("======“车间提交的问题项导出excle接口”开始执行======");
+
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");//设置日期格式
         HSSFWorkbook workbook = new HSSFWorkbook();
         HSSFSheet sheet = workbook.createSheet("数据导出");
@@ -444,7 +444,7 @@ public class JdyAppletFoodSafetyProblemsReultController{
     @ApiOperation("总监车间提交的问题项导出excle")
     @PostMapping(value = "/debzongjianExcle")
     public void debzongjianExcle(HttpServletResponse response, @RequestBody JdyAppletFoodSafetyProblemsReult param) throws Exception {
-        log.info("======“总监车间提交的问题项导出excle接口”开始执行======");
+
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");//设置日期格式
         HSSFWorkbook workbook = new HSSFWorkbook();
         HSSFSheet sheet = workbook.createSheet("数据导出");
@@ -505,7 +505,7 @@ public class JdyAppletFoodSafetyProblemsReultController{
     @ApiOperation("公司车间提交的问题项导出excle")
     @PostMapping(value = "/debgognsiExcle")
     public void debgognsiExcle(HttpServletResponse response, @RequestBody JdyAppletFoodSafetyProblemsReult param) throws Exception {
-        log.info("======“公司车间提交的问题项导出excle接口”开始执行======");
+
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");//设置日期格式
         HSSFWorkbook workbook = new HSSFWorkbook();
         HSSFSheet sheet = workbook.createSheet("数据导出");

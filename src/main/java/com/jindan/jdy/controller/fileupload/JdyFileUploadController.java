@@ -58,7 +58,7 @@ public class JdyFileUploadController{
     @ApiOperation(value = "删除OSS文件", notes = "参数:删除OSS文件")
     @PostMapping("/deleteUpdate")
     public  String uploadfile( String objectName ) throws IOException {
-        log.info("======“删除OSS文件接口”开始执行======");
+
         if(!objectName.isEmpty()){
             String[] strArr = objectName.split("https://kong15.oss-cn-beijing.aliyuncs.com/");
             log.info("strArr.length的值为："+strArr.length);//这里输出3

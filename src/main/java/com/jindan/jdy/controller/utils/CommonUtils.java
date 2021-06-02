@@ -67,7 +67,7 @@ public class CommonUtils {
     }
 
 public static String getminus(String dates,String  day) throws Exception {
-        log.info("======“getminus静态方法”开始执行======");
+
     Date d = new Date();
     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 

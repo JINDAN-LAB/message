@@ -34,7 +34,7 @@ public class WarehouseCheckTitleServiceImpl  extends ServiceImpl<WarehouseCheckT
 
     @Override
     public List<WarehouseCheckDto> seletelist(WarehouseCheck  departmentSuggestDto) {
-        log.info("======“WarehouseCheckTitleServiceImpl.seletelist方法”开始执行======");
+
         log.info("departmentSuggestDto的值为："+departmentSuggestDto);
         return warehouseCheckTitleDao.seletelist(departmentSuggestDto);
     }

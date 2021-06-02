@@ -39,7 +39,7 @@ public class WaimaoTichengXishuController{
     @ApiOperation(value = "回款率批量导入", notes = "参数:发货信息批量导入")
     @PostMapping("addBatchTichengXishu")
     public ResultVo addTichengXishu(@RequestParam("file") MultipartFile file) throws Exception {
-        log.info("======“回款率批量导入接口”开始执行======");
+
         String presenttime = CommonUtils.getPresenttime();
         Workbook work = WorkbookUtils.getWorkbook(file.getInputStream(),file.getOriginalFilename());
         if(null == work){
@@ -117,7 +117,7 @@ public class WaimaoTichengXishuController{
     @ApiOperation("删除回款率")
     @DeleteMapping("/deleteTichengXishu/{id}")
     public ResultVo deleteTichengXishu(@ApiParam(value = "id", name = "角色ID", required = true) @PathVariable String  id){
-        log.info("======“删除回款率接口”开始执行======");
+
         log.info("删除回款系数id的值为："+id);
         boolean b = waimaoTichengXishuService.removeById(id);
         if(b){

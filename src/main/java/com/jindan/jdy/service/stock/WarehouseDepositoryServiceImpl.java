@@ -45,7 +45,7 @@ public class WarehouseDepositoryServiceImpl  extends ServiceImpl<WarehouseDeposi
 
     @Override
     public List<WarehouseSpecs> queryFenleiIDCatList(WarehouseDepository warehouseDepository) {
-        log.info("======“WarehouseDepositoryServiceImpl.queryFenleiIDCatList方法”开始执行======");
+
         List<WarehouseDepositoryDto> warehouseDepositories = warehouseDepositoryDao.selectAllTiaojianList(warehouseDepository);
         List<WarehouseDepositoryDto> data = warehouseDepositoryDao.selectAllList();
         Map<String,String> map = new HashMap<>();

@@ -86,7 +86,7 @@ public class RiskPointController{
     @PostMapping("addBaohanRiskPoint")
     public ResultVo addBaohanRiskPoint(@ApiParam(name = "userPermission", required = true)
                                        @RequestBody RiskPointDto userPermission){
-        log.info("======“包含风控内容新增风险控制接口”开始执行======");
+
         RiskPoint riskPoint =new RiskPoint();
         BeanUtils.copyProperties(userPermission,riskPoint);
         RiskPoint riskPoint1   =  riskPointService.insertSave(riskPoint);

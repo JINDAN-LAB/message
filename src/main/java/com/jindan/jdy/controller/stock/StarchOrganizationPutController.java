@@ -60,7 +60,7 @@ public class StarchOrganizationPutController{
             throw new Exception("创建Excel工作薄为空！");
         }
         List<WarehouseDepository> list =   warehouseDepositoryService.queryList();
-        log.info("======“资产信息导入接口”开始执行======");
+
         log.info("work.getNumberOfSheets()的值为："+ work.getNumberOfSheets());
         Sheet sheet  = work.getSheetAt(0);
         if(sheet==null){

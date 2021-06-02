@@ -39,7 +39,7 @@ public class WaimaoDowBankExpendController{
     @ApiOperation(value = "外贸道氏银行支出导入", notes = "参数:外贸道氏银行支出导入")
     @PostMapping("addexcleDowBankExpend")
     public ResultVo addfahuo(@RequestParam("file") MultipartFile file) throws Exception {
-        log.info("======“外贸道氏银行支出导入接口”开始执行======");
+
         //创建Excel工作薄
         Workbook work = WorkbookUtils.getWorkbook(file.getInputStream(),file.getOriginalFilename());
         if(null == work){
@@ -86,7 +86,7 @@ public class WaimaoDowBankExpendController{
     @PostMapping("/addWaimaoDowBankExpend")
     public ResultVo addWaimaoDowBankExpend( @ApiParam(name = "jdyRole", required = true)
                                     @RequestBody WaimaoDowBankExpend jdyRole){
-        log.info("======“新增外贸地区分类信息接口”开始执行======");
+
         log.info("jdyRole的值为："+jdyRole);
         boolean save = waimaoAreaService.save(jdyRole);
         if(save){

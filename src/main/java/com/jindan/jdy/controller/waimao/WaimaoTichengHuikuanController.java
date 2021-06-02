@@ -39,7 +39,7 @@ public class WaimaoTichengHuikuanController{
     @ApiOperation(value = "外贸提成回款批量导入", notes = "参数:发货信息批量导入")
     @PostMapping("addBatchTichengFahuo")
     public ResultVo addTichengFahuo(@RequestParam("file") MultipartFile file) throws Exception {
-        log.info("======“外贸提成回款批量导入接口”开始执行======");
+
         String presenttime = CommonUtils.getPresenttime();
         //创建Excel工作薄
         Workbook work = WorkbookUtils.getWorkbook(file.getInputStream(),file.getOriginalFilename());
@@ -94,7 +94,7 @@ public class WaimaoTichengHuikuanController{
     @PostMapping("/addTichengFahuo")
     public ResultVo addTichengFahuo( @ApiParam(name = "jdyRole", required = true)
                                      @RequestBody WaimaoTichengHuikuan jdyRole){
-        log.info("======“新增外贸提成回款接口”开始执行======");
+
         log.info("jdyRole的值为："+jdyRole);
         boolean save = waimaoTichengHuikuanService.save(jdyRole);
         if(save){

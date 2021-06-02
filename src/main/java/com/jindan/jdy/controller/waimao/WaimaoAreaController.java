@@ -39,7 +39,7 @@ public class WaimaoAreaController{
     @ApiOperation(value = "地区分类导入", notes = "参数:地区分类导入")
     @PostMapping("addexclewaimaoArea")
     public ResultVo addfahuo(@RequestParam("file") MultipartFile file) throws Exception {
-        log.info("======“地区分类导入接口”开始执行======");
+
         //创建Excel工作薄
         Workbook work = WorkbookUtils.getWorkbook(file.getInputStream(),file.getOriginalFilename());
         if(null == work){
@@ -88,7 +88,7 @@ public class WaimaoAreaController{
     @PostMapping("/addWaimaoArea")
     public ResultVo addWaimaoFahuo( @ApiParam(name = "jdyRole", required = true)
                                     @RequestBody WaimaoArea jdyRole){
-        log.info("======“新增外贸地区分类信息接口”开始执行======");
+
         log.info("jdyRole的值为："+jdyRole);
         boolean save = waimaoAreaService.save(jdyRole);
         if(save){
@@ -100,7 +100,7 @@ public class WaimaoAreaController{
     @ApiOperation("删除外贸地区分类信息")
     @DeleteMapping("/deleteWaimaoA/{seid}")
     public ResultVo deleteTichengXishu(@ApiParam(value = "seid", name = "seid", required = true) @PathVariable String  seid){
-        log.info("======“删除外贸地区分类信息接口”开始执行======");
+
         log.info("删除汇款系数seid的值为："+seid);
         boolean b = waimaoAreaService.removeById(seid);
         if(b){

@@ -44,7 +44,7 @@ public class WaimaoHuikuanController{
     public ResultVo addhuikuan(@RequestParam("file") MultipartFile file) throws Exception {
         //创建Excel工作薄
         Workbook work = WorkbookUtils.getWorkbook(file.getInputStream(),file.getOriginalFilename());
-        log.info("======“回款信息导入接口”开始执行======");
+
         if(null == work){
             throw new Exception("创建Excel工作薄为空！");
         }

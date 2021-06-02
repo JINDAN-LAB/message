@@ -114,7 +114,7 @@ public class StarchMaintainRegisterServiceImpl  extends ServiceImpl<StarchMainta
     }
     @Override
     public boolean addJdyFlowCatalog(StarchMaintainRegisterDto departmentSuggestDto) {
-        log.info("======“StarchMaintainRegisterServiceImpl.addJdyFlowCatalog方法”开始执行======");
+
      if(departmentSuggestDto.getPutList().get(0).getWeixiuren() !=null){
         StarchMaintainRegister  starchOrganizationAccess = new StarchMaintainRegister();
         try{
@@ -344,7 +344,7 @@ public class StarchMaintainRegisterServiceImpl  extends ServiceImpl<StarchMainta
 
     @Override
     public boolean updateFenpeiMaintainRegister(StarchMaintainRegister warehouseDepository) {
-        log.info("======“StarchMaintainRegisterServiceImpl.updateFenpeiMaintainRegister方法”开始执行======");
+
         QueryWrapper<JdyUser> queryWrapper =new QueryWrapper<>();
         queryWrapper.eq("username",warehouseDepository.getWxPersons());
         List<JdyUser> jdyUsers = jdyUserDto.selectList(queryWrapper);

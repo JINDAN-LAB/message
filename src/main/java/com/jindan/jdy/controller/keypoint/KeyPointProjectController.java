@@ -74,7 +74,7 @@ public class KeyPointProjectController{
     @PostMapping("updatekeyPointProject")
     public ResultVo updatekeyPointPracticableService(@ApiParam(name = "userPermission", required = true)
                                                      @RequestBody KeyPointProject userPermission){
-        log.info("======“更新建议信息接口”开始执行======");
+
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
         if(userPermission.getStatus().equals("1")){
              RestTemplate restTemplate=new RestTemplate();

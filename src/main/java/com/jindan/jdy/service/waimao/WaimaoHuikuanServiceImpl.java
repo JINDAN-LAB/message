@@ -120,7 +120,7 @@ public class WaimaoHuikuanServiceImpl  extends ServiceImpl<WaimaoHuikuanMapper,W
 
     @Override
     public Map<String,Float> seleteQiankuan(WaimaoFahuo jdyRole) throws ParseException {
-        log.info("======“WaimaoHuikuanServiceImpl.seleteQiankuan方法”开始执行======");
+
         Float huilv ;
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
     //   本月逾期欠款按照业务员进行分析
@@ -164,7 +164,7 @@ public class WaimaoHuikuanServiceImpl  extends ServiceImpl<WaimaoHuikuanMapper,W
 
     @Override
     public Map<String, Float> seleteQuannianQiankuan(WaimaoFahuo jdyRole) throws ParseException {
-        log.info("======“WaimaoHuikuanServiceImpl.seleteQuannianQiankuan方法”开始执行======");
+
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         //   本月逾期欠款按照业务员进行分析
         Map<String,Float> huikuanMap =new HashMap<>();

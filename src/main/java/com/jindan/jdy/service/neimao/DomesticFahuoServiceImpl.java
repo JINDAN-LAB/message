@@ -37,7 +37,7 @@ public class DomesticFahuoServiceImpl  extends ServiceImpl<DomesticFahuoMapper,D
 //    发货信息列表
     @Override
     public Page<DomesticFahuo> seletepage(DomesticFahuoDto domesticFahuoDto) {
-        log.info("======“DomesticFahuoServiceImpl.seletepage方法”开始执行======");
+
         if(domesticFahuoDto.getCurrentPage() < 0  ){
             domesticFahuoDto.setCurrentPage(0);
         }
@@ -70,7 +70,7 @@ public class DomesticFahuoServiceImpl  extends ServiceImpl<DomesticFahuoMapper,D
 //    已计算列表
     @Override
     public Page<DomesticFahuo> seleteyijisuanpage(DomesticFahuoDto domesticFahuoDto) {
-        log.info("======“DomesticFahuoServiceImpl.seleteyijisuanpage方法”开始执行======");
+
         log.info("domesticFahuoDto.toString()的值为："+domesticFahuoDto.toString());
         if(domesticFahuoDto.getCurrentPage() < 0 || domesticFahuoDto.getCurrentPage() < 1){
             domesticFahuoDto.setCurrentPage(0);
@@ -104,7 +104,7 @@ public class DomesticFahuoServiceImpl  extends ServiceImpl<DomesticFahuoMapper,D
 
     @Override
     public  Page<DomesticFahuo> selebudayinpage(DomesticFahuoDto domesticFahuoDto) {
-        log.info("======“DomesticFahuoServiceImpl.selebudayinpage方法”开始执行======");
+
         log.info("domesticFahuoDto.toString()的值为："+domesticFahuoDto.toString());
         if(domesticFahuoDto.getCurrentPage() < 0 || domesticFahuoDto.getCurrentPage() < 1){
             domesticFahuoDto.setCurrentPage(1);
@@ -135,7 +135,7 @@ public class DomesticFahuoServiceImpl  extends ServiceImpl<DomesticFahuoMapper,D
 
     @Override
     public Page<DomesticFahuo> seleteyidayinpage(DomesticFahuoDto domesticFahuoDto) {
-        log.info("======“DomesticFahuoServiceImpl.seleteyidayinpage方法”开始执行======");
+
         log.info("domesticFahuoDto.toString()的值为："+domesticFahuoDto.toString());
         if(domesticFahuoDto.getCurrentPage() < 0 || domesticFahuoDto.getCurrentPage() < 1){
             domesticFahuoDto.setCurrentPage(1);
@@ -241,7 +241,7 @@ public class DomesticFahuoServiceImpl  extends ServiceImpl<DomesticFahuoMapper,D
 
     @Override
     public List<DomesticFahuoDto> seleteYijisuanexcle(DomesticFahuoDto param) {
-        log.info("======“DomesticFahuoServiceImpl.seleteYijisuanexcle方法”开始执行======");
+
         return domesticFahuoDao.seleteYijisuanexcle(param);
     }
 

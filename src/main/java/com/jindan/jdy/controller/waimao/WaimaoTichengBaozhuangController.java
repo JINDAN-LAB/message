@@ -38,7 +38,7 @@ public class WaimaoTichengBaozhuangController{
     @ApiOperation(value = "包装批量导入", notes = "参数:包装批量导入")
     @PostMapping("addBatchTichengBaozhuang")
     public ResultVo addfahuo(@RequestParam("file") MultipartFile file) throws Exception {
-        log.info("======“包装批量导入接口”开始执行======");
+
         //创建Excel工作薄
         Workbook work = WorkbookUtils.getWorkbook(file.getInputStream(),file.getOriginalFilename());
         if(null == work){

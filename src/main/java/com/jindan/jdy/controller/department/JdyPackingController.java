@@ -38,7 +38,7 @@ public class JdyPackingController{
     @PostMapping("/seleteJdyPacking")
     public ResultVo seleteJdyPacking(@ApiParam(value = "jdyPacking", required = false)
                                  @RequestBody JdyPacking jdyPacking){
-        log.info("======“领料单查询管理接口”开始执行======");
+
         log.info("jdyPacking的值为："+jdyPacking);
         List<JdyPacking> list = jdyPackingService.seletelist(jdyPacking);
 
@@ -60,7 +60,7 @@ public class JdyPackingController{
     @PostMapping("/addJdyPacking")
     public ResultVo addJdyPacking( @ApiParam(name = "jdySsp", required = true)
                                 @RequestBody JdyPacking jdySsp){
-        log.info("======“新增随手拍信息接口”开始执行======");
+
         log.info("jdySsp的值为："+jdySsp);
         boolean save = jdyPackingService.save(jdySsp);
         if(save){

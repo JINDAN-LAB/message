@@ -273,7 +273,7 @@ public class JdyPurchaseController{
     @DeleteMapping("deleteJdyCommodity/{commodityId}")
     public ResultVo deletejdyCommodity(@ApiParam(name = "commodityId", value = "删除ID", required = true)
                                            @PathVariable String  commodityId){
-        log.info("======“删除采购商品信息接口”开始执行======");
+
         log.info("commodityId的值为："+commodityId);
             boolean remove = jdyCommodityService.removeById(commodityId);
             if(remove){

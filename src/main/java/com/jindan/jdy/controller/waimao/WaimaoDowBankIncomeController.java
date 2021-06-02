@@ -40,7 +40,7 @@ public class WaimaoDowBankIncomeController{
     @ApiOperation(value = "道氏银行收入信息导入", notes = "参数:道氏银行收入信息导入")
     @PostMapping("addexcleDowBankExpend")
     public ResultVo addfahuo(@RequestParam("file") MultipartFile file) throws Exception {
-        log.info("======“道氏银行收入信息导入接口”开始执行======");
+
         //创建Excel工作薄
         Workbook work = WorkbookUtils.getWorkbook(file.getInputStream(),file.getOriginalFilename());
         if(null == work){

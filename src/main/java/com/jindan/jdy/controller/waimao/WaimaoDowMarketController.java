@@ -39,7 +39,7 @@ public class WaimaoDowMarketController{
     @ApiOperation(value = "外贸道氏道氏销售信息导入", notes = "参数:外贸道氏道氏销售信息导入")
     @PostMapping("addexcleDowBankExpend")
     public ResultVo addfahuo(@RequestParam("file") MultipartFile file) throws Exception {
-        log.info("======“外贸道氏道氏销售信息导入接口”开始执行======");
+
         // 创建Excel工作薄
         Workbook work = WorkbookUtils.getWorkbook(file.getInputStream(),file.getOriginalFilename());
         if(null == work){

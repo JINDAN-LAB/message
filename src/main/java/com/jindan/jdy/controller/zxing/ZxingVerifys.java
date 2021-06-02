@@ -76,7 +76,7 @@ public class ZxingVerifys {
     public ModelAndView deletefacility123(@ApiParam(name = "id", value = "权限ID", required = true) @PathVariable String id){
         List<ZxingVerify > page1 = zxingVerifyService.seletelist(null);
         List<JdyDomain> list = jdyDomainService.seletelist(null);
-        log.info("======“获取验证数据根据接口”开始执行======");
+
         log.info("list的值为："+list);
         if(list.size() > 0){
             try{

@@ -14,7 +14,7 @@ public class WorkbookUtils {
     private final static String excel2007 =".xlsx";
 
     public static Workbook getWorkbook(InputStream inStr, String fileName) throws Exception{
-        log.info("======“getWorkbook静态方法”开始执行======");
+
         Workbook wb = null;
         String fileType = fileName.substring(fileName.lastIndexOf("."));
         if(excel2003.equals(fileType)){

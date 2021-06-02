@@ -40,7 +40,7 @@ public class WaimaoTichengHuilvController{
     @ApiOperation(value = "回款率批量导入", notes = "参数:发货信息批量导入")
     @PostMapping("addBatchTichengFahuo")
     public ResultVo addTichengHuilv(@RequestParam("file") MultipartFile file) throws Exception {
-        log.info("======“回款率批量导入接口”开始执行======");
+
         String presenttime = CommonUtils.getPresenttime();
         //创建Excel工作薄
         Workbook work = WorkbookUtils.getWorkbook(file.getInputStream(),file.getOriginalFilename());
