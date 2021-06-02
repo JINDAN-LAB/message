@@ -192,13 +192,13 @@ public class JdyAppletFoodSafetyServiceImpl  extends ServiceImpl<JdyAppletFoodSa
                 default:
                     switch (i){
                         case 1:
-                            log.info("获取工段信息");
+//                            log.info("获取工段信息");
                             if(category.getParentId().equals(id) && category.getId().equals(jdyAppletFootSafetyPeople.get(0).getBanzu())){
                                 childList.add(category);
                             }
                             break;
                         default :
-                            log.info("获取履职11111信息");
+//                            log.info("获取履职11111信息");
                             if(category.getParentId().equals(id)){
                                 childList.add(category);
                             }

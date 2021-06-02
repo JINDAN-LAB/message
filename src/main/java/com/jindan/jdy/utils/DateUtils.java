@@ -1,5 +1,6 @@
 package com.jindan.jdy.utils;
 
+import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -36,8 +37,17 @@ public class DateUtils {
 
 
     public static void main(String[] args) throws ParseException {
-        String formatDate = getFormatDate("44301");
-        log.info("formatDate的值为："+formatDate);
+//        String formatDate = getFormatDate("44301");
+//        log.info("formatDate的值为："+formatDate);
+        List<String> page1  = new ArrayList<>();
+        String param = "20210528";
+        page1.add("20210525");
+        page1.add("20210526");
+        page1.add("20210527");
+        if(!page1.contains(param)){
+            page1.add(param);
+        }
+        System.out.println(JSONObject.toJSONString(page1));
     }
     /**
      *  转换时间格式，统一转换为  yyyy-MM-dd

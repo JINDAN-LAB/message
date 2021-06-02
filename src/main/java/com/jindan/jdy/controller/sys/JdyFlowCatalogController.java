@@ -36,13 +36,13 @@ public class JdyFlowCatalogController{
     @PostMapping("/seleteJdyFlowCatalog")
     public ResultVo seleteJdyFlowCatalog(@ApiParam(value = "jdyFlowCatalog", required = true)
                                          @RequestBody JdyFlowCatalog jdyFlowCatalog){
-            if( redisUtil.get("jdyFlowCatalog") == null){
+//            if( redisUtil.get("jdyFlowCatalog") == null){
                 List<JdyFlowCatalogDto> list  = jdyFlowCatalogService.queryCatList(jdyFlowCatalog);
-                redisUtil.set("jdyFlowCatalog",list);
+//                redisUtil.set("jdyFlowCatalog",list);
                 return  ResultVo.success(list);
-            }else{
-                return  ResultVo.success(redisUtil.get("jdyFlowCatalog"));
-            }
+//            }else{
+//                return  ResultVo.success(redisUtil.get("jdyFlowCatalog"));
+//            }
     }
 
 
