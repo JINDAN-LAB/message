@@ -17,6 +17,8 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
+import java.util.Date;
+
 /**
  * Created by 13348 on 2021/5/21.
  */
@@ -47,6 +49,8 @@ public class JdyUserControllerTest {
         RiskWarningDto riskWarningDto = new RiskWarningDto();
         riskWarningDto.setPageSize(2);
         riskWarningDto.setCurrentPage(0);
+        riskWarningDto.setStartTime("2021-06-06");
+        riskWarningDto.setEndTime("2021-06-07");
         mvc.perform(MockMvcRequestBuilders.post("/riskWarning/selectRiskWarning")
                 .contentType(MediaType.APPLICATION_JSON_UTF8)
                 .content(JSONObject.toJSONString(riskWarningDto))

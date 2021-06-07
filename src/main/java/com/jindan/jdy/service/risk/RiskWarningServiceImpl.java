@@ -33,12 +33,14 @@ public class RiskWarningServiceImpl extends ServiceImpl<RiskWarningDao, RiskWarn
 
         QueryWrapper<RiskWarning> queryWrapper =new QueryWrapper<>();
 
-        if( riskWarningDto.getWarningTime() !=null && riskWarningDto.getEndWarningTime() != null){
-            queryWrapper.between("warning_time",riskWarningDto.getWarningTime(),riskWarningDto.getEndWarningTime());
-        }else if(riskWarningDto.getWarningTime() != null && riskWarningDto.getEndWarningTime() == null){
-            queryWrapper.ge("warning_time",riskWarningDto.getWarningTime());
-        }else if(riskWarningDto.getWarningTime() == null && riskWarningDto.getEndWarningTime() != null){
-            queryWrapper.le("warning_time",riskWarningDto.getEndWarningTime());
+        String startTime = riskWarningDto.getStartTime() + " 00:00:00";
+        String endTime = riskWarningDto.getEndTime() + " 23:59:59";
+        if( riskWarningDto.getStartTime() !=null && riskWarningDto.getEndTime() != null){
+            queryWrapper.between("warning_time",startTime,endTime);
+        }else if(riskWarningDto.getStartTime() != null && riskWarningDto.getEndTime() == null){
+            queryWrapper.ge("warning_time",startTime);
+        }else if(riskWarningDto.getStartTime() == null && riskWarningDto.getEndTime() != null){
+            queryWrapper.le("warning_time",endTime);
         }
 
         return (Page<RiskWarning>) riskWarningDao.selectPage(page,queryWrapper);

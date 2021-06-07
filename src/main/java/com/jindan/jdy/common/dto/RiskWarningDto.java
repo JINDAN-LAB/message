@@ -63,12 +63,15 @@ public class RiskWarningDto extends PageVO{
     /**
      * 预警时间
      */
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern="yyyy-MM-dd",timezone = "GMT+8")
     @ApiModelProperty(name = "warningTime" , value = "")
     private Date warningTime;
 
-    private Date endWarningTime;
+
+    private String startTime;
+
+    private String endTime;
 
     private Integer deleteId;
 
