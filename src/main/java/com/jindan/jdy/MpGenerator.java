@@ -93,7 +93,7 @@ public class MpGenerator {
         gc.setBaseColumnList(true);
         // gc.setSwagger2(true); 实体属性 Swagger2 注解
         // 自定义文件命名，注意 %s 会自动填充表实体属性！
-        gc.setMapperName("%sMapper");
+        gc.setMapperName("%sDao");
         gc.setXmlName("%sMapper");
         gc.setServiceName("%sService");
         gc.setServiceImplName("%sServiceImpl");
@@ -130,7 +130,7 @@ public class MpGenerator {
         PackageConfig pc = new PackageConfig();
         //pc.setModuleName(scanner("模块名"));
         pc.setParent(PACKAGE_NAME);
-        pc.setEntity("po");
+        pc.setEntity("common.pojo");
         pc.setXml("mapper");
         pc.setController("controller");
         pc.setService("service");
@@ -148,9 +148,9 @@ public class MpGenerator {
         // 实体是否使用Lombok插件
         strategy.setEntityLombokModel(false);
         // 自定义 service 父类
-        strategy.setSuperServiceClass("com.h2t.study.BaseService");
+        strategy.setSuperServiceClass("com.baomidou.mybatisplus.extension.service.IService");
         // 自定义 service 实现类父类
-        strategy.setSuperServiceImplClass("com.h2t.study.BaseServiceImpl");
+        strategy.setSuperServiceImplClass("com.baomidou.mybatisplus.extension.service.impl.ServiceImpl");
         // 控制层是否使用Rest风格
         strategy.setRestControllerStyle(true);
         return strategy;

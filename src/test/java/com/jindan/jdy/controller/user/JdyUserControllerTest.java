@@ -1,5 +1,7 @@
 package com.jindan.jdy.controller.user;
 
+import com.alibaba.fastjson.JSONObject;
+import com.jindan.jdy.common.dto.RiskWarningDto;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -42,14 +44,16 @@ public class JdyUserControllerTest {
      */
     @Test
     public void qryLearn() throws Exception {
-        mvc.perform(MockMvcRequestBuilders.get("/jdyUser/info/023293cd7934a5ef394ca415078aabfa")
+        RiskWarningDto riskWarningDto = new RiskWarningDto();
+        riskWarningDto.setPageSize(2);
+        riskWarningDto.setCurrentPage(0);
+        mvc.perform(MockMvcRequestBuilders.post("/riskWarning/selectRiskWarning")
                 .contentType(MediaType.APPLICATION_JSON_UTF8)
+                .content(JSONObject.toJSONString(riskWarningDto))
                 .accept(MediaType.APPLICATION_JSON_UTF8)
                 .session(session)
         )
                 .andExpect(MockMvcResultMatchers.status().isOk())
-//                .andExpect(MockMvcResultMatchers.jsonPath("$.author").value("嘟嘟MD独立博客"))
-//                .andExpect(MockMvcResultMatchers.jsonPath("$.title").value("Spring Boot干货系列"))
                 .andDo(MockMvcResultHandlers.print());
     }
 
