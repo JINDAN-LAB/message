@@ -146,7 +146,7 @@ public class MpGenerator {
         // 默认生成的po类不继承，手动修改继承
         //strategy.setSuperEntityClass((String) null);
         // 实体是否使用Lombok插件
-        strategy.setEntityLombokModel(false);
+        strategy.setEntityLombokModel(true);
         // 自定义 service 父类
         strategy.setSuperServiceClass("com.baomidou.mybatisplus.extension.service.IService");
         // 自定义 service 实现类父类
