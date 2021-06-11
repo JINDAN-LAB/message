@@ -2,6 +2,7 @@ package com.jindan.jdy.common.dto;
 
 import com.baomidou.mybatisplus.annotation.*;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.jindan.jdy.common.pojo.RiskPoint;
 import com.jindan.jdy.common.vo.PageVO;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -18,27 +19,45 @@ public class RiskControlSituationDto extends PageVO {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId(value = "rmw_id", type = IdType.UUID)
-    @ApiModelProperty(name = "rmwId" , value = "")
-    private String rmwId;
+    @TableId(value = "rcs_id", type = IdType.UUID)
+    @ApiModelProperty(name = "rcsId" , value = "")
+    private String rcsId;
 
     /**
-     * 预警责任人
+     * 风险点名称
      */
-    @ApiModelProperty(name = "warningPerson" , value = "")
-    private String warningPerson;
+    @ApiModelProperty(name = "riskName" , value = "")
+    private String riskName;
 
     /**
-     * 接收手机号
+     * 主要管控级别
      */
-    @ApiModelProperty(name = "mobile" , value = "")
-    private String mobile;
+    @ApiModelProperty(name = "mainControlLevel" , value = "")
+    private String mainControlLevel;
 
     /**
-     * 预警消息
+     * 巡检人
      */
-    @ApiModelProperty(name = "warningContent" , value = "")
-    private String warningContent;
+    @ApiModelProperty(name = "inspectionPersonnel" , value = "")
+    private String inspectionPersonnel;
+
+    /**
+     * 次要管控级别
+     */
+    @ApiModelProperty(name = "minorControlLevel" , value = "")
+    private String minorControlLevel;
+
+    /**
+     * 任务周期
+     */
+    @ApiModelProperty(name = "dutyCycle" , value = "")
+    private String dutyCycle;
+
+    /**
+     * 任务类型
+     */
+    @ApiModelProperty(name = "taskType" , value = "")
+    private String taskType;
 
     /**
      * 创建时间
@@ -50,29 +69,16 @@ public class RiskControlSituationDto extends PageVO {
     private LocalDateTime insertTime;
 
     /**
-     * 预警时间
-     */
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    //@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
-    @ApiModelProperty(name = "warningTime" , value = "")
-    private LocalDateTime warningTime;
-
-    /**
-     * 开始时间
-     */
-    @ApiModelProperty(name = "startTime" , value = "")
-    private String startTime;
-
-    /**
-     * 结束时间
-     */
-    @ApiModelProperty(name = "endTime" , value = "")
-    private String endTime;
-
-    /**
      * 逻辑删除
      */
     @TableLogic
     @ApiModelProperty(name = "deleteId" , value = "")
     private Integer deleteId;
+
+    /**
+     * 风险点
+     */
+    @ApiModelProperty(name = "riskPoint" , value = "")
+    @TableField(exist = false)
+    private RiskPoint riskPoint;
 }
