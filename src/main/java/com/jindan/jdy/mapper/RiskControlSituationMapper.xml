@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.mapper.RiskControlSituationDao">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.RiskControlSituation">
+        <id column="rcs_id" property="rcsId" />
+        <result column="risk_name" property="riskName" />
+        <result column="main_control_level" property="mainControlLevel" />
+        <result column="inspection_personnel" property="inspectionPersonnel" />
+        <result column="minor_control_level" property="minorControlLevel" />
+        <result column="duty_cycle" property="dutyCycle" />
+        <result column="task_type" property="taskType" />
+        <result column="delete_id" property="deleteId" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        rcs_id, risk_name, main_control_level, inspection_personnel, minor_control_level, duty_cycle, task_type, delete_id
+    </sql>
+
+</mapper>
