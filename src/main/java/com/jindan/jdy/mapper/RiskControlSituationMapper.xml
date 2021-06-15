@@ -5,7 +5,7 @@
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.RiskControlSituation">
         <id column="rcs_id" property="rcsId" />
-        <result column="risk_name" property="riskName" />
+        <result column="risk_name_id" property="riskNameId" />
         <result column="main_control_level" property="mainControlLevel" />
         <result column="inspection_personnel" property="inspectionPersonnel" />
         <result column="minor_control_level" property="minorControlLevel" />
@@ -16,7 +16,7 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        rcs_id, risk_name, main_control_level, inspection_personnel, minor_control_level, duty_cycle, task_type, delete_id
+        rcs_id, risk_name_id, main_control_level, inspection_personnel, minor_control_level, duty_cycle, task_type, delete_id
     </sql>
 
 </mapper>

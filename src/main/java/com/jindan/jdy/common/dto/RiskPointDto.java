@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.*;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.jindan.jdy.common.pojo.RiskPointContent;
 import com.jindan.jdy.common.pojo.RiskPointPersons;
+import com.jindan.jdy.common.vo.PageVO;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -17,7 +18,7 @@ import java.util.List;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-public class RiskPointDto implements Serializable {
+public class RiskPointDto extends PageVO implements Serializable {
 
     private static final long serialVersionUID = 16073865297L;
 

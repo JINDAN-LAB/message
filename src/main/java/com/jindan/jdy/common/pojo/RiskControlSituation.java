@@ -32,10 +32,10 @@ public class RiskControlSituation extends Model<RiskControlSituation> {
     private String rcsId;
 
     /**
-     * 风险点名称
+     * 风险点名称ID
      */
-    @ApiModelProperty(name = "riskName" , value = "")
-    private String riskName;
+    @ApiModelProperty(name = "riskNameId" , value = "")
+    private String riskNameId;
 
     /**
      * 主要管控级别

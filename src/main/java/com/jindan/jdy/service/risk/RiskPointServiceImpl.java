@@ -1,10 +1,13 @@
 package com.jindan.jdy.service.risk;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.jindan.jdy.common.dto.RiskNameAndPersonnelDto;
 import com.jindan.jdy.common.dto.RiskPointDto;
 import com.jindan.jdy.mapper.RiskPointMapper;
 import com.jindan.jdy.common.pojo.RiskPoint;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -18,6 +21,7 @@ import java.util.List;
  * 
  */
 
+@Slf4j
 @Component
 public class RiskPointServiceImpl  extends ServiceImpl<RiskPointMapper,RiskPoint> implements RiskPointService  {
 
@@ -91,6 +95,24 @@ public class RiskPointServiceImpl  extends ServiceImpl<RiskPointMapper,RiskPoint
             queryWrapper.eq("remarks",riskPointContent.getRemarks());
         }
         return riskPointDao.selectList(queryWrapper);
+    }
+
+    @Override
+    public Page<RiskPoint> selectListWapperByPage(RiskNameAndPersonnelDto riskNameAndPersonnelDto) {
+
+        if (riskNameAndPersonnelDto.getCurrentPage() <= 0){
+            riskNameAndPersonnelDto.setCurrentPage(1);
+        }
+
+        Page<RiskPoint> page = new Page<>(riskNameAndPersonnelDto.getCurrentPage(),riskNameAndPersonnelDto.getPageSize());
+
+        QueryWrapper<RiskPoint> queryWrapper =new QueryWrapper<>();
+
+        if(riskNameAndPersonnelDto.getRiskName() != null && !riskNameAndPersonnelDto.getRiskName().equals("") ){
+            queryWrapper.eq("risk_name",riskNameAndPersonnelDto.getRiskName());
+        }
+
+        return (Page<RiskPoint>) riskPointDao.selectPage(page,queryWrapper);
     }
 
     @Override
