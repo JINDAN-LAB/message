@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/jdy?characterEncoding=utf8&useSSL=false&serverTimezone=UTC
+    url: jdbc:mysql://127.0.0.1:3306/jdy?characterEncoding=utf8&useSSL=false&serverTimezone=CTT
     username: root
     password: 2021413
     hikari:
@@ -18,6 +18,18 @@ spring:
           max-active: 100
           max-wait: 15000ms
           min-idle: 5
+      password: hnjindan
+  messages:
+    encoding: UTF-8
+    basename: i18n/messages
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+      enabled: true
 
 server:
   port: 20201
@@ -49,3 +61,23 @@ pagehelper:
   params: count=countSql
   row-bounds-with-count: true
   helper-dialect: mysql
+
+aliyun:
+  oss:
+    file:
+      endpoint: oss-cn-beijing.aliyuncs.com
+      keyid: LTAI4FpooemptjwNoXAKe4Su
+      keysecret: Wt8tkmUfjGiOp9NhJ8C4fqbbMDDVpb
+      bucketname: kong15
+      filehost: avatar
+      host: career
+apppush:
+  appId: 123456
+  appKey: 7899+456
+  masterSecret: 123585555
+  url: http://sdk.open.api.igexin.com/apiex.htm
+wechat:
+  mpAppId: wxb5b6dfa9e8b12f50
+  mpAppSecret: 6da768a60cdd737cc30c32134d7071c6
+  token: 33333
+  aeskey: 44444
