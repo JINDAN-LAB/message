@@ -267,7 +267,10 @@ public class DomesticHuikuanController{
                       }
                   }
               }
+              //获取单据日期和回款日期的时间差，此日期可用来计算利息
               fajianhui = CommonUtils.getDistanceDays(fahuoDtoList.get(i).getDanjuriqi(), huikuanlists.get(j).getHuikuanriqi());
+              // 如果时间差 > 30 ,则按照30日计算
+              fajianhui = fajianhui > 30L ? 30L : fajianhui;
               if((fajianhui + Double.valueOf(nums)) >= 0){
                   if (!StringUtils.isEmpty(huikuanlists.get(j).getChengduiriqi())){
                       if(Double.valueOf(nums) <= 10){
