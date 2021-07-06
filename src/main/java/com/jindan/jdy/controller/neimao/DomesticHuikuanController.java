@@ -540,6 +540,8 @@ public class DomesticHuikuanController{
           } else {
               yongs = Double.valueOf(huikuanlists.get(j).getJine());
               fajianhui = CommonUtils.getDistanceDays(fahuoDtoList.get(i).getDanjuriqi(), huikuanlists.get(j).getHuikuanriqi());
+              // 如果时间差 > 30 ,则按照30日计算
+              fajianhui = fajianhui > 30L ? 30L : fajianhui;
               if (CommonUtils.getDistanceDays(fahuoDtoList.get(i).getDanjuriqi(), huikuanlists.get(j).getHuikuanriqi()) >= 0) {
                   if (!StringUtils.isEmpty(huikuanlists.get(j).getChengduiriqi())) {
                       chengjianfa = CommonUtils.getDistanceDays(huikuanlists.get(j).getChengduiriqi(), fahuoDtoList.get(i).getDanjuriqi());
