@@ -93,7 +93,7 @@ public class MpGenerator {
         gc.setBaseColumnList(true);
         // gc.setSwagger2(true); 实体属性 Swagger2 注解
         // 自定义文件命名，注意 %s 会自动填充表实体属性！
-        gc.setMapperName("%sDao");
+        gc.setMapperName("%sMapper");
         gc.setXmlName("%sMapper");
         gc.setServiceName("%sService");
         gc.setServiceImplName("%sServiceImpl");
