@@ -1,5 +1,6 @@
 package com.jindan.jdy.service.user;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.jindan.jdy.common.dto.JdyUserDto;
 import com.jindan.jdy.common.pojo.JdyUser;
@@ -13,6 +14,7 @@ import java.util.List;
  * @author: BianPeng
  * 
  */
+
 public interface JdyUserService extends IService<JdyUser> {
 
     List<UserPermission> seleAllUserPriment(Integer userId);
@@ -32,4 +34,6 @@ public interface JdyUserService extends IService<JdyUser> {
     JdyUser seleteOne(JdyUser jdyUser);
 
     List<JdyUser> seleListUsers(JdyUser jdyUser);
+
+    Page<JdyUser> selectJdyUserByPage(JdyUserDto jdyUserDto);
 }

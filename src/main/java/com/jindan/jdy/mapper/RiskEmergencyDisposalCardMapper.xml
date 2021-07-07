@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.mapper.RiskEmergencyDisposalCardMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.RiskEmergencyDisposalCard">
+        <id column="edc_id" property="edcId" />
+        <result column="jdy_user_id" property="jdyUserId" />
+        <result column="disposal_measures" property="disposalMeasures" />
+        <result column="reporting_procedure" property="reportingProcedure" />
+        <result column="report_contact_information" property="reportContactInformation" />
+        <result column="report_content" property="reportContent" />
+        <result column="insert_time" property="insertTime" />
+        <result column="delete_id" property="deleteId" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        edc_id, jdy_user_id, disposal_measures, reporting_procedure, report_contact_information, report_content, insert_time, delete_id
+    </sql>
+
+
+</mapper>

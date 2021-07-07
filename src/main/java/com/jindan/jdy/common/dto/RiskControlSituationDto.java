@@ -10,6 +10,7 @@ import lombok.experimental.Accessors;
 
 import java.util.List;
 
+
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
@@ -20,7 +21,7 @@ public class RiskControlSituationDto extends PageVO {
     /**
      * 风险管控情况
      */
-    @ApiModelProperty(name = "riskPoint" , value = "")
+    @ApiModelProperty(name = "listRiskControlSituation" , value = "")
     private List<RiskControlSituation> listRiskControlSituation;
 
     /**

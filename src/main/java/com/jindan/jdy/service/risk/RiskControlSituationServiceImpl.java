@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.jindan.jdy.common.dto.RiskNameAndPersonnelDto;
 import com.jindan.jdy.common.pojo.RiskControlSituation;
-import com.jindan.jdy.mapper.RiskControlSituationDao;
+import com.jindan.jdy.mapper.RiskControlSituationMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,10 +19,10 @@ import java.util.List;
  * @since 2021-06-11
  */
 @Service
-public class RiskControlSituationServiceImpl extends ServiceImpl<RiskControlSituationDao, RiskControlSituation> implements RiskControlSituationService {
+public class RiskControlSituationServiceImpl extends ServiceImpl<RiskControlSituationMapper, RiskControlSituation> implements RiskControlSituationService {
 
     @Autowired
-    private RiskControlSituationDao riskControlSituationDao;
+    private RiskControlSituationMapper riskControlSituationMapper;
 
     @Override
     public List<RiskControlSituation> selectListRiskControlSituation(RiskNameAndPersonnelDto riskNameAndPersonnelDto) {
@@ -33,7 +33,7 @@ public class RiskControlSituationServiceImpl extends ServiceImpl<RiskControlSitu
         if (riskNameAndPersonnelDto.getInspectionPersonnel() != null && !riskNameAndPersonnelDto.getInspectionPersonnel().equals("")){
             queryWrapper.eq("inspection_personnel",riskNameAndPersonnelDto.getInspectionPersonnel());
         }
-        return riskControlSituationDao.selectList(queryWrapper);
+        return riskControlSituationMapper.selectList(queryWrapper);
     }
 
 }

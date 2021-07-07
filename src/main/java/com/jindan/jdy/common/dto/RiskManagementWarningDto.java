@@ -44,19 +44,15 @@ public class RiskManagementWarningDto extends PageVO {
     /**
      * 创建时间
      */
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     @TableField(fill = FieldFill.INSERT)
     @ApiModelProperty(name = "insertTime" , value = "")
-    private LocalDateTime insertTime;
+    private Date insertTime;
 
     /**
      * 预警时间
      */
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    //@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     @ApiModelProperty(name = "warningTime" , value = "")
-    private LocalDateTime warningTime;
+    private Date warningTime;
 
     /**
      * 开始时间

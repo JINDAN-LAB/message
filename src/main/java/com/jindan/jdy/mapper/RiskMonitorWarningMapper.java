@@ -1,8 +1,7 @@
 package com.jindan.jdy.mapper;
 
-
+import com.jindan.jdy.common.pojo.RiskMonitorWarning;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.jindan.jdy.common.pojo.RiskWarning;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -11,9 +10,9 @@ import org.apache.ibatis.annotations.Mapper;
  * </p>
  *
  * @author liangfang
- * @since 2021-06-04
+ * @since 2021-06-07
  */
 @Mapper
-public interface RiskWarningDao extends BaseMapper<RiskWarning> {
+public interface RiskMonitorWarningMapper extends BaseMapper<RiskMonitorWarning> {
 
 }

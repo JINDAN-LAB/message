@@ -12,7 +12,8 @@ import java.util.Date;
 
 /**   
  * @Description:TODO(外贸道氏实体类)
- * 
+ *
+ * 采購信息
  * @version: V1.0
  * @author: kong
  * 

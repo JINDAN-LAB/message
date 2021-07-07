@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.jindan.jdy.common.dto.RiskMonitorWarningDto;
 import com.jindan.jdy.common.pojo.RiskMonitorWarning;
-import com.jindan.jdy.mapper.RiskMonitorWarningDao;
+import com.jindan.jdy.mapper.RiskMonitorWarningMapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,10 +18,10 @@ import org.springframework.stereotype.Service;
  * @since 2021-06-07
  */
 @Service
-public class RiskMonitorWarningServiceImpl extends ServiceImpl<RiskMonitorWarningDao, RiskMonitorWarning> implements RiskMonitorWarningService {
+public class RiskMonitorWarningServiceImpl extends ServiceImpl<RiskMonitorWarningMapper, RiskMonitorWarning> implements RiskMonitorWarningService {
 
     @Autowired
-    private RiskMonitorWarningDao riskMonitorWarningDao;
+    private RiskMonitorWarningMapper riskMonitorWarningMapper;
 
     @Override
     public Page<RiskMonitorWarning> seleteRiskMonitorWarning(RiskMonitorWarningDto RiskMonitorWarningDto) {
@@ -43,7 +43,7 @@ public class RiskMonitorWarningServiceImpl extends ServiceImpl<RiskMonitorWarnin
             queryWrapper.le("warning_time",endTime);
         }
 
-        return (Page<RiskMonitorWarning>) riskMonitorWarningDao.selectPage(page,queryWrapper);
+        return (Page<RiskMonitorWarning>) riskMonitorWarningMapper.selectPage(page,queryWrapper);
 
     }
 }

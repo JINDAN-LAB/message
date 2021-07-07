@@ -34,7 +34,7 @@ public class JdyAppletFoodSafetyServiceImpl  extends ServiceImpl<JdyAppletFoodSa
 
     @Override
     public List<JdyAppletFoodSafetyDto> seleChejianProblems(String pwd) {
-        log.info("“JdyAppletFoodSafetyServiceImpl.seleChejianProblems方法”开始执行======");
+        log.info("“seleChejianProblems方法的参数pwd=："+"pwd");
         QueryWrapper<JdyAppletFootSafetyPerson> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("password",pwd);
         List<JdyAppletFootSafetyPerson> jdyAppletFootSafetyPeople = jdyAppletFootSafetyPersonDao.selectList(queryWrapper);

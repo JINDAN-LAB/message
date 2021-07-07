@@ -1,6 +1,6 @@
 package com.jindan.jdy.mapper;
 
-import com.jindan.jdy.common.pojo.RiskManagementWarning;
+import com.jindan.jdy.common.pojo.RiskRenewalHistory;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -10,9 +10,9 @@ import org.apache.ibatis.annotations.Mapper;
  * </p>
  *
  * @author liangfang
- * @since 2021-06-07
+ * @since 2021-07-02
  */
 @Mapper
-public interface RiskManagementWarningDao extends BaseMapper<RiskManagementWarning> {
+public interface RiskRenewalHistoryMapper extends BaseMapper<RiskRenewalHistory> {
 
 }

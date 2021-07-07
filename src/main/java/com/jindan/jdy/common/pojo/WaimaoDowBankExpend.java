@@ -12,7 +12,8 @@ import java.util.Date;
 
 /**   
  * @Description:TODO(外贸道氏实体类)
- * 
+ *
+ * 銀行消耗实体类
  * @version: V1.0
  * @author: kong
  * 

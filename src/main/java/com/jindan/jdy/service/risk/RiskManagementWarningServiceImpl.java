@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.jindan.jdy.common.dto.RiskManagementWarningDto;
 import com.jindan.jdy.common.pojo.RiskManagementWarning;
-import com.jindan.jdy.mapper.RiskManagementWarningDao;
+import com.jindan.jdy.mapper.RiskManagementWarningMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,10 +18,10 @@ import org.springframework.stereotype.Service;
  * @since 2021-06-07
  */
 @Service
-public class RiskManagementWarningServiceImpl extends ServiceImpl<RiskManagementWarningDao, RiskManagementWarning> implements RiskManagementWarningService {
+public class RiskManagementWarningServiceImpl extends ServiceImpl<RiskManagementWarningMapper, RiskManagementWarning> implements RiskManagementWarningService {
 
     @Autowired
-    private RiskManagementWarningDao riskManagementWarningDao;
+    private RiskManagementWarningMapper riskManagementWarningMapper;
 
     @Override
     public Page<RiskManagementWarning> selectRiskManagementWarning(RiskManagementWarningDto riskManagementWarningDto) {
@@ -43,6 +43,6 @@ public class RiskManagementWarningServiceImpl extends ServiceImpl<RiskManagement
         }else if (riskManagementWarningDto.getStartTime() == null && riskManagementWarningDto.getEndTime() != null){
             queryWrapper.le("warning_time",endTime);
         }
-        return (Page<RiskManagementWarning>) riskManagementWarningDao.selectPage(page,queryWrapper);
+        return (Page<RiskManagementWarning>) riskManagementWarningMapper.selectPage(page,queryWrapper);
     }
 }

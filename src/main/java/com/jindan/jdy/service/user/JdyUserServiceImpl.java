@@ -1,6 +1,7 @@
 package com.jindan.jdy.service.user;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.jindan.jdy.common.dto.JdyUserDto;
 import com.jindan.jdy.mapper.JdyUserMapper;
@@ -19,6 +20,7 @@ import java.util.List;
  * @author: BianPeng
  * 
  */
+
 @Slf4j
 @Component
 public class JdyUserServiceImpl  extends ServiceImpl<JdyUserMapper, JdyUser> implements JdyUserService {
@@ -92,6 +94,26 @@ public class JdyUserServiceImpl  extends ServiceImpl<JdyUserMapper, JdyUser> imp
             queryWrapper.eq("username",jdyUser.getUsername());
         }
         return jdyUserDao.selectList(queryWrapper);
+    }
+
+    @Override
+    public Page<JdyUser> selectJdyUserByPage(JdyUserDto jdyUserDto) {
+        if (jdyUserDto.getCurrentPage() <= 0){
+            jdyUserDto.setCurrentPage(1);
+        }
+
+        Page<JdyUser> page = new Page<>(jdyUserDto.getCurrentPage(),jdyUserDto.getPageSize());
+
+        QueryWrapper<JdyUser> queryWrapper =new QueryWrapper<>();
+
+        if(jdyUserDto.getDepartments() != null && !jdyUserDto.getDepartments().equals("") ){
+            queryWrapper.eq("departments",jdyUserDto.getDepartments());
+        }
+        if(jdyUserDto.getPower() != null && !jdyUserDto.getPower().equals("") ){
+            queryWrapper.eq("power",jdyUserDto.getPower());
+        }
+
+        return (Page<JdyUser>) jdyUserDao.selectPage(page,queryWrapper);
     }
 
 }
