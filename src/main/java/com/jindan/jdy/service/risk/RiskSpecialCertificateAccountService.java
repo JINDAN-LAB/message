@@ -19,9 +19,9 @@ public interface RiskSpecialCertificateAccountService extends IService<RiskSpeci
 
     /*RiskSpecialCertificateAccount insert(RiskSpecialCertificateAccount riskSpecialCertificateAccount);*/
 
-    Page<RiskSpecialCertificateAccount> selectRiskSpecialCertificateAccountByPage(RiskSpecialCertificateAccountDto riskSpecialCertificateAccountDto);
+    Page<RiskSpecialCertificateAccount> selectRiskSCAByPage(RiskSpecialCertificateAccountDto riskSpecialCertificateAccountDto);
 
-    RiskSpecialCertificateAccount selectRiskSpecialCertificateAccount(RiskSpecialCertificateAccountDto riskSpecialCertificateAccountDto);
+    RiskSpecialCertificateAccount selectRiskSCA(RiskSpecialCertificateAccountDto riskSpecialCertificateAccountDto);
 
     boolean updateCertificate(RiskSpecialCertificateAccount riskSpecialCertificateAccount);
 }
