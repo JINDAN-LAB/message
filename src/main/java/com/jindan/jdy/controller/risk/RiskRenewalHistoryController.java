@@ -51,7 +51,7 @@ public class RiskRenewalHistoryController {
         RiskSpecialCertificateAccountDto riskSpecialCertificateAccountDto = new RiskSpecialCertificateAccountDto();
         riskSpecialCertificateAccountDto.setRscaId(riskRenewalHistoryDto.getRiskSpecialCertificateAccountId());
 
-        RiskSpecialCertificateAccount riskSpecialCertificateAccountResult = riskSpecialCertificateAccountService.selectRiskSpecialCertificateAccount(riskSpecialCertificateAccountDto);
+        RiskSpecialCertificateAccount riskSpecialCertificateAccountResult = riskSpecialCertificateAccountService.selectRiskSCA(riskSpecialCertificateAccountDto);
 
         RiskRenewalHistory riskRenewalHistory = new RiskRenewalHistory();
         riskRenewalHistory.setRiskSpecialCertificateAccountId(riskSpecialCertificateAccountResult.getRscaId());   //特种证书表id

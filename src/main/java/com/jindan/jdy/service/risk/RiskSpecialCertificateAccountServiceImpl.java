@@ -32,7 +32,7 @@ public class RiskSpecialCertificateAccountServiceImpl extends ServiceImpl<RiskSp
     }*/
 
     @Override
-    public Page<RiskSpecialCertificateAccount> selectRiskSpecialCertificateAccountByPage(RiskSpecialCertificateAccountDto riskSpecialCertificateAccountDto) {
+    public Page<RiskSpecialCertificateAccount> selectRiskSCAByPage(RiskSpecialCertificateAccountDto riskSpecialCertificateAccountDto) {
 
         if (riskSpecialCertificateAccountDto.getCurrentPage() <= 0){
             riskSpecialCertificateAccountDto.setCurrentPage(1);
@@ -66,7 +66,7 @@ public class RiskSpecialCertificateAccountServiceImpl extends ServiceImpl<RiskSp
     }
 
     @Override
-    public RiskSpecialCertificateAccount selectRiskSpecialCertificateAccount(RiskSpecialCertificateAccountDto riskSpecialCertificateAccountDto) {
+    public RiskSpecialCertificateAccount selectRiskSCA(RiskSpecialCertificateAccountDto riskSpecialCertificateAccountDto) {
         QueryWrapper<RiskSpecialCertificateAccount> queryWrapper = new QueryWrapper<>();
         if (riskSpecialCertificateAccountDto.getRscaId() != null && !riskSpecialCertificateAccountDto.getRscaId().equals("")){
             queryWrapper.eq("rsca_id",riskSpecialCertificateAccountDto.getRscaId());

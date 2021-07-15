@@ -34,8 +34,8 @@ public class RiskSpecialCertificateAccountController {
     private RiskSpecialCertificateAccountService riskSpecialCertificateAccountService;
 
     @ApiOperation(value = "新增特种证书台账",notes = "参数：特种证书台账实体类")
-    @PostMapping("/addRiskSpecialCertificateAccount")
-    public ResultVo addRiskSpecialCertificateAccount(@ApiParam(name = "riskSpecialCertificateAccount", required = true)
+    @PostMapping("/addRiskSCA")
+    public ResultVo addRiskSCA(@ApiParam(name = "riskSpecialCertificateAccount", required = true)
                                                   @RequestBody RiskSpecialCertificateAccount riskSpecialCertificateAccount){
 
         riskSpecialCertificateAccount.setInsertTime(new Date());
@@ -46,29 +46,29 @@ public class RiskSpecialCertificateAccountController {
         return ResultVo.failed();
     }
 
-    @ApiOperation(value = "分页查询查询特种证书台账",notes = "参数：特种证书台账实体类")
-    @PostMapping("/selectRiskSpecialCertificateAccountByPage")
-    public ResultVo selectRiskSpecialCertificateAccountByPage(@ApiParam(name = "riskResponsibilityListDto",required =false)
+    @ApiOperation(value = "分页查询特种证书台账",notes = "参数：特种证书台账实体类")
+    @PostMapping("/selectRiskSCAByPage")
+    public ResultVo selectRiskSCAByPage(@ApiParam(name = "riskSpecialCertificateAccountDto",required =false)
                                                        @RequestBody RiskSpecialCertificateAccountDto riskSpecialCertificateAccountDto){
 
         log.info("riskSpecialCertificateAccountDto.getPageSize()的值为："+riskSpecialCertificateAccountDto.getPageSize());
-        Page<RiskSpecialCertificateAccount> pageList = riskSpecialCertificateAccountService.selectRiskSpecialCertificateAccountByPage(riskSpecialCertificateAccountDto);
+        Page<RiskSpecialCertificateAccount> pageList = riskSpecialCertificateAccountService.selectRiskSCAByPage(riskSpecialCertificateAccountDto);
         return ResultVo.success(pageList);
     }
 
-    @ApiOperation(value = "查询查询特种证书台账",notes = "参数：特种证书台账实体类")
-    @PostMapping("/selectRiskSpecialCertificateAccount")
-    public ResultVo selectRiskSpecialCertificateAccount(@ApiParam(name = "riskResponsibilityListDto",required =false)
+    @ApiOperation(value = "查询一条特种证书台账",notes = "参数：特种证书台账实体类")
+    @PostMapping("/selectRiskSCA")
+    public ResultVo selectRiskSCA(@ApiParam(name = "riskSpecialCertificateAccountDto",required =false)
                                                               @RequestBody RiskSpecialCertificateAccountDto riskSpecialCertificateAccountDto){
 
         log.info("riskSpecialCertificateAccountDto.getPageSize()的值为："+riskSpecialCertificateAccountDto.getPageSize());
-        RiskSpecialCertificateAccount riskSpecialCertificateAccount = riskSpecialCertificateAccountService.selectRiskSpecialCertificateAccount(riskSpecialCertificateAccountDto);
+        RiskSpecialCertificateAccount riskSpecialCertificateAccount = riskSpecialCertificateAccountService.selectRiskSCA(riskSpecialCertificateAccountDto);
         return ResultVo.success(riskSpecialCertificateAccount);
     }
 
     @ApiOperation(value = "更新特种证书台账",notes = "参数：特种证书实体类")
-    @PostMapping("/updateRiskSpecialCertificateAccount")
-    public ResultVo updateRiskSpecialCertificateAccount(@ApiParam(name = "riskSpecialCertificateAccount", required = true)
+    @PostMapping("/updateRiskSCA")
+    public ResultVo updateRiskSCA(@ApiParam(name = "riskSpecialCertificateAccount", required = true)
                                                   @RequestBody  RiskSpecialCertificateAccount riskSpecialCertificateAccount){
 
         boolean update = riskSpecialCertificateAccountService.updateById(riskSpecialCertificateAccount);
@@ -79,19 +79,15 @@ public class RiskSpecialCertificateAccountController {
     }
 
     @ApiOperation("批量删除特种证书台账")
-    @DeleteMapping("deleteRiskSpecialCertificateAccount")
-    public ResultVo deleteRiskSpecialCertificateAccount(@ApiParam(name = "id", value = "权限ID", required = true)
-                                        @RequestBody  List<RiskSpecialCertificateAccount> listRiskSpecialCertificateAccount){
+    @PostMapping("/deleteRiskSCA")
+    public ResultVo deleteRiskSCA(@ApiParam(name = "list", value = "权限ID", required = true)
+                                        @RequestBody  List<String> list){
 
-
-        for (int i = 0;i < listRiskSpecialCertificateAccount.size();i++){
-            int id = Integer.parseInt(listRiskSpecialCertificateAccount.get(i).getRscaId());
-            boolean listDelete = riskSpecialCertificateAccountService.removeById(id);
-            if(listDelete){
-                return ResultVo.success();
-            }
+        log.info("参数list.get(0)的值为："+list.get(0));
+        boolean listDelete = riskSpecialCertificateAccountService.removeByIds(list);
+        if(listDelete){
+            return ResultVo.success();
         }
-
         return ResultVo.failed();
     }
 }
