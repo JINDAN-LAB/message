@@ -406,7 +406,7 @@ public class DomesticFahuoController{
              domesticFahuoService.saveAllBatch(jindantichengList);
             return ResultVo.success(num);
         }
-            
+
         @ApiOperation(value = "发货信息列表", notes = "参数:包装信息列表")
         @PostMapping("/fahuolist")
         public ResultVo conditionpurchase(@ApiParam(name = "domesticFahuoDto", required = false)
@@ -483,7 +483,7 @@ public class DomesticFahuoController{
                  redisUtil.set("paramlist",list.get(0));
                  return  ResultVo.success(list.get(0));
              }else{
-                 return  ResultVo.success((com.jindan.jdy.common.pojo.DomesticXishu) redisUtil.get("paramlist"));
+                 return  ResultVo.success((DomesticXishu) redisUtil.get("paramlist"));
              }
         }
 

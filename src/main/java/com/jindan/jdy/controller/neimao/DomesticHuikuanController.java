@@ -239,6 +239,7 @@ public class DomesticHuikuanController{
                   huikuanlists.get(j).setXiankuanjiang(huikuanlists.get(j).getXiankuanjiang() + "," + "0");
                   huikuanlists.get(j).setXiankuanjiangbili(huikuanlists.get(j).getXiankuanjiangbili() + "," + "0");
               } // 先款奖结束
+
               String str = fahuoDtoList.get(i).getShoukuanxieyi();
               //正则表达式，用于匹配非数字串，+号用于匹配出多个非数字串
               String regEx = "[^0-9]+";
@@ -272,73 +273,160 @@ public class DomesticHuikuanController{
                   if (!StringUtils.isEmpty(huikuanlists.get(j).getChengduiriqi())){
                       if(Double.valueOf(nums) <= 10){
                           if (fahuoDtoList.get(i).getFangshi().equals("公路运输")) {
-                              lijiang = (Double.valueOf(nums) + Double.valueOf(fajianhui)) *
+//                              先回款后发货
+                           if(fajianhui >= 0){
+//                            TODO 大转小可能会出问题
+                              nums = (int) fajianhui;
+                              lijiang = (Double.valueOf(nums)) *
                                       (Double.valueOf(fahuoDtoList.get(i).getHanshuidanjia()) - Double.valueOf(fahuoDtoList.get(i).getYunshudanjia()) - Double.valueOf(fahuoDtoList.get(i).getDomesticBaozhuang().getBuhanbaozhuang()) - yongjins)
                                       * (yongs / Double.valueOf(fahuoDtoList.get(i).getJiashuiheji())) * 0.01 / 30 * Double.valueOf(xishu.getChenglixibuchaoqi()) * Double.valueOf(fahuoDtoList.get(i).getShuliang());
                               BigDecimal b = new BigDecimal(lijiang);
                               double f1 = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
                               huikuanlists.get(j).setLixijiang(huikuanlists.get(j).getLixijiang() + "," + f1);
                               huikuanlists.get(j).setLixijiangbili(huikuanlists.get(j).getLixijiangbili() + "," + "0.01/30*" + xishu.getChenglixibuchaoqi());
-                              huikuanlists.get(j).setYufutianshu(huikuanlists.get(j).getYufutianshu() + "," + (nums+fajianhui));
+                              huikuanlists.get(j).setYufutianshu(huikuanlists.get(j).getYufutianshu() + "," + (nums));
                               huikuanlists.get(j).setBiaoshi(biaoshi);
+                            }else{
+//                               无利息将
+                               BigDecimal b = new BigDecimal(0);
+                               double f1 = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+                               huikuanlists.get(j).setLixijiang(huikuanlists.get(j).getLixijiang() + "," + f1);
+                               huikuanlists.get(j).setLixijiangbili(huikuanlists.get(j).getLixijiangbili() + "," + "0.01/30*" + xishu.getChenglixibuchaoqi());
+                               huikuanlists.get(j).setYufutianshu(huikuanlists.get(j).getYufutianshu() + "," + (nums));
+                               huikuanlists.get(j).setBiaoshi(biaoshi);
+                           }
+
                           } else {
-                              lijiang = (Double.valueOf(nums) + Double.valueOf(fajianhui)) *
+//                            不是公路运输的情况
+                         if(fajianhui >= 0){
+//                            TODO 大转小可能会出问题
+                                  nums = (int) fajianhui;
+                                  lijiang = (Double.valueOf(nums)) *
                                       (Double.valueOf(fahuoDtoList.get(i).getHanshuidanjia()) - Double.valueOf(fahuoDtoList.get(i).getYunshudanjia()) - Double.valueOf(fahuoDtoList.get(i).getDomesticBaozhuang().getBuhanbaozhuang()) - yongjins)
                                       * (yongs / Double.valueOf(fahuoDtoList.get(i).getJiashuiheji())) * 0.01 / 30 * Double.valueOf(xishu.getChenglixibuchaoqi()) * Double.valueOf(fahuoDtoList.get(i).getShuliang());
                               BigDecimal b = new BigDecimal(lijiang);
                               double f1 = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
                               huikuanlists.get(j).setLixijiang(huikuanlists.get(j).getLixijiang() + "," + f1);
                               huikuanlists.get(j).setLixijiangbili(huikuanlists.get(j).getLixijiangbili() + "," + "0.01/30*" + xishu.getChenglixibuchaoqi());
-                              huikuanlists.get(j).setYufutianshu(huikuanlists.get(j).getYufutianshu() + "," + (nums+fajianhui));
+                              huikuanlists.get(j).setYufutianshu(huikuanlists.get(j).getYufutianshu() + "," + (nums ));
                               huikuanlists.get(j).setBiaoshi(biaoshi);
+                          }else{
+//                               无利息将
+                                  BigDecimal b = new BigDecimal(0);
+                                  double f1 = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+                                  huikuanlists.get(j).setLixijiang(huikuanlists.get(j).getLixijiang() + "," + f1);
+                                  huikuanlists.get(j).setLixijiangbili(huikuanlists.get(j).getLixijiangbili() + "," + "0.01/30*" + xishu.getChenglixibuchaoqi());
+                                  huikuanlists.get(j).setYufutianshu(huikuanlists.get(j).getYufutianshu() + "," + (nums));
+                                  huikuanlists.get(j).setBiaoshi(biaoshi);
+                          }
+
                           }
                       } else if (Double.valueOf(nums) > 10) {
-                          lijiang = (Double.valueOf(nums) + Double.valueOf(fajianhui)) *
+
+                          if(fajianhui >= 0){
+//                            TODO 大转小可能会出问题
+                              nums = (int) fajianhui;
+                              lijiang = (Double.valueOf(nums)) *
                                   (Double.valueOf(fahuoDtoList.get(i).getHanshuidanjia()) - Double.valueOf(fahuoDtoList.get(i).getYunshudanjia()) - Double.valueOf(fahuoDtoList.get(i).getDomesticBaozhuang().getBuhanbaozhuang()) - yongjins)
                                   * (yongs / Double.valueOf(fahuoDtoList.get(i).getJiashuiheji())) * 0.01 / 30 * Double.valueOf(xishu.getChenglixibuchaoqi()) * Double.valueOf(fahuoDtoList.get(i).getShuliang());
                           BigDecimal b = new BigDecimal(lijiang);
                           double f1 = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
                           huikuanlists.get(j).setLixijiang(huikuanlists.get(j).getLixijiang() + "," + f1);
                           huikuanlists.get(j).setLixijiangbili(huikuanlists.get(j).getLixijiangbili() + "," + "0.01/30*" + xishu.getChenglixibuchaoqi());
-                          huikuanlists.get(j).setYufutianshu(huikuanlists.get(j).getYufutianshu() + "," + (nums+fajianhui));
+                          huikuanlists.get(j).setYufutianshu(huikuanlists.get(j).getYufutianshu() + "," + (nums));
                           huikuanlists.get(j).setBiaoshi(biaoshi);
-                      }
-                  } else {
-                      if (Double.valueOf(nums) <= 10) {
-                          if (fahuoDtoList.get(i).getFangshi().equals("公路运输")) {
-                              lijiang = (Double.valueOf(nums) + Double.valueOf(fajianhui)) *
-                                      (Double.valueOf(fahuoDtoList.get(i).getHanshuidanjia()) - Double.valueOf(fahuoDtoList.get(i).getYunshudanjia()) - Double.valueOf(fahuoDtoList.get(i).getDomesticBaozhuang().getBuhanbaozhuang()) - yongjins)
-                                      * (yongs / Double.valueOf(fahuoDtoList.get(i).getJiashuiheji())) * 0.01 / 30 * Double.valueOf(xishu.getBuchaoqi1()) * Double.valueOf(fahuoDtoList.get(i).getShuliang());
-                              BigDecimal b = new BigDecimal(lijiang);
+                        }else{
+//                               无利息将
+                              BigDecimal b = new BigDecimal(0);
                               double f1 = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
                               huikuanlists.get(j).setLixijiang(huikuanlists.get(j).getLixijiang() + "," + f1);
-                              huikuanlists.get(j).setLixijiangbili(huikuanlists.get(j).getLixijiangbili() + "," + "0.01/30*" + xishu.getBuchaoqi1());
-                              huikuanlists.get(j).setYufutianshu(huikuanlists.get(j).getYufutianshu() + "," + (nums+fajianhui));
+                              huikuanlists.get(j).setLixijiangbili(huikuanlists.get(j).getLixijiangbili() + "," + "0.01/30*" + xishu.getChenglixibuchaoqi());
+                              huikuanlists.get(j).setYufutianshu(huikuanlists.get(j).getYufutianshu() + "," + (nums));
                               huikuanlists.get(j).setBiaoshi(biaoshi);
+                          }
+
+
+                      }
+                  } else {
+//                      承兑日期为空的情况
+                      if (Double.valueOf(nums) <= 10) {
+                          if (fahuoDtoList.get(i).getFangshi().equals("公路运输")) {
+
+                              if(fajianhui >= 0){
+//                            TODO 大转小可能会出问题
+                                  nums = (int) fajianhui;
+                                  lijiang = (Double.valueOf(nums) ) *
+                                      (Double.valueOf(fahuoDtoList.get(i).getHanshuidanjia()) - Double.valueOf(fahuoDtoList.get(i).getYunshudanjia()) - Double.valueOf(fahuoDtoList.get(i).getDomesticBaozhuang().getBuhanbaozhuang()) - yongjins)
+                                      * (yongs / Double.valueOf(fahuoDtoList.get(i).getJiashuiheji())) * 0.01 / 30 * Double.valueOf(xishu.getBuchaoqi1()) * Double.valueOf(fahuoDtoList.get(i).getShuliang());
+                                  BigDecimal b = new BigDecimal(lijiang);
+                                  double f1 = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+                                  huikuanlists.get(j).setLixijiang(huikuanlists.get(j).getLixijiang() + "," + f1);
+                                  huikuanlists.get(j).setLixijiangbili(huikuanlists.get(j).getLixijiangbili() + "," + "0.01/30*" + xishu.getBuchaoqi1());
+                                  huikuanlists.get(j).setYufutianshu(huikuanlists.get(j).getYufutianshu() + "," + (nums));
+                                  huikuanlists.get(j).setBiaoshi(biaoshi);
+                              }else{
+//                               无利息将
+                                  BigDecimal b = new BigDecimal(0);
+                                  double f1 = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+                                  huikuanlists.get(j).setLixijiang(huikuanlists.get(j).getLixijiang() + "," + f1);
+                                  huikuanlists.get(j).setLixijiangbili(huikuanlists.get(j).getLixijiangbili() + "," + "0.01/30*" + xishu.getBuchaoqi1());
+                                  huikuanlists.get(j).setYufutianshu(huikuanlists.get(j).getYufutianshu() + "," + (nums));
+                                  huikuanlists.get(j).setBiaoshi(biaoshi);
+                              }
                           } else {
-                              lijiang = (Double.valueOf(nums) + Double.valueOf(fajianhui)) *
+
+                              if(fajianhui >= 0){
+//                            TODO 大转小可能会出问题
+                                  nums = (int) fajianhui;
+
+                              lijiang = (Double.valueOf(nums) ) *
                                       (Double.valueOf(fahuoDtoList.get(i).getHanshuidanjia()) - Double.valueOf(fahuoDtoList.get(i).getYunshudanjia()) - Double.valueOf(fahuoDtoList.get(i).getDomesticBaozhuang().getBuhanbaozhuang()) - yongjins)
                                       * (yongs / Double.valueOf(fahuoDtoList.get(i).getJiashuiheji())) * 0.01 / 30 * Double.valueOf(xishu.getBuchaoqi2()) * Double.valueOf(fahuoDtoList.get(i).getShuliang());
                               BigDecimal b = new BigDecimal(lijiang);
                               double f1 = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
                               huikuanlists.get(j).setLixijiang(huikuanlists.get(j).getLixijiang() + "," + f1);
                               huikuanlists.get(j).setLixijiangbili(huikuanlists.get(j).getLixijiangbili() + "," + "0.01/30*" + xishu.getBuchaoqi2());
-                              huikuanlists.get(j).setYufutianshu(huikuanlists.get(j).getYufutianshu() + "," + (nums+fajianhui));
+                              huikuanlists.get(j).setYufutianshu(huikuanlists.get(j).getYufutianshu() + "," + (nums));
                               huikuanlists.get(j).setBiaoshi(biaoshi);
+
+                              }else{
+    //                               无利息将
+                                  BigDecimal b = new BigDecimal(0);
+                                  double f1 = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+                                  huikuanlists.get(j).setLixijiang(huikuanlists.get(j).getLixijiang() + "," + f1);
+                                  huikuanlists.get(j).setLixijiangbili(huikuanlists.get(j).getLixijiangbili() + "," + "0.01/30*" + xishu.getBuchaoqi2());
+                                  huikuanlists.get(j).setYufutianshu(huikuanlists.get(j).getYufutianshu() + "," + (nums));
+                                  huikuanlists.get(j).setBiaoshi(biaoshi);
+                              }
                           }
                       } else if (Double.valueOf(nums) > 10) {
-                          lijiang = (Double.valueOf(nums) + Double.valueOf(fajianhui)) *
+
+                          if(fajianhui >= 0){
+//                            TODO 大转小可能会出问题
+                              nums = (int) fajianhui;
+
+                          lijiang = (Double.valueOf(nums) ) *
                                   (Double.valueOf(fahuoDtoList.get(i).getHanshuidanjia()) - Double.valueOf(fahuoDtoList.get(i).getYunshudanjia()) - Double.valueOf(fahuoDtoList.get(i).getDomesticBaozhuang().getBuhanbaozhuang()) - yongjins)
                                   * (yongs / Double.valueOf(fahuoDtoList.get(i).getJiashuiheji())) * 0.01 / 30 * Double.valueOf(xishu.getBuchaoqi1()) * Double.valueOf(fahuoDtoList.get(i).getShuliang());
                           BigDecimal b = new BigDecimal(lijiang);
                           double f1 = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
                           huikuanlists.get(j).setLixijiang(huikuanlists.get(j).getLixijiang() + "," + f1);
                           huikuanlists.get(j).setLixijiangbili(huikuanlists.get(j).getLixijiangbili() + "," + "0.01/30*" + xishu.getBuchaoqi1());
-                          huikuanlists.get(j).setYufutianshu(huikuanlists.get(j).getYufutianshu() + "," + (nums+fajianhui));
+                          huikuanlists.get(j).setYufutianshu(huikuanlists.get(j).getYufutianshu() + "," + (nums));
                           huikuanlists.get(j).setBiaoshi(biaoshi);
+                          }else{
+                              //                        无利息将
+                              BigDecimal b = new BigDecimal(0);
+                              double f1 = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+                              huikuanlists.get(j).setLixijiang(huikuanlists.get(j).getLixijiang() + "," + f1);
+                              huikuanlists.get(j).setLixijiangbili(huikuanlists.get(j).getLixijiangbili() + "," + "0.01/30*" + xishu.getBuchaoqi1());
+                              huikuanlists.get(j).setYufutianshu(huikuanlists.get(j).getYufutianshu() + "," + (nums));
+                              huikuanlists.get(j).setBiaoshi(biaoshi);
+                          }
                       }
                   }
               } else {
+//                  罚息暂时不改动
 //                   超期中的不超期现象
                   if (!StringUtils.isEmpty(huikuanlists.get(j).getChengduiriqi())) {
                       if (chengjianhui <= 0 ) {   //  承兑减发货
@@ -535,6 +623,7 @@ public class DomesticHuikuanController{
               list3.add(huikuanlists.get(j));
               break;
           } else {
+//              回款金额不满足出现的问题
               yongs = Double.valueOf(huikuanlists.get(j).getJine());
               fajianhui = CommonUtils.getDistanceDays(fahuoDtoList.get(i).getDanjuriqi(), huikuanlists.get(j).getHuikuanriqi());
               if (CommonUtils.getDistanceDays(fahuoDtoList.get(i).getDanjuriqi(), huikuanlists.get(j).getHuikuanriqi()) >= 0) {
@@ -610,51 +699,136 @@ public class DomesticHuikuanController{
                   if (!StringUtils.isEmpty(huikuanlists.get(j).getChengduiriqi())) {
                       if (Double.valueOf(nums) <= 10) {
                           if (!fahuoDtoList.get(i).getFangshi().equals("公路运输")) {
-                              lijiang = (Double.valueOf(nums) + Double.valueOf(fajianhui)) *
-                                      (Double.valueOf(fahuoDtoList.get(i).getHanshuidanjia()) - Double.valueOf(fahuoDtoList.get(i).getYunshudanjia()) - Double.valueOf(fahuoDtoList.get(i).getDomesticBaozhuang().getBuhanbaozhuang()) - yongjins)
-                                      * (yongs / Double.valueOf(fahuoDtoList.get(i).getJiashuiheji())) * 0.01 / 30 * Double.valueOf(xishu.getChenglixibuchaoqi()) * Double.valueOf(fahuoDtoList.get(i).getShuliang());
-                              BigDecimal b = new BigDecimal(lijiang);
-                              double f1 = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
-                              huikuanlists.get(j).setLixijiang(huikuanlists.get(j).getLixijiang() + "," + f1);
-                              huikuanlists.get(j).setLixijiangbili(huikuanlists.get(j).getLixijiangbili() + "," +"0.01/30*" + xishu.getChenglixibuchaoqi());
-                              huikuanlists.get(j).setYufutianshu(huikuanlists.get(j).getYufutianshu() + "," + (nums+fajianhui));
-                              huikuanlists.get(j).setBiaoshi(biaoshi);
+
+//                              补充
+                              if(fajianhui >= 0){
+//                            TODO 大转小可能会出问题
+                                  nums = (int) fajianhui;
+                                  lijiang = (Double.valueOf(nums) + Double.valueOf(fajianhui)) *
+                                          (Double.valueOf(fahuoDtoList.get(i).getHanshuidanjia()) - Double.valueOf(fahuoDtoList.get(i).getYunshudanjia()) - Double.valueOf(fahuoDtoList.get(i).getDomesticBaozhuang().getBuhanbaozhuang()) - yongjins)
+                                          * (yongs / Double.valueOf(fahuoDtoList.get(i).getJiashuiheji())) * 0.01 / 30 * Double.valueOf(xishu.getChenglixibuchaoqi()) * Double.valueOf(fahuoDtoList.get(i).getShuliang());
+                                  BigDecimal b = new BigDecimal(lijiang);
+                                  double f1 = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+                                  huikuanlists.get(j).setLixijiang(huikuanlists.get(j).getLixijiang() + "," + f1);
+                                  huikuanlists.get(j).setLixijiangbili(huikuanlists.get(j).getLixijiangbili() + "," +"0.01/30*" + xishu.getChenglixibuchaoqi());
+                                  huikuanlists.get(j).setYufutianshu(huikuanlists.get(j).getYufutianshu() + "," + (nums));
+                                  huikuanlists.get(j).setBiaoshi(biaoshi);
+                              }else{
+//                               无利息将
+                                  BigDecimal b = new BigDecimal(0);
+                                  double f1 = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+                                  huikuanlists.get(j).setLixijiang(huikuanlists.get(j).getLixijiang() + "," + f1);
+                                  huikuanlists.get(j).setLixijiangbili(huikuanlists.get(j).getLixijiangbili() + "," + "0.01/30*" + xishu.getChenglixibuchaoqi());
+                                  huikuanlists.get(j).setYufutianshu(huikuanlists.get(j).getYufutianshu() + "," + (nums));
+                                  huikuanlists.get(j).setBiaoshi(biaoshi);
+                              }
+
                           } else {
-                              lijiang = (Double.valueOf(nums) + Double.valueOf(fajianhui)) *
-                                      (Double.valueOf(fahuoDtoList.get(i).getHanshuidanjia()) - Double.valueOf(fahuoDtoList.get(i).getYunshudanjia()) - Double.valueOf(fahuoDtoList.get(i).getDomesticBaozhuang().getBuhanbaozhuang()) - yongjins)
-                                      * (yongs / Double.valueOf(fahuoDtoList.get(i).getJiashuiheji())) * 0.01 / 30 * Double.valueOf(xishu.getChenglixibuchaoqi()) * Double.valueOf(fahuoDtoList.get(i).getShuliang());
-                              BigDecimal b = new BigDecimal(lijiang);
-                              double f1 = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
-                              huikuanlists.get(j).setLixijiang(huikuanlists.get(j).getLixijiang() + "," + f1);
-                              huikuanlists.get(j).setLixijiangbili(huikuanlists.get(j).getLixijiangbili() + "," +"0.01/30*" + xishu.getChenglixibuchaoqi());
-                              huikuanlists.get(j).setYufutianshu(huikuanlists.get(j).getYufutianshu() + "," + (nums+fajianhui));
-                              huikuanlists.get(j).setBiaoshi(biaoshi);
+
+                              if(fajianhui >= 0){
+//                            TODO 大转小可能会出问题
+                                  nums = (int) fajianhui;
+                                  lijiang = (Double.valueOf(nums) + Double.valueOf(fajianhui)) *
+                                          (Double.valueOf(fahuoDtoList.get(i).getHanshuidanjia()) - Double.valueOf(fahuoDtoList.get(i).getYunshudanjia()) - Double.valueOf(fahuoDtoList.get(i).getDomesticBaozhuang().getBuhanbaozhuang()) - yongjins)
+                                          * (yongs / Double.valueOf(fahuoDtoList.get(i).getJiashuiheji())) * 0.01 / 30 * Double.valueOf(xishu.getChenglixibuchaoqi()) * Double.valueOf(fahuoDtoList.get(i).getShuliang());
+                                  BigDecimal b = new BigDecimal(lijiang);
+                                  double f1 = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+                                  huikuanlists.get(j).setLixijiang(huikuanlists.get(j).getLixijiang() + "," + f1);
+                                  huikuanlists.get(j).setLixijiangbili(huikuanlists.get(j).getLixijiangbili() + "," +"0.01/30*" + xishu.getChenglixibuchaoqi());
+                                  huikuanlists.get(j).setYufutianshu(huikuanlists.get(j).getYufutianshu() + "," + (nums));
+                                  huikuanlists.get(j).setBiaoshi(biaoshi);
+                              }else{
+//                               无利息将
+                                  BigDecimal b = new BigDecimal(0);
+                                  double f1 = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+                                  huikuanlists.get(j).setLixijiang(huikuanlists.get(j).getLixijiang() + "," + f1);
+                                  huikuanlists.get(j).setLixijiangbili(huikuanlists.get(j).getLixijiangbili() + "," + "0.01/30*" + xishu.getChenglixibuchaoqi());
+                                  huikuanlists.get(j).setYufutianshu(huikuanlists.get(j).getYufutianshu() + "," + (nums));
+                                  huikuanlists.get(j).setBiaoshi(biaoshi);
+                              }
+
                           }
                       } else if (Double.valueOf(nums) > 10) {
-                          lijiang = (Double.valueOf(nums) + Double.valueOf(fajianhui)) *
-                                  (Double.valueOf(fahuoDtoList.get(i).getHanshuidanjia()) - Double.valueOf(fahuoDtoList.get(i).getYunshudanjia()) - Double.valueOf(fahuoDtoList.get(i).getDomesticBaozhuang().getBuhanbaozhuang()) - yongjins)
-                                  * (yongs / Double.valueOf(fahuoDtoList.get(i).getJiashuiheji())) * 0.01 / 30 * Double.valueOf(xishu.getChenglixibuchaoqi()) * Double.valueOf(fahuoDtoList.get(i).getShuliang());
-                          BigDecimal b = new BigDecimal(lijiang);
-                          double f1 = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
-                          huikuanlists.get(j).setLixijiang(huikuanlists.get(j).getLixijiang() + "," + f1);
 
-                          huikuanlists.get(j).setLixijiangbili(huikuanlists.get(j).getLixijiangbili() + "," +"0.01/30*" + xishu.getChenglixibuchaoqi());
-                          huikuanlists.get(j).setYufutianshu(huikuanlists.get(j).getYufutianshu() + "," + (nums+fajianhui));
-                          huikuanlists.get(j).setBiaoshi(biaoshi);
+                          if(fajianhui >= 0){
+//                            TODO 大转小可能会出问题
+                              nums = (int) fajianhui;
+                              lijiang = (Double.valueOf(nums) + Double.valueOf(fajianhui)) *
+                                      (Double.valueOf(fahuoDtoList.get(i).getHanshuidanjia()) - Double.valueOf(fahuoDtoList.get(i).getYunshudanjia()) - Double.valueOf(fahuoDtoList.get(i).getDomesticBaozhuang().getBuhanbaozhuang()) - yongjins)
+                                      * (yongs / Double.valueOf(fahuoDtoList.get(i).getJiashuiheji())) * 0.01 / 30 * Double.valueOf(xishu.getChenglixibuchaoqi()) * Double.valueOf(fahuoDtoList.get(i).getShuliang());
+                              BigDecimal b = new BigDecimal(lijiang);
+                              double f1 = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+                              huikuanlists.get(j).setLixijiang(huikuanlists.get(j).getLixijiang() + "," + f1);
+
+                              huikuanlists.get(j).setLixijiangbili(huikuanlists.get(j).getLixijiangbili() + "," +"0.01/30*" + xishu.getChenglixibuchaoqi());
+                              huikuanlists.get(j).setYufutianshu(huikuanlists.get(j).getYufutianshu() + "," + (nums));
+                              huikuanlists.get(j).setBiaoshi(biaoshi);
+                          }else{
+//                               无利息将
+                              BigDecimal b = new BigDecimal(0);
+                              double f1 = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+                              huikuanlists.get(j).setLixijiang(huikuanlists.get(j).getLixijiang() + "," + f1);
+                              huikuanlists.get(j).setLixijiangbili(huikuanlists.get(j).getLixijiangbili() + "," + "0.01/30*" + xishu.getChenglixibuchaoqi());
+                              huikuanlists.get(j).setYufutianshu(huikuanlists.get(j).getYufutianshu() + "," + (nums));
+                              huikuanlists.get(j).setBiaoshi(biaoshi);
+                          }
                       }
                   } else {
                       if (Double.valueOf(nums) <= 10) {
                           if (!fahuoDtoList.get(i).getFangshi().equals("公路运输")) {
-                              lijiang = (Double.valueOf(nums) + Double.valueOf(fajianhui)) *
-                                      (Double.valueOf(fahuoDtoList.get(i).getHanshuidanjia()) - Double.valueOf(fahuoDtoList.get(i).getYunshudanjia()) - Double.valueOf(fahuoDtoList.get(i).getDomesticBaozhuang().getBuhanbaozhuang()) - yongjins)
-                                      * (yongs / Double.valueOf(fahuoDtoList.get(i).getJiashuiheji())) * 0.01 / 30 * Double.valueOf(xishu.getBuchaoqi2()) * Double.valueOf(fahuoDtoList.get(i).getShuliang());
-                              BigDecimal b = new BigDecimal(lijiang);
-                              double f1 = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
-                              huikuanlists.get(j).setLixijiang(huikuanlists.get(j).getLixijiang() + "," + f1);
-                              huikuanlists.get(j).setLixijiangbili(huikuanlists.get(j).getLixijiangbili() + "," +"0.01/30*" + xishu.getBuchaoqi2());
-                              huikuanlists.get(j).setYufutianshu(huikuanlists.get(j).getYufutianshu() + "," + (nums+fajianhui));
-                              huikuanlists.get(j).setBiaoshi(biaoshi);
+
+                              if(fajianhui >= 0){
+//                            TODO 大转小可能会出问题
+                                  nums = (int) fajianhui;
+                                  lijiang = (Double.valueOf(nums) + Double.valueOf(fajianhui)) *
+                                          (Double.valueOf(fahuoDtoList.get(i).getHanshuidanjia()) - Double.valueOf(fahuoDtoList.get(i).getYunshudanjia()) - Double.valueOf(fahuoDtoList.get(i).getDomesticBaozhuang().getBuhanbaozhuang()) - yongjins)
+                                          * (yongs / Double.valueOf(fahuoDtoList.get(i).getJiashuiheji())) * 0.01 / 30 * Double.valueOf(xishu.getBuchaoqi2()) * Double.valueOf(fahuoDtoList.get(i).getShuliang());
+                                  BigDecimal b = new BigDecimal(lijiang);
+                                  double f1 = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+                                  huikuanlists.get(j).setLixijiang(huikuanlists.get(j).getLixijiang() + "," + f1);
+                                  huikuanlists.get(j).setLixijiangbili(huikuanlists.get(j).getLixijiangbili() + "," +"0.01/30*" + xishu.getBuchaoqi2());
+                                  huikuanlists.get(j).setYufutianshu(huikuanlists.get(j).getYufutianshu() + "," + (nums));
+                                  huikuanlists.get(j).setBiaoshi(biaoshi);
+                              }else{
+//                               无利息将
+                                  BigDecimal b = new BigDecimal(0);
+                                  double f1 = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+                                  huikuanlists.get(j).setLixijiang(huikuanlists.get(j).getLixijiang() + "," + f1);
+                                  huikuanlists.get(j).setLixijiangbili(huikuanlists.get(j).getLixijiangbili() + "," + "0.01/30*" + xishu.getBuchaoqi2());
+                                  huikuanlists.get(j).setYufutianshu(huikuanlists.get(j).getYufutianshu() + "," + (nums));
+                                  huikuanlists.get(j).setBiaoshi(biaoshi);
+                              }
                           } else {
+
+                              if(fajianhui >= 0){
+//                            TODO 大转小可能会出问题
+                                  nums = (int) fajianhui;
+                                  lijiang = (Double.valueOf(nums) + Double.valueOf(fajianhui)) *
+                                          (Double.valueOf(fahuoDtoList.get(i).getHanshuidanjia()) - Double.valueOf(fahuoDtoList.get(i).getYunshudanjia()) - Double.valueOf(fahuoDtoList.get(i).getDomesticBaozhuang().getBuhanbaozhuang()) - yongjins)
+                                          * (yongs / Double.valueOf(fahuoDtoList.get(i).getJiashuiheji())) * 0.01 / 30 * Double.valueOf(xishu.getBuchaoqi1()) * Double.valueOf(fahuoDtoList.get(i).getShuliang());
+                                  BigDecimal b = new BigDecimal(lijiang);
+                                  double f1 = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+                                  huikuanlists.get(j).setLixijiang(huikuanlists.get(j).getLixijiang() + "," + f1);
+                                  huikuanlists.get(j).setLixijiangbili(huikuanlists.get(j).getLixijiangbili() + "," +"0.01/30*" + xishu.getBuchaoqi1());
+                                  huikuanlists.get(j).setYufutianshu(huikuanlists.get(j).getYufutianshu() + "," + (nums));
+                                  huikuanlists.get(j).setBiaoshi(biaoshi);
+                              }else{
+//                               无利息将
+                                  BigDecimal b = new BigDecimal(0);
+                                  double f1 = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+                                  huikuanlists.get(j).setLixijiang(huikuanlists.get(j).getLixijiang() + "," + f1);
+                                  huikuanlists.get(j).setLixijiangbili(huikuanlists.get(j).getLixijiangbili() + "," + "0.01/30*" + xishu.getBuchaoqi1());
+                                  huikuanlists.get(j).setYufutianshu(huikuanlists.get(j).getYufutianshu() + "," + (nums));
+                                  huikuanlists.get(j).setBiaoshi(biaoshi);
+                              }
+
+                          }
+                      } else if (Double.valueOf(nums) > 10) {
+
+
+                          if(fajianhui >= 0){
+//                            TODO 大转小可能会出问题
+                              nums = (int) fajianhui;
                               lijiang = (Double.valueOf(nums) + Double.valueOf(fajianhui)) *
                                       (Double.valueOf(fahuoDtoList.get(i).getHanshuidanjia()) - Double.valueOf(fahuoDtoList.get(i).getYunshudanjia()) - Double.valueOf(fahuoDtoList.get(i).getDomesticBaozhuang().getBuhanbaozhuang()) - yongjins)
                                       * (yongs / Double.valueOf(fahuoDtoList.get(i).getJiashuiheji())) * 0.01 / 30 * Double.valueOf(xishu.getBuchaoqi1()) * Double.valueOf(fahuoDtoList.get(i).getShuliang());
@@ -662,22 +836,22 @@ public class DomesticHuikuanController{
                               double f1 = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
                               huikuanlists.get(j).setLixijiang(huikuanlists.get(j).getLixijiang() + "," + f1);
                               huikuanlists.get(j).setLixijiangbili(huikuanlists.get(j).getLixijiangbili() + "," +"0.01/30*" + xishu.getBuchaoqi1());
-                              huikuanlists.get(j).setYufutianshu(huikuanlists.get(j).getYufutianshu() + "," + (nums+fajianhui));
+                              huikuanlists.get(j).setYufutianshu(huikuanlists.get(j).getYufutianshu() + "," + (nums));
+                              huikuanlists.get(j).setBiaoshi(biaoshi);
+                          }else{
+//                               无利息将
+                              BigDecimal b = new BigDecimal(0);
+                              double f1 = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+                              huikuanlists.get(j).setLixijiang(huikuanlists.get(j).getLixijiang() + "," + f1);
+                              huikuanlists.get(j).setLixijiangbili(huikuanlists.get(j).getLixijiangbili() + "," + "0.01/30*" + xishu.getBuchaoqi1());
+                              huikuanlists.get(j).setYufutianshu(huikuanlists.get(j).getYufutianshu() + "," + (nums));
                               huikuanlists.get(j).setBiaoshi(biaoshi);
                           }
-                      } else if (Double.valueOf(nums) > 10) {
-                          lijiang = (Double.valueOf(nums) + Double.valueOf(fajianhui)) *
-                                  (Double.valueOf(fahuoDtoList.get(i).getHanshuidanjia()) - Double.valueOf(fahuoDtoList.get(i).getYunshudanjia()) - Double.valueOf(fahuoDtoList.get(i).getDomesticBaozhuang().getBuhanbaozhuang()) - yongjins)
-                                  * (yongs / Double.valueOf(fahuoDtoList.get(i).getJiashuiheji())) * 0.01 / 30 * Double.valueOf(xishu.getBuchaoqi1()) * Double.valueOf(fahuoDtoList.get(i).getShuliang());
-                          BigDecimal b = new BigDecimal(lijiang);
-                          double f1 = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
-                          huikuanlists.get(j).setLixijiang(huikuanlists.get(j).getLixijiang() + "," + f1);
-                          huikuanlists.get(j).setLixijiangbili(huikuanlists.get(j).getLixijiangbili() + "," +"0.01/30*" + xishu.getBuchaoqi1());
-                          huikuanlists.get(j).setYufutianshu(huikuanlists.get(j).getYufutianshu() + "," + (nums+fajianhui));
-                          huikuanlists.get(j).setBiaoshi(biaoshi);
                       }
                   }
+
               } else {
+//                  超期不调整
                   // 超期中的不超期现象
                   if (!StringUtils.isEmpty(huikuanlists.get(j).getChengduiriqi())) {
                       if (chengjianhui >= 0 ) {   //  承兑减发货
