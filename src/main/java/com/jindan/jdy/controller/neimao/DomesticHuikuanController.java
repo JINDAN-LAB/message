@@ -275,8 +275,8 @@ public class DomesticHuikuanController{
                           if (fahuoDtoList.get(i).getFangshi().equals("公路运输")) {
 //                              先回款后发货
                            if(fajianhui >= 0){
-//                            TODO 大转小可能会出问题
-                              nums = (int) fajianhui;
+                               // 判断利息天数是否大于30天，大于30天按照30天计算
+                              nums = Integer.parseInt(String.valueOf(fajianhui > 30L ? 30:fajianhui));
                               lijiang = (Double.valueOf(nums)) *
                                       (Double.valueOf(fahuoDtoList.get(i).getHanshuidanjia()) - Double.valueOf(fahuoDtoList.get(i).getYunshudanjia()) - Double.valueOf(fahuoDtoList.get(i).getDomesticBaozhuang().getBuhanbaozhuang()) - yongjins)
                                       * (yongs / Double.valueOf(fahuoDtoList.get(i).getJiashuiheji())) * 0.01 / 30 * Double.valueOf(xishu.getChenglixibuchaoqi()) * Double.valueOf(fahuoDtoList.get(i).getShuliang());
@@ -299,9 +299,9 @@ public class DomesticHuikuanController{
                           } else {
 //                            不是公路运输的情况
                          if(fajianhui >= 0){
-//                            TODO 大转小可能会出问题
-                                  nums = (int) fajianhui;
-                                  lijiang = (Double.valueOf(nums)) *
+                            // 判断利息天数是否大于30天，大于30天按照30天计算
+                             nums = Integer.parseInt(String.valueOf(fajianhui > 30L ? 30:fajianhui));
+                             lijiang = (Double.valueOf(nums)) *
                                       (Double.valueOf(fahuoDtoList.get(i).getHanshuidanjia()) - Double.valueOf(fahuoDtoList.get(i).getYunshudanjia()) - Double.valueOf(fahuoDtoList.get(i).getDomesticBaozhuang().getBuhanbaozhuang()) - yongjins)
                                       * (yongs / Double.valueOf(fahuoDtoList.get(i).getJiashuiheji())) * 0.01 / 30 * Double.valueOf(xishu.getChenglixibuchaoqi()) * Double.valueOf(fahuoDtoList.get(i).getShuliang());
                               BigDecimal b = new BigDecimal(lijiang);
@@ -324,8 +324,8 @@ public class DomesticHuikuanController{
                       } else if (Double.valueOf(nums) > 10) {
 
                           if(fajianhui >= 0){
-//                            TODO 大转小可能会出问题
-                              nums = (int) fajianhui;
+                              // 判断利息天数是否大于30天，大于30天按照30天计算
+                              nums = Integer.parseInt(String.valueOf(fajianhui > 30L ? 30:fajianhui));
                               lijiang = (Double.valueOf(nums)) *
                                   (Double.valueOf(fahuoDtoList.get(i).getHanshuidanjia()) - Double.valueOf(fahuoDtoList.get(i).getYunshudanjia()) - Double.valueOf(fahuoDtoList.get(i).getDomesticBaozhuang().getBuhanbaozhuang()) - yongjins)
                                   * (yongs / Double.valueOf(fahuoDtoList.get(i).getJiashuiheji())) * 0.01 / 30 * Double.valueOf(xishu.getChenglixibuchaoqi()) * Double.valueOf(fahuoDtoList.get(i).getShuliang());
@@ -353,8 +353,8 @@ public class DomesticHuikuanController{
                           if (fahuoDtoList.get(i).getFangshi().equals("公路运输")) {
 
                               if(fajianhui >= 0){
-//                            TODO 大转小可能会出问题
-                                  nums = (int) fajianhui;
+                                  // 判断利息天数是否大于30天，大于30天按照30天计算
+                                  nums = Integer.parseInt(String.valueOf(fajianhui > 30L ? 30:fajianhui));
                                   lijiang = (Double.valueOf(nums) ) *
                                       (Double.valueOf(fahuoDtoList.get(i).getHanshuidanjia()) - Double.valueOf(fahuoDtoList.get(i).getYunshudanjia()) - Double.valueOf(fahuoDtoList.get(i).getDomesticBaozhuang().getBuhanbaozhuang()) - yongjins)
                                       * (yongs / Double.valueOf(fahuoDtoList.get(i).getJiashuiheji())) * 0.01 / 30 * Double.valueOf(xishu.getBuchaoqi1()) * Double.valueOf(fahuoDtoList.get(i).getShuliang());
@@ -376,8 +376,8 @@ public class DomesticHuikuanController{
                           } else {
 
                               if(fajianhui >= 0){
-//                            TODO 大转小可能会出问题
-                                  nums = (int) fajianhui;
+                                  // 判断利息天数是否大于30天，大于30天按照30天计算
+                                  nums = Integer.parseInt(String.valueOf(fajianhui > 30L ? 30:fajianhui));
 
                               lijiang = (Double.valueOf(nums) ) *
                                       (Double.valueOf(fahuoDtoList.get(i).getHanshuidanjia()) - Double.valueOf(fahuoDtoList.get(i).getYunshudanjia()) - Double.valueOf(fahuoDtoList.get(i).getDomesticBaozhuang().getBuhanbaozhuang()) - yongjins)
@@ -402,8 +402,8 @@ public class DomesticHuikuanController{
                       } else if (Double.valueOf(nums) > 10) {
 
                           if(fajianhui >= 0){
-//                            TODO 大转小可能会出问题
-                              nums = (int) fajianhui;
+                              // 判断利息天数是否大于30天，大于30天按照30天计算
+                              nums = Integer.parseInt(String.valueOf(fajianhui > 30L ? 30:fajianhui));
 
                           lijiang = (Double.valueOf(nums) ) *
                                   (Double.valueOf(fahuoDtoList.get(i).getHanshuidanjia()) - Double.valueOf(fahuoDtoList.get(i).getYunshudanjia()) - Double.valueOf(fahuoDtoList.get(i).getDomesticBaozhuang().getBuhanbaozhuang()) - yongjins)
@@ -702,16 +702,17 @@ public class DomesticHuikuanController{
 
 //                              补充
                               if(fajianhui >= 0){
-//                            TODO 大转小可能会出问题
-                                  nums = (int) fajianhui;
-                                  lijiang = (Double.valueOf(nums) + Double.valueOf(fajianhui)) *
+                                  // 判断利息天数是否大于30天，大于30天按照30天计算
+                                  int interestDays = (Integer.valueOf(nums) + (int)fajianhui);// 利息天数
+                                  interestDays = Integer.parseInt(String.valueOf(interestDays > 30 ? 30:interestDays));
+                                  lijiang = interestDays *
                                           (Double.valueOf(fahuoDtoList.get(i).getHanshuidanjia()) - Double.valueOf(fahuoDtoList.get(i).getYunshudanjia()) - Double.valueOf(fahuoDtoList.get(i).getDomesticBaozhuang().getBuhanbaozhuang()) - yongjins)
                                           * (yongs / Double.valueOf(fahuoDtoList.get(i).getJiashuiheji())) * 0.01 / 30 * Double.valueOf(xishu.getChenglixibuchaoqi()) * Double.valueOf(fahuoDtoList.get(i).getShuliang());
                                   BigDecimal b = new BigDecimal(lijiang);
                                   double f1 = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
                                   huikuanlists.get(j).setLixijiang(huikuanlists.get(j).getLixijiang() + "," + f1);
                                   huikuanlists.get(j).setLixijiangbili(huikuanlists.get(j).getLixijiangbili() + "," +"0.01/30*" + xishu.getChenglixibuchaoqi());
-                                  huikuanlists.get(j).setYufutianshu(huikuanlists.get(j).getYufutianshu() + "," + (nums));
+                                  huikuanlists.get(j).setYufutianshu(huikuanlists.get(j).getYufutianshu() + "," + (interestDays));
                                   huikuanlists.get(j).setBiaoshi(biaoshi);
                               }else{
 //                               无利息将
@@ -726,16 +727,17 @@ public class DomesticHuikuanController{
                           } else {
 
                               if(fajianhui >= 0){
-//                            TODO 大转小可能会出问题
-                                  nums = (int) fajianhui;
-                                  lijiang = (Double.valueOf(nums) + Double.valueOf(fajianhui)) *
+                                  // 判断利息天数是否大于30天，大于30天按照30天计算
+                                  int interestDays = (Integer.valueOf(nums) + (int)fajianhui);// 利息天数
+                                  interestDays = Integer.parseInt(String.valueOf(interestDays > 30 ? 30:interestDays));
+                                  lijiang = interestDays *
                                           (Double.valueOf(fahuoDtoList.get(i).getHanshuidanjia()) - Double.valueOf(fahuoDtoList.get(i).getYunshudanjia()) - Double.valueOf(fahuoDtoList.get(i).getDomesticBaozhuang().getBuhanbaozhuang()) - yongjins)
                                           * (yongs / Double.valueOf(fahuoDtoList.get(i).getJiashuiheji())) * 0.01 / 30 * Double.valueOf(xishu.getChenglixibuchaoqi()) * Double.valueOf(fahuoDtoList.get(i).getShuliang());
                                   BigDecimal b = new BigDecimal(lijiang);
                                   double f1 = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
                                   huikuanlists.get(j).setLixijiang(huikuanlists.get(j).getLixijiang() + "," + f1);
                                   huikuanlists.get(j).setLixijiangbili(huikuanlists.get(j).getLixijiangbili() + "," +"0.01/30*" + xishu.getChenglixibuchaoqi());
-                                  huikuanlists.get(j).setYufutianshu(huikuanlists.get(j).getYufutianshu() + "," + (nums));
+                                  huikuanlists.get(j).setYufutianshu(huikuanlists.get(j).getYufutianshu() + "," + (interestDays));
                                   huikuanlists.get(j).setBiaoshi(biaoshi);
                               }else{
 //                               无利息将
@@ -751,9 +753,10 @@ public class DomesticHuikuanController{
                       } else if (Double.valueOf(nums) > 10) {
 
                           if(fajianhui >= 0){
-//                            TODO 大转小可能会出问题
-                              nums = (int) fajianhui;
-                              lijiang = (Double.valueOf(nums) + Double.valueOf(fajianhui)) *
+                              // 判断利息天数是否大于30天，大于30天按照30天计算
+                              int interestDays = (Integer.valueOf(nums) + (int)fajianhui);// 利息天数
+                              interestDays = Integer.parseInt(String.valueOf(interestDays > 30 ? 30:interestDays));
+                              lijiang = interestDays *
                                       (Double.valueOf(fahuoDtoList.get(i).getHanshuidanjia()) - Double.valueOf(fahuoDtoList.get(i).getYunshudanjia()) - Double.valueOf(fahuoDtoList.get(i).getDomesticBaozhuang().getBuhanbaozhuang()) - yongjins)
                                       * (yongs / Double.valueOf(fahuoDtoList.get(i).getJiashuiheji())) * 0.01 / 30 * Double.valueOf(xishu.getChenglixibuchaoqi()) * Double.valueOf(fahuoDtoList.get(i).getShuliang());
                               BigDecimal b = new BigDecimal(lijiang);
@@ -761,7 +764,7 @@ public class DomesticHuikuanController{
                               huikuanlists.get(j).setLixijiang(huikuanlists.get(j).getLixijiang() + "," + f1);
 
                               huikuanlists.get(j).setLixijiangbili(huikuanlists.get(j).getLixijiangbili() + "," +"0.01/30*" + xishu.getChenglixibuchaoqi());
-                              huikuanlists.get(j).setYufutianshu(huikuanlists.get(j).getYufutianshu() + "," + (nums));
+                              huikuanlists.get(j).setYufutianshu(huikuanlists.get(j).getYufutianshu() + "," + (interestDays));
                               huikuanlists.get(j).setBiaoshi(biaoshi);
                           }else{
 //                               无利息将
@@ -778,16 +781,17 @@ public class DomesticHuikuanController{
                           if (!fahuoDtoList.get(i).getFangshi().equals("公路运输")) {
 
                               if(fajianhui >= 0){
-//                            TODO 大转小可能会出问题
-                                  nums = (int) fajianhui;
-                                  lijiang = (Double.valueOf(nums) + Double.valueOf(fajianhui)) *
+                                  // 判断利息天数是否大于30天，大于30天按照30天计算
+                                  int interestDays = (Integer.valueOf(nums) + (int)fajianhui);// 利息天数
+                                  interestDays = Integer.parseInt(String.valueOf(interestDays > 30L ? 30:interestDays));
+                                  lijiang = interestDays *
                                           (Double.valueOf(fahuoDtoList.get(i).getHanshuidanjia()) - Double.valueOf(fahuoDtoList.get(i).getYunshudanjia()) - Double.valueOf(fahuoDtoList.get(i).getDomesticBaozhuang().getBuhanbaozhuang()) - yongjins)
                                           * (yongs / Double.valueOf(fahuoDtoList.get(i).getJiashuiheji())) * 0.01 / 30 * Double.valueOf(xishu.getBuchaoqi2()) * Double.valueOf(fahuoDtoList.get(i).getShuliang());
                                   BigDecimal b = new BigDecimal(lijiang);
                                   double f1 = b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
                                   huikuanlists.get(j).setLixijiang(huikuanlists.get(j).getLixijiang() + "," + f1);
                                   huikuanlists.get(j).setLixijiangbili(huikuanlists.get(j).getLixijiangbili() + "," +"0.01/30*" + xishu.getBuchaoqi2());
-                                  huikuanlists.get(j).setYufutianshu(huikuanlists.get(j).getYufutianshu() + "," + (nums));
+                                  huikuanlists.get(j).setYufutianshu(huikuanlists.get(j).getYufutianshu() + "," + (interestDays));
                                   huikuanlists.get(j).setBiaoshi(biaoshi);
                               }else{
 //                               无利息将
@@ -802,8 +806,9 @@ public class DomesticHuikuanController{
 
                               if(fajianhui >= 0){
 //                            TODO 大转小可能会出问题
-                                  nums = (int) fajianhui;
-                                  lijiang = (Double.valueOf(nums) + Double.valueOf(fajianhui)) *
+                                  // 判断利息天数是否大于30天，大于30天按照30天计算
+                                  nums = Integer.parseInt(String.valueOf(fajianhui > 30L ? 30:fajianhui));
+                                  lijiang = Double.valueOf(nums) *
                                           (Double.valueOf(fahuoDtoList.get(i).getHanshuidanjia()) - Double.valueOf(fahuoDtoList.get(i).getYunshudanjia()) - Double.valueOf(fahuoDtoList.get(i).getDomesticBaozhuang().getBuhanbaozhuang()) - yongjins)
                                           * (yongs / Double.valueOf(fahuoDtoList.get(i).getJiashuiheji())) * 0.01 / 30 * Double.valueOf(xishu.getBuchaoqi1()) * Double.valueOf(fahuoDtoList.get(i).getShuliang());
                                   BigDecimal b = new BigDecimal(lijiang);
@@ -828,8 +833,9 @@ public class DomesticHuikuanController{
 
                           if(fajianhui >= 0){
 //                            TODO 大转小可能会出问题
-                              nums = (int) fajianhui;
-                              lijiang = (Double.valueOf(nums) + Double.valueOf(fajianhui)) *
+                              // 判断利息天数是否大于30天，大于30天按照30天计算
+                              nums = Integer.parseInt(String.valueOf(fajianhui > 30L ? 30:fajianhui));
+                              lijiang = Double.valueOf(nums) *
                                       (Double.valueOf(fahuoDtoList.get(i).getHanshuidanjia()) - Double.valueOf(fahuoDtoList.get(i).getYunshudanjia()) - Double.valueOf(fahuoDtoList.get(i).getDomesticBaozhuang().getBuhanbaozhuang()) - yongjins)
                                       * (yongs / Double.valueOf(fahuoDtoList.get(i).getJiashuiheji())) * 0.01 / 30 * Double.valueOf(xishu.getBuchaoqi1()) * Double.valueOf(fahuoDtoList.get(i).getShuliang());
                               BigDecimal b = new BigDecimal(lijiang);
