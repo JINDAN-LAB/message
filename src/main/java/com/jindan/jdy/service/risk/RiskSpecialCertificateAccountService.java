@@ -5,6 +5,7 @@ import com.jindan.jdy.common.dto.RiskSpecialCertificateAccountDto;
 import com.jindan.jdy.common.pojo.RiskSpecialCertificateAccount;
 import com.baomidou.mybatisplus.extension.service.IService;
 
+import java.io.InputStream;
 import java.util.List;
 
 /**
@@ -24,4 +25,10 @@ public interface RiskSpecialCertificateAccountService extends IService<RiskSpeci
     RiskSpecialCertificateAccount selectRiskSCA(RiskSpecialCertificateAccountDto riskSpecialCertificateAccountDto);
 
     boolean updateCertificate(RiskSpecialCertificateAccount riskSpecialCertificateAccount);
+
+    /*特种证书台账导出*/
+    List<RiskSpecialCertificateAccount> getRiskSCAExcel();
+
+    /*特种证书台账导入*/
+    void saveAllBatch(List<RiskSpecialCertificateAccount> riskSpecialCertificateAccountList);
 }

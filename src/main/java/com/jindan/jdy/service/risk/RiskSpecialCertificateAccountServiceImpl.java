@@ -9,6 +9,8 @@ import com.jindan.jdy.mapper.RiskSpecialCertificateAccountMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * <p>
  *  服务实现类
@@ -81,5 +83,17 @@ public class RiskSpecialCertificateAccountServiceImpl extends ServiceImpl<RiskSp
             return true;
         }
         return false;
+    }
+
+    /*特种证书台账导出*/
+    @Override
+    public List<RiskSpecialCertificateAccount> getRiskSCAExcel() {
+
+        return riskSpecialCertificateAccountMapper.getRiskSCAExcel();
+    }
+
+    @Override
+    public void saveAllBatch(List<RiskSpecialCertificateAccount> riskSpecialCertificateAccountList) {
+        riskSpecialCertificateAccountMapper.saveAllBatch(riskSpecialCertificateAccountList);
     }
 }

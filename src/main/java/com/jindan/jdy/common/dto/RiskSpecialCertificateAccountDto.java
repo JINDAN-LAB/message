@@ -53,6 +53,12 @@ public class RiskSpecialCertificateAccountDto extends PageVO{
     private String certificateIssuingUnit;
 
     /**
+     * 检测状态
+     */
+    @ApiModelProperty(name = "detectionStatus" , value = "")
+    private String detectionStatus;
+
+    /**
      * 初次领证日期
      */
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")

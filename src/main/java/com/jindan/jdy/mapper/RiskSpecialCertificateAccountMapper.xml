@@ -28,4 +28,42 @@
     <update id="updateSave" parameterType="com.jindan.jdy.common.pojo.RiskSpecialCertificateAccount">
         UPDATE risk_special_certificate_account SET certificate_no=#{certificateNo,jdbcType=VARCHAR},term_of_validity=#{termOfValidity,jdbcType=DATE},review_period=#{reviewPeriod,jdbcType=DATE} WHERE rsca_id=#{rscaId,jdbcType=VARCHAR}
     </update>
+
+    <!-- 特种证书台账导出查询映射结果 -->
+    <resultMap id="RiskSCAExcelResultMap" type="com.jindan.jdy.common.pojo.RiskSpecialCertificateAccount">
+        <id column="rsca_id" property="rscaId" />
+        <result column="certificate_no" property="certificateNo" />
+        <result column="certificate_holder" property="certificateHolder" />
+        <result column="job_category" property="jobCategory" />
+        <result column="standard_operation_items" property="standardOperationItems" />
+        <result column="issue_date" property="issueDate" />
+        <result column="term_of_validity" property="termOfValidity" />
+        <result column="date_of_issue" property="dateOfIssue" />
+        <result column="review_period" property="reviewPeriod" />
+        <result column="review_date" property="reviewDate" />
+        <result column="certificate_issuing_unit" property="certificateIssuingUnit" />
+    </resultMap>
+
+    <!-- select -->
+    <!-- 特种证书台账数据导出查询 -->
+    <select id="getRiskSCAExcel" resultMap="RiskSCAExcelResultMap">
+        SELECT certificate_no,certificate_holder,job_category,standard_operation_items,issue_date,date_of_issue,term_of_validity,review_period,review_date,certificate_issuing_unit FROM risk_special_certificate_account WHERE delete_id = 0
+    </select>
+
+    <!-- insert -->
+    <!-- 特种证书台账数据插入-->
+    <sql id="Base_Column_List_RiskSCA">
+        rsca_id, certificate_no, certificate_holder, job_category, standard_operation_items, issue_date, date_of_issue, term_of_validity, review_period, review_date, certificate_issuing_unit, insert_time
+    </sql>
+
+    <insert id="saveAllBatch" parameterType="java.util.List" >
+        insert into risk_special_certificate_account ( <include refid="Base_Column_List_RiskSCA" /> )
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.rscaId},#{item.certificateNo},#{item.certificateHolder},#{item.jobCategory}
+            ,#{item.standardOperationItems},#{item.issueDate},#{item.dateOfIssue}
+            ,#{item.termOfValidity},#{item.reviewPeriod},#{item.reviewDate}
+            ,#{item.certificateIssuingUnit},#{item.insertTime})
+        </foreach>
+    </insert>
 </mapper>
