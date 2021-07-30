@@ -478,13 +478,13 @@ public class DomesticFahuoController{
         @ApiOperation(value = "计算系数列表", notes = "参数:计算系数列表")
         @GetMapping("/paramlist")
         public ResultVo paramlist(){
-             if( redisUtil.get("paramlist") == null){
+//             if( redisUtil.get("paramlist") == null){
                  List<DomesticXishu> list = domesticXishuService.list(null);
-                 redisUtil.set("paramlist",list.get(0));
+//                 redisUtil.set("paramlist",list.get(0));
                  return  ResultVo.success(list.get(0));
-             }else{
-                 return  ResultVo.success((DomesticXishu) redisUtil.get("paramlist"));
-             }
+//             }else{
+//                 return  ResultVo.success((DomesticXishu) redisUtil.get("paramlist"));
+//             }
         }
 
         @ApiOperation(value = "更新计算系数", notes = "参数:更新计算系数")
@@ -493,7 +493,7 @@ public class DomesticFahuoController{
                                  @RequestBody DomesticXishu domesticXishu){
             boolean b = domesticXishuService.updateById(domesticXishu);
             if(b){
-                redisUtil.del("paramlist");
+//                redisUtil.del("paramlist");
                 return ResultVo.success();
             }
             return ResultVo.failed();
@@ -504,7 +504,7 @@ public class DomesticFahuoController{
         public ResultVo deletefacilitysubset(@ApiParam(name = "id", value = "课程基本信息", required = true) @PathVariable String  id){
             boolean b = domesticFahuoService.removeById(id);
             if(b){
-                redisUtil.del("paramlist");
+//                redisUtil.del("paramlist");
                 return  ResultVo.success();
             }
             return ResultVo.failed();
@@ -1266,7 +1266,7 @@ public void downloadAllYijisuanClassmate(HttpServletResponse response,  @Request
                     }else{
                         xin = "0";
                     }
-                    if (!lixijiangs[l].equals("0")) {
+                    if (!lixijiangs[l].equals("0") && !lixijiangs[l].equals("0.0")) {
                         lixi = yufutianshus[l] + "* (" + hanshui1 + "-" + classmatefa.get(i).getYunshudanjia() + "-" + classmatefa.get(i).getDomesticBaozhuang().getBuhanbaozhuang() + ")*" + lixijiangbilis[l] + "* (" + shijishiyongs[l] + "/" + classmatefa.get(i).getHanshuidanjia() + ")";
                     } else {
                         lixi = "0";
