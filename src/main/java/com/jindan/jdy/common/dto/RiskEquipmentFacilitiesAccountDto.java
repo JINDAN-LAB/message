@@ -14,13 +14,13 @@ import java.util.Date;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-public class RiskFireEquipmentAccountDto extends PageVO{
+public class RiskEquipmentFacilitiesAccountDto extends PageVO{
 
     private static final long serialVersionUID = 1L;
 
-    @TableId(value = "rfea_id", type = IdType.UUID)
-    @ApiModelProperty(name = "rfeaId" , value = "")
-    private String rfeaId;
+    @TableId(value = "refa_id", type = IdType.UUID)
+    @ApiModelProperty(name = "refaId" , value = "")
+    private String refaId;
 
     /**
      * 设备名称
@@ -41,34 +41,40 @@ public class RiskFireEquipmentAccountDto extends PageVO{
     private String manufacturer;
 
     /**
+     * 定检周期
+     */
+    @ApiModelProperty(name = "periodicInspectionCycle" , value = "")
+    private String periodicInspectionCycle;
+
+    /**
      * 运行场所
      */
     @ApiModelProperty(name = "operationSite" , value = "")
     private String operationSite;
 
     /**
-     * 场内编号
+     * 注册证号
      */
-    @ApiModelProperty(name = "siteNumber" , value = "")
-    private String siteNumber;
+    @ApiModelProperty(name = "registrationCertificateNo" , value = "")
+    private String registrationCertificateNo;
 
     /**
-     * 部门
+     * 使用证名称
      */
-    @ApiModelProperty(name = "department" , value = "")
-    private String department;
+    @ApiModelProperty(name = "licenseName" , value = "")
+    private String licenseName;
 
     /**
-     * 设备负责人
+     * 使用证号
      */
-    @ApiModelProperty(name = "personInCharge" , value = "")
-    private String personInCharge;
+    @ApiModelProperty(name = "licenseNo" , value = "")
+    private String licenseNo;
 
     /**
-     * 负责人手机号
+     * 厂内编号
      */
-    @ApiModelProperty(name = "phone" , value = "")
-    private String phone;
+    @ApiModelProperty(name = "factoryNumber" , value = "")
+    private String factoryNumber;
 
     /**
      * 出厂日期
@@ -89,13 +95,10 @@ public class RiskFireEquipmentAccountDto extends PageVO{
     private Date operationTime;
 
     /**
-     * 过期时间
+     * 负责人
      */
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
-    @TableField(fill = FieldFill.INSERT)
-    @ApiModelProperty(name = "expirationTime" , value = "")
-    private Date expirationTime;
+    @ApiModelProperty(name = "personInCharge" , value = "")
+    private String personInCharge;
 
     /**
      * 上次检修时间
@@ -130,4 +133,5 @@ public class RiskFireEquipmentAccountDto extends PageVO{
     @TableLogic
     @ApiModelProperty(name = "deleteId" , value = "")
     private Integer deleteId;
+
 }

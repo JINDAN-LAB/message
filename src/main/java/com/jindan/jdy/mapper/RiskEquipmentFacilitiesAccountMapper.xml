@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.mapper.RiskEquipmentFacilitiesAccountMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.RiskEquipmentFacilitiesAccount">
+        <id column="refa_id" property="refaId" />
+        <result column="equipment_name" property="equipmentName" />
+        <result column="specification_and_model" property="specificationAndModel" />
+        <result column="manufacturer" property="manufacturer" />
+        <result column="periodic_inspection_cycle" property="periodicInspectionCycle" />
+        <result column="operation_site" property="operationSite" />
+        <result column="registration_certificate_no" property="registrationCertificateNo" />
+        <result column="license_name" property="licenseName" />
+        <result column="license_no" property="licenseNo" />
+        <result column="factory_number" property="factoryNumber" />
+        <result column="date_of_production" property="dateOfProduction" />
+        <result column="operation_time" property="operationTime" />
+        <result column="person_in_charge" property="personInCharge" />
+        <result column="last_overhaul_time" property="lastOverhaulTime" />
+        <result column="next_overhaul_time" property="nextOverhaulTime" />
+        <result column="insert_time" property="insertTime" />
+        <result column="delete_id" property="deleteId" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        refa_id, equipment_name, specification_and_model, manufacturer, periodic_inspection_cycle, operation_site, registration_certificate_no, license_name, license_no, factory_number, date_of_production, operation_time, person_in_charge, last_overhaul_time, next_overhaul_time, insert_time, delete_id
+    </sql>
+
+</mapper>

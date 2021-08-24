@@ -9,6 +9,8 @@ import com.jindan.jdy.mapper.RiskFireEquipmentAccountMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * <p>
  *  服务实现类
@@ -66,5 +68,17 @@ public class RiskFireEquipmentAccountServiceImpl extends ServiceImpl<RiskFireEqu
             return true;
         }
         return false;
+    }
+
+    //消防设备台账导出
+    @Override
+    public List<RiskFireEquipmentAccount> getRiskFEAExcel() {
+        return riskFireEquipmentAccountMapper.getRiskFEAExcel();
+    }
+
+    //消防设备台账导入
+    @Override
+    public void saveAllBatch(List<RiskFireEquipmentAccount> riskFireEquipmentAccountList) {
+        riskFireEquipmentAccountMapper.saveAllBatch(riskFireEquipmentAccountList);
     }
 }

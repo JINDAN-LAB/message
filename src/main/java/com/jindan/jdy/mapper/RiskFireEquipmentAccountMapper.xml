@@ -22,7 +22,47 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        rfea_id, equipment_name, specification_and_model, manufacturer, operation_site, site_number, date_of_production, operation_time, expiration_time, last_overhaul_time, next_overhaul_time, person_in_charge, insert_time, delete_id
+        rfea_id, equipment_name, specification_and_model, manufacturer, operation_site, site_number, date_of_production, operation_time, expiration_time, expiration_time, last_overhaul_time, next_overhaul_time, person_in_charge, insert_time, delete_id
     </sql>
 
+    <!-- 消防设备台账导出查询映射结果 -->
+    <resultMap id="RiskFEAExcelResultMap" type="com.jindan.jdy.common.pojo.RiskFireEquipmentAccount">
+        <id column="rfea_id" property="rfeaId" />
+        <result column="equipment_name" property="equipmentName" />
+        <result column="specification_and_model" property="specificationAndModel" />
+        <result column="manufacturer" property="manufacturer" />
+        <result column="date_of_production" property="dateOfProduction" />
+        <result column="operation_time" property="operationTime" />
+        <result column="expiration_time" property="expirationTime" />
+        <result column="operation_site" property="operationSite" />
+        <result column="site_number" property="siteNumber" />
+        <result column="department" property="department" />
+        <result column="person_in_charge" property="personInCharge" />
+        <result column="phone" property="phone" />
+        <result column="last_overhaul_time" property="lastOverhaulTime" />
+        <result column="next_overhaul_time" property="nextOverhaulTime" />
+    </resultMap>
+
+    <!-- select -->
+    <!-- 消防设备台账数据导出查询 -->
+    <select id="getRiskFEAExcel" resultMap="RiskFEAExcelResultMap">
+        SELECT equipment_name,specification_and_model,manufacturer,date_of_production,operation_time,expiration_time,operation_site,site_number,department,person_in_charge,phone,last_overhaul_time,next_overhaul_time FROM risk_fire_equipment_account WHERE delete_id = 0
+    </select>
+
+    <!-- insert -->
+    <!-- 消防设备台账数据插入-->
+    <sql id="Base_Column_List_RiskFEA">
+        rfea_id, equipment_name, specification_and_model, manufacturer, date_of_production, operation_time,expiration_time, operation_site, site_number, department, person_in_charge, phone, last_overhaul_time, next_overhaul_time, insert_time
+    </sql>
+
+    <insert id="saveAllBatch" parameterType="java.util.List" >
+        insert into risk_fire_equipment_account ( <include refid="Base_Column_List_RiskFEA" /> )
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.rfeaId},#{item.equipmentName},#{item.specificationAndModel},#{item.manufacturer}
+            ,#{item.dateOfProduction},#{item.operationTime},#{item.expirationTime},#{item.operationSite}
+            ,#{item.siteNumber},#{item.department},#{item.personInCharge},#{item.phone}
+            ,#{item.lastOverhaulTime},#{item.nextOverhaulTime},#{item.insertTime})
+        </foreach>
+    </insert>
 </mapper>

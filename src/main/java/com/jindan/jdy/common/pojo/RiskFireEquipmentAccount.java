@@ -73,6 +73,12 @@ public class RiskFireEquipmentAccount extends Model<RiskFireEquipmentAccount> {
     private String personInCharge;
 
     /**
+     * 负责人手机号
+     */
+    @ApiModelProperty(name = "phone" , value = "")
+    private String phone;
+
+    /**
      * 出厂日期
      */
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")

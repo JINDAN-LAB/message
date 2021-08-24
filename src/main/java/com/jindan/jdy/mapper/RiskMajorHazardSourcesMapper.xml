@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.mapper.RiskMajorHazardSourcesMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.RiskMajorHazardSources">
+        <id column="rmhs_id" property="rmhsId" />
+        <result column="name_of_hazard_source" property="nameOfHazardSource" />
+        <result column="registration_number" property="registrationNumber" />
+        <result column="zone_of_action" property="zoneOfAction" />
+        <result column="current_state" property="currentState" />
+        <result column="hazard_type" property="hazardType" />
+        <result column="formation_time" property="formationTime" />
+        <result column="person_liable" property="personLiable" />
+        <result column="hazard_level" property="hazardLevel" />
+        <result column="confirmation_basis" property="confirmationBasis" />
+        <result column="possible_consequences" property="possibleConsequences" />
+        <result column="control_measures" property="controlMeasures" />
+        <result column="environment" property="environment" />
+        <result column="code_of_major_hazard" property="codeOfMajorHazard" />
+        <result column="associated_hidden_danger" property="associatedHiddenDanger" />
+        <result column="insert_time" property="insertTime" />
+        <result column="delete_id" property="deleteId" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        rmhs_id, name_of_hazard_source, registration_number, zone_of_action, current_state, hazard_type, formation_time, person_liable, hazard_level, confirmation_basis, possible_consequences, control_measures, environment, code_of_major_hazard, associated_hidden_danger, insert_time, delete_id
+    </sql>
+
+</mapper>

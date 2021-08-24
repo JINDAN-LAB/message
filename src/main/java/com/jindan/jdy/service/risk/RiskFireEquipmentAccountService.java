@@ -5,6 +5,8 @@ import com.jindan.jdy.common.dto.RiskFireEquipmentAccountDto;
 import com.jindan.jdy.common.pojo.RiskFireEquipmentAccount;
 import com.baomidou.mybatisplus.extension.service.IService;
 
+import java.util.List;
+
 /**
  * <p>
  *  服务类
@@ -20,4 +22,10 @@ public interface RiskFireEquipmentAccountService extends IService<RiskFireEquipm
     RiskFireEquipmentAccount selectRiskFEA(RiskFireEquipmentAccountDto riskFireEquipmentAccountDto);
 
     boolean updateRiskFEA(RiskFireEquipmentAccount riskFireEquipmentAccount);
+
+    /*消防设备台账导出*/
+    List<RiskFireEquipmentAccount> getRiskFEAExcel();
+
+    /*消防设备台账导入*/
+    void saveAllBatch(List<RiskFireEquipmentAccount> riskFireEquipmentAccountList);
 }

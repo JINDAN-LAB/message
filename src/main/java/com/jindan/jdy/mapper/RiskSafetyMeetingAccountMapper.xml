@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.mapper.RiskSafetyMeetingAccountMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.RiskSafetyMeetingAccount">
+        <id column="rsma_id" property="rsmaId" />
+        <result column="conference_name" property="conferenceName" />
+        <result column="estimated_start_time" property="estimatedStartTime" />
+        <result column="estimated_end_time" property="estimatedEndTime" />
+        <result column="actual_start_time" property="actualStartTime" />
+        <result column="actual_end_time" property="actualEndTime" />
+        <result column="class_hours" property="classHours" />
+        <result column="end_document_picture" property="endDocumentPicture" />
+        <result column="meeting_start_picture" property="meetingStartPicture" />
+        <result column="meeting_end_picture" property="meetingEndPicture" />
+        <result column="check_in_qrcode" property="checkInQrcode" />
+        <result column="sign_out_qrcode" property="signOutQrcode" />
+        <result column="state" property="state" />
+        <result column="insert_time" property="insertTime" />
+        <result column="delete_id" property="deleteId" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        rsma_id, conference_name, estimated_start_time, estimated_end_time, actual_start_time, actual_end_time, class_hours, end_document_picture, meeting_start_picture, meeting_end_picture, check_in_qrcode, sign_out_qrcode, state, insert_time, delete_id
+    </sql>
+
+</mapper>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.mapper.RiskSafetyManagementPersonnelMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.RiskSafetyManagementPersonnel">
+        <id column="rsmp_id" property="rsmpId" />
+        <result column="jdy_user_id" property="jdyUserId" />
+        <result column="safety_management_personnel" property="safetyManagementPersonnel" />
+        <result column="post" property="post" />
+        <result column="phone" property="phone" />
+        <result column="effective_start_time" property="effectiveStartTime" />
+        <result column="effective_end_time" property="effectiveEndTime" />
+        <result column="industry_category" property="industryCategory" />
+        <result column="issuing_authority" property="issuingAuthority" />
+        <result column="certificate_no" property="certificateNo" />
+        <result column="retraining_time" property="retrainingTime" />
+        <result column="remarks" property="remarks" />
+        <result column="retraining_status" property="retrainingStatus" />
+        <result column="insert_time" property="insertTime" />
+        <result column="delete_id" property="deleteId" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        rsmp_id, jdy_user_id, safety_management_personnel, post, phone, effective_start_time, effective_end_time, industry_category, issuing_authority, certificate_no, retraining_time, remarks, retraining_status, insert_time, delete_id
+    </sql>
+
+    <!-- select -->
+    <!-- 安全管理人员台账导出查询映射结果 -->
+    <resultMap id="RiskSMPExcelResultMap" type="com.jindan.jdy.common.pojo.RiskSafetyManagementPersonnel">
+        <id column="rsmp_id" property="rsmpId" />
+        <result column="safety_management_personnel" property="safetyManagementPersonnel" />
+        <result column="industry_category" property="industryCategory" />
+        <result column="issuing_authority" property="issuingAuthority" />
+        <result column="effective_start_time" property="effectiveStartTime" />
+        <result column="retraining_time" property="retrainingTime" />
+        <result column="certificate_no" property="certificateNo" />
+        <result column="effective_end_time" property="effectiveEndTime" />
+        <result column="phone" property="phone" />
+    </resultMap>
+
+    <select id="getRiskSMPExcel" resultMap="RiskSMPExcelResultMap">
+        SELECT safety_management_personnel,industry_category,issuing_authority,effective_start_time,retraining_time,certificate_no,effective_end_time,phone FROM risk_safety_management_personnel WHERE delete_id = 0
+    </select>
+
+    <!-- insert -->
+    <!-- 安全管理人员台账数据导入-->
+    <sql id="Base_Column_List_RiskSMP">
+        rsmp_id, jdy_user_id, safety_management_personnel, post, phone, effective_start_time, effective_end_time, industry_category, issuing_authority, certificate_no, retraining_time, remarks, retraining_status, insert_time
+    </sql>
+
+    <insert id="saveAllBatch" parameterType="java.util.List" >
+        insert into risk_safety_management_personnel ( <include refid="Base_Column_List_RiskSMP" /> )
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.rsmpId},#{item.jdyUserId},#{item.safetyManagementPersonnel},#{item.post}
+            ,#{item.phone},#{item.effectiveStartTime},#{item.effectiveEndTime}
+            ,#{item.industryCategory},#{item.issuingAuthority},#{item.certificateNo}
+            ,#{item.retrainingTime},#{item.remarks},#{item.retrainingStatus},#{item.insertTime})
+        </foreach>
+    </insert>
+</mapper>
