@@ -19,13 +19,68 @@
         <result column="person_in_charge" property="personInCharge" />
         <result column="last_overhaul_time" property="lastOverhaulTime" />
         <result column="next_overhaul_time" property="nextOverhaulTime" />
+        <result column="detection_status" property="detectionStatus" />
         <result column="insert_time" property="insertTime" />
         <result column="delete_id" property="deleteId" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        refa_id, equipment_name, specification_and_model, manufacturer, periodic_inspection_cycle, operation_site, registration_certificate_no, license_name, license_no, factory_number, date_of_production, operation_time, person_in_charge, last_overhaul_time, next_overhaul_time, insert_time, delete_id
+        refa_id, equipment_name, specification_and_model, manufacturer, periodic_inspection_cycle, operation_site, registration_certificate_no, license_name, license_no, factory_number, date_of_production, operation_time, person_in_charge, last_overhaul_time, next_overhaul_time, detection_status, insert_time, delete_id
     </sql>
 
+    <!-- select -->
+    <!-- 设备设施台账导出查询映射结果 -->
+    <resultMap id="RiskEFAExcelResultMap" type="com.jindan.jdy.common.pojo.RiskEquipmentFacilitiesAccount">
+        <id column="refa_id" property="refaId" />
+        <result column="equipment_name" property="equipmentName" />
+        <result column="person_in_charge" property="personInCharge" />
+        <result column="registration_certificate_no" property="registrationCertificateNo" />
+        <result column="factory_number" property="factoryNumber" />
+        <result column="last_overhaul_time" property="lastOverhaulTime" />
+        <result column="next_overhaul_time" property="nextOverhaulTime" />
+        <result column="periodic_inspection_cycle" property="periodicInspectionCycle" />
+        <result column="license_name" property="licenseName" />
+        <result column="manufacturer" property="manufacturer" />
+        <result column="specification_and_model" property="specificationAndModel" />
+        <result column="operation_site" property="operationSite" />
+        <result column="license_no" property="licenseNo" />
+        <result column="date_of_production" property="dateOfProduction" />
+        <result column="operation_time" property="operationTime" />
+    </resultMap>
+
+    <select id="getRiskEFAExcel" resultMap="RiskEFAExcelResultMap">
+        SELECT equipment_name,person_in_charge,registration_certificate_no,factory_number,last_overhaul_time,next_overhaul_time,periodic_inspection_cycle,license_name,manufacturer,specification_and_model,operation_site,license_no,date_of_production,operation_time FROM risk_equipment_facilities_account WHERE delete_id = 0
+    </select>
+
+    <!-- insert -->
+    <!-- 设备设施台账数据导入-->
+    <sql id="Base_Column_List_RiskEFA">
+        refa_id, equipment_name, person_in_charge, registration_certificate_no, factory_number, last_overhaul_time, next_overhaul_time, periodic_inspection_cycle, license_name, manufacturer, specification_and_model, operation_site, license_no, date_of_production, operation_time, detection_status, insert_time
+    </sql>
+
+    <insert id="saveAllBatch" parameterType="java.util.List" >
+        insert into risk_equipment_facilities_account ( <include refid="Base_Column_List_RiskEFA" /> )
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.refaId},#{item.equipmentName},#{item.personInCharge}
+            ,#{item.registrationCertificateNo},#{item.factoryNumber}
+            ,#{item.lastOverhaulTime},#{item.nextOverhaulTime},#{item.periodicInspectionCycle}
+            ,#{item.licenseName},#{item.manufacturer},#{item.specificationAndModel},#{item.operationSite}
+            ,#{item.licenseNo},#{item.dateOfProduction},#{item.operationTime},#{item.detectionStatus},#{item.insertTime})
+        </foreach>
+    </insert>
+
+    <!-- 批量设置责任人 -->
+    <update id="updateSave" parameterType="java.util.List">
+        update risk_equipment_facilities_account
+        set person_in_charge=
+        <foreach collection="list" item="item" separator=" " open="case refa_id" close="end">
+            when #{item.refaId} then #{item.personInCharge}
+        </foreach>
+        where refa_id in
+        <foreach collection="list" item="item" separator="," open="(" close=")">
+            #{item.refaId}
+        </foreach>
+    </update>
 </mapper>

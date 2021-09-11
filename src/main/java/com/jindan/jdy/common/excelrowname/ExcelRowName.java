@@ -14,4 +14,10 @@ public class ExcelRowName {
     public final static String[] riskSafetyManagementPersonnel = {
             "姓名", "行业类别", "发证机关", "初领日期", "复训日期", "证号", "有效期限", "手机号"
     };
+
+    public final static String[] riskEquipmentFacilitiesAccount = {
+            "设备名称", "责任人", "注册证编号", "厂内编号",
+            "上次检测时间", "下次检测时间", "定检周期", "使用证名称",
+            "生产厂家", "规格型号", "运行场所", "使用证号", "出厂日期", "投入使用时间"
+    };
 }

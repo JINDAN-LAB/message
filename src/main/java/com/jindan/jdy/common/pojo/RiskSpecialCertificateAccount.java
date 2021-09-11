@@ -63,8 +63,8 @@ public class RiskSpecialCertificateAccount extends Model<RiskSpecialCertificateA
     /**
      * 初次领证日期
      */
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern="yyyy-MM-dd",timezone = "GMT+8")
     @TableField(fill = FieldFill.INSERT)
     @ApiModelProperty(name = "issueDate" , value = "")
     private Date issueDate;
@@ -72,8 +72,8 @@ public class RiskSpecialCertificateAccount extends Model<RiskSpecialCertificateA
     /**
      * 有效期
      */
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern="yyyy-MM-dd",timezone = "GMT+8")
     @TableField(fill = FieldFill.INSERT)
     @ApiModelProperty(name = "termOfValidity" , value = "")
     private Date termOfValidity;
@@ -81,8 +81,8 @@ public class RiskSpecialCertificateAccount extends Model<RiskSpecialCertificateA
     /**
      * 领证日期
      */
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern="yyyy-MM-dd",timezone = "GMT+8")
     @TableField(fill = FieldFill.INSERT)
     @ApiModelProperty(name = "dateOfIssue" , value = "")
     private Date dateOfIssue;
@@ -90,8 +90,8 @@ public class RiskSpecialCertificateAccount extends Model<RiskSpecialCertificateA
     /**
      * 复审期限
      */
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern="yyyy-MM-dd",timezone = "GMT+8")
     @TableField(fill = FieldFill.INSERT)
     @ApiModelProperty(name = "reviewPeriod" , value = "")
     private Date reviewPeriod;
@@ -99,11 +99,17 @@ public class RiskSpecialCertificateAccount extends Model<RiskSpecialCertificateA
     /**
      * 复审日期
      */
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern="yyyy-MM-dd",timezone = "GMT+8")
     @TableField(fill = FieldFill.INSERT)
     @ApiModelProperty(name = "reviewDate" , value = "")
     private Date reviewDate;
+
+    /**
+     * 检测状态
+     */
+    @ApiModelProperty(name = "detectionStatus" , value = "")
+    private String detectionStatus;
 
     /**
      * 创建时间

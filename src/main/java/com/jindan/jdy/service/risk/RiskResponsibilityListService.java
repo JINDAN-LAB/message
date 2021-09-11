@@ -1,6 +1,7 @@
 package com.jindan.jdy.service.risk;
 
 import com.jindan.jdy.common.dto.DepartmentAndDutiesDto;
+import com.jindan.jdy.common.dto.JdyUserDto;
 import com.jindan.jdy.common.dto.RiskResponsibilityListDto;
 import com.jindan.jdy.common.pojo.RiskResponsibilityList;
 import com.baomidou.mybatisplus.extension.service.IService;
@@ -21,4 +22,5 @@ public interface RiskResponsibilityListService extends IService<RiskResponsibili
     RiskResponsibilityList insertSave(RiskResponsibilityList riskResponsibilityList);
 
     List<RiskResponsibilityList> selectRiskResponsibilityList(DepartmentAndDutiesDto departmentAndDutiesDto);
+
 }

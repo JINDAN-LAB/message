@@ -30,7 +30,7 @@ import java.util.Date;
 @Slf4j
 @RestController
 @RequestMapping("/riskMajorHazardSources")
-@Api(tags ="特种证书台账")
+@Api(tags ="重大危险源台账模块")
 public class RiskMajorHazardSourcesController {
 
     @Autowired

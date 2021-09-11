@@ -50,6 +50,15 @@ public class RiskFireEquipmentAccountController {
     public ResultVo addRiskFEA(@ApiParam(name = "riskFireEquipmentAccount", required = true)
                                    @RequestBody RiskFireEquipmentAccount riskFireEquipmentAccount){
 
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+        log.info("riskFireEquipmentAccount.getDateOfProduction()的值为："+riskFireEquipmentAccount.getDateOfProduction());
+        riskFireEquipmentAccount.setDateOfProduction(DateUtils.parse(simpleDateFormat.format(riskFireEquipmentAccount.getDateOfProduction())+" 00:00:00"));
+        riskFireEquipmentAccount.setOperationTime(DateUtils.parse(simpleDateFormat.format(riskFireEquipmentAccount.getOperationTime())+" 00:00:00"));
+        riskFireEquipmentAccount.setExpirationTime(DateUtils.parse(simpleDateFormat.format(riskFireEquipmentAccount.getExpirationTime())+" 00:00:00"));
+        riskFireEquipmentAccount.setLastOverhaulTime(DateUtils.parse(simpleDateFormat.format(riskFireEquipmentAccount.getLastOverhaulTime())+" 00:00:00"));
+        riskFireEquipmentAccount.setNextOverhaulTime(DateUtils.parse(simpleDateFormat.format(riskFireEquipmentAccount.getNextOverhaulTime())+" 00:00:00"));
+
         riskFireEquipmentAccount.setInsertTime(new Date());
         boolean save = riskFireEquipmentAccountService.save(riskFireEquipmentAccount);
         if(save){

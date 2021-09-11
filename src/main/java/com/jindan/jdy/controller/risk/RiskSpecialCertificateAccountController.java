@@ -53,6 +53,35 @@ public class RiskSpecialCertificateAccountController {
     public ResultVo addRiskSCA(@ApiParam(name = "riskSpecialCertificateAccount", required = true)
                                                   @RequestBody RiskSpecialCertificateAccount riskSpecialCertificateAccount){
 
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+        log.info("riskSpecialCertificateAccount.getIssueDate()的值为："+riskSpecialCertificateAccount.getIssueDate());
+        riskSpecialCertificateAccount.setIssueDate(DateUtils.parse(simpleDateFormat.format(riskSpecialCertificateAccount.getIssueDate())+" 00:00:00"));
+        riskSpecialCertificateAccount.setTermOfValidity(DateUtils.parse(simpleDateFormat.format(riskSpecialCertificateAccount.getTermOfValidity())+" 00:00:00"));
+        riskSpecialCertificateAccount.setDateOfIssue(DateUtils.parse(simpleDateFormat.format(riskSpecialCertificateAccount.getDateOfIssue())+" 00:00:00"));
+        riskSpecialCertificateAccount.setReviewPeriod(DateUtils.parse(simpleDateFormat.format(riskSpecialCertificateAccount.getReviewPeriod())+" 00:00:00"));
+        riskSpecialCertificateAccount.setReviewDate(DateUtils.parse(simpleDateFormat.format(riskSpecialCertificateAccount.getReviewDate())+" 00:00:00"));
+
+        Date newDate = new Date();                                  //参数：当前日期
+        Date termOfValidity = riskSpecialCertificateAccount.getTermOfValidity();     //参数：有效期
+
+        long diff = (termOfValidity.getTime()-newDate.getTime())/ (1000 * 60 * 60 * 24);      //相差的天数
+
+        //log.info("日期的差值diff的值为："+diff);
+
+        if (diff >= 0 && diff <= 3){
+            riskSpecialCertificateAccount.setDetectionStatus("即将超期");
+            //log.info("即将超期");
+        }
+        if (diff > 3){
+            riskSpecialCertificateAccount.setDetectionStatus("正常检测");
+            //log.info("正常检测");
+        }
+        if (diff < 0){
+            riskSpecialCertificateAccount.setDetectionStatus("逾期未检测");
+            //log.info("逾期未检测");
+        }
+
         riskSpecialCertificateAccount.setInsertTime(new Date());
         boolean save = riskSpecialCertificateAccountService.save(riskSpecialCertificateAccount);
         if(save){
@@ -163,29 +192,26 @@ public class RiskSpecialCertificateAccountController {
             hssfRow1.createCell(6).setCellValue(simpleDateFormat.format(riskSCAExcel.getTermOfValidity()));                      //有效期
             hssfRow1.createCell(7).setCellValue(simpleDateFormat.format(riskSCAExcel.getReviewPeriod()));                        //复审期限
             hssfRow1.createCell(8).setCellValue(simpleDateFormat.format(riskSCAExcel.getReviewDate()));                          //复审日期
-            hssfRow1.createCell(9).setCellValue(riskSCAExcel.getCertificateIssuingUnit());              //发证单位
+            hssfRow1.createCell(9).setCellValue(riskSCAExcel.getCertificateIssuingUnit());                                       //发证单位
 
             Date newDate = new Date();                                  //参数：当前日期
             Date termOfValidity = riskSCAExcel.getTermOfValidity();     //参数：有效期
-            //Date reviewPeriod = riskSCAExcel.getReviewPeriod();         //参数：复审期限
 
-            log.info("newDate的值为："+newDate);
+            long diff = (termOfValidity.getTime()-newDate.getTime())/ (1000 * 60 * 60 * 24);      //相差的天数
 
-            int isDetectionStatusOne = newDate.compareTo(termOfValidity);
-            //int isDetectionStatusTwo = newDate.compareTo(reviewPeriod);
+            //log.info("日期的差值diff的值为："+diff);
 
-            switch (isDetectionStatusOne){
-                case 1:
-                    hssfRow1.createCell(10).setCellValue("超期未验审"); //检测状态
-                    break;
-                case 0:
-                    hssfRow1.createCell(10).setCellValue("正常"); //检测状态
-                    break;
-                case -1:
-                    hssfRow1.createCell(10).setCellValue("正常"); //检测状态
-                    break;
-                default:
-                    hssfRow1.createCell(10).setCellValue("超期未验审"); //检测状态
+            if (diff >= 0 && diff <= 3){
+                hssfRow1.createCell(10).setCellValue("即将超期");              //检测状态
+                //log.info("即将超期");
+            }
+            if (diff > 3){
+                hssfRow1.createCell(10).setCellValue("正常检测");              //检测状态
+                //log.info("正常检测");
+            }
+            if (diff < 0){
+                hssfRow1.createCell(10).setCellValue("逾期未检测");              //检测状态
+                //log.info("逾期未检测");
             }
 
         }
@@ -208,9 +234,32 @@ public class RiskSpecialCertificateAccountController {
 
         List<RiskSpecialCertificateAccount> riskSpecialCertificateAccountList = new ArrayList<>();
 
+        Date newDate = new Date();                                  //参数：当前日期
+
         resultString.forEach(exportArray->{
 
             RiskSpecialCertificateAccount riskSpecialCertificateAccount = new RiskSpecialCertificateAccount();
+            Date nextOverhaulTime = new Date();
+
+            Date termOfValidity = DateUtils.parse(exportArray[4]+" 00:00:00");     //参数：有效期
+
+            long diff = (nextOverhaulTime.getTime()-newDate.getTime())/ (1000 * 60 * 60 * 24);      //相差的天数
+
+            //log.info("日期的差值diff的值为："+diff);
+
+            if (diff >= 0 && diff <= 3){
+                riskSpecialCertificateAccount.setDetectionStatus("即将超期");
+                //log.info("即将超期");
+            }
+            if (diff > 3){
+                riskSpecialCertificateAccount.setDetectionStatus("正常检测");
+                //log.info("正常检测");
+            }
+            if (diff < 0){
+                riskSpecialCertificateAccount.setDetectionStatus("逾期未检测");
+                //log.info("逾期未检测");
+            }
+
             riskSpecialCertificateAccount.setRscaId(RandomId.getUUID());
             riskSpecialCertificateAccount.setCertificateNo(exportArray[0]);
             riskSpecialCertificateAccount.setCertificateHolder(exportArray[1]);

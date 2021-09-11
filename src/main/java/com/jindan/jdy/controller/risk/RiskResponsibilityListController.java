@@ -77,7 +77,7 @@ public class RiskResponsibilityListController {
         return ResultVo.failed();
     }
 
-    @ApiOperation(value = "查询安全责任制",notes = "参数：员工实体类")
+    @ApiOperation(value = "分页查询安全责任制",notes = "参数：员工实体类")
     @PostMapping("/selectRiskResponsibilityListByPage")
     public ResultVo selectRiskResponsibilityListByPage(@ApiParam(name = "riskResponsibilityListDto",required =false)
                                                            @RequestBody JdyUserDto jdyUserDto){
@@ -97,6 +97,16 @@ public class RiskResponsibilityListController {
         }
         log.info("pageRiskControlSituationDto.size()的值为："+pageRiskControlSituationDto.size());
         return ResultVo.success(pageRiskControlSituationDto);
+    }
+
+    @ApiOperation(value = "查询一个人的所有安全责任制",notes = "参数：安全责任制实体类")
+    @PostMapping("/selectRiskResponsibilityList")
+    public ResultVo selectRiskResponsibilityList(@ApiParam(name = "departmentAndDutiesDto",required =false)
+                                  @RequestBody DepartmentAndDutiesDto departmentAndDutiesDto){
+
+        log.info("departmentAndDutiesDto.getJdyUserId()的值为："+departmentAndDutiesDto.getJdyUserId());
+        List<RiskResponsibilityList> riskResponsibilityLists = riskResponsibilityListService.selectRiskResponsibilityList(departmentAndDutiesDto);
+        return ResultVo.success(riskResponsibilityLists);
     }
 
     @ApiOperation(value = "删除安全责任制",notes = "参数：id")
