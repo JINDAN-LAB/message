@@ -1,14 +1,20 @@
 package com.jindan.jdy.controller.waimao;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.jindan.jdy.common.dto.WaimaoTichengHuikuanDto;
 import com.jindan.jdy.common.pojo.WaimaoTichengHuikuan;
 import com.jindan.jdy.common.utils.api.ResultVo;
 import com.jindan.jdy.controller.utils.CommonUtils;
 import com.jindan.jdy.controller.utils.WorkbookUtils;
 import com.jindan.jdy.service.waimao.WaimaoTichengHuikuanService;
+import com.jindan.jdy.utils.DateUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -52,18 +58,63 @@ public class WaimaoTichengHuikuanController{
             throw new Exception("创建Excel工作薄为空！");
         }
         List<WaimaoTichengHuikuan> jijiabiaos = new ArrayList<>();
-        for (int j = sheet.getFirstRowNum(); j <= sheet.getLastRowNum(); j++){
+        for (int j = 1; j <= sheet.getLastRowNum(); j++){
             Row row = sheet.getRow(j);
-            if(row==null||row.getFirstCellNum()==j){continue;}
+            if(row.getCell(0)==null || StringUtils.isEmpty(row.getCell(0).getStringCellValue())){
+                break;
+            }
             WaimaoTichengHuikuan jijiabiao = new WaimaoTichengHuikuan();
-            jijiabiao.setFapiaohao(row.getCell(0).getStringCellValue());
-            jijiabiao.setHuikuanriqi(row.getCell(1).getStringCellValue());
-            jijiabiao.setHuikuanjine( (row.getCell(2).getStringCellValue()));
-            jijiabiao.setJiehuiyinhang(row.getCell(3).getStringCellValue());
-            jijiabiao.setZhoubie( (row.getCell(4).getStringCellValue()));
-            jijiabiao.setJine(row.getCell(5).getStringCellValue());
-            jijiabiao.setShijishiyong( (row.getCell(6).getStringCellValue()));
-            jijiabiao.setYuliu3(row.getCell(7).getStringCellValue());
+            if(row.getCell(0) != null){
+                row.getCell(0).setCellType(Cell.CELL_TYPE_STRING);
+                jijiabiao.setFapiaohao(row.getCell(0).getStringCellValue());
+            }
+
+            if(row.getCell(1) != null){
+                switch (row.getCell(1).getCellType()){
+                    case HSSFCell.CELL_TYPE_NUMERIC:
+                        if(row.getCell(1) != null){
+                            Cell cell = row.getCell(1);
+                            cell.setCellType(1);
+                            String huankuanDate = cell.getStringCellValue() + "";
+                            huankuanDate = DateUtils.getFormatDate(huankuanDate);
+                            jijiabiao.setHuikuanriqi( huankuanDate);
+                        }
+                        break;
+                    case HSSFCell.CELL_TYPE_STRING:
+                        if(row.getCell(1) != null){
+                            row.getCell(1).setCellType(Cell.CELL_TYPE_STRING);
+                            // 转换
+                            String huankuanDate = row.getCell(1).getStringCellValue();
+                            huankuanDate = DateUtils.getFormatDate(huankuanDate);
+                            jijiabiao.setHuikuanriqi(huankuanDate);
+                        }
+                        break;
+                }
+            }
+            if(row.getCell(2) != null){
+                row.getCell(2).setCellType(Cell.CELL_TYPE_STRING);
+                jijiabiao.setHuikuanjine(row.getCell(2).getStringCellValue());
+            }
+            if(row.getCell(3) != null){
+                row.getCell(3).setCellType(Cell.CELL_TYPE_STRING);
+                jijiabiao.setJiehuiyinhang(row.getCell(3).getStringCellValue());
+            }
+            if(row.getCell(4) != null){
+                row.getCell(4).setCellType(Cell.CELL_TYPE_STRING);
+                jijiabiao.setZhoubie(row.getCell(4).getStringCellValue());
+            }
+            if(row.getCell(5) != null){
+                row.getCell(5).setCellType(Cell.CELL_TYPE_STRING);
+                jijiabiao.setJine(row.getCell(5).getStringCellValue());
+            }
+            if(row.getCell(6) != null){
+                row.getCell(6).setCellType(Cell.CELL_TYPE_STRING);
+                jijiabiao.setShijishiyong(row.getCell(6).getStringCellValue());
+            }
+            if(row.getCell(7) != null){
+                row.getCell(7).setCellType(Cell.CELL_TYPE_STRING);
+                jijiabiao.setYuliu3(row.getCell(7).getStringCellValue());
+            }
             jijiabiaos.add(jijiabiao);
         }
         waimaoTichengHuikuanService.saveBatch(jijiabiaos);
@@ -71,10 +122,10 @@ public class WaimaoTichengHuikuanController{
     }
 
     @ApiOperation(value = "查询外贸提成回款", notes = "参数:查询包装信息")
-    @PostMapping("/seleteTichengFahuo")
+    @PostMapping("/selectTichengHuikuan")
     public ResultVo seleteTichengFahuo(@ApiParam(value = "jdyRole", required = false)
-                                       @RequestBody WaimaoTichengHuikuan jdyRole){
-        List<WaimaoTichengHuikuan> list = waimaoTichengHuikuanService.seletelist(jdyRole);
+                                       @RequestBody WaimaoTichengHuikuanDto huikuanDto){
+        Page<WaimaoTichengHuikuan> list = waimaoTichengHuikuanService.seletelist(huikuanDto);
         return  ResultVo.success(list);
     }
 
@@ -95,7 +146,6 @@ public class WaimaoTichengHuikuanController{
     public ResultVo addTichengFahuo( @ApiParam(name = "jdyRole", required = true)
                                      @RequestBody WaimaoTichengHuikuan jdyRole){
 
-        log.info("jdyRole的值为："+jdyRole);
         boolean save = waimaoTichengHuikuanService.save(jdyRole);
         if(save){
             return ResultVo.success(jdyRole);

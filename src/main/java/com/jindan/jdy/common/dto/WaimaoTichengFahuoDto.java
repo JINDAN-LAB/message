@@ -153,7 +153,6 @@ public class WaimaoTichengFahuoDto extends PageVO implements Serializable {
 
         WaimaoTarget waimaoTarget;
 
-
         WaimaoTichengHuilv waimaoTichengHuilv;
 
         WaimaoTichengJijiabiao waimaoTichengJijiabiao;

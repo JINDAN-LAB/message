@@ -1,6 +1,7 @@
 package com.jindan.jdy.controller.neimao;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.jindan.jdy.common.dto.DomesticFahuoDto;
@@ -1078,7 +1079,7 @@ public class DomesticFahuoController{
                                         @RequestBody  List<String> ids){
      for (int p = 0; p < ids.size(); p++){
 
-        log.info("删除id为："+ids);
+         log.info("删除id为："+ids.get(p));
         DomesticFahuo  list =   domesticFahuoService.getById(ids.get(p));
         if(list != null){
             list.setJijiaticheng("");
@@ -1141,8 +1142,12 @@ public class DomesticFahuoController{
                     lishuikuan.add(list1.get(i));
                 }
             }
-            domesticHuikuanService.updateBatchById(lishuikuan);
-            domesticFahuoService.updateById(list);
+            if(CollectionUtils.isNotEmpty(lishuikuan)){
+                domesticHuikuanService.updateBatchById(lishuikuan);
+                domesticFahuoService.updateById(list);
+            }else{
+                log.info("删除id为："+ids.get(p)+",异常，无法删除！");
+            }
          }else{
             return ResultVo.failed("data","error");
          }

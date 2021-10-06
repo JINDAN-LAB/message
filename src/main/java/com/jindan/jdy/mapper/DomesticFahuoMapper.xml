@@ -508,11 +508,11 @@
 		LEFT JOIN domestic_baozhuang  ON domestic_fahuo.bzw =domestic_baozhuang.baozhuangwu
 		LEFT JOIN domestic_jijiabiao  ON domestic_fahuo.wuliaomingcheng =domestic_jijiabiao.name
 		LEFT JOIN domestic_xishu  ON  1 = 1  where domestic_fahuo.shouhuokehu in
-	   <foreach collection="collection" item="value"  separator="," open="(" close=")">
-		 #{value}
-	   </foreach>
-	   and domestic_fahuo.queren ="未计算"
-	   order by  domestic_fahuo.danjuriqi
+		<foreach collection="collection" item="value"  separator="," open="(" close=")">
+			#{value}
+		</foreach>
+		and domestic_fahuo.queren ="未计算"
+		order by  domestic_fahuo.danjuriqi,domestic_fahuo.danjuhao
 	</select>
 
 

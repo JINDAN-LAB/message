@@ -5,6 +5,7 @@ import com.jindan.jdy.common.utils.api.ResultVo;
 import com.jindan.jdy.controller.utils.CommonUtils;
 import com.jindan.jdy.controller.utils.WorkbookUtils;
 import com.jindan.jdy.service.waimao.WaimaoTichengHuilvService;
+import freemarker.ext.beans.HashAdapter;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -17,7 +18,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
 *
@@ -28,7 +31,7 @@ import java.util.List;
 *
 */
 @Slf4j
-@Api(tags = "外贸提成回率管理")
+@Api(tags = "外贸提成汇率管理")
 @RestController
 @RequestMapping("/waimaoTichengHuilv")
 public class WaimaoTichengHuilvController{
@@ -37,7 +40,7 @@ public class WaimaoTichengHuilvController{
     WaimaoTichengHuilvService waimaoTichengHuilvService;
 
 
-    @ApiOperation(value = "回款率批量导入", notes = "参数:发货信息批量导入")
+    @ApiOperation(value = "汇率批量导入", notes = "参数:汇率批量导入")
     @PostMapping("addBatchTichengFahuo")
     public ResultVo addTichengHuilv(@RequestParam("file") MultipartFile file) throws Exception {
 
@@ -66,16 +69,16 @@ public class WaimaoTichengHuilvController{
     }
 
 
-    @ApiOperation(value = "查询回款率", notes = "参数:查询包装信息")
+    @ApiOperation(value = "查询汇率", notes = "参数:外贸提成汇率")
     @PostMapping("/seleteTichengHuilv")
     public ResultVo seleteTichengHuilv(@ApiParam(value = "jdyRole", required = false)
-                                       @RequestBody WaimaoTichengHuilv jdyRole){
-        List<WaimaoTichengHuilv> list = waimaoTichengHuilvService.seletelist(jdyRole);
+                                       @RequestBody WaimaoTichengHuilv waimaoTichengHuilv){
+        List<WaimaoTichengHuilv> list = waimaoTichengHuilvService.seletelist(waimaoTichengHuilv);
         return  ResultVo.success(list);
     }
 
 
-    @ApiOperation("更新回款率")
+    @ApiOperation("更新汇率")
     @PostMapping("/updateTichengHuilv")
     public ResultVo updateTichengHuilv(@ApiParam(value = "jdyRole", required = true)
                                        @RequestBody WaimaoTichengHuilv jdyRole){
@@ -86,7 +89,7 @@ public class WaimaoTichengHuilvController{
         return ResultVo.failed();
     }
 
-    @ApiOperation("新增回款率")
+    @ApiOperation("新增汇率")
     @PostMapping("/addTichengHuilv")
     public ResultVo addTichengHuilv( @ApiParam(name = "jdyRole", required = true)
                                      @RequestBody WaimaoTichengHuilv jdyRole){
@@ -97,10 +100,10 @@ public class WaimaoTichengHuilvController{
         return ResultVo.failed();
     }
 
-    @ApiOperation("删除回款率")
-    @DeleteMapping("/deleteTichengHuilv/{id}")
-    public ResultVo deleteTichengHuilv(@ApiParam(value = "id", name = "角色ID", required = true) @PathVariable String  id){
-        boolean b = waimaoTichengHuilvService.removeById(id);
+    @ApiOperation("删除汇率")
+    @DeleteMapping("/deleteTichengHuilv/{bz}")
+    public ResultVo deleteTichengHuilv(@ApiParam(value = "bz", name = "汇率名称", required = true) @PathVariable String  bz){
+        boolean b = waimaoTichengHuilvService.removeById(bz);
         if(b){
             return ResultVo.success();
         }

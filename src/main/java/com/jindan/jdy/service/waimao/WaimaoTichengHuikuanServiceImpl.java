@@ -1,9 +1,13 @@
 package com.jindan.jdy.service.waimao;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.jindan.jdy.mapper.WaimaoTichengHuikuanDao;
+import com.jindan.jdy.common.dto.WaimaoTichengHuikuanDto;
+import com.jindan.jdy.common.pojo.WaimaoTichengFahuo;
 import com.jindan.jdy.common.pojo.WaimaoTichengHuikuan;
+import com.jindan.jdy.mapper.WaimaoTichengHuikuanDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -23,10 +27,29 @@ public class WaimaoTichengHuikuanServiceImpl  extends ServiceImpl<WaimaoTichengH
     @Autowired
     WaimaoTichengHuikuanDao waimaoTichengHuikuanDao;
 
+    @Override
+    public List<WaimaoTichengHuikuan> selectHuikuanByBiaoshi(String biaoshi) {
+        QueryWrapper<WaimaoTichengHuikuan> queryWrapperq =new QueryWrapper<>();
+        queryWrapperq.like("biaoshi",biaoshi);
+        return waimaoTichengHuikuanDao.selectList(queryWrapperq);
+    }
 
     @Override
-    public List<WaimaoTichengHuikuan> seletelist(WaimaoTichengHuikuan jdyRole) {
+    public List<WaimaoTichengHuikuan> selectHuikuanByFaopiaohao(String fapiaohao) {
+        QueryWrapper<WaimaoTichengHuikuan> queryWrapperq =new QueryWrapper<>();
+        queryWrapperq.eq("fapiaohao",fapiaohao);
+        queryWrapperq.ne("huikuanjine","0");
+        queryWrapperq.orderByAsc("huikuanriqi");
+        return waimaoTichengHuikuanDao.selectList(queryWrapperq);
+    }
 
+
+    @Override
+    public Page<WaimaoTichengHuikuan> seletelist(WaimaoTichengHuikuanDto jdyRole) {
+        if(jdyRole.getCurrentPage() < 0  ){
+            jdyRole.setCurrentPage(0);
+        }
+        IPage<WaimaoTichengHuikuan> page = new Page<>(jdyRole.getCurrentPage(),jdyRole.getPageSize());
         QueryWrapper<WaimaoTichengHuikuan> queryWrapper =new QueryWrapper<>();
         if( jdyRole.getFapiaohao() !=null && !jdyRole.getFapiaohao().isEmpty() ){
             queryWrapper.like("fapiaohao",jdyRole.getFapiaohao());
@@ -43,7 +66,6 @@ public class WaimaoTichengHuikuanServiceImpl  extends ServiceImpl<WaimaoTichengH
         if( jdyRole.getZhoubie() !=null && !jdyRole.getZhoubie().isEmpty() ){
             queryWrapper.like("zhoubie",jdyRole.getZhoubie());
         }
-
         if( jdyRole.getShijishiyong() !=null && !jdyRole.getShijishiyong().isEmpty() ){
             queryWrapper.like("shijishiyong",jdyRole.getShijishiyong());
         }
@@ -51,7 +73,7 @@ public class WaimaoTichengHuikuanServiceImpl  extends ServiceImpl<WaimaoTichengH
             queryWrapper.like("yuliu3",jdyRole.getYuliu3());
         }
         queryWrapper.gt("jine","0");
-        return waimaoTichengHuikuanDao.selectList(queryWrapper);
+        return (Page<WaimaoTichengHuikuan>) waimaoTichengHuikuanDao.selectPage(page,queryWrapper);
     }
 
     @Override

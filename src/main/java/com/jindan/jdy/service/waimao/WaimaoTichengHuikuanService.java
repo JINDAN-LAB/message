@@ -1,6 +1,8 @@
 package com.jindan.jdy.service.waimao;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.jindan.jdy.common.dto.WaimaoTichengHuikuanDto;
 import com.jindan.jdy.common.pojo.WaimaoTichengHuikuan;
 
 import java.util.List;
@@ -13,7 +15,11 @@ import java.util.List;
  */
 public interface WaimaoTichengHuikuanService extends IService<WaimaoTichengHuikuan> {
 
-    List<WaimaoTichengHuikuan> seletelist(WaimaoTichengHuikuan jdyRole);
+    Page<WaimaoTichengHuikuan> seletelist(WaimaoTichengHuikuanDto jdyRole);
 
     List<WaimaoTichengHuikuan> seleteYuebiaoHuikuan();
+
+    List<WaimaoTichengHuikuan> selectHuikuanByBiaoshi(String biaoshi);
+
+    List<WaimaoTichengHuikuan> selectHuikuanByFaopiaohao(String fapiaohao);
 }

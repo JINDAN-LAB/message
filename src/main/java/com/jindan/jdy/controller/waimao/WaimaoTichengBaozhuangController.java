@@ -64,20 +64,20 @@ public class WaimaoTichengBaozhuangController{
 
     @ApiOperation(value = "查询包装信息", notes = "参数:查询包装信息")
     @PostMapping("/seleteTichengBaozhuang")
-    public ResultVo seleteTichengBaozhuang(@ApiParam(value = "jdyRole", required = false)
-                                      @RequestBody WaimaoTichengBaozhuang jdyRole){
-        List<WaimaoTichengBaozhuang> list = waimaoTichengBaozhuangService.seletelist(jdyRole);
+    public ResultVo seleteTichengBaozhuang(@ApiParam(value = "waimaoTichengBaozhuang", required = false)
+                                      @RequestBody WaimaoTichengBaozhuang waimaoTichengBaozhuang){
+        List<WaimaoTichengBaozhuang> list = waimaoTichengBaozhuangService.seletelist(waimaoTichengBaozhuang);
         return  ResultVo.success(list);
     }
 
 
     @ApiOperation("更新包装信息")
     @PostMapping("/updateTichengBaozhuang")
-    public ResultVo updateTichengBaozhuang(@ApiParam(value = "jdyRole", required = true)
-                                   @RequestBody WaimaoTichengBaozhuang jdyRole){
-        boolean b = waimaoTichengBaozhuangService.updateById(jdyRole);
+    public ResultVo updateTichengBaozhuang(@ApiParam(value = "waimaoTichengBaozhuang", required = true)
+                                   @RequestBody WaimaoTichengBaozhuang waimaoTichengBaozhuang){
+        boolean b = waimaoTichengBaozhuangService.updateById(waimaoTichengBaozhuang);
         if(b){
-            return ResultVo.success(jdyRole);
+            return ResultVo.success(waimaoTichengBaozhuang);
         }
         return ResultVo.failed();
     }
@@ -85,11 +85,11 @@ public class WaimaoTichengBaozhuangController{
 
     @ApiOperation("新增外贸提成包装信息")
     @PostMapping("/addTichengBaozhuang")
-    public ResultVo addTichengBaozhuang( @ApiParam(name = "jdyRole", required = true)
-                                    @RequestBody WaimaoTichengBaozhuang jdyRole){
-        boolean save = waimaoTichengBaozhuangService.save(jdyRole);
+    public ResultVo addTichengBaozhuang( @ApiParam(name = "waimaoTichengBaozhuang", required = true)
+                                    @RequestBody WaimaoTichengBaozhuang waimaoTichengBaozhuang){
+        boolean save = waimaoTichengBaozhuangService.save(waimaoTichengBaozhuang);
         if(save){
-            return ResultVo.success(jdyRole);
+            return ResultVo.success(waimaoTichengBaozhuang);
         }
         return ResultVo.failed();
     }
@@ -97,7 +97,7 @@ public class WaimaoTichengBaozhuangController{
 
     @ApiOperation("删除外贸包装信息")
     @DeleteMapping("/deleteTichengBaozhuang/{id}")
-    public ResultVo deleteTichengBaozhuang(@ApiParam(value = "id", name = "角色ID", required = true) @PathVariable String  id){
+    public ResultVo deleteTichengBaozhuang(@ApiParam(value = "id", name = "包装ID", required = true) @PathVariable String  id){
         boolean b = waimaoTichengBaozhuangService.removeById(id);
         if(b){
             return ResultVo.success();

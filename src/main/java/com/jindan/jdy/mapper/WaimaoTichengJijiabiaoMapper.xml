@@ -4,6 +4,7 @@
 
 	<resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.WaimaoTichengJijiabiao">
 		<id column="titlename" property="titlename" />
+		<id column="sixth" property="sixth" />
 		<id column="fifth" property="fifth" />
 		<id column="fourthly" property="fourthly" />
 		<id column="thirdly" property="thirdly" />
@@ -14,7 +15,7 @@
 		<id column="delete_id" property="deleteId" />
 	</resultMap>
 	<sql id="Base_Column_List">
-		titlename, fifth, fourthly, thirdly, second, first, insert_time, update_time, delete_id
+		titlename, sixth, fifth, fourthly, thirdly, second, first, insert_time, update_time, delete_id
 	</sql>
 	
 </mapper>

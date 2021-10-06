@@ -31,6 +31,9 @@ public class WaimaoTichengJijiabiao extends Model<WaimaoTichengJijiabiao> {
 	@TableId(value = "titlename")
 	@ApiModelProperty(name = "titlename" , value = "")
 	private String titlename;
+
+	@ApiModelProperty(name = "sixth" , value = "")
+	private String sixth;
     
 	@ApiModelProperty(name = "fifth" , value = "")
 	private String fifth;

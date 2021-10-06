@@ -36,7 +36,7 @@ public class WaimaoTichengJijiabiaoController{
     @Autowired
     WaimaoTichengJijiabiaoService waimaoTichengJijiabiaoService;
 
-    @ApiOperation(value = "回款率批量导入", notes = "参数:发货信息批量导入")
+    @ApiOperation(value = "基价表批量导入", notes = "参数:基价表批量导入")
     @PostMapping("addBatchTichengFahuo")
     public ResultVo addTichengHuilv(@RequestParam("file") MultipartFile file) throws Exception {
 
@@ -68,40 +68,40 @@ public class WaimaoTichengJijiabiaoController{
         return ResultVo.success();
     }
 
-    @ApiOperation(value = "查询回款率", notes = "参数:查询包装信息")
+    @ApiOperation(value = "查询基价表", notes = "参数:基价表信息")
     @PostMapping("/seleteTichengHuilv")
     public ResultVo seleteTichengHuilv(@ApiParam(value = "jdyRole", required = false)
-                                       @RequestBody WaimaoTichengJijiabiao jdyRole){
-        List<WaimaoTichengJijiabiao> list = waimaoTichengJijiabiaoService.seletelist(jdyRole);
+                                       @RequestBody WaimaoTichengJijiabiao waimaoTichengJijiabiao){
+        List<WaimaoTichengJijiabiao> list = waimaoTichengJijiabiaoService.seletelist(waimaoTichengJijiabiao);
         return  ResultVo.success(list);
     }
 
-    @ApiOperation("更新回款率")
+    @ApiOperation("更新基价表")
     @PostMapping("/updateTichengHuilv")
-    public ResultVo updateTichengHuilv(@ApiParam(value = "jdyRole", required = true)
-                                       @RequestBody WaimaoTichengJijiabiao jdyRole){
-        boolean b = waimaoTichengJijiabiaoService.updateById(jdyRole);
+    public ResultVo updateTichengHuilv(@ApiParam(value = "waimaoTichengJijiabiao", required = true)
+                                       @RequestBody WaimaoTichengJijiabiao waimaoTichengJijiabiao){
+        boolean b = waimaoTichengJijiabiaoService.updateById(waimaoTichengJijiabiao);
         if(b){
-            return ResultVo.success(jdyRole);
+            return ResultVo.success(waimaoTichengJijiabiao);
         }
         return ResultVo.failed();
     }
 
 
-    @ApiOperation("新增回款率")
+    @ApiOperation("新增基价表")
     @PostMapping("/addTichengHuilv")
-    public ResultVo addTichengHuilv( @ApiParam(name = "jdyRole", required = true)
-                                     @RequestBody WaimaoTichengJijiabiao jdyRole){
-        boolean save = waimaoTichengJijiabiaoService.save(jdyRole);
+    public ResultVo addTichengHuilv( @ApiParam(name = "waimaoTichengJijiabiao", required = true)
+                                     @RequestBody WaimaoTichengJijiabiao waimaoTichengJijiabiao){
+        boolean save = waimaoTichengJijiabiaoService.save(waimaoTichengJijiabiao);
         if(save){
-            return ResultVo.success(jdyRole);
+            return ResultVo.success(waimaoTichengJijiabiao);
         }
         return ResultVo.failed();
     }
 
-    @ApiOperation("删除回款率")
+    @ApiOperation("删除基价表")
     @DeleteMapping("/deleteTichengHuilv/{id}")
-    public ResultVo deleteTichengHuilv(@ApiParam(value = "id", name = "角色ID", required = true) @PathVariable String  id){
+    public ResultVo deleteTichengHuilv(@ApiParam(value = "id", name = "基价表ID", required = true) @PathVariable String  id){
         boolean b = waimaoTichengJijiabiaoService.removeById(id);
         if(b){
             return ResultVo.success();
