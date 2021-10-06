@@ -1,8 +1,8 @@
-package com.jindan.jdy.common.pojo;
+package com.jindan.jdy.common.dto;
 
 import com.baomidou.mybatisplus.annotation.*;
-import com.baomidou.mybatisplus.extension.activerecord.Model;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.jindan.jdy.common.vo.PageVO;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -11,18 +11,10 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
-/**
- * <p>
- * 
- * </p>
- *
- * @author liangfang
- * @since 2021-08-31
- */
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-public class RiskRulesRegulations extends Model<RiskRulesRegulations> {
+public class RiskRulesRegulationsDto  extends PageVO {
 
     private static final long serialVersionUID = 1L;
 
@@ -77,6 +69,18 @@ public class RiskRulesRegulations extends Model<RiskRulesRegulations> {
     @TableField(fill = FieldFill.INSERT)
     @ApiModelProperty(name = "insertTime" , value = "")
     private Date insertTime;
+
+    /**
+     * 开始时间
+     */
+    @ApiModelProperty(name = "startTime" , value = "")
+    private String startTime;
+
+    /**
+     * 结束时间
+     */
+    @ApiModelProperty(name = "endTime" , value = "")
+    private String endTime;
 
     /**
      * 逻辑删除

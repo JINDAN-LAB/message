@@ -22,13 +22,13 @@ public class DepartmentAndDutiesDto extends PageVO{
 
 
     /**
-     * 风险管控情况
+     * 部门
      */
     @ApiModelProperty(name = "department" , value = "")
     private String department;
 
     /**
-     * 风险管控情况
+     * 职责
      */
     @ApiModelProperty(name = "duties" , value = "")
     private String duties;
