@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.mapper.SecurityPatrolClassificationMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.SecurityPatrolClassification">
+        <id column="patrol_classification_id" property="patrolClassificationId" />
+        <result column="riskpoint_id" property="riskpointId" />
+        <result column="controllevel" property="controllevel" />
+        <result column="category_one" property="categoryOne" />
+        <result column="category_two" property="categoryTwo" />
+        <result column="judgment_time" property="judgmentTime" />
+        <result column="insert_time" property="insertTime" />
+        <result column="delete_id" property="deleteId" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        patrol_classification_id, riskpoint_id, controllevel, category_one, category_two, judgment_time, insert_time, delete_id
+    </sql>
+
+    <!-- 查询一条风险点信息映射结果 -->
+    <resultMap id="PatrolClassificationListResultMap" type="com.jindan.jdy.common.dto.SecurityPatrolClassificationDto">
+        <id column="patrol_classification_id" property="patrolClassificationId" />
+        <result column="riskpoint_id" property="riskpointId" />
+        <result column="controllevel" property="controllevel" />
+        <result column="category_one" property="categoryOne" />
+        <result column="category_two" property="categoryTwo" />
+        <result column="judgment_time" property="judgmentTime" />
+        <result column="insert_time" property="insertTime" />
+        <result column="delete_id" property="deleteId" />
+    </resultMap>
+
+    <!-- select -->
+    <!-- 根据风险点id查询巡检分类 -->
+    <select id="getPatrolClassificationList" resultMap="PatrolClassificationListResultMap" parameterType="com.jindan.jdy.common.pojo.SecurityPatrolClassification">
+        SELECT *
+        FROM
+        security_patrol_classification
+        WHERE riskpoint_id = #{riskpointId} and delete_id =0
+    </select>
+
+</mapper>

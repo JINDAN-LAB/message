@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.mapper.SecurityRiskpointJudgedMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.SecurityRiskpointJudged">
+        <id column="riskpoint_id" property="riskpointId" />
+        <result column="riskpoint_classification" property="riskpointClassification" />
+        <result column="riskpoint_name" property="riskpointName" />
+        <result column="riskpoint_location" property="riskpointLocation" />
+        <result column="person_in_charge" property="personInCharge" />
+        <result column="inspection_type" property="inspectionType" />
+        <result column="nfc_code" property="nfcCode" />
+        <result column="is_special_equipment" property="isSpecialEquipment" />
+        <result column="lec_accident_possibility" property="lecAccidentPossibility" />
+        <result column="lec_danger_degree" property="lecDangerDegree" />
+        <result column="lec_possible_consequence" property="lecPossibleConsequence" />
+        <result column="lec_danger" property="lecDanger" />
+        <result column="ls_accident_possibility" property="lsAccidentPossibility" />
+        <result column="ls_consequence_seriousness" property="lsConsequenceSeriousness" />
+        <result column="ls_risk_value" property="lsRiskValue" />
+        <result column="risk_level" property="riskLevel" />
+        <result column="riskpoint_description" property="riskpointDescription" />
+        <result column="possible_consequences" property="possibleConsequences" />
+        <result column="detailed_location" property="detailedLocation" />
+        <result column="accident_type" property="accidentType" />
+        <result column="loss_prediction" property="lossPrediction" />
+        <result column="control_measures" property="controlMeasures" />
+        <result column="hidden_danger" property="hiddenDanger" />
+        <result column="emergency_measures" property="emergencyMeasures" />
+        <result column="technical_measures" property="technicalMeasures" />
+        <result column="remarks" property="remarks" />
+        <result column="judgment_time" property="judgmentTime" />
+        <result column="is_offline" property="isOffline" />
+        <result column="riskpoint_status" property="riskpointStatus" />
+        <result column="qrcode_path" property="qrcodePath" />
+        <result column="insert_time" property="insertTime" />
+        <result column="delete_id" property="deleteId" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        riskpoint_id, riskpoint_classification, riskpoint_name, riskpoint_location, person_in_charge, inspection_type, nfc_code, is_special_equipment, lec_accident_possibility, lec_danger_degree, lec_possible_consequence, lec_danger, ls_accident_possibility, ls_consequence_seriousness, ls_risk_value, risk_level, riskpoint_description, possible_consequences, detailed_location, accident_type, loss_prediction, control_measures, hidden_danger, emergency_measures, technical_measures, remarks, judgment_time, is_offline, is_enabled, qrcode_path, insert_time, delete_id
+    </sql>
+
+    <!-- 查询一条风险点信息映射结果 -->
+    <resultMap id="RiskpointJudgedResultMap" type="com.jindan.jdy.common.dto.SecurityRiskpointJudgedDto">
+        <id column="riskpoint_id" property="riskpointId" />
+        <result column="riskpoint_classification" property="riskpointClassification" />
+        <result column="riskpoint_name" property="riskpointName" />
+        <result column="riskpoint_location" property="riskpointLocation" />
+        <result column="person_in_charge" property="personInCharge" />
+        <result column="inspection_type" property="inspectionType" />
+        <result column="nfc_code" property="nfcCode" />
+        <result column="is_special_equipment" property="isSpecialEquipment" />
+        <result column="lec_accident_possibility" property="lecAccidentPossibility" />
+        <result column="lec_danger_degree" property="lecDangerDegree" />
+        <result column="lec_possible_consequence" property="lecPossibleConsequence" />
+        <result column="lec_danger" property="lecDanger" />
+        <result column="ls_accident_possibility" property="lsAccidentPossibility" />
+        <result column="ls_consequence_seriousness" property="lsConsequenceSeriousness" />
+        <result column="ls_risk_value" property="lsRiskValue" />
+        <result column="risk_level" property="riskLevel" />
+        <result column="riskpoint_description" property="riskpointDescription" />
+        <result column="possible_consequences" property="possibleConsequences" />
+        <result column="detailed_location" property="detailedLocation" />
+        <result column="accident_type" property="accidentType" />
+        <result column="loss_prediction" property="lossPrediction" />
+        <result column="control_measures" property="controlMeasures" />
+        <result column="hidden_danger" property="hiddenDanger" />
+        <result column="emergency_measures" property="emergencyMeasures" />
+        <result column="technical_measures" property="technicalMeasures" />
+        <result column="remarks" property="remarks" />
+        <result column="judgment_time" property="judgmentTime" />
+        <result column="is_offline" property="isOffline" />
+        <result column="riskpoint_status" property="riskpointStatus" />
+        <result column="qrcode_path" property="qrcodePath" />
+        <result column="insert_time" property="insertTime" />
+        <result column="delete_id" property="deleteId" />
+    </resultMap>
+
+    <!-- select -->
+    <!-- 查询一条风险点信息sql语句 -->
+    <select id="getRiskpointJudgedByOne" resultMap="RiskpointJudgedResultMap" parameterType="com.jindan.jdy.common.pojo.SecurityRiskpointJudged">
+        SELECT *
+        FROM
+        security_riskpoint_judged
+        WHERE riskpoint_id = #{riskpointId} and delete_id =0
+    </select>
+
+
+    <!-- excel表格导出查询映射结果 -->
+    <resultMap id="RiskpointJudgedExcelResultMap" type="com.jindan.jdy.common.dto.SecurityRiskpointJudgedDto">
+        <id column="riskpoint_id" property="riskpointId" />
+        <result column="riskpoint_classification" property="riskpointClassification" />
+        <result column="riskpoint_name" property="riskpointName" />
+        <result column="riskpoint_location" property="riskpointLocation" />
+        <result column="person_in_charge" property="personInCharge" />
+        <result column="inspection_type" property="inspectionType" />
+        <result column="nfc_code" property="nfcCode" />
+        <result column="is_special_equipment" property="isSpecialEquipment" />
+        <result column="lec_accident_possibility" property="lecAccidentPossibility" />
+        <result column="lec_danger_degree" property="lecDangerDegree" />
+        <result column="lec_possible_consequence" property="lecPossibleConsequence" />
+        <result column="lec_danger" property="lecDanger" />
+        <result column="ls_accident_possibility" property="lsAccidentPossibility" />
+        <result column="ls_consequence_seriousness" property="lsConsequenceSeriousness" />
+        <result column="ls_risk_value" property="lsRiskValue" />
+        <result column="risk_level" property="riskLevel" />
+        <result column="riskpoint_description" property="riskpointDescription" />
+        <result column="possible_consequences" property="possibleConsequences" />
+        <result column="detailed_location" property="detailedLocation" />
+        <result column="accident_type" property="accidentType" />
+        <result column="loss_prediction" property="lossPrediction" />
+        <result column="control_measures" property="controlMeasures" />
+        <result column="hidden_danger" property="hiddenDanger" />
+        <result column="emergency_measures" property="emergencyMeasures" />
+        <result column="technical_measures" property="technicalMeasures" />
+        <result column="remarks" property="remarks" />
+        <result column="judgment_time" property="judgmentTime" />
+        <result column="is_offline" property="isOffline" />
+        <result column="riskpoint_status" property="riskpointStatus" />
+        <result column="qrcode_path" property="qrcodePath" />
+        <result column="insert_time" property="insertTime" />
+        <result column="delete_id" property="deleteId" />
+        <collection property="securityRiskcontentList" column="securityRiskcontentList" ofType="com.jindan.jdy.common.pojo.SecurityRiskcontent">
+            <id column="riskcontent_id" property="riskcontentId" />
+            <result column="key_riskpoint_id" property="riskpointId" />
+            <result column="patrol_classification_id" property="patrolClassificationId" />
+            <result column="risk_control_content" property="riskControlContent" />
+            <result column="accident_cause" property="accidentCause" />
+            <result column="possible_accidents" property="possibleAccidents" />
+            <result column="riskcontent_emergency_measures" property="emergencyMeasures" />
+            <result column="influence_scope" property="influenceScope" />
+            <result column="potential_consequences" property="potentialConsequences" />
+            <result column="is_photograph" property="isPhotograph" />
+            <result column="photo_path" property="photoPath" />
+            <result column="is_data_entry" property="isDataEntry" />
+            <result column="data_entry_path" property="dataEntryPath" />
+            <result column="correct_picture_path" property="correctPicturePath" />
+            <result column="wrong_picture_path" property="wrongPicturePath" />
+            <result column="judgment_time" property="judgmentTime" />
+            <result column="insert_time" property="insertTime" />
+            <result column="delete_id" property="deleteId" />
+        </collection>
+    </resultMap>
+
+    <!-- select -->
+    <!-- excel表格导出查询 -->
+    <select id="getRiskpointJudgedExcel" resultMap="RiskpointJudgedExcelResultMap" parameterType="java.util.List">
+        SELECT
+        security_riskpoint_judged.*,
+        security_riskcontent.riskcontent_id, security_riskcontent.riskpoint_id as key_riskpoint_id, security_riskcontent.risk_control_content,
+        security_riskcontent.patrol_classification_id, security_riskcontent.accident_cause, security_riskcontent.possible_accidents, security_riskcontent.emergency_measures as riskcontent_emergency_measures,
+        security_riskcontent.influence_scope, security_riskcontent.potential_consequences, security_riskcontent.photo_path, security_riskcontent.is_data_entry,
+        security_riskcontent.data_entry_path, security_riskcontent.correct_picture_path, security_riskcontent.wrong_picture_path, security_riskcontent.judgment_time, security_riskcontent.insert_time
+        FROM
+        security_riskpoint_judged
+        left join security_riskcontent on security_riskpoint_judged.riskpoint_id = security_riskcontent.riskpoint_id and security_riskcontent.delete_id =0
+        WHERE security_riskpoint_judged.riskpoint_id in
+        <foreach collection="list" item="item" separator="," open="(" close=")">
+            #{item.riskpointId}
+        </foreach>
+        and security_riskpoint_judged.delete_id =0
+        <!--<include refid="selectCondition"></include>-->
+    </select>
+
+    <!-- excel表格导出查询条件 -->
+    <sql id="selectCondition">
+        <where>
+            <if test="riskpointId != null and riskpointId !='' ">
+                and security_riskpoint_judged.riskpoint_id = #{riskpointId}
+            </if>
+            <foreach collection="list" item="item" separator="," open="(" close=")">
+                and security_riskpoint_judged.delete_id =0
+            </foreach>
+
+        </where>
+    </sql>
+
+    <!-- 批量设置风险点状态 -->
+    <update id="updateRiskpointStatus" parameterType="java.util.List">
+        update security_riskpoint_judged
+        set riskpoint_status=
+        <foreach collection="list" item="item" separator=" " open="case riskpoint_id" close="end">
+            when #{item.riskpointId} then #{item.riskpointStatus}
+        </foreach>
+        where riskpoint_id in
+        <foreach collection="list" item="item" separator="," open="(" close=")">
+            #{item.riskpointId}
+        </foreach>
+    </update>
+</mapper>

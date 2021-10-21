@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jindan.jdy.mapper.SecurityRiskcontentMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.jindan.jdy.common.pojo.SecurityRiskcontent">
+        <id column="riskcontent_id" property="riskcontentId" />
+        <result column="riskpoint_id" property="riskpointId" />
+        <result column="patrol_classification_id" property="patrolClassificationId" />
+        <result column="risk_control_content" property="riskControlContent" />
+        <result column="accident_cause" property="accidentCause" />
+        <result column="possible_accidents" property="possibleAccidents" />
+        <result column="emergency_measures" property="emergencyMeasures" />
+        <result column="influence_scope" property="influenceScope" />
+        <result column="potential_consequences" property="potentialConsequences" />
+        <result column="is_photograph" property="isPhotograph" />
+        <result column="photo_path" property="photoPath" />
+        <result column="is_data_entry" property="isDataEntry" />
+        <result column="data_entry_path" property="dataEntryPath" />
+        <result column="correct_picture_path" property="correctPicturePath" />
+        <result column="wrong_picture_path" property="wrongPicturePath" />
+        <result column="judgment_time" property="judgmentTime" />
+        <result column="insert_time" property="insertTime" />
+        <result column="delete_id" property="deleteId" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        riskcontent_id, riskpoint_id, risk_control_content, control_level, accident_cause, possible_accidents, emergency_measures, influence_scope, potential_consequences, is_photograph, photo_path, is_data_entry, data_entry_path, correct_picture_path, wrong_picture_path, judgment_time, insert_time, delete_id
+    </sql>
+
+    <!-- 查询一条风险点信息映射结果 -->
+    <resultMap id="RiskcontentResultMap" type="com.jindan.jdy.common.pojo.SecurityRiskcontent">
+        <id column="riskcontent_id" property="riskcontentId" />
+        <result column="riskpoint_id" property="riskpointId" />
+        <result column="patrol_classification_id" property="patrolClassificationId" />
+        <result column="risk_control_content" property="riskControlContent" />
+        <result column="accident_cause" property="accidentCause" />
+        <result column="possible_accidents" property="possibleAccidents" />
+        <result column="emergency_measures" property="emergencyMeasures" />
+        <result column="influence_scope" property="influenceScope" />
+        <result column="potential_consequences" property="potentialConsequences" />
+        <result column="is_photograph" property="isPhotograph" />
+        <result column="photo_path" property="photoPath" />
+        <result column="is_data_entry" property="isDataEntry" />
+        <result column="data_entry_path" property="dataEntryPath" />
+        <result column="correct_picture_path" property="correctPicturePath" />
+        <result column="wrong_picture_path" property="wrongPicturePath" />
+        <result column="judgment_time" property="judgmentTime" />
+        <result column="insert_time" property="insertTime" />
+        <result column="delete_id" property="deleteId" />
+    </resultMap>
+
+    <!-- select -->
+    <!-- 查询一条风险点信息sql语句 -->
+    <select id="getRiskcontentList" resultMap="RiskcontentResultMap" parameterType="java.util.List">
+        SELECT *
+        FROM
+        security_riskcontent
+        WHERE riskpoint_id in
+        <foreach collection="list" item="item" separator="," open="(" close=")">
+            #{item.riskpointId}
+        </foreach>
+        and patrol_classification_id in
+        <foreach collection="list" item="item" separator="," open="(" close=")">
+            #{item.patrolClassificationId}
+        </foreach>
+        and delete_id =0
+    </select>
+
+</mapper>
